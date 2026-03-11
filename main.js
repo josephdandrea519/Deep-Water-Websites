@@ -17,22 +17,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function lerp(a, b, t) { return a + (b - a) * t; }
 
     function tick() {
-      rx = lerp(rx, mx, 0.12);
-      ry = lerp(ry, my, 0.12);
-      ring.style.left = rx + 'px';
-      ring.style.top  = ry + 'px';
+      rx = lerp(rx, mx, 0.10);
+      ry = lerp(ry, my, 0.10);
+      ring.style.left = rx - 24 + 'px';
+      ring.style.top  = ry - 24 + 'px';
       rafId = requestAnimationFrame(tick);
     }
 
     document.addEventListener('mousemove', e => {
       mx = e.clientX;
       my = e.clientY;
-      cursor.style.left = mx + 'px';
-      cursor.style.top  = my + 'px';
+      cursor.style.left = mx - 5 + 'px';
+      cursor.style.top  = my - 5 + 'px';
       if (!visible) {
         cursor.classList.add('visible');
         ring.classList.add('visible');
-        rx = mx; ry = my; // snap ring to start position
+        rx = mx; ry = my;
         visible = true;
         tick();
       }
