@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maintenance Plans — Deep Water Websites | Web Design & SEO</title>
+<meta name="description" content="Every website we build includes maintenance. See exactly what's covered in each plan — from basic hosting and security to full SEO management.">
+<link rel="canonical" href="https://deepwaterwebsites.com/maintenance.html">
+<meta property="og:title" content="Website Maintenance Plans — Deep Water Websites">
+<meta property="og:description" content="Starter from $50/mo · Core $79/mo · Growth $199/mo · Authority $399–$799/mo. Maintenance is included with every website build.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+  /* ── INCLUDED BANNER ── */
+  .included-banner {
+    background: rgba(76,255,145,0.1);
+    border: 1.5px solid rgba(76,255,145,0.3);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 760px;
+    margin: 0 auto 4rem;
+  }
+  .included-banner .icon { font-size: 1.75rem; flex-shrink: 0; }
+  .included-banner p { font-size: 0.95rem; line-height: 1.6; }
+  .included-banner strong { color: var(--ink); }
+
+  /* ── PLAN DETAIL CARDS ── */
+  .plan-detail {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: box-shadow 0.25s;
+  }
+  .plan-detail:hover { box-shadow: 0 16px 48px rgba(10,10,15,0.08); }
+  .plan-detail.featured { border-color: var(--accent); background: var(--ink); color: #fff; }
+
+  .plan-header {
+    padding: 2.5rem 2.5rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    border-bottom: 1px solid var(--border);
+  }
+  .plan-detail.featured .plan-header {
+    background: var(--ink);
+    color: #fff;
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+  .plan-header-left .plan-tier {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .plan-detail.featured .plan-tier { color: var(--green); }
+  .plan-header-left h2 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.6rem; }
+  .plan-header-left p { font-size: 0.95rem; opacity: 0.65; line-height: 1.6; max-width: 480px; }
+  .plan-price-block { text-align: right; flex-shrink: 0; }
+  .plan-price-block .amount {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .plan-detail.featured .plan-price-block .amount { color: #fff; }
+  .plan-price-block .per { font-size: 0.875rem; opacity: 0.5; margin-top: 0.2rem; }
+  @media (max-width: 640px) { .plan-header { grid-template-columns: 1fr; } .plan-price-block { text-align: left; } }
+
+  .plan-body {
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  @media (max-width: 720px) { .plan-body { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .plan-section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .feature-list li .fi {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(76,255,145,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #2ecc71;
+    flex-shrink: 0;
+    margin-top: 0.1em;
+  }
+  .feature-list li .fi.x { background: rgba(10,10,15,0.06); color: var(--muted); }
+  .feature-list li .detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .feature-list li .detail strong { font-weight: 600; }
+  .feature-list li .detail span { font-size: 0.8rem; color: var(--muted); }
+
+  .plan-best-for {
+    background: var(--cream);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+  .plan-best-for strong { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-wrap { overflow-x: auto; }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+  .compare-table th {
+    padding: 1rem 1.25rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+  }
+  .compare-table th:first-child { text-align: left; }
+  .compare-table th.featured-col { color: var(--accent); }
+  .compare-table td {
+    padding: 0.9rem 1.25rem;
+    font-size: 0.875rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .compare-table td:first-child { text-align: left; opacity: 0.8; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .yes { color: var(--green); font-weight: 700; font-size: 1rem; }
+  .compare-table .no { color: rgba(255,255,255,0.2); font-size: 1rem; }
+  .compare-table .val { font-weight: 600; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Website Maintenance Plans",
+  "url": "https://deepwaterwebsites.com/maintenance.html",
+  "description": "Detailed breakdown of website maintenance and SEO plans from Deep Water Websites."
+}
+</script>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+    <div class="nav-links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="maintenance.html" class="active">Maintenance</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="build.html" class="btn-nav desktop-only">Build My Site</a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="maintenance.html">Maintenance</a>
+    <a href="about.html">About</a>
+    <a href="build.html" class="btn-mobile">Build My Site</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-top">
+  <section class="page-hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="page-hero-inner">
+      <span class="section-label">Ongoing Care</span>
+      <h1>Maintenance plans<br>that keep you growing</h1>
+      <p class="lead">Every website we build comes with maintenance included. Here's exactly what each plan covers — and how to know which one is right for your business.</p>
+    </div>
+  </section>
+
+  <!-- ── INCLUDED NOTICE ── -->
+  <section class="section" style="padding-top:1rem;padding-bottom:0;">
+    <div class="section-inner">
+      <div class="included-banner fade-up">
+        <div class="icon">✅</div>
+        <p><strong>Maintenance is always included with every website build.</strong> When you work with us on a new site, hosting, security, SSL, and backups are part of the deal from day one. <strong>You own and register your own domain</strong> — we handle all hosting and ongoing maintenance services so you never have to think about them. The plans below detail what's covered at each level.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PLAN 1: BASIC CARE ── -->
+  <section class="section" style="padding-top:2rem;">
+    <div class="section-inner">
+
+      <!-- ── PLAN 1: STARTER ── -->
+      <div class="plan-detail fade-up">
+        <div class="plan-header">
+          <div class="plan-header-left">
+            <p class="plan-tier">Plan 01</p>
+            <h2>Starter</h2>
+            <p>The bare minimum to keep your site live on your domain. No frills — just reliable hosting, SSL, and uptime monitoring at the lowest possible cost.</p>
+          </div>
+          <div class="plan-price-block">
+            <div class="amount">$50</div>
+            <div class="per">per month</div>
+          </div>
+        </div>
+        <div class="plan-body">
+          <div>
+            <p class="plan-section-title">What's Included</p>
+            <ul class="feature-list">
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Managed Hosting</strong>
+                  <span>CDN hosting on your domain. Fast load times, globally distributed.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>SSL Certificate</strong>
+                  <span>Auto-renewing HTTPS. Required for browser trust and basic SEO.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Uptime Monitoring</strong>
+                  <span>24/7 checks so we know the moment your site goes down.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="plan-section-title">Not Included at This Level</p>
+            <ul class="feature-list" style="margin-bottom:2rem;">
+              <li><span class="fi x">–</span><div class="detail"><strong>Security monitoring</strong><span>Upgrade to Core for active threat detection</span></div></li>
+              <li><span class="fi x">–</span><div class="detail"><strong>Automated backups</strong><span>No daily snapshots at this tier</span></div></li>
+              <li><span class="fi x">–</span><div class="detail"><strong>Content edits</strong><span>No site changes included</span></div></li>
+              <li><span class="fi x">–</span><div class="detail"><strong>Analytics or SEO</strong><span>No reporting or optimization</span></div></li>
+            </ul>
+            <div class="plan-best-for">
+              <strong>Best For</strong>
+              Businesses on a tight budget that simply need their existing site to stay live, load fast, and stay on their domain. Nothing more, nothing less.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PLAN 2: CORE ── -->
+      <div class="plan-detail fade-up">
+        <div class="plan-header">
+          <div class="plan-header-left">
+            <p class="plan-tier">Plan 02</p>
+            <h2>Core</h2>
+            <p>Full site protection — hosting, security, backups, and uptime monitoring. The complete baseline included with all builds.</p>
+          </div>
+          <div class="plan-price-block">
+            <div class="amount">$79</div>
+            <div class="per">per month</div>
+          </div>
+        </div>
+        <div class="plan-body">
+          <div>
+            <p class="plan-section-title">What's Included</p>
+            <ul class="feature-list">
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Managed Hosting</strong>
+                  <span>Fast, reliable CDN hosting on your domain. You own and register the domain — we handle everything else to keep it live and fast.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>SSL Certificate</strong>
+                  <span>Auto-renewing HTTPS certificate. Required for SEO and browser trust signals.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Security Monitoring</strong>
+                  <span>Continuous monitoring for vulnerabilities, malware, and unauthorized access attempts.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Automated Backups</strong>
+                  <span>Daily snapshots of your site so we can restore immediately if anything goes wrong.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Uptime Monitoring</strong>
+                  <span>24/7 uptime checks. We're alerted the moment your site goes down — before you are.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="plan-section-title">Not Included at This Level</p>
+            <ul class="feature-list" style="margin-bottom:2rem;">
+              <li><span class="fi x">–</span><div class="detail"><strong>Content edits</strong><span>Text, image, or layout changes not covered</span></div></li>
+              <li><span class="fi x">–</span><div class="detail"><strong>Analytics reporting</strong><span>No monthly traffic or performance reports</span></div></li>
+              <li><span class="fi x">–</span><div class="detail"><strong>SEO monitoring</strong><span>No keyword tracking or ranking updates</span></div></li>
+              <li><span class="fi x">–</span><div class="detail"><strong>Performance optimization</strong><span>No proactive speed or Core Web Vitals work</span></div></li>
+            </ul>
+            <div class="plan-best-for">
+              <strong>Best For</strong>
+              Businesses with a working website that doesn't change often. You want it online, secure, and fast — with someone responsible for it when something goes wrong.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PLAN 2: BUSINESS GROWTH ── -->
+      <div class="plan-detail featured fade-up">
+        <div class="plan-header">
+          <div class="plan-header-left">
+            <p class="plan-tier">Plan 03 — Most Popular</p>
+            <h2>Growth</h2>
+            <p>Everything in Core, plus an active partner who keeps your site current, fast, and optimized month after month.</p>
+          </div>
+          <div class="plan-price-block">
+            <div class="amount">$199</div>
+            <div class="per">per month</div>
+          </div>
+        </div>
+        <div class="plan-body">
+          <div>
+            <p class="plan-section-title" style="color:rgba(255,255,255,0.4);">What's Included</p>
+            <ul class="feature-list">
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail" style="color:#fff;">
+                  <strong>Everything in Core</strong>
+                  <span style="color:rgba(255,255,255,0.5);">Hosting, SSL, security, backups, uptime monitoring</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail" style="color:#fff;">
+                  <strong>Content Edits</strong>
+                  <span style="color:rgba(255,255,255,0.5);">Text updates, image swaps, minor layout changes — submit a request and it's done, typically within 48 hours.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail" style="color:#fff;">
+                  <strong>Performance Optimization</strong>
+                  <span style="color:rgba(255,255,255,0.5);">Monthly review of Core Web Vitals, load times, and site speed. We fix what slows you down before it hurts your rankings.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail" style="color:#fff;">
+                  <strong>Monthly Analytics Report</strong>
+                  <span style="color:rgba(255,255,255,0.5);">Clear monthly summary of traffic, top pages, visitor behavior, and what's working.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail" style="color:#fff;">
+                  <strong>SEO Monitoring</strong>
+                  <span style="color:rgba(255,255,255,0.5);">Track keyword rankings and flag drops before they compound. No active SEO campaigns — monitoring only.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="plan-section-title" style="color:rgba(255,255,255,0.4);">Not Included at This Level</p>
+            <ul class="feature-list" style="margin-bottom:2rem;">
+              <li><span class="fi x">–</span><div class="detail" style="color:rgba(255,255,255,0.7);"><strong>Keyword research & strategy</strong><span style="color:rgba(255,255,255,0.4);">No active SEO campaigns</span></div></li>
+              <li><span class="fi x">–</span><div class="detail" style="color:rgba(255,255,255,0.7);"><strong>Google Business management</strong><span style="color:rgba(255,255,255,0.4);">No GBP posting or optimization</span></div></li>
+              <li><span class="fi x">–</span><div class="detail" style="color:rgba(255,255,255,0.7);"><strong>Competitor analysis</strong><span style="color:rgba(255,255,255,0.4);">No competitive landscape reporting</span></div></li>
+              <li><span class="fi x">–</span><div class="detail" style="color:rgba(255,255,255,0.7);"><strong>Link building or citations</strong><span style="color:rgba(255,255,255,0.4);">Off-page SEO not included</span></div></li>
+            </ul>
+            <div class="plan-best-for" style="background:rgba(255,255,255,0.06);border-radius:var(--radius);">
+              <strong style="color:var(--accent);">Best For</strong>
+              <span style="color:rgba(255,255,255,0.75);font-size:0.875rem;line-height:1.6;">Active businesses that update their services, run seasonal promotions, or just want a real human keeping an eye on their site's performance every month.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PLAN 3: SEO GROWTH SYSTEM ── -->
+      <div class="plan-detail fade-up">
+        <div class="plan-header">
+          <div class="plan-header-left">
+            <p class="plan-tier">Plan 04 — Premium</p>
+            <h2>Authority</h2>
+            <p>Full-service SEO management designed to move your rankings, capture local search traffic, and put distance between you and your competitors.</p>
+          </div>
+          <div class="plan-price-block">
+            <div class="amount">$399</div>
+            <div class="per">– $799 / month</div>
+          </div>
+        </div>
+        <div class="plan-body">
+          <div>
+            <p class="plan-section-title">What's Included</p>
+            <ul class="feature-list">
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Everything in Growth</strong>
+                  <span>Hosting, security, edits, performance, analytics, SEO monitoring</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Keyword Research & Strategy</strong>
+                  <span>Ongoing identification of high-value, winnable keywords in your local market. Strategy updated quarterly.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Local SEO Optimization</strong>
+                  <span>On-page and technical SEO improvements targeting your city, service area, and local search intent — every month.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Google Business Profile Management</strong>
+                  <span>Regular posts, photo updates, review monitoring, Q&A management, and profile optimization to maximize local visibility.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Competitor Analysis</strong>
+                  <span>Monthly review of what your top competitors are doing in search — and a plan to outperform them.</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">✓</span>
+                <div class="detail">
+                  <strong>Detailed Monthly SEO Report</strong>
+                  <span>Rankings by keyword, traffic trends, GBP insights, and a clear picture of what moved the needle.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="plan-section-title">What Determines Your Price</p>
+            <ul class="feature-list" style="margin-bottom:2rem;">
+              <li>
+                <span class="fi">↑</span>
+                <div class="detail">
+                  <strong>Number of target locations</strong>
+                  <span>Single city vs. multi-city or regional coverage</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">↑</span>
+                <div class="detail">
+                  <strong>Industry competition level</strong>
+                  <span>Highly competitive markets require more ongoing effort</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">↑</span>
+                <div class="detail">
+                  <strong>Number of service pages</strong>
+                  <span>More pages to optimize = more monthly work</span>
+                </div>
+              </li>
+              <li>
+                <span class="fi">↑</span>
+                <div class="detail">
+                  <strong>Starting point</strong>
+                  <span>Sites starting from zero ranking need more initial lift</span>
+                </div>
+              </li>
+            </ul>
+            <div class="plan-best-for">
+              <strong>Best For</strong>
+              Local service businesses that want to own the first page of Google in their market — and are ready to invest in making that happen consistently over time.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── COMPARISON TABLE ── -->
+  <section class="section dark-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">Side by Side</span>
+        <h2>Plan comparison</h2>
+        <p class="muted">Every feature, every plan — at a glance.</p>
+      </div>
+      <div class="compare-wrap fade-up">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="text-align:left;opacity:0.4;font-size:0.75rem;letter-spacing:0.1em;">Feature</th>
+              <th>Starter<br><span style="font-weight:400;opacity:0.5;font-size:0.8rem;">$50/mo</span></th>
+              <th>Core<br><span style="font-weight:400;opacity:0.5;font-size:0.8rem;">$79/mo</span></th>
+              <th class="featured-col">Growth<br><span style="font-weight:400;opacity:0.8;font-size:0.8rem;">$199/mo</span></th>
+              <th>Authority<br><span style="font-weight:400;opacity:0.5;font-size:0.8rem;">$399–$799/mo</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Managed hosting</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>SSL certificate</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>Uptime monitoring</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>Security monitoring</td><td><span class="no">–</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>Automated backups</td><td><span class="no">–</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>Content edits</td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>Performance optimization</td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>Monthly analytics report</td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>SEO monitoring</td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>Keyword research & strategy</td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>Local SEO optimization</td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>Google Business management</td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>Competitor analysis</td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td>Detailed monthly SEO report</td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="no">–</span></td><td><span class="yes">✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="section cream-bg">
+    <div class="section-inner" style="max-width:760px;">
+      <div class="section-header">
+        <span class="section-label">Common Questions</span>
+        <h2>Maintenance FAQ</h2>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is maintenance really included with every build? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Yes. Every website build includes hosting, security monitoring, SSL, automated backups, and uptime monitoring as standard. You're never left with a live site and no one responsible for keeping it up.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What counts as a "content edit"? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Any change to existing text, swapping or adding images, updating hours or contact info, adding a new team member, or minor layout adjustments. If you're asking for a new page or a significant design change, that's a scope conversation — but most day-to-day updates are covered.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How long does it take to get a content edit done? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Typically within 48 hours of your request, often same day for simple changes. You submit the request, I handle it — no back-and-forth with a ticketing system.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How quickly will I see SEO results on the Growth System? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">SEO is a compounding effort, not an overnight switch. Most clients start seeing measurable ranking movement within 60–90 days. Significant organic traffic growth typically builds over 3–6 months. The businesses that commit to it consistently are the ones that dominate their local market.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can I upgrade my plan later? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Absolutely. Many clients start on Starter or Core and move to Growth or Authority once they're ready to invest in active search growth. Upgrades take effect the following billing cycle.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What happens to my site if I cancel? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">You own your domain at all times — that's always yours. For one-time build clients, you own the code and can move it to another host if you choose to cancel. For Website as a Service clients, we own and host the site on your behalf; canceling the subscription (after the 12-month minimum) means the site comes down, but your domain remains yours to use however you like.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-band">
+    <h2>Not sure which plan fits?</h2>
+    <p>Tell me about your business and I'll recommend the right level of support — no upselling, just honest advice.</p>
+    <div class="btn-group">
+      <a href="contact.html" class="btn-primary">Talk to Me</a>
+      <a href="pricing.html" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;">View Build Packages</a>
+    </div>
+  </section>
+
+</div><!-- /page-top -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+      <p>Web Designer & SEO Specialist<br>Deltona, FL · Available Nationwide</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://www.upwork.com/freelancers/~015539225e0fe4509e" target="_blank" rel="noopener noreferrer">Upwork</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Deep Water Websites. All rights reserved.</p>
+    <p>Web Design & SEO · Deltona, FL</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

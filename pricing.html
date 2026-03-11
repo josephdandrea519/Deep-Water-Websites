@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Deep Water Websites | Web Design & SEO</title>
+<meta name="description" content="Simple, transparent pricing for professional website design, SEO, and ongoing maintenance. No surprises — just results.">
+<link rel="canonical" href="https://deepwaterwebsites.com/pricing.html">
+<meta property="og:title" content="Pricing — Deep Water Websites | Web Design & SEO">
+<meta property="og:description" content="Website build packages starting at $900. Maintenance & SEO plans from $79/mo. See what's included.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ── PAGE-SPECIFIC ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 1000px) { .pricing-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 640px)  { .pricing-grid { grid-template-columns: 1fr; } }
+
+  .waas-card {
+    background: var(--ink);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .waas-card::before {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    background: var(--accent);
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.12;
+    right: -80px; top: -80px;
+    pointer-events: none;
+  }
+  .waas-card h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .waas-card .waas-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  .waas-card p { opacity: 0.65; line-height: 1.65; font-size: 0.95rem; }
+  .waas-price { text-align: right; flex-shrink: 0; }
+  .waas-price .amount {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: #fff;
+  }
+  .waas-price .period { font-size: 0.875rem; opacity: 0.5; margin-top: 0.25rem; }
+  @media (max-width: 700px) {
+    .waas-card { grid-template-columns: 1fr; }
+    .waas-price { text-align: left; }
+  }
+
+  .maint-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 640px) { .maint-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .maint-grid { grid-template-columns: 1fr; } }
+
+  .maint-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .maint-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+  .maint-card .plan-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+  }
+  .maint-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .maint-card .price {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin-bottom: 0.25rem;
+    line-height: 1;
+  }
+  .maint-card .price span { font-size: 1rem; font-weight: 400; opacity: 0.5; }
+  .maint-card .desc { font-size: 0.875rem; opacity: 0.55; line-height: 1.6; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .maint-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .maint-card ul li { font-size: 0.875rem; opacity: 0.8; display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.4; }
+  .maint-card ul li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  .roi-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+  }
+  @media (max-width: 760px) { .roi-grid { grid-template-columns: 1fr; } }
+  .roi-stat {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius-lg);
+  }
+  .roi-stat .big {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .roi-stat p { font-size: 0.9rem; opacity: 0.6; line-height: 1.6; }
+
+  .compare-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  .compare-table th, .compare-table td { padding: 1rem 1.25rem; text-align: left; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+  .compare-table th { font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .pkg { font-weight: 600; }
+  .compare-table .price-range { color: var(--accent); font-weight: 700; }
+  @media (max-width: 600px) {
+    .compare-table { font-size: 0.8rem; }
+    .compare-table th, .compare-table td { padding: 0.75rem 0.75rem; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Pricing",
+  "url": "https://deepwaterwebsites.com/pricing.html",
+  "description": "Website design and SEO pricing packages from Deep Water Websites.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "Deep Water Websites",
+    "url": "https://deepwaterwebsites.com"
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+    <div class="nav-links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html" class="active">Pricing</a>
+      <a href="maintenance.html">Maintenance</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="build.html" class="btn-nav desktop-only">Build My Site</a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="maintenance.html">Maintenance</a>
+    <a href="about.html">About</a>
+    <a href="build.html" class="btn-mobile">Build My Site</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-top">
+  <section class="page-hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="page-hero-inner">
+      <span class="section-label">Transparent Pricing</span>
+      <h1>Simple pricing.<br>Real results.</h1>
+      <p class="lead">Professional websites built to increase visibility, generate leads, and grow revenue. No hidden fees, no surprises — just a site that works as hard as you do.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn-primary">Get a Free Quote</a>
+        <a href="#compare" class="btn-outline">Compare Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY INVEST STATS ── -->
+  <section class="section dark-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">The Business Case</span>
+        <h2>Your website is your best salesperson</h2>
+        <p class="muted">The data is clear — a professionally designed website pays for itself.</p>
+      </div>
+      <div class="roi-grid">
+        <div class="roi-stat fade-up">
+          <div class="big">75%</div>
+          <p>of consumers judge a business's credibility based on its website design</p>
+        </div>
+        <div class="roi-stat fade-up">
+          <div class="big">200%</div>
+          <p>more leads reported by businesses that upgrade from outdated to professional sites</p>
+        </div>
+        <div class="roi-stat fade-up">
+          <div class="big">70%</div>
+          <p>more organic traffic generated by SEO-optimized websites vs. unoptimized ones</p>
+        </div>
+      </div>
+      <p class="text-center mt-md" style="opacity:0.45;font-size:0.875rem;">
+        Example ROI: 5 new customers/month at $400 each = $2,000 in additional monthly revenue
+      </p>
+    </div>
+  </section>
+
+  <!-- ── BUILD PACKAGES ── -->
+  <section class="section" id="compare">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">Website Build Packages</span>
+        <h2>One-time website builds</h2>
+        <p>You own it. Every package includes mobile-first design, on-page SEO, and a site built to convert visitors into customers.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <!-- Essential -->
+        <div class="pricing-card fade-up">
+          <p class="plan-name">Essential</p>
+          <p class="plan-price">$900<span style="font-size:1.4rem;font-weight:500;opacity:0.5"> – $1,500</span></p>
+          <p class="plan-desc">Perfect for small businesses, solo operators, and service providers that need a clean, credible online presence fast.</p>
+          <ul>
+            <li>Up to 5 pages</li>
+            <li>Mobile-responsive design</li>
+            <li>Contact form setup</li>
+            <li>Basic on-page SEO</li>
+            <li>Google Business integration</li>
+            <li>Speed optimization</li>
+          </ul>
+          <a href="build.html" class="btn-primary">Build My Site</a>
+        </div>
+
+        <!-- Professional (featured) -->
+        <div class="pricing-card featured fade-up">
+          <p class="plan-name">Professional</p>
+          <p class="plan-price">$1,800<span style="font-size:1.4rem;font-weight:500;opacity:0.45"> – $3,000</span></p>
+          <p class="plan-desc" style="border-color:rgba(255,255,255,0.1)">Best for growing businesses that need a polished, conversion-focused site with the analytics to back it up.</p>
+          <ul>
+            <li>Up to 10 pages</li>
+            <li>Conversion-focused layout</li>
+            <li>Analytics & tracking setup</li>
+            <li>Lead capture forms</li>
+            <li>Advanced SEO structure</li>
+            <li>Everything in Essential</li>
+          </ul>
+          <a href="build.html" class="btn-primary">Build My Site</a>
+        </div>
+
+        <!-- Growth -->
+        <div class="pricing-card fade-up">
+          <p class="plan-name">Growth System</p>
+          <p class="plan-price">$3,500<span style="font-size:1.4rem;font-weight:500;opacity:0.5"> – $6,000</span></p>
+          <p class="plan-desc">For businesses ready to dominate their market with a full digital growth system, not just a website.</p>
+          <ul>
+            <li>Up to 20 pages + landing pages</li>
+            <li>Technical SEO setup</li>
+            <li>CRM integrations</li>
+            <li>Call tracking</li>
+            <li>Performance optimization</li>
+            <li>Everything in Professional</li>
+          </ul>
+          <a href="build.html" class="btn-primary">Build My Site</a>
+        </div>
+
+      </div>
+      <p class="text-center mt-md" style="color:var(--muted);font-size:0.875rem;">All prices vary based on scope and complexity. <a href="contact.html" style="color:var(--accent);">Request a free custom quote →</a></p>
+    </div>
+  </section>
+
+  <!-- ── WEBSITE AS A SERVICE ── -->
+  <section class="section cream-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">Website Subscription</span>
+        <h2>Website as a Service</h2>
+        <p>No large upfront cost. Get a professionally designed, fully managed website for one low monthly rate — we host it, maintain it, and keep it running.</p>
+      </div>
+      <div class="waas-card fade-up">
+        <div>
+          <span class="waas-badge">12 or 24-Month Commitment</span>
+          <h3>Website as a Service</h3>
+          <p style="margin-bottom:0.75rem;">No large upfront cost. We design, build, host, and manage your site — you pay one flat monthly rate and focus on running your business.</p>
+          <p style="margin-bottom:1.5rem;font-size:0.85rem;opacity:0.6;">Available on our <strong style="opacity:1;">Essential</strong> (up to 5 pages) and <strong style="opacity:1;">Professional</strong> (up to 10 pages) builds. Requires a 12 or 24-month minimum commitment. Your domain is always yours.</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:2rem;">
+            <li style="display:flex;gap:0.75rem;align-items:flex-start;opacity:0.85;font-size:0.9rem;"><span style="color:var(--green);font-weight:700;flex-shrink:0;">✓</span> Website design &amp; development</li>
+            <li style="display:flex;gap:0.75rem;align-items:flex-start;opacity:0.85;font-size:0.9rem;"><span style="color:var(--green);font-weight:700;flex-shrink:0;">✓</span> Hosting &amp; SSL included</li>
+            <li style="display:flex;gap:0.75rem;align-items:flex-start;opacity:0.85;font-size:0.9rem;"><span style="color:var(--green);font-weight:700;flex-shrink:0;">✓</span> Security updates &amp; backups</li>
+            <li style="display:flex;gap:0.75rem;align-items:flex-start;opacity:0.85;font-size:0.9rem;"><span style="color:var(--green);font-weight:700;flex-shrink:0;">✓</span> Unlimited minor content edits</li>
+            <li style="display:flex;gap:0.75rem;align-items:flex-start;opacity:0.85;font-size:0.9rem;"><span style="color:var(--green);font-weight:700;flex-shrink:0;">✓</span> SEO maintenance &amp; analytics</li>
+            <li style="display:flex;gap:0.75rem;align-items:flex-start;opacity:0.85;font-size:0.9rem;"><span style="color:var(--green);font-weight:700;flex-shrink:0;">✓</span> Essential build $199/mo &nbsp;·&nbsp; Professional build $299/mo</li>
+          </ul>
+          <a href="build.html" class="btn-accent">Build My Site — See My Price →</a>
+        </div>
+        <div class="waas-price">
+          <div class="amount">$199</div>
+          <div class="period">– $299 / month</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MAINTENANCE & SEO ── -->
+  <section class="section dark-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">Maintenance & SEO</span>
+        <h2>Keep growing after launch</h2>
+        <p class="muted">A website is never truly "done." These plans keep your site fast, secure, and climbing in search results.</p>
+      </div>
+      <div class="maint-grid">
+
+        <div class="maint-card fade-up">
+          <p class="plan-label">Starter</p>
+          <h3>Keep It Live</h3>
+          <p class="price">$50<span>/mo</span></p>
+          <p class="desc">Hosting, SSL, and uptime monitoring — nothing more. Your site stays live on your domain at the lowest possible cost.</p>
+          <ul>
+            <li>Managed hosting</li>
+            <li>SSL certificate</li>
+            <li>Uptime monitoring</li>
+          </ul>
+        </div>
+
+        <div class="maint-card fade-up">
+          <p class="plan-label">Core</p>
+          <h3>Full Protection</h3>
+          <p class="price">$79<span>/mo</span></p>
+          <p class="desc">Complete site protection — security monitoring and automated backups added on top of Starter.</p>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>Security monitoring</li>
+            <li>Automated backups</li>
+          </ul>
+        </div>
+
+        <div class="maint-card fade-up" style="border-color:rgba(255,77,46,0.3);">
+          <p class="plan-label">Growth</p>
+          <h3>Stay Sharp</h3>
+          <p class="price">$199<span>/mo</span></p>
+          <p class="desc">Active management so your site stays current, optimized, and converting month after month.</p>
+          <ul>
+            <li>Everything in Core</li>
+            <li>Content edits</li>
+            <li>Performance optimization</li>
+            <li>Monthly analytics reports</li>
+            <li>SEO monitoring</li>
+          </ul>
+        </div>
+
+        <div class="maint-card fade-up">
+          <p class="plan-label">Authority</p>
+          <h3>Dominate Search</h3>
+          <p class="price">$399<span style="font-size:0.9rem;opacity:0.5"> – $799</span><span>/mo</span></p>
+          <p class="desc">Full-service SEO management built to move your rankings and beat your competitors.</p>
+          <ul>
+            <li>Everything in Growth</li>
+            <li>Keyword strategy</li>
+            <li>Local SEO optimization</li>
+            <li>Google Business optimization</li>
+            <li>Competitor analysis</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="section cream-bg">
+    <div class="section-inner" style="max-width:760px;">
+      <div class="section-header">
+        <span class="section-label">Common Questions</span>
+        <h2>Pricing FAQ</h2>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What determines where in the price range I land? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Scope and complexity. The more pages, custom features, integrations, or content you need, the higher the investment. Simple sites with clear goals land at the lower end; sites requiring custom functionality or large page counts land higher. I'll give you a specific quote after a free discovery call.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Do I own the website after it's built? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Your domain is always yours — you own and register it, full stop. With the one-time build packages, you also own the code and content outright. With Website as a Service, we build and host the site on your behalf; the site stays live as long as your subscription is active. If you cancel after the 12-month minimum, the site comes down — but your domain is yours to take anywhere.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How long does a website build take? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Most Essential sites are delivered within 3–5 business days. Professional sites typically take 1–2 weeks. Growth System projects depend on scope but I'll give you a clear timeline upfront. Fast turnarounds are something I take seriously.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What do I need to provide? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Your logo (or we can create a simple wordmark), photos if you have them, and the key information about your business — services, location, contact details. I handle all the design, writing, and technical setup. The less you have, the more I can help fill in.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can I upgrade my package later? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Absolutely. Many clients start with an Essential site and expand as their business grows. I build with clean, scalable code so adding pages or features later is straightforward.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Do you offer payment plans? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Yes. For one-time builds I typically structure a 50% deposit upfront and 50% on delivery. For clients who prefer no large upfront cost, the Website as a Service plan is the cleanest solution — one flat monthly rate, 12-month minimum, and we handle everything. Maintenance plans (Starter through Authority) are separate ongoing services available after launch.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-band">
+    <h2>Not sure which package is right?</h2>
+    <p>Let's talk through your goals. A free 15-minute call is usually all it takes to figure out exactly what you need — and what you don't.</p>
+    <div class="btn-group">
+      <a href="contact.html" class="btn-primary">Book a Free Call</a>
+      <a href="portfolio.html" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;">See the Work First</a>
+    </div>
+  </section>
+
+</div><!-- /page-top -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+      <p>Web Designer & SEO Specialist<br>Deltona, FL · Available Nationwide</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://www.upwork.com/freelancers/~015539225e0fe4509e" target="_blank" rel="noopener noreferrer">Upwork</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Deep Water Websites. All rights reserved.</p>
+    <p>Web Design & SEO · Deltona, FL</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

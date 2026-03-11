@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Deep Water Websites | Web Design & SEO</title>
+<meta name="description" content="Deep Water Websites is a web design and SEO studio based in Deltona, FL. We build fast, conversion-focused websites for local businesses nationwide.">
+<link rel="canonical" href="https://deepwaterwebsites.com/about.html">
+<meta property="og:title" content="About Deep Water Websites | Web Design & SEO Studio">
+<meta property="og:description" content="Based in Deltona, FL. Building websites for local businesses that actually generate leads.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+  .about-photo {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--ink);
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 24px 80px rgba(10,10,15,0.12);
+  }
+  .about-photo .photo-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.2;
+  }
+  .about-photo .initials {
+    font-size: 5rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.04em;
+  }
+  .photo-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #fff;
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .about-content h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+  .about-content p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1.5rem;
+    margin: 3rem 0;
+    padding: 2.5rem;
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+  }
+  @media (max-width: 480px) { .stats-row { grid-template-columns: 1fr; } }
+  .stats-row .stat .n {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stats-row .stat .l {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+  .skill-chip {
+    padding: 0.45rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .skill-chip:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 640px) { .values-grid { grid-template-columns: 1fr; } }
+  .value-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+  .value-card .icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+  .value-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .value-card p { font-size: 0.875rem; opacity: 0.6; line-height: 1.65; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Joseph D.",
+  "jobTitle": "Web Designer & SEO Specialist",
+  "url": "https://deepwaterwebsites.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Deltona",
+    "addressRegion": "FL",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://www.upwork.com/freelancers/~015539225e0fe4509e"
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+    <div class="nav-links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="maintenance.html">Maintenance</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+    <a href="build.html" class="btn-nav desktop-only">Build My Site</a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="maintenance.html">Maintenance</a>
+    <a href="about.html">About</a>
+    <a href="build.html" class="btn-mobile">Build My Site</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-top">
+  <section class="page-hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="page-hero-inner">
+      <span class="section-label">Behind the Work</span>
+      <h1>Hi, I'm Joseph.</h1>
+      <p class="lead">Web designer and SEO specialist based in Deltona, FL. I build fast, clean websites that get local businesses found online and turn visitors into paying customers.</p>
+    </div>
+  </section>
+
+  <!-- ── ABOUT SECTION ── -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-photo fade-up">
+          <div class="photo-glow" style="background:var(--accent);width:200px;height:200px;top:-40px;right:-40px;"></div>
+          <div class="photo-glow" style="background:var(--accent2);width:150px;height:150px;bottom:-30px;left:-30px;"></div>
+          <div class="initials">JD</div>
+          <div class="photo-badge">Available for New Projects</div>
+        </div>
+        <div class="about-content fade-up">
+          <span class="section-label">My Story</span>
+          <h2>I build websites that work as hard as you do</h2>
+          <p>Most business owners don't need a "web presence" — they need a site that actually brings in customers. That's what I focus on. Every project starts with understanding your business, your customers, and what they're searching for. The design comes second.</p>
+          <p>I specialize in working with local service businesses — contractors, agencies, professionals — who want to compete with larger companies without a massive marketing budget. Good SEO and a fast, trustworthy site can level the playing field. I've seen it happen with every client I've worked with.</p>
+          <p>I keep my process lean and my communication direct. No project managers, no handoffs, no delays. You work with me from first call to launch day.</p>
+
+          <div class="stats-row">
+            <div class="stat">
+              <div class="n">10+</div>
+              <div class="l">Sites delivered</div>
+            </div>
+            <div class="stat">
+              <div class="n">48hr</div>
+              <div class="l">Avg turnaround on small projects</div>
+            </div>
+            <div class="stat">
+              <div class="n">100%</div>
+              <div class="l">Client satisfaction</div>
+            </div>
+          </div>
+
+          <span class="section-label" style="display:block;margin-bottom:0.75rem;">What I Work With</span>
+          <div class="skills-list">
+            <span class="skill-chip">HTML / CSS</span>
+            <span class="skill-chip">Vanilla JavaScript</span>
+            <span class="skill-chip">Local SEO</span>
+            <span class="skill-chip">On-Page SEO</span>
+            <span class="skill-chip">Google Business Profile</span>
+            <span class="skill-chip">Netlify</span>
+            <span class="skill-chip">Netlify Forms</span>
+            <span class="skill-chip">JSON-LD Schema</span>
+            <span class="skill-chip">Google Analytics</span>
+            <span class="skill-chip">Core Web Vitals</span>
+            <span class="skill-chip">Mobile-First Design</span>
+            <span class="skill-chip">Conversion Optimization</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VALUES ── -->
+  <section class="section dark-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">How I Operate</span>
+        <h2>What working with me looks like</h2>
+        <p class="muted">A few things I believe in — and how they show up in every project.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card fade-up">
+          <div class="icon">⚡</div>
+          <h3>Speed without shortcuts</h3>
+          <p>Fast delivery is a feature, not a compromise. I keep builds lean — no bloated frameworks, no page builders — so your site loads fast and I deliver fast.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="icon">📍</div>
+          <h3>Local SEO is my specialty</h3>
+          <p>I understand how Google ranks local businesses and how customers search. Every site I build is structured to capture real local search traffic from day one.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="icon">📱</div>
+          <h3>Mobile-first, always</h3>
+          <p>Over half of your potential customers are on their phone. I design for mobile first, then scale up — not the other way around.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="icon">🤝</div>
+          <h3>You own your website</h3>
+          <p>I don't lock you into proprietary platforms or hold your site hostage. You get clean code, full ownership, and the ability to take it anywhere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── UPWORK ── -->
+  <section class="section cream-bg">
+    <div class="section-inner" style="max-width:760px;text-align:center;">
+      <span class="section-label">Verified Work History</span>
+      <h2>Find me on Upwork</h2>
+      <p style="color:var(--muted);font-size:1.05rem;line-height:1.7;margin:1.25rem 0 2.5rem;">My full work history, client reviews, and job success score are publicly available on Upwork. No portfolio screenshots needed — every result is verified.</p>
+      <a href="https://www.upwork.com/freelancers/~015539225e0fe4509e" target="_blank" rel="noopener noreferrer" class="btn-primary">View Upwork Profile →</a>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-band">
+    <h2>Let's build something together</h2>
+    <p>Tell me about your business and what you're trying to accomplish. I'll tell you exactly how I can help.</p>
+    <div class="btn-group">
+      <a href="contact.html" class="btn-primary">Start a Conversation</a>
+      <a href="portfolio.html" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;">See the Work</a>
+    </div>
+  </section>
+
+</div><!-- /page-top -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+      <p>Web Designer & SEO Specialist<br>Deltona, FL · Available Nationwide</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://www.upwork.com/freelancers/~015539225e0fe4509e" target="_blank" rel="noopener noreferrer">Upwork</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Deep Water Websites. All rights reserved.</p>
+    <p>Web Design & SEO · Deltona, FL</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

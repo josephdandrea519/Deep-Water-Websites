@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Deep Water Websites | Web Design & SEO</title>
+<meta name="description" content="Real websites built for real businesses. See how Deep Water Websites helps local companies get found online and convert visitors into customers.">
+<link rel="canonical" href="https://deepwaterwebsites.com/portfolio.html">
+<meta property="og:title" content="Portfolio — Deep Water Websites | Web Design & SEO">
+<meta property="og:description" content="Case studies for Sheridan Heating & Cooling, Abbey Insurance, and Buon Vita Real Estate.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ── CASE STUDY LAYOUT ── */
+  .case-study {
+    padding: 5rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .case-study:last-of-type { border-bottom: none; }
+  .case-study-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .case-study-inner.reverse { direction: rtl; }
+  .case-study-inner.reverse > * { direction: ltr; }
+  .case-mockup {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--ink);
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 24px 80px rgba(10,10,15,0.15);
+  }
+  .mockup-glow {
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.25;
+  }
+  .mockup-icon { font-size: 5rem; position: relative; z-index: 1; }
+  .mockup-label {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.5);
+    white-space: nowrap;
+  }
+  .case-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .case-body h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+  .case-body .client-detail { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  .case-body p { font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; }
+  .case-results {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: var(--cream);
+    border-radius: var(--radius);
+  }
+  .case-result { text-align: center; }
+  .case-result .num { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; color: var(--accent); }
+  .case-result .lbl { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; line-height: 1.4; }
+  .case-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1.5px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .case-link:hover { border-color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .case-study-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .case-study-inner.reverse { direction: ltr; }
+    .case-results { grid-template-columns: repeat(3,1fr); gap: 0.75rem; }
+  }
+  @media (max-width: 480px) {
+    .case-results { grid-template-columns: 1fr; }
+    .case-result { display: flex; align-items: center; gap: 1rem; text-align: left; }
+    .case-result .num { font-size: 1.5rem; }
+  }
+
+  /* ── PROCESS MINI ── */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 800px) { .process-steps { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 480px) { .process-steps { grid-template-columns: 1fr; } }
+  .process-step {
+    padding: 2rem;
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+  }
+  .process-step .step-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .process-step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .process-step p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Portfolio",
+  "url": "https://deepwaterwebsites.com/portfolio.html",
+  "description": "Web design portfolio from Deep Water Websites — real sites built for real businesses."
+}
+</script>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+    <div class="nav-links">
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="maintenance.html">Maintenance</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="build.html" class="btn-nav desktop-only">Build My Site</a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="maintenance.html">Maintenance</a>
+    <a href="about.html">About</a>
+    <a href="build.html" class="btn-mobile">Build My Site</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-top">
+  <section class="page-hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="page-hero-inner">
+      <span class="section-label">Real Work. Real Results.</span>
+      <h1>Websites built to<br><em style="font-style:normal;color:var(--accent);">perform</em></h1>
+      <p class="lead">Every site I build is designed with one goal: turn visitors into customers. Here's what that looks like in practice.</p>
+    </div>
+  </section>
+
+  <!-- ── CASE STUDY 1: SHERIDAN ── -->
+  <div class="case-study">
+    <div class="case-study-inner">
+      <div class="case-mockup fade-up">
+        <div class="mockup-glow" style="background:#ff4d2e;top:-50px;right:-50px;"></div>
+        <div class="mockup-glow" style="background:#1a1aff;bottom:-50px;left:-50px;"></div>
+        <div class="mockup-icon">🔥</div>
+        <span class="mockup-label">sheridanheatingandcooling.com</span>
+      </div>
+      <div class="case-body fade-up">
+        <div class="case-tags">
+          <span class="tag">HVAC</span>
+          <span class="tag blue">Local SEO</span>
+          <span class="tag green">Live</span>
+        </div>
+        <h2>Sheridan Heating & Cooling</h2>
+        <p class="client-detail">📍 Ocean County, NJ · HVAC Services</p>
+        <p>Sheridan needed a website that would surface in local searches, build trust immediately, and drive inbound calls — without relying on paid ads. The old site wasn't ranking and wasn't converting.</p>
+        <p>I built a mobile-first, conversion-focused site with service pages targeting Ocean County search terms, Google Business integration, and a fast-loading, structured layout designed to generate call and form leads organically.</p>
+        <div class="case-results">
+          <div class="case-result">
+            <div class="num">3×</div>
+            <div class="lbl">More organic visibility</div>
+          </div>
+          <div class="case-result">
+            <div class="num">100</div>
+            <div class="lbl">Google PageSpeed score</div>
+          </div>
+          <div class="case-result">
+            <div class="num">$0</div>
+            <div class="lbl">Ad spend required</div>
+          </div>
+        </div>
+        <a href="https://www.sheridanheatingandcooling.com" target="_blank" rel="noopener noreferrer" class="case-link">Visit Live Site →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CASE STUDY 2: ABBEY INSURANCE ── -->
+  <div class="case-study cream-bg">
+    <div class="case-study-inner reverse">
+      <div class="case-mockup fade-up">
+        <div class="mockup-glow" style="background:#1a1aff;top:-50px;left:-50px;"></div>
+        <div class="mockup-glow" style="background:#4cff91;bottom:-50px;right:-50px;"></div>
+        <div class="mockup-icon">🛡️</div>
+        <span class="mockup-label">Abbey Insurance Agency</span>
+      </div>
+      <div class="case-body fade-up">
+        <div class="case-tags">
+          <span class="tag">Insurance</span>
+          <span class="tag blue">Multi-Page</span>
+          <span class="tag" style="background:rgba(251,191,36,0.12);color:#b45309;">In Progress</span>
+        </div>
+        <h2>Abbey Insurance Agency</h2>
+        <p class="client-detail">📍 Barnegat, NJ · Independent Insurance Agency</p>
+        <p>Abbey Insurance has served Ocean County for 25+ years but had an outdated web presence that wasn't generating leads. They needed a complete redesign that communicated trust, years of experience, and clear service offerings to NJ homeowners, drivers, and business owners.</p>
+        <p>The project involves a full multi-page build with dedicated landing pages for each coverage type — auto, home, business, renters, and watercraft — each optimized for NJ-specific search intent.</p>
+        <div class="case-results">
+          <div class="case-result">
+            <div class="num">8</div>
+            <div class="lbl">Dedicated service pages</div>
+          </div>
+          <div class="case-result">
+            <div class="num">25+</div>
+            <div class="lbl">Years of history showcased</div>
+          </div>
+          <div class="case-result">
+            <div class="num">NJ</div>
+            <div class="lbl">Statewide SEO coverage</div>
+          </div>
+        </div>
+        <span class="case-link" style="opacity:0.5;cursor:default;">Live launch coming soon</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CASE STUDY 3: BUON VITA ── -->
+  <div class="case-study">
+    <div class="case-study-inner">
+      <div class="case-mockup fade-up">
+        <div class="mockup-glow" style="background:#fbbf24;top:-50px;right:-50px;"></div>
+        <div class="mockup-glow" style="background:#ff4d2e;bottom:-50px;left:-50px;"></div>
+        <div class="mockup-icon">🏡</div>
+        <span class="mockup-label">Buon Vita Real Estate</span>
+      </div>
+      <div class="case-body fade-up">
+        <div class="case-tags">
+          <span class="tag">Real Estate</span>
+          <span class="tag blue">Personal Brand</span>
+          <span class="tag green">Live</span>
+        </div>
+        <h2>Buon Vita Real Estate</h2>
+        <p class="client-detail">📍 Ocean County, NJ · Real Estate Agent — Teri Bindshedler</p>
+        <p>Teri needed a personal brand website that would help buyers and sellers in Ocean County find her, trust her, and reach out. The site needed to feel premium, load fast, and work perfectly on mobile — where most real estate searches happen.</p>
+        <p>I built a clean, personal brand site that positioned Teri as the go-to local expert, with a lead capture form, local SEO targeting, and a design that communicates her professionalism at a glance.</p>
+        <div class="case-results">
+          <div class="case-result">
+            <div class="num">5★</div>
+            <div class="lbl">Client satisfaction</div>
+          </div>
+          <div class="case-result">
+            <div class="num">100%</div>
+            <div class="lbl">Mobile optimized</div>
+          </div>
+          <div class="case-result">
+            <div class="num">Local</div>
+            <div class="lbl">SEO targeting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROCESS ── -->
+  <section class="section cream-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">How I Work</span>
+        <h2>From kickoff to live in days</h2>
+        <p>A streamlined process built to move fast without cutting corners.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step fade-up">
+          <p class="step-num">01 — DISCOVERY</p>
+          <h3>Understand the goal</h3>
+          <p>Free call to understand your business, audience, and what success looks like — before a single pixel is placed.</p>
+        </div>
+        <div class="process-step fade-up">
+          <p class="step-num">02 — STRATEGY</p>
+          <h3>Plan the build</h3>
+          <p>Page structure, SEO keyword targets, conversion flow, and site architecture decided upfront.</p>
+        </div>
+        <div class="process-step fade-up">
+          <p class="step-num">03 — BUILD</p>
+          <h3>Design & develop</h3>
+          <p>Fast, clean HTML/CSS — no bloated page builders. Mobile-first, optimized for speed from the first line of code.</p>
+        </div>
+        <div class="process-step fade-up">
+          <p class="step-num">04 — LAUNCH</p>
+          <h3>Go live & grow</h3>
+          <p>Full handoff, Google Business setup, sitemap submission, and a site that's indexed and ready to rank.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-band">
+    <h2>Ready to be the next case study?</h2>
+    <p>Let's build something that makes your competitors nervous.</p>
+    <div class="btn-group">
+      <a href="contact.html" class="btn-primary">Start Your Project</a>
+      <a href="pricing.html" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;">See Pricing</a>
+    </div>
+  </section>
+
+</div><!-- /page-top -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+      <p>Web Designer & SEO Specialist<br>Deltona, FL · Available Nationwide</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://www.upwork.com/freelancers/~015539225e0fe4509e" target="_blank" rel="noopener noreferrer">Upwork</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Deep Water Websites. All rights reserved.</p>
+    <p>Web Design & SEO · Deltona, FL</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build My Site — Deep Water Websites | Web Design & SEO</title>
+<meta name="description" content="Answer a few questions about your business and goals. Get a real, transparent price estimate before your first call — no surprises.">
+<link rel="canonical" href="https://deepwaterwebsites.com/build.html">
+<meta property="og:title" content="Build My Site — Deep Water Websites">
+<meta property="og:description" content="Customize your website package and see real pricing as you go. No sales call required to know what to expect.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+  /* ── LAYOUT ── */
+  .build-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  @media (max-width: 960px) { .build-layout { grid-template-columns: 1fr; } }
+
+  /* ── FORM SECTION CARDS ── */
+  .fs {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 1.25rem;
+  }
+  .fs-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .fs-num {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .fs-num.alt { background: var(--accent2); }
+  .fs-title { font-size: 1.05rem; font-weight: 700; margin: 0; }
+  .fs-note {
+    font-size: 0.82rem; color: var(--muted);
+    line-height: 1.55; margin-bottom: 1.25rem;
+  }
+
+  /* ── OPTION CARDS (radio / checkbox styled) ── */
+  .opt-grid { display: grid; gap: 0.65rem; }
+  .opt-grid.c2 { grid-template-columns: 1fr 1fr; }
+  .opt-grid.c3 { grid-template-columns: repeat(3,1fr); }
+  @media (max-width: 640px) { .opt-grid.c2, .opt-grid.c3 { grid-template-columns: 1fr; } }
+
+  .opt { position: relative; cursor: pointer; }
+  .opt input[type="radio"],
+  .opt input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+  .opt label {
+    display: block;
+    padding: 1rem 1.2rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    background: var(--paper);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .opt input:checked + label {
+    border-color: var(--accent);
+    background: rgba(0,150,199,0.06);
+  }
+  .opt label:hover { border-color: rgba(0,150,199,0.4); }
+  .opt-title { font-weight: 700; font-size: 0.92rem; display: block; margin-bottom: 0.15rem; color: var(--ink); }
+  .opt-price { font-size: 0.85rem; color: var(--accent); font-weight: 700; display: block; margin-bottom: 0.2rem; }
+  .opt-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.45; display: block; }
+  .opt-badge {
+    display: inline-block;
+    background: var(--accent); color: #fff;
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 0.18rem 0.55rem; border-radius: 100px;
+    margin-bottom: 0.35rem;
+  }
+  .opt-badge.green { background: var(--accent2); }
+
+  /* ── ADDON ROWS ── */
+  .addon-list { display: flex; flex-direction: column; gap: 0.55rem; }
+  .addon { position: relative; cursor: pointer; }
+  .addon input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+  .addon label {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.85rem 1.1rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer; background: var(--paper);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .addon input:checked + label {
+    border-color: var(--accent);
+    background: rgba(0,150,199,0.06);
+  }
+  .addon label:hover { border-color: rgba(0,150,199,0.4); }
+  .addon-text { flex: 1; min-width: 0; }
+  .addon-name { font-size: 0.88rem; font-weight: 600; color: var(--ink); display: block; }
+  .addon-sub { font-size: 0.76rem; color: var(--muted); display: block; margin-top: 0.1rem; }
+  .addon-tag { font-size: 0.85rem; font-weight: 700; color: var(--accent); white-space: nowrap; flex-shrink: 0; }
+
+  /* ── CONDITIONAL SECTIONS ── */
+  .cond { display: none; }
+  .cond.on { display: block; }
+
+  /* ── COMMITMENT TOGGLE ── */
+  .term-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .term-row label { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+  .term-toggle {
+    display: flex; background: var(--cream);
+    border-radius: var(--radius); padding: 0.25rem; gap: 0.25rem;
+  }
+  .term-btn {
+    padding: 0.5rem 1.1rem; border-radius: calc(var(--radius) - 3px);
+    border: none; background: none; font-family: inherit;
+    font-size: 0.875rem; font-weight: 600; color: var(--muted);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .term-btn.on { background: var(--accent); color: #fff; }
+  .waas-note {
+    background: var(--cream); border-radius: var(--radius);
+    padding: 0.9rem 1.1rem; font-size: 0.82rem; color: var(--muted);
+    line-height: 1.6; margin-top: 0.75rem;
+  }
+  .waas-note strong { color: var(--ink); }
+
+  /* ── PAGE RECOMMENDATION TIP ── */
+  .page-tip {
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    min-height: 1.2em;
+  }
+
+  /* ── PRICE SUMMARY SIDEBAR ── */
+  .price-panel {
+    position: sticky; top: 100px;
+    background: var(--ink); color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    overflow: hidden;
+  }
+  .price-panel::before {
+    content: '';
+    position: absolute; width: 220px; height: 220px;
+    background: var(--accent); border-radius: 50%;
+    filter: blur(70px); opacity: 0.1;
+    top: -70px; right: -70px; pointer-events: none;
+  }
+  .price-panel::after {
+    content: '';
+    position: absolute; width: 180px; height: 180px;
+    background: var(--accent2); border-radius: 50%;
+    filter: blur(60px); opacity: 0.08;
+    bottom: -50px; left: -50px; pointer-events: none;
+  }
+  .price-panel-head {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    opacity: 0.45; margin-bottom: 1.25rem;
+  }
+  .price-empty {
+    text-align: center; padding: 1.25rem 0;
+    opacity: 0.35; font-size: 0.83rem; line-height: 1.6;
+  }
+  .price-lines { display: flex; flex-direction: column; }
+  .price-line {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 0.5rem; padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 0.82rem;
+  }
+  .price-line:last-child { border-bottom: none; }
+  .pl-label { opacity: 0.6; line-height: 1.4; }
+  .pl-val { font-weight: 600; white-space: nowrap; text-align: right; flex-shrink: 0; }
+  .price-total {
+    margin-top: 0.75rem; padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 0.5rem;
+  }
+  .pt-label { font-size: 0.88rem; font-weight: 700; }
+  .pt-val { font-size: 1.35rem; font-weight: 800; color: var(--accent2); text-align: right; line-height: 1.15; }
+  .price-sub {
+    margin-top: 0.75rem; padding: 0.7rem 0.9rem;
+    background: rgba(255,255,255,0.05); border-radius: calc(var(--radius) - 4px);
+    font-size: 0.79rem; opacity: 0.65; line-height: 1.5;
+  }
+  .price-disclaimer {
+    font-size: 0.7rem; opacity: 0.35; line-height: 1.5;
+    margin-top: 1.1rem; text-align: center;
+  }
+  .price-submit { margin-top: 1.25rem; }
+  .price-submit .btn-primary { width: 100%; justify-content: center; font-size: 0.88rem; padding: 0.85rem; }
+  .price-submit p { font-size: 0.7rem; opacity: 0.35; text-align: center; margin-top: 0.6rem; line-height: 1.4; }
+
+  /* ── MOBILE PRICE BAR ── */
+  .mob-bar {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--ink); color: #fff;
+    padding: 0.8rem 1.25rem;
+    z-index: 200; border-top: 1px solid rgba(255,255,255,0.1);
+    align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  @media (max-width: 960px) {
+    .mob-bar.on { display: flex; }
+    .price-panel { display: none; }
+    .page-top { padding-bottom: 72px; }
+  }
+  .mob-label { font-size: 0.7rem; opacity: 0.45; }
+  .mob-val { font-size: 1.05rem; font-weight: 800; color: var(--accent2); }
+
+  /* ── MOBILE SUBMIT (inside form, hidden on desktop) ── */
+  .mob-submit { display: none; }
+  @media (max-width: 960px) { .mob-submit { display: flex; flex-direction: column; gap: 0.65rem; } }
+
+  /* ── FORM ROW ── */
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
+
+</style>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+    <div class="nav-links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="maintenance.html">Maintenance</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="build.html" class="btn-nav desktop-only active" style="background:var(--accent);">Build My Site</a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="maintenance.html">Maintenance</a>
+    <a href="about.html">About</a>
+    <a href="build.html" class="btn-mobile">Build My Site</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-top">
+  <section class="page-hero" style="padding-bottom:3rem;">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="page-hero-inner">
+      <span class="section-label">Transparent Pricing</span>
+      <h1>Build your site.</h1>
+      <p class="lead">Answer a few questions about your business and what you need. Watch your estimate build in real time — no sales call required to know what to expect.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:2rem;">
+    <div class="section-inner">
+      <div class="build-layout">
+
+        <!-- ── FORM ── -->
+        <div>
+          <form
+            id="buildForm"
+            name="build-my-site"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="thank-you.html"
+          >
+            <input type="hidden" name="form-name" value="build-my-site">
+            <div style="display:none;"><input name="bot-field"></div>
+            <!-- Hidden summary fields populated by JS -->
+            <input type="hidden" name="estimated-investment" id="hiddenTotal">
+            <input type="hidden" name="selected-package" id="hiddenPackage">
+            <input type="hidden" name="selected-addons" id="hiddenAddons">
+            <input type="hidden" name="commitment-term" id="hiddenTerm" value="12">
+
+            <!-- ① ABOUT YOU -->
+            <div class="fs">
+              <div class="fs-head">
+                <div class="fs-num">1</div>
+                <h2 class="fs-title">About you & your business</h2>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Your Name *</label>
+                  <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+                </div>
+                <div class="form-group">
+                  <label for="business">Business Name *</label>
+                  <input type="text" id="business" name="business" placeholder="Smith Plumbing LLC" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City & State *</label>
+                  <input type="text" id="city" name="city" placeholder="Orlando, FL" required>
+                </div>
+                <div class="form-group">
+                  <label for="industry">Industry</label>
+                  <select id="industry" name="industry">
+                    <option value="" disabled selected>Select your industry…</option>
+                    <option>Contractor / Trades</option>
+                    <option>HVAC / Plumbing / Electrical</option>
+                    <option>Real Estate</option>
+                    <option>Insurance / Finance</option>
+                    <option>Legal / Professional Services</option>
+                    <option>Healthcare / Medical</option>
+                    <option>Restaurant / Food & Beverage</option>
+                    <option>Retail</option>
+                    <option>Home Services</option>
+                    <option>Fitness / Wellness</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- ② YOUR SITUATION -->
+            <div class="fs">
+              <div class="fs-head">
+                <div class="fs-num">2</div>
+                <h2 class="fs-title">Your current situation</h2>
+              </div>
+              <div class="form-group" style="margin-bottom:1.25rem;">
+                <label style="margin-bottom:0.6rem;display:block;">Do you currently have a website?</label>
+                <div class="opt-grid c2">
+                  <div class="opt">
+                    <input type="radio" name="has_website" id="hw_yes" value="Yes">
+                    <label for="hw_yes">
+                      <span class="opt-title">Yes, I have one</span>
+                      <span class="opt-desc">Looking for a redesign or improvement</span>
+                    </label>
+                  </div>
+                  <div class="opt">
+                    <input type="radio" name="has_website" id="hw_no" value="No">
+                    <label for="hw_no">
+                      <span class="opt-title">No, starting fresh</span>
+                      <span class="opt-desc">Building a brand new web presence</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div id="existingIssue" style="display:none;">
+                <div class="form-group" style="margin-bottom:1.25rem;">
+                  <label for="issue">What's the main problem with your current site?</label>
+                  <select id="issue" name="existing_issue">
+                    <option value="" disabled selected>Select the main issue…</option>
+                    <option>Looks outdated or unprofessional</option>
+                    <option>Doesn't show up on Google</option>
+                    <option>Not converting visitors into leads</option>
+                    <option>Too slow or broken on mobile</option>
+                    <option>Can't update it myself</option>
+                    <option>All of the above</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label style="margin-bottom:0.6rem;display:block;">Primary goal for your website *</label>
+                <div class="opt-grid">
+                  <div class="opt">
+                    <input type="radio" name="goal" id="goal_leads" value="Generate leads & phone calls" required>
+                    <label for="goal_leads">
+                      <span class="opt-title">Generate leads & phone calls</span>
+                      <span class="opt-desc">More inquiries, quote requests, and bookings</span>
+                    </label>
+                  </div>
+                  <div class="opt">
+                    <input type="radio" name="goal" id="goal_cred" value="Establish credibility & trust">
+                    <label for="goal_cred">
+                      <span class="opt-title">Establish credibility & trust</span>
+                      <span class="opt-desc">Look professional when prospects search your name</span>
+                    </label>
+                  </div>
+                  <div class="opt">
+                    <input type="radio" name="goal" id="goal_seo" value="Rank higher on Google">
+                    <label for="goal_seo">
+                      <span class="opt-title">Rank higher on Google</span>
+                      <span class="opt-desc">Be found when customers search for your services</span>
+                    </label>
+                  </div>
+                  <div class="opt">
+                    <input type="radio" name="goal" id="goal_all" value="All of the above">
+                    <label for="goal_all">
+                      <span class="opt-title">All of the above</span>
+                      <span class="opt-desc">A complete, optimized web presence that does it all</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ③ PAYMENT MODEL -->
+            <div class="fs">
+              <div class="fs-head">
+                <div class="fs-num">3</div>
+                <h2 class="fs-title">How would you like to pay?</h2>
+              </div>
+              <div class="opt-grid c2">
+                <div class="opt">
+                  <input type="radio" name="payment_model" id="pay_onetime" value="One-time build">
+                  <label for="pay_onetime">
+                    <span class="opt-title">One-time build</span>
+                    <span class="opt-price">$900 – $6,000</span>
+                    <span class="opt-desc">Pay once, own your site outright. You keep the code — take it anywhere, no strings attached.</span>
+                  </label>
+                </div>
+                <div class="opt">
+                  <input type="radio" name="payment_model" id="pay_waas" value="Website as a Service">
+                  <label for="pay_waas">
+                    <span class="opt-title">Website as a Service</span>
+                    <span class="opt-price">$199 – $299 / mo</span>
+                    <span class="opt-desc">No upfront cost. We build, host, and manage everything under a 12 or 24-month commitment.</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- ④a ONE-TIME BUILD SELECTION -->
+            <div id="sec_onetime" class="cond">
+
+              <div class="fs">
+                <div class="fs-head">
+                  <div class="fs-num">4</div>
+                  <h2 class="fs-title">Choose your build package</h2>
+                </div>
+                <p class="fs-note">All packages include mobile-first design, contact form, SSL, and hosting setup. Maintenance plan selected separately below.</p>
+                <div class="opt-grid">
+                  <div class="opt">
+                    <input type="radio" name="build_package" id="pkg_ess" value="Essential ($900–$1,500)">
+                    <label for="pkg_ess">
+                      <span class="opt-title">Essential Website</span>
+                      <span class="opt-price">$900 – $1,500</span>
+                      <span class="opt-desc">Up to 5 pages · Mobile-optimized · Contact form · Basic local SEO setup · Best for businesses getting started online.</span>
+                    </label>
+                  </div>
+                  <div class="opt">
+                    <input type="radio" name="build_package" id="pkg_pro" value="Professional ($1,800–$3,000)">
+                    <label for="pkg_pro">
+                      <span class="opt-badge">Most Popular</span>
+                      <span class="opt-title">Professional Business Website</span>
+                      <span class="opt-price">$1,800 – $3,000</span>
+                      <span class="opt-desc">Up to 10 pages · Conversion-optimized layout · Full local SEO · Google Analytics · Service area pages · Built to generate consistent leads.</span>
+                    </label>
+                  </div>
+                  <div class="opt">
+                    <input type="radio" name="build_package" id="pkg_growth" value="Growth System ($3,500–$6,000)">
+                    <label for="pkg_growth">
+                      <span class="opt-title">Growth Website System</span>
+                      <span class="opt-price">$3,500 – $6,000</span>
+                      <span class="opt-desc">10+ pages · Blog/content system · Lead funnels · Advanced SEO architecture · Multiple service &amp; location pages · Built to scale.</span>
+                    </label>
+                  </div>
+                </div>
+                <div id="pageTip" class="page-tip"></div>
+              </div>
+
+              <!-- MAINTENANCE PLAN (one-time builds) -->
+              <div class="fs">
+                <div class="fs-head">
+                  <div class="fs-num alt">→</div>
+                  <h2 class="fs-title">Ongoing maintenance plan</h2>
+                </div>
+                <p class="fs-note">Included with every build. Choose the level of ongoing care you need — you can always upgrade later.</p>
+                <div class="opt-grid c2">
+                  <div class="opt">
+                    <input type="radio" name="maintenance" id="maint_starter" value="Starter ($50/mo)">
+                    <label for="maint_starter">
+                      <span class="opt-title">Starter</span>
+                      <span class="opt-price">$50 / mo</span>
+                      <span class="opt-desc">Managed hosting, SSL, uptime monitoring. Your site stays live at the lowest possible cost.</span>
+                    </label>
+                  </div>
+                  <div class="opt">
+                    <input type="radio" name="maintenance" id="maint_core" value="Core ($79/mo)">
+                    <label for="maint_core">
+                      <span class="opt-title">Core</span>
+                      <span class="opt-price">$79 / mo</span>
+                      <span class="opt-desc">Everything in Starter plus security monitoring and automated backups.</span>
+                    </label>
+                  </div>
+                  <div class="opt">
+                    <input type="radio" name="maintenance" id="maint_growth" value="Growth ($199/mo)">
+                    <label for="maint_growth">
+                      <span class="opt-badge green">Recommended</span>
+                      <span class="opt-title">Growth</span>
+                      <span class="opt-price">$199 / mo</span>
+                      <span class="opt-desc">+ Content edits, performance optimization, monthly analytics reports, and SEO monitoring.</span>
+                    </label>
+                  </div>
+                  <div class="opt">
+                    <input type="radio" name="maintenance" id="maint_authority" value="Authority ($399/mo)">
+                    <label for="maint_authority">
+                      <span class="opt-title">Authority</span>
+                      <span class="opt-price">$399 / mo</span>
+                      <span class="opt-desc">+ Keyword strategy, local SEO, Google Business Profile management, competitor analysis.</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /sec_onetime -->
+
+            <!-- ④b WAAS SELECTION -->
+            <div id="sec_waas" class="cond">
+              <div class="fs">
+                <div class="fs-head">
+                  <div class="fs-num">4</div>
+                  <h2 class="fs-title">Choose your WaaS tier</h2>
+                </div>
+                <p class="fs-note">We design, build, host, and manage your site. It stays live as long as your subscription is active. Your domain is always yours to keep.</p>
+                <div class="opt-grid c2" style="margin-bottom:1.5rem;">
+                  <div class="opt">
+                    <input type="radio" name="waas_tier" id="waas_ess" value="Essential tier ($199/mo)">
+                    <label for="waas_ess">
+                      <span class="opt-title">Essential Build</span>
+                      <span class="opt-price">$199 / mo</span>
+                      <span class="opt-desc">Up to 5 pages · Mobile-optimized · Contact form · Basic local SEO · Hosting &amp; maintenance all included.</span>
+                    </label>
+                  </div>
+                  <div class="opt">
+                    <input type="radio" name="waas_tier" id="waas_pro" value="Professional tier ($299/mo)">
+                    <label for="waas_pro">
+                      <span class="opt-badge">Most Popular</span>
+                      <span class="opt-title">Professional Build</span>
+                      <span class="opt-price">$299 / mo</span>
+                      <span class="opt-desc">Up to 10 pages · Conversion-optimized · Full local SEO setup · Analytics · Unlimited minor edits · Hosting &amp; maintenance all included.</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="term-row">
+                  <label>Commitment term:</label>
+                  <div class="term-toggle">
+                    <button type="button" class="term-btn on" id="t12" onclick="setTerm(12)">12 Months</button>
+                    <button type="button" class="term-btn" id="t24" onclick="setTerm(24)">24 Months</button>
+                  </div>
+                </div>
+                <div class="waas-note" id="waasNote">Select a tier above to see your total commitment.</div>
+              </div>
+            </div><!-- /sec_waas -->
+
+            <!-- ⑤ ADD-ONS -->
+            <div class="fs">
+              <div class="fs-head">
+                <div class="fs-num">5</div>
+                <h2 class="fs-title">Add-ons &amp; extras</h2>
+              </div>
+              <p class="fs-note">All are one-time fees except the Authority SEO Plan, which is a monthly add-on.</p>
+              <div class="addon-list">
+                <div class="addon">
+                  <input type="checkbox" id="ao_logo" name="addon_logo" value="Logo Design (+$350)">
+                  <label for="ao_logo">
+                    <div class="addon-text">
+                      <span class="addon-name">Logo Design</span>
+                      <span class="addon-sub">Custom logo crafted to match your brand and site</span>
+                    </div>
+                    <span class="addon-tag">+ $350</span>
+                  </label>
+                </div>
+                <div class="addon">
+                  <input type="checkbox" id="ao_copy" name="addon_copy" value="Copywriting (+$250)">
+                  <label for="ao_copy">
+                    <div class="addon-text">
+                      <span class="addon-name">Copywriting</span>
+                      <span class="addon-sub">Professional page copy written for conversion and local SEO</span>
+                    </div>
+                    <span class="addon-tag">+ $250</span>
+                  </label>
+                </div>
+                <div class="addon">
+                  <input type="checkbox" id="ao_gbp" name="addon_gbp" value="Google Business Profile Setup (+$150)">
+                  <label for="ao_gbp">
+                    <div class="addon-text">
+                      <span class="addon-name">Google Business Profile Setup</span>
+                      <span class="addon-sub">Full GBP optimization to boost local search visibility</span>
+                    </div>
+                    <span class="addon-tag">+ $150</span>
+                  </label>
+                </div>
+                <div class="addon">
+                  <input type="checkbox" id="ao_rush" name="addon_rush" value="Rush Delivery (+$300)">
+                  <label for="ao_rush">
+                    <div class="addon-text">
+                      <span class="addon-name">Rush Delivery</span>
+                      <span class="addon-sub">Delivery within 2 weeks — standard turnaround is 3–6 weeks</span>
+                    </div>
+                    <span class="addon-tag">+ $300</span>
+                  </label>
+                </div>
+                <div class="addon">
+                  <input type="checkbox" id="ao_seo" name="addon_seo" value="Authority SEO Plan (+$399/mo)">
+                  <label for="ao_seo">
+                    <div class="addon-text">
+                      <span class="addon-name">Authority SEO Plan</span>
+                      <span class="addon-sub">Monthly: keyword strategy, local SEO, GBP management, competitor analysis</span>
+                    </div>
+                    <span class="addon-tag">+ $399/mo</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- ⑥ YOUR VISION -->
+            <div class="fs">
+              <div class="fs-head">
+                <div class="fs-num">6</div>
+                <h2 class="fs-title">Project details</h2>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="pages">Expected number of pages</label>
+                  <select id="pages" name="pages">
+                    <option value="" disabled selected>How many pages?</option>
+                    <option value="1-3">1–3 pages (home, about, contact)</option>
+                    <option value="4-5">4–5 pages</option>
+                    <option value="6-10">6–10 pages</option>
+                    <option value="10+">10+ pages</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="timeline">Desired launch timeline</label>
+                  <select id="timeline" name="timeline">
+                    <option value="" disabled selected>When do you need it?</option>
+                    <option>ASAP — under 2 weeks</option>
+                    <option>Within 1 month</option>
+                    <option>1–2 months</option>
+                    <option>No rush — quality over speed</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="assets">Brand assets &amp; content</label>
+                <select id="assets" name="assets">
+                  <option value="" disabled selected>What do you have ready?</option>
+                  <option>Everything — logo, photos, and written content ready to go</option>
+                  <option>Partially — I have some assets but need help with others</option>
+                  <option>Nothing yet — starting from scratch, need help with everything</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="competitors">Competitor or inspiration sites</label>
+                <input type="text" id="competitors" name="competitors" placeholder="Optional — paste URLs or describe the style you like">
+              </div>
+              <div class="form-group">
+                <label for="message">Anything else I should know?</label>
+                <textarea id="message" name="message" style="min-height:110px;" placeholder="Special requirements, must-haves, things you definitely don't want, questions…"></textarea>
+              </div>
+            </div>
+
+            <!-- MOBILE SUBMIT -->
+            <div class="mob-submit">
+              <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:1rem;">Send My Project Details →</button>
+              <p style="text-align:center;font-size:0.78rem;color:var(--muted);">I'll review and respond within 24 hours — personally.</p>
+            </div>
+
+          </form>
+        </div><!-- /form col -->
+
+        <!-- ── PRICE SUMMARY PANEL ── -->
+        <div>
+          <div class="price-panel">
+            <div class="price-panel-head">Your Estimate</div>
+
+            <div id="priceEmpty" class="price-empty">
+              Select a payment model and package to watch your estimate build in real time.
+            </div>
+
+            <div id="priceContent" style="display:none;">
+              <div class="price-lines" id="priceLines"></div>
+              <div class="price-total">
+                <span class="pt-label" id="totalLabel">Estimated Investment</span>
+                <span class="pt-val" id="totalVal">—</span>
+              </div>
+              <div class="price-sub" id="priceSub" style="display:none;"></div>
+            </div>
+
+            <p class="price-disclaimer">Estimates are based on your inputs. Final pricing confirmed after your free discovery call.</p>
+
+            <div class="price-submit">
+              <button type="submit" form="buildForm" class="btn-primary">Send My Details →</button>
+              <p>No commitment. Just a response from me, personally.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /build-layout -->
+    </div><!-- /section-inner -->
+  </section>
+</div><!-- /page-top -->
+
+<!-- MOBILE PRICE BAR -->
+<div class="mob-bar" id="mobBar">
+  <div>
+    <div class="mob-label">Your Estimate</div>
+    <div class="mob-val" id="mobVal">Select a package above</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+      <p>Web Designer & SEO Specialist<br>Deltona, FL · Available Nationwide</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://www.upwork.com/freelancers/~015539225e0fe4509e" target="_blank" rel="noopener noreferrer">Upwork</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Deep Water Websites. All rights reserved.</p>
+    <p>Web Design & SEO · Deltona, FL</p>
+  </div>
+</footer>
+
+<script>
+// ── PRICING DATA ──
+const P = {
+  builds: {
+    pkg_ess:    { label: 'Essential Website',         min: 900,  max: 1500 },
+    pkg_pro:    { label: 'Professional Website',      min: 1800, max: 3000 },
+    pkg_growth: { label: 'Growth Website System',     min: 3500, max: 6000 },
+  },
+  waas: {
+    waas_ess: { label: 'Essential Build',      monthly: 199 },
+    waas_pro: { label: 'Professional Build',   monthly: 299 },
+  },
+  maint: {
+    maint_starter:   { label: 'Starter Plan',    monthly: 50  },
+    maint_core:      { label: 'Core Plan',        monthly: 79  },
+    maint_growth:    { label: 'Growth Plan',      monthly: 199 },
+    maint_authority: { label: 'Authority Plan',   monthly: 399 },
+  },
+  addons: {
+    ao_logo: { label: 'Logo Design',                    price: 350,  type: 'once'    },
+    ao_copy: { label: 'Copywriting',                    price: 250,  type: 'once'    },
+    ao_gbp:  { label: 'Google Business Profile Setup',  price: 150,  type: 'once'    },
+    ao_rush: { label: 'Rush Delivery',                  price: 300,  type: 'once'    },
+    ao_seo:  { label: 'Authority SEO Plan',             price: 399,  type: 'monthly' },
+  }
+};
+
+let model = null;   // 'onetime' | 'waas'
+let term  = 12;
+
+function fmt(n)       { return '$' + n.toLocaleString('en-US'); }
+function range(a, b)  { return fmt(a) + ' – ' + fmt(b); }
+
+// ── PAYMENT MODEL SWITCH ──
+document.querySelectorAll('input[name="payment_model"]').forEach(r => {
+  r.addEventListener('change', () => {
+    model = r.id === 'pay_onetime' ? 'onetime' : 'waas';
+    document.getElementById('sec_onetime').classList.toggle('on', model === 'onetime');
+    document.getElementById('sec_waas').classList.toggle('on', model === 'waas');
+    // reset other path
+    if (model === 'onetime') {
+      document.querySelectorAll('input[name="waas_tier"]').forEach(x => x.checked = false);
+    } else {
+      document.querySelectorAll('input[name="build_package"]').forEach(x => x.checked = false);
+      document.querySelectorAll('input[name="maintenance"]').forEach(x => x.checked = false);
+    }
+    refreshPrice();
+  });
+});
+
+// ── COMMITMENT TERM ──
+function setTerm(months) {
+  term = months;
+  document.getElementById('hiddenTerm').value = months;
+  document.getElementById('t12').classList.toggle('on', months === 12);
+  document.getElementById('t24').classList.toggle('on', months === 24);
+  updateWaasNote();
+  refreshPrice();
+}
+
+function updateWaasNote() {
+  const tier = document.querySelector('input[name="waas_tier"]:checked');
+  const el = document.getElementById('waasNote');
+  if (!tier) { el.innerHTML = 'Select a tier above to see your total commitment.'; return; }
+  const d = P.waas[tier.id];
+  const total = d.monthly * term;
+  el.innerHTML = `<strong>${d.label} · ${fmt(d.monthly)}/mo × ${term} months</strong><br>Minimum commitment: ${fmt(total)} total`;
+}
+
+// WaaS tier change
+document.querySelectorAll('input[name="waas_tier"]').forEach(r => {
+  r.addEventListener('change', () => { updateWaasNote(); refreshPrice(); });
+});
+
+// All other option changes
+['build_package','maintenance'].forEach(name => {
+  document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+    r.addEventListener('change', refreshPrice);
+  });
+});
+Object.keys(P.addons).forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('change', refreshPrice);
+});
+
+// ── PRICE REFRESH ──
+function refreshPrice() {
+  const empty   = document.getElementById('priceEmpty');
+  const content = document.getElementById('priceContent');
+  const linesEl = document.getElementById('priceLines');
+  const totalLbl = document.getElementById('totalLabel');
+  const totalVal = document.getElementById('totalVal');
+  const priceSub = document.getElementById('priceSub');
+  const mobBar   = document.getElementById('mobBar');
+  const mobVal   = document.getElementById('mobVal');
+
+  let lines = [];
+  let onceMin = 0, onceMax = 0, monthly = 0;
+  let hasBase = false;
+
+  if (model === 'onetime') {
+    const pkg = document.querySelector('input[name="build_package"]:checked');
+    const mnt = document.querySelector('input[name="maintenance"]:checked');
+    if (pkg) {
+      const d = P.builds[pkg.id];
+      lines.push({ l: d.label, v: range(d.min, d.max) });
+      onceMin += d.min; onceMax += d.max;
+      hasBase = true;
+    }
+    if (mnt) {
+      const d = P.maint[mnt.id];
+      lines.push({ l: d.label, v: fmt(d.monthly) + '/mo' });
+      monthly += d.monthly;
+    }
+
+  } else if (model === 'waas') {
+    const tier = document.querySelector('input[name="waas_tier"]:checked');
+    if (tier) {
+      const d = P.waas[tier.id];
+      lines.push({ l: d.label + ' (' + term + '-mo term)', v: fmt(d.monthly) + '/mo' });
+      monthly += d.monthly;
+      hasBase = true;
+    }
+  }
+
+  // Add-ons
+  let addonOnce = 0;
+  Object.entries(P.addons).forEach(([id, data]) => {
+    const el = document.getElementById(id);
+    if (el && el.checked) {
+      if (data.type === 'once') {
+        lines.push({ l: data.label, v: '+ ' + fmt(data.price) });
+        addonOnce += data.price;
+        onceMin += data.price; onceMax += data.price;
+      } else {
+        lines.push({ l: data.label, v: '+ ' + fmt(data.price) + '/mo' });
+        monthly += data.price;
+      }
+    }
+  });
+
+  const anything = hasBase || addonOnce > 0 || monthly > 0;
+
+  if (!anything) {
+    empty.style.display = 'block';
+    content.style.display = 'none';
+    mobBar.classList.remove('on');
+    document.getElementById('hiddenTotal').value = '';
+    return;
+  }
+
+  // Build lines HTML
+  linesEl.innerHTML = lines.map(({ l, v }) =>
+    `<div class="price-line"><span class="pl-label">${l}</span><span class="pl-val">${v}</span></div>`
+  ).join('');
+
+  // Total display
+  if (model === 'waas') {
+    const commitTotal = monthly * term;
+    totalLbl.textContent = 'Monthly Rate';
+    totalVal.textContent  = fmt(monthly) + '/mo';
+    priceSub.style.display = 'block';
+    priceSub.innerHTML = `${term}-month commitment &nbsp;·&nbsp; <strong>${fmt(commitTotal)} total</strong>`;
+    mobVal.textContent = fmt(monthly) + '/mo';
+    document.getElementById('hiddenTotal').value =
+      fmt(monthly) + '/mo · ' + term + '-month (' + fmt(commitTotal) + ' total)';
+  } else {
+    const hasRange = onceMax > onceMin;
+    const totalStr = hasRange ? range(onceMin, onceMax) : fmt(onceMin);
+    totalLbl.textContent = 'Estimated Investment';
+    totalVal.innerHTML    = totalStr;
+    if (monthly > 0) {
+      priceSub.style.display = 'block';
+      priceSub.innerHTML = '+ ' + fmt(monthly) + '/mo ongoing';
+    } else {
+      priceSub.style.display = 'none';
+    }
+    mobVal.textContent = hasRange ? range(onceMin, onceMax) : fmt(onceMin);
+    document.getElementById('hiddenTotal').value =
+      totalStr + (monthly > 0 ? ' + ' + fmt(monthly) + '/mo' : '');
+  }
+
+  // Package + addon hidden fields
+  const pkgEl = document.querySelector('input[name="build_package"]:checked') ||
+                document.querySelector('input[name="waas_tier"]:checked');
+  document.getElementById('hiddenPackage').value = pkgEl ? pkgEl.value : '';
+
+  const selectedAddons = Object.entries(P.addons)
+    .filter(([id]) => { const el = document.getElementById(id); return el && el.checked; })
+    .map(([, d]) => d.label);
+  document.getElementById('hiddenAddons').value = selectedAddons.join(', ') || 'None';
+
+  empty.style.display   = 'none';
+  content.style.display = 'block';
+  mobBar.classList.add('on');
+}
+
+// ── EXISTING WEBSITE TOGGLE ──
+document.querySelectorAll('input[name="has_website"]').forEach(r => {
+  r.addEventListener('change', () => {
+    document.getElementById('existingIssue').style.display =
+      (r.value === 'Yes' && r.checked) ? 'block' : 'none';
+  });
+});
+
+// ── RUSH DELIVERY TIP (auto-check if ASAP selected) ──
+document.getElementById('timeline').addEventListener('change', function() {
+  const rush = document.getElementById('ao_rush');
+  if (this.value === 'ASAP — under 2 weeks' && !rush.checked) {
+    rush.checked = true;
+    refreshPrice();
+  }
+});
+</script>
+
+<script src="main.js"></script>
+</body>
+</html>

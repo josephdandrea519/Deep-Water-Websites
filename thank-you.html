@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Message Received — Deep Water Websites | Web Design & SEO</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .thankyou-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .thankyou-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+    pointer-events: none;
+  }
+  .check-circle {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(76,255,145,0.12);
+    border: 2px solid var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 2rem;
+    animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+  .thankyou-page h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .thankyou-page p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.65;
+  }
+  .next-box {
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    max-width: 540px;
+    margin: 0 auto 3rem;
+    text-align: left;
+  }
+  .next-box h3 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+  .next-box ol {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .next-box li {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .next-box li strong { font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- Minimal nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+    <div class="nav-links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="maintenance.html">Maintenance</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="build.html" class="btn-nav desktop-only">Build My Site</a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="maintenance.html">Maintenance</a>
+    <a href="about.html">About</a>
+    <a href="build.html" class="btn-mobile">Build My Site</a>
+  </div>
+</nav>
+
+<div class="page-top">
+  <div class="thankyou-page">
+    <div class="thankyou-blob" style="background:var(--accent);width:400px;height:400px;top:-150px;right:-150px;"></div>
+    <div class="thankyou-blob" style="background:var(--accent2);width:350px;height:350px;bottom:-100px;left:-100px;"></div>
+
+    <div class="check-circle">✓</div>
+    <span class="section-label">You're all set</span>
+    <h1>Message received.</h1>
+    <p>Thanks for reaching out! I'll review your project details and get back to you personally within <strong>24 hours</strong> — usually much faster.</p>
+
+    <div class="next-box">
+      <h3>What happens next</h3>
+      <ol>
+        <li><strong>I review your submission</strong> and confirm I can help with your project goals and timeline.</li>
+        <li><strong>You'll hear from me directly</strong> — no assistant, no automated follow-up sequence.</li>
+        <li><strong>We schedule a free 15-minute call</strong> to align on scope, timeline, and budget.</li>
+        <li><strong>I send a proposal</strong> with a clear deliverables list, timeline, and fixed price.</li>
+      </ol>
+    </div>
+
+    <div class="btn-group">
+      <a href="index.html" class="btn-primary">Back to Home</a>
+      <a href="portfolio.html" class="btn-outline">Browse the Portfolio</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+      <p>Web Designer & SEO Specialist<br>Deltona, FL · Available Nationwide</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://www.upwork.com/freelancers/~015539225e0fe4509e" target="_blank" rel="noopener noreferrer">Upwork</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Deep Water Websites. All rights reserved.</p>
+    <p>Web Design & SEO · Deltona, FL</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

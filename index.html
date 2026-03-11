@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Water Websites — Web Design & SEO | Deltona, FL</title>
+<link rel="canonical" href="https://deepwaterwebsites.com/index.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0b1929;
+    --paper: #f2f7fb;
+    --cream: #e6f0f7;
+    --accent: #0096c7;
+    --accent2: #00c9a7;
+    --muted: #5a7a96;
+    --card: #ffffff;
+    --border: rgba(11,25,41,0.1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--ink);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.12s ease;
+  }
+  body:has(a:hover) .cursor { transform: scale(2.5); }
+  body:has(button:hover) .cursor { transform: scale(3); background: var(--accent2); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(242,247,251,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--ink);
+    color: var(--paper) !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent) !important; color: white !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 4rem;
+    padding-top: 5rem;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,150,199,0.12) 0%, transparent 70%);
+    animation: pulse 6s ease-in-out infinite;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 20%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,201,167,0.06) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+  }
+
+  .hero-left { position: relative; z-index: 2; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge-dot {
+    width: 6px; height: 6px;
+    background: #00c9a7;
+    border-radius: 50%;
+    animation: blink 2s ease infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  h1 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  h1 .underline-word {
+    position: relative;
+    display: inline-block;
+  }
+  h1 .underline-word::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 0; right: 0;
+    height: 4px;
+    background: var(--accent2);
+    border-radius: 2px;
+    animation: slideIn 0.8s 0.6s ease both;
+    transform-origin: left;
+  }
+  @keyframes slideIn { from{transform:scaleX(0)} to{transform:scaleX(1)} }
+
+  .hero-sub {
+    margin-top: 1.8rem;
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 460px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .stat-num {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--ink);
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0.1rem;
+  }
+
+  /* HERO RIGHT - MOCKUP CARD */
+  .hero-right {
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-card {
+    background: var(--card);
+    border-radius: 24px;
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 40px 80px rgba(11,25,41,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+  .card-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .card-site-preview {
+    background: var(--paper);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-site-name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .card-tag {
+    font-size: 0.72rem;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+  .card-tag.blue { background: #e3f2fd; color: #1565c0; }
+  .card-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1.2rem;
+  }
+  .metric-box {
+    background: var(--paper);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  .metric-val {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--accent);
+  }
+  .metric-desc {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+  .card-client-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+  }
+  .client-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: white;
+  }
+  .client-msg {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .client-msg strong { color: var(--ink); }
+
+  /* MARQUEE */
+  .marquee-section {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    animation: marquee 18s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .marquee-item {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+  .marquee-dot { color: var(--accent); opacity: 1; font-size: 1.2rem; line-height: 1; }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 20px; height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+  }
+
+  h2 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(11,25,41,0.1);
+    border-color: var(--accent);
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+  .service-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+  .service-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .service-card .service-meta {
+    margin-top: 1.2rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* WORK / PORTFOLIO */
+  .work-section { background: var(--ink); color: var(--paper); }
+  .work-section .section-label { color: #ff7a63; }
+  .work-section .section-label::before { background: #ff7a63; }
+  .work-section h2 { color: var(--paper); }
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .work-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 2.2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .work-card:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-4px);
+  }
+  .work-card.featured { grid-row: span 2; }
+  .work-type {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.8rem;
+  }
+  .work-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--paper);
+    margin-bottom: 0.5rem;
+  }
+  .work-card p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+  .work-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+  }
+  .work-tag {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.6);
+  }
+  .work-result {
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #00c9a7;
+  }
+  .work-result span { font-family: 'Outfit', sans-serif; font-weight: 400; font-size: 0.78rem; color: rgba(255,255,255,0.4); display: block; margin-top: 0.2rem; }
+
+  /* PROCESS */
+  .process-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .process-sticky { position: sticky; top: 7rem; }
+  .process-steps { display: flex; flex-direction: column; gap: 1.5rem; }
+  .step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 1.2rem;
+    padding: 1.5rem;
+    background: var(--card);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+  .step:hover { border-color: var(--accent); transform: translateX(6px); }
+  .step-num {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .step h4 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  .step p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* PRICING */
+  .pricing-section { background: var(--cream); }
+  .pricing-toggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0 3rem;
+  }
+  .toggle-label { font-size: 0.88rem; font-weight: 500; color: var(--muted); }
+  .toggle-label.active { color: var(--ink); font-weight: 600; }
+  .toggle-track {
+    width: 52px; height: 28px;
+    background: var(--ink);
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .toggle-thumb {
+    width: 22px; height: 22px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px; left: 3px;
+    transition: transform 0.2s;
+  }
+  .toggle-track.monthly .toggle-thumb { transform: translateX(24px); }
+  .toggle-save {
+    font-size: 0.72rem;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+    font-weight: 600;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .price-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-card.featured {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+    transform: scale(1.03);
+  }
+  .price-card:hover:not(.featured) {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(11,25,41,0.1);
+  }
+  .price-badge {
+    position: absolute;
+    top: 1.2rem; right: 1.2rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--accent);
+    color: white;
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+  }
+  .price-tier {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+  .price-card.featured .price-tier { color: rgba(255,255,255,0.5); }
+  .price-name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .price-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  .price-card.featured .price-desc { color: rgba(255,255,255,0.5); }
+  .price-amount {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .price-card.featured .price-amount { border-color: rgba(255,255,255,0.1); }
+  .price-currency {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding-bottom: 0.3rem;
+  }
+  .price-num {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
+    line-height: 1;
+  }
+  .price-per {
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding-bottom: 0.4rem;
+  }
+  .price-card.featured .price-per { color: rgba(255,255,255,0.4); }
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .price-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  .price-features li::before {
+    content: '✓';
+    color: #00c9a7;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+  .price-card.featured .price-features li { color: rgba(255,255,255,0.8); }
+  .price-cta {
+    margin-top: 2rem;
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .price-card:not(.featured) .price-cta {
+    background: var(--paper);
+    color: var(--ink);
+    border: 1.5px solid var(--border);
+  }
+  .price-card:not(.featured) .price-cta:hover { background: var(--ink); color: var(--paper); }
+  .price-card.featured .price-cta {
+    background: var(--accent);
+    color: white;
+  }
+  .price-card.featured .price-cta:hover { background: #0077a8; }
+
+  /* PAYMENT PLAN NOTE */
+  .payment-plan-note {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .plan-icon { font-size: 2rem; }
+  .plan-text h4 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .plan-text p { font-size: 0.85rem; color: var(--muted); }
+
+  /* TESTIMONIALS */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .testimonial {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+  }
+  .stars { color: #fbbf24; font-size: 0.85rem; margin-bottom: 1rem; }
+  .testimonial blockquote {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .author-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: white;
+    flex-shrink: 0;
+  }
+  .author-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+  }
+  .author-biz {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+
+  /* FAQ */
+  .faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 1rem; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .faq-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 1.3rem 1.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--accent); }
+  .faq-q .faq-arrow { transition: transform 0.3s; font-size: 1.2rem; }
+  .faq-item.open .faq-arrow { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+    padding: 0 1.5rem;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 1.5rem 1.3rem; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--ink);
+    text-align: center;
+    padding: 7rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0,150,199,0.15) 0%, transparent 60%);
+    animation: pulse 6s ease-in-out infinite;
+  }
+  .cta-section h2 {
+    color: var(--paper);
+    position: relative;
+    z-index: 2;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+  .cta-section p {
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+    margin: 1.2rem auto 2.5rem;
+    max-width: 480px;
+    position: relative;
+    z-index: 2;
+  }
+  .cta-section .btn-primary {
+    background: var(--accent);
+    font-size: 1rem;
+    padding: 1rem 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .cta-section .btn-primary:hover { background: var(--paper); color: var(--ink); }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+  }
+  .footer-logo span { color: var(--accent); }
+  footer p { font-size: 0.82rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--accent); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+    .hero-right { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .services-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr; }
+    .work-card.featured { grid-row: auto; }
+    .process-row { grid-template-columns: 1fr; }
+    .process-sticky { position: static; }
+    .price-card.featured { transform: none; }
+    .payment-plan-note { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Deep<span>Water.</span></a>
+  <ul class="nav-links">
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="maintenance.html">Maintenance</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Build My Site</a></li>
+  </ul>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:var(--paper); z-index:200; flex-direction:column; align-items:center; justify-content:center; gap:2rem;">
+  <a href="index.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Home</a>
+  <a href="portfolio.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Portfolio</a>
+  <a href="pricing.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Pricing</a>
+  <a href="maintenance.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Maintenance</a>
+  <a href="about.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">About</a>
+  <a href="contact.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:white; background:var(--accent); padding:0.8rem 2rem; border-radius:100px;">Build My Site</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Available for new projects
+    </div>
+
+    <h1>
+      Websites<br>
+      that <em>work</em><br>
+      as hard as<br>
+      <span class="underline-word">you do.</span>
+    </h1>
+
+    <p class="hero-sub">
+      I build clean, fast, SEO-optimized websites for small businesses — from scratch or a complete refresh. Based in Florida. Working everywhere.
+    </p>
+
+    <div class="hero-actions">
+      <a href="pricing.html" class="btn-primary">View Packages →</a>
+      <a href="portfolio.html" class="btn-secondary">See My Work</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Sites Built</div>
+      </div>
+      <div>
+        <div class="stat-num">48hr</div>
+        <div class="stat-label">Avg Turnaround</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="card-label">Recent Client Results</div>
+
+      <div class="card-site-preview">
+        <div class="card-site-name">Sheridan Heating & Cooling</div>
+        <div class="card-tag">Live ✓</div>
+      </div>
+
+      <div class="card-site-preview">
+        <div class="card-site-name">Abbey Insurance Agency</div>
+        <div class="card-tag blue">In Progress</div>
+      </div>
+
+      <div class="card-metrics">
+        <div class="metric-box">
+          <div class="metric-val">↑ 3×</div>
+          <div class="metric-desc">More organic visibility</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">100</div>
+          <div class="metric-desc">Google PageSpeed score</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">$0</div>
+          <div class="metric-desc">Ad spend required</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">5★</div>
+          <div class="metric-desc">Client rating</div>
+        </div>
+      </div>
+
+      <div class="card-client-row">
+        <div class="client-avatar" style="background:#0096c7">S</div>
+        <div class="client-msg"><strong>Mike S.</strong> — "Our phone started ringing within 2 weeks of the new site going live."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Website Design</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">SEO Optimization</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Site Revamps</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Google Rankings</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Content Rewrites</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Local SEO</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Mobile-First</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Netlify · WordPress · Squarespace</span>
+    <span class="marquee-dot">·</span>
+    <!-- repeat -->
+    <span class="marquee-item">Website Design</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">SEO Optimization</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Site Revamps</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Google Rankings</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Content Rewrites</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Local SEO</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Mobile-First</span>
+    <span class="marquee-dot">·</span>
+    <span class="marquee-item">Netlify · WordPress · Squarespace</span>
+    <span class="marquee-dot">·</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What I Do</div>
+  <h2>Everything your website<br>needs to win.</h2>
+
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon" style="background:#fff0ee">🏗️</div>
+      <h3>Website Creation</h3>
+      <p>Brand-new websites built from the ground up — clean design, fast load times, mobile-ready, and structured to convert visitors into customers.</p>
+      <div class="service-meta">Starting at $499</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.1s">
+      <div class="service-icon" style="background:#f0f0ff">🔧</div>
+      <h3>Site Updates & Revamps</h3>
+      <p>Got a site that's outdated, clunky, or just not converting? I'll modernize the design, improve the copy, and fix what's broken — fast.</p>
+      <div class="service-meta">Starting at $199</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.2s">
+      <div class="service-icon" style="background:#f0fff5">🔍</div>
+      <h3>SEO Optimization</h3>
+      <p>On-page SEO, sitemap setup, Google Search Console submission, keyword-aligned content, and meta optimization so Google actually finds you.</p>
+      <div class="service-meta">Starting at $149</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.1s">
+      <div class="service-icon" style="background:#fffbf0">✍️</div>
+      <h3>Website Copywriting</h3>
+      <p>Professional, brand-aligned content for every page. Clear headlines, strong calls-to-action, and copy that speaks directly to your customers.</p>
+      <div class="service-meta">Starting at $99/page</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.2s">
+      <div class="service-icon" style="background:#fff0f5">📍</div>
+      <h3>Local SEO Setup</h3>
+      <p>Google Business Profile optimization, local schema markup, NAP consistency, and geo-targeted content to dominate your local search results.</p>
+      <div class="service-meta">Starting at $199</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.3s">
+      <div class="service-icon" style="background:#f5f0ff">🔄</div>
+      <h3>Monthly Maintenance</h3>
+      <p>Ongoing updates, content refreshes, SEO monitoring, and priority support — so your site stays sharp while you focus on running your business.</p>
+      <div class="service-meta">From $99/month</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="work-section">
+  <div class="section-label">Portfolio</div>
+  <h2>Built for real businesses.<br>Real results.</h2>
+
+  <div class="work-grid">
+    <div class="work-card featured fade-up">
+      <div class="work-type">HVAC · Website Build + SEO</div>
+      <h3>Sheridan Heating & Cooling</h3>
+      <p>Full website build for a 30-year Ocean County HVAC company. Designed from scratch, SEO-optimized, deployed on Netlify with proper sitemap, robots.txt, and Google Search Console integration.</p>
+      <div class="work-tags">
+        <span class="work-tag">HTML/CSS</span>
+        <span class="work-tag">Netlify</span>
+        <span class="work-tag">On-Page SEO</span>
+        <span class="work-tag">Local SEO</span>
+        <span class="work-tag">Schema Markup</span>
+      </div>
+      <div class="work-result">
+        sheridanheatingandcooling.com
+        <span>Live site · Ocean County, NJ</span>
+      </div>
+    </div>
+
+    <div class="work-card fade-up" style="transition-delay:0.1s">
+      <div class="work-type">Insurance · Website Revamp</div>
+      <h3>Abbey Insurance Agency</h3>
+      <p>Complete website overhaul for a local insurance agency — modernized design, rewritten copy, SEO foundation built out.</p>
+      <div class="work-tags">
+        <span class="work-tag">Site Revamp</span>
+        <span class="work-tag">Copywriting</span>
+        <span class="work-tag">SEO</span>
+      </div>
+    </div>
+
+    <div class="work-card fade-up" style="transition-delay:0.2s">
+      <div class="work-type">Real Estate · Personal Brand</div>
+      <h3>Buon Vita Real Estate</h3>
+      <p>Personal brand website for Ocean County NJ real estate agent Teri Bindshedler — mobile-first design, local SEO, and a lead capture form built to convert.</p>
+      <div class="work-tags">
+        <span class="work-tag">Web Design</span>
+        <span class="work-tag">Local SEO</span>
+        <span class="work-tag">Lead Generation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label">How It Works</div>
+  <h2>Simple process.<br>Zero headaches.</h2>
+
+  <div class="process-row">
+    <div class="process-sticky fade-up">
+      <p style="color:var(--muted); line-height:1.7; font-size:0.95rem;">
+        From first message to live website, I keep things clear, fast, and stress-free. Most projects go live in 5–10 business days.
+      </p>
+      <br>
+      <a href="contact.html" class="btn-primary" style="display:inline-flex">Start a Project →</a>
+    </div>
+
+    <div class="process-steps">
+      <div class="step fade-up">
+        <div class="step-num">01</div>
+        <div>
+          <h4>Discovery Call</h4>
+          <p>We talk about your business, goals, and what you need. I ask the right questions so I build the right site — not a generic template with your logo slapped on it.</p>
+        </div>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.1s">
+        <div class="step-num">02</div>
+        <div>
+          <h4>Proposal & Pricing</h4>
+          <p>I send you a clear, flat-fee quote with exactly what's included. No surprises. If you want to pay over time, I'll set up a payment plan that works for you.</p>
+        </div>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.2s">
+        <div class="step-num">03</div>
+        <div>
+          <h4>Build & Review</h4>
+          <p>I build your site and share a preview link. You give feedback, I make revisions. Rinse and repeat until it's exactly right — typically 1–2 rounds.</p>
+        </div>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.3s">
+        <div class="step-num">04</div>
+        <div>
+          <h4>Launch & SEO Setup</h4>
+          <p>We go live. I handle the sitemap, robots.txt, Google Search Console submission, and make sure Google starts indexing you immediately.</p>
+        </div>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.4s">
+        <div class="step-num">05</div>
+        <div>
+          <h4>Ongoing Support (Optional)</h4>
+          <p>Stay on a monthly plan for continuous updates, SEO monitoring, and priority response. Most clients stick around — your site should never stop improving.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+  <div class="section-label">Pricing</div>
+  <h2>Transparent pricing.<br>No surprises.</h2>
+
+  <div class="pricing-toggle">
+    <span class="toggle-label active" id="oneTimeLabel">One-Time</span>
+    <div class="toggle-track" id="toggleTrack" onclick="togglePricing()">
+      <div class="toggle-thumb"></div>
+    </div>
+    <span class="toggle-label" id="monthlyLabel">Monthly Plans</span>
+    <span class="toggle-save">Save up to 40%</span>
+  </div>
+
+  <!-- ONE TIME PRICES -->
+  <div class="pricing-grid" id="oneTimePricing">
+    <div class="price-card fade-up">
+      <div class="price-tier">Starter</div>
+      <div class="price-name">Essential</div>
+      <div class="price-desc">For small businesses and service providers that need a clean, credible online presence.</div>
+      <div class="price-amount">
+        <div class="price-currency">$</div>
+        <div class="price-num">900</div>
+        <div class="price-per">– $1,500</div>
+      </div>
+      <ul class="price-features">
+        <li>Up to 5 pages</li>
+        <li>Mobile-responsive design</li>
+        <li>Contact form setup</li>
+        <li>Basic on-page SEO</li>
+        <li>Google Business integration</li>
+        <li>Speed optimization</li>
+      </ul>
+      <button class="price-cta" onclick="window.location='contact.html'">Get Started</button>
+    </div>
+
+    <div class="price-card featured fade-up" style="transition-delay:0.1s">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-tier">Professional</div>
+      <div class="price-name">Professional</div>
+      <div class="price-desc">For growing businesses that need a conversion-focused site with analytics to back it up.</div>
+      <div class="price-amount">
+        <div class="price-currency">$</div>
+        <div class="price-num">1,800</div>
+        <div class="price-per">– $3,000</div>
+      </div>
+      <ul class="price-features">
+        <li>Up to 10 pages</li>
+        <li>Conversion-focused layout</li>
+        <li>Analytics setup</li>
+        <li>Lead capture forms</li>
+        <li>Advanced SEO structure</li>
+        <li>Everything in Essential</li>
+      </ul>
+      <button class="price-cta" onclick="window.location='contact.html'">Get Started</button>
+    </div>
+
+    <div class="price-card fade-up" style="transition-delay:0.2s">
+      <div class="price-tier">Premium</div>
+      <div class="price-name">Growth System</div>
+      <div class="price-desc">For businesses ready to dominate their market with a full digital growth system.</div>
+      <div class="price-amount">
+        <div class="price-currency">$</div>
+        <div class="price-num">3,500</div>
+        <div class="price-per">– $6,000</div>
+      </div>
+      <ul class="price-features">
+        <li>Up to 20 pages + landing pages</li>
+        <li>Technical SEO setup</li>
+        <li>CRM integrations</li>
+        <li>Call tracking</li>
+        <li>Performance optimization</li>
+        <li>Everything in Professional</li>
+      </ul>
+      <button class="price-cta" onclick="window.location='contact.html'">Get Started</button>
+    </div>
+  </div>
+
+  <!-- MONTHLY PRICES -->
+  <div class="pricing-grid" id="monthlyPricing" style="display:none">
+    <div class="price-card fade-up">
+      <div class="price-tier">Plan 01</div>
+      <div class="price-name">Starter</div>
+      <div class="price-desc">Hosting, SSL, and uptime monitoring. Your site stays live on your domain.</div>
+      <div class="price-amount">
+        <div class="price-currency">$</div>
+        <div class="price-num">50</div>
+        <div class="price-per">/mo</div>
+      </div>
+      <ul class="price-features">
+        <li>Managed hosting</li>
+        <li>SSL certificate</li>
+        <li>Uptime monitoring</li>
+      </ul>
+      <button class="price-cta" onclick="window.location='contact.html'">Get Started</button>
+    </div>
+
+    <div class="price-card fade-up" style="transition-delay:0.05s">
+      <div class="price-tier">Plan 02</div>
+      <div class="price-name">Core</div>
+      <div class="price-desc">Full protection — security monitoring and backups added to Starter.</div>
+      <div class="price-amount">
+        <div class="price-currency">$</div>
+        <div class="price-num">79</div>
+        <div class="price-per">/mo</div>
+      </div>
+      <ul class="price-features">
+        <li>Everything in Starter</li>
+        <li>Security monitoring</li>
+        <li>Automated backups</li>
+      </ul>
+      <button class="price-cta" onclick="window.location='contact.html'">Get Started</button>
+    </div>
+
+    <div class="price-card featured fade-up" style="transition-delay:0.1s">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-tier">Plan 03</div>
+      <div class="price-name">Growth</div>
+      <div class="price-desc">Active management — edits, analytics, and SEO monitoring every month.</div>
+      <div class="price-amount">
+        <div class="price-currency">$</div>
+        <div class="price-num">199</div>
+        <div class="price-per">/mo</div>
+      </div>
+      <ul class="price-features">
+        <li>Everything in Core</li>
+        <li>Content edits</li>
+        <li>Performance optimization</li>
+        <li>Monthly analytics report</li>
+        <li>SEO monitoring</li>
+      </ul>
+      <button class="price-cta" onclick="window.location='contact.html'">Get Started</button>
+    </div>
+
+    <div class="price-card fade-up" style="transition-delay:0.15s">
+      <div class="price-tier">Plan 04</div>
+      <div class="price-name">Authority</div>
+      <div class="price-desc">Full-service SEO to move your rankings and dominate local search.</div>
+      <div class="price-amount">
+        <div class="price-currency">$</div>
+        <div class="price-num">399</div>
+        <div class="price-per">– $799/mo</div>
+      </div>
+      <ul class="price-features">
+        <li>Everything in Growth</li>
+        <li>Keyword strategy</li>
+        <li>Local SEO optimization</li>
+        <li>Google Business management</li>
+        <li>Competitor analysis</li>
+      </ul>
+      <button class="price-cta" onclick="window.location='contact.html'">Get Started</button>
+    </div>
+  </div>
+
+  <div class="payment-plan-note fade-up">
+    <div class="plan-icon">💳</div>
+    <div class="plan-text">
+      <h4>No upfront cost — Website as a Service.</h4>
+      <p>Skip the big upfront fee entirely. We design, build, host, and manage your site for one flat monthly rate. Requires a 12-month minimum commitment. After that, keep going month to month.</p>
+    </div>
+    <a href="contact.html" class="btn-secondary" style="white-space:nowrap">Ask About Plans →</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">Client Love</div>
+  <h2>What clients say.</h2>
+
+  <div class="testimonials-grid">
+    <div class="testimonial fade-up">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Joseph built us a site from scratch and it looks incredible. Within two weeks of launching we were getting calls from people who found us on Google. Absolutely worth every dollar."</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#0096c7">M</div>
+        <div>
+          <div class="author-name">Mike S.</div>
+          <div class="author-biz">Sheridan Heating & Cooling · NJ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial fade-up" style="transition-delay:0.1s">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Fast, professional, and he actually explains what he's doing and why. My old site was embarrassing. Now I'm proud to hand out my business card. He's the real deal."</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#00c9a7">T</div>
+        <div>
+          <div class="author-name">Teri B.</div>
+          <div class="author-biz">Buon Vita Real Estate · NJ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial fade-up" style="transition-delay:0.2s">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I didn't even know my site wasn't showing up on Google until Joseph told me. He fixed the SEO, rewrote the content, and now we're ranking for terms we never thought possible."</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#4caf50">A</div>
+        <div>
+          <div class="author-name">Abbey A.</div>
+          <div class="author-biz">Abbey Insurance Agency · FL</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--cream)">
+  <div class="section-label">FAQ</div>
+  <h2 style="text-align:center">Questions? Answered.</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What if I don't have a domain or hosting yet?
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">No problem. I'll walk you through getting a domain and set up hosting for you. Most of my clients use Netlify (free for static sites) or Namecheap for domains. I handle all of it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How long does a website take to build?
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Most sites are delivered in 5–10 business days depending on the package and how quickly you get me your content. I've turned around sites in 48 hours for clients who needed it fast.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Do you offer payment plans?
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Yes. For any project over $499, you can split 50/50 (half now, half at launch) or into 3 monthly payments. Just mention it when you reach out and we'll figure out what works.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Will my site show up on Google?
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Every site I build includes sitemap.xml, robots.txt, and Google Search Console setup — so Google can find and index your site the moment it goes live. Growth and Premium packages also include active keyword optimization.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Can I update the site myself after it's built?
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Absolutely. I can build on a platform you can manage yourself (like Squarespace or WordPress), or I can handle all updates on a monthly retainer. Your call.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What industries do you work with?
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">I work with any local service business — HVAC, insurance, real estate, contractors, restaurants, medical practices, you name it. If you serve customers in a local area, I can build a site that gets you found.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta-section">
+  <h2>Your website should<br>be working right now.</h2>
+  <p>Let's talk about what you need. Free consultation. No pressure. I'll tell you exactly what I'd do and what it would cost.</p>
+  <a href="/cdn-cgi/l/email-protection#82e8edf1e7f2eae6acf5e7e0e6e7f1ebe5ecc2e5efe3ebeeace1edef" class="btn-primary" style="font-size:1rem; padding:1rem 2.5rem">
+    Book a Free Call →
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Deep Water <span>Websites</span></div>
+  <p>Web Designer & SEO Specialist · Deltona, FL · Available Nationwide</p>
+  <div class="footer-links">
+    <a href="https://www.upwork.com/freelancers/~015539225e0fe4509e" target="_blank">Upwork</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="maintenance.html">Maintenance</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function animCursor() {
+    cursor.style.left = mx - 6 + 'px';
+    cursor.style.top = my - 6 + 'px';
+    rx += (mx - rx) * 0.15;
+    ry += (my - ry) * 0.15;
+    ring.style.left = rx - 18 + 'px';
+    ring.style.top = ry - 18 + 'px';
+    requestAnimationFrame(animCursor);
+  })();
+
+  // Scroll fade
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => obs.observe(el));
+
+  // Pricing toggle
+  let isMonthly = false;
+  function togglePricing() {
+    isMonthly = !isMonthly;
+    const track = document.getElementById('toggleTrack');
+    track.classList.toggle('monthly', isMonthly);
+    document.getElementById('oneTimeLabel').classList.toggle('active', !isMonthly);
+    document.getElementById('monthlyLabel').classList.toggle('active', isMonthly);
+    document.getElementById('oneTimePricing').style.display = isMonthly ? 'none' : 'grid';
+    document.getElementById('monthlyPricing').style.display = isMonthly ? 'grid' : 'none';
+  }
+
+  // FAQ
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    item.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
