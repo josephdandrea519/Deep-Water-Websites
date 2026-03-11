@@ -115,20 +115,6 @@
   .cond { display: none; }
   .cond.on { display: block; }
 
-  /* ── COMMITMENT TOGGLE ── */
-  .term-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
-  .term-row label { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
-  .term-toggle {
-    display: flex; background: var(--cream);
-    border-radius: var(--radius); padding: 0.25rem; gap: 0.25rem;
-  }
-  .term-btn {
-    padding: 0.5rem 1.1rem; border-radius: calc(var(--radius) - 3px);
-    border: none; background: none; font-family: inherit;
-    font-size: 0.875rem; font-weight: 600; color: var(--muted);
-    cursor: pointer; transition: all 0.2s;
-  }
-  .term-btn.on { background: var(--accent); color: #fff; }
   .waas-note {
     background: var(--cream); border-radius: var(--radius);
     padding: 0.9rem 1.1rem; font-size: 0.82rem; color: var(--muted);
@@ -442,7 +428,7 @@
                   <label for="pay_waas">
                     <span class="opt-title">Website as a Service</span>
                     <span class="opt-price">$199 – $299 / mo</span>
-                    <span class="opt-desc">No upfront cost. We build, host, and manage everything under a 12 or 24-month commitment.</span>
+                    <span class="opt-desc">No upfront cost. We build, host, and manage everything under a 12-month commitment. After that, your site is paid off and you continue on a maintenance plan.</span>
                   </label>
                 </div>
               </div>
@@ -561,14 +547,7 @@
                   </div>
                 </div>
 
-                <div class="term-row">
-                  <label>Commitment term:</label>
-                  <div class="term-toggle">
-                    <button type="button" class="term-btn on" id="t12" onclick="setTerm(12)">12 Months</button>
-                    <button type="button" class="term-btn" id="t24" onclick="setTerm(24)">24 Months</button>
-                  </div>
-                </div>
-                <div class="waas-note" id="waasNote">Select a tier above to see your total commitment.</div>
+                <div class="waas-note" id="waasNote">Select a tier above to see your 12-month commitment total.</div>
               </div>
             </div><!-- /sec_waas -->
 
@@ -808,23 +787,13 @@ document.querySelectorAll('input[name="payment_model"]').forEach(r => {
   });
 });
 
-// ── COMMITMENT TERM ──
-function setTerm(months) {
-  term = months;
-  document.getElementById('hiddenTerm').value = months;
-  document.getElementById('t12').classList.toggle('on', months === 12);
-  document.getElementById('t24').classList.toggle('on', months === 24);
-  updateWaasNote();
-  refreshPrice();
-}
-
 function updateWaasNote() {
   const tier = document.querySelector('input[name="waas_tier"]:checked');
   const el = document.getElementById('waasNote');
-  if (!tier) { el.innerHTML = 'Select a tier above to see your total commitment.'; return; }
+  if (!tier) { el.innerHTML = 'Select a tier above to see your 12-month commitment total.'; return; }
   const d = P.waas[tier.id];
-  const total = d.monthly * term;
-  el.innerHTML = `<strong>${d.label} · ${fmt(d.monthly)}/mo × ${term} months</strong><br>Minimum commitment: ${fmt(total)} total`;
+  const total = d.monthly * 12;
+  el.innerHTML = `<strong>${d.label} · ${fmt(d.monthly)}/mo × 12 months</strong><br>Minimum commitment: ${fmt(total)} total &nbsp;·&nbsp; After 12 months, your site is paid off and you continue on a maintenance plan starting at $50/mo.`;
 }
 
 // WaaS tier change
