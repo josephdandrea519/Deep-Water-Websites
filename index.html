@@ -477,15 +477,17 @@
   }
 
   /* WORK / PORTFOLIO */
-  .work-section { background: var(--ink); color: #fff; }
+  .work-section { background: var(--ink); color: #fff; overflow: hidden; }
   .work-section .section-label { color: #ff7a63; }
   .work-section .section-label::before { background: #ff7a63; }
   .work-section h2 { color: #fff; }
   .work-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
     gap: 1.5rem;
     margin-top: 3rem;
+    width: 100%;
+    max-width: 100%;
   }
   .work-card {
     background: rgba(255,255,255,0.05);
@@ -499,7 +501,7 @@
     background: rgba(255,255,255,0.08);
     transform: translateY(-4px);
   }
-  .work-card.featured { grid-row: span 2; }
+  /* .work-card.featured { grid-row: span 2; } — disabled: only 2 cards in grid */
   .work-type {
     font-size: 0.72rem;
     font-weight: 600;
@@ -729,11 +731,11 @@
     transition: all 0.2s ease;
   }
   .price-card:not(.featured) .price-cta {
-    background: var(--paper);
-    color: var(--ink);
-    border: 1.5px solid var(--border);
+    background: var(--accent);
+    color: #fff;
+    border: 1.5px solid var(--accent);
   }
-  .price-card:not(.featured) .price-cta:hover { background: var(--ink); color: #fff; }
+  .price-card:not(.featured) .price-cta:hover { background: #0082b0; color: #fff; }
   .price-card.featured .price-cta {
     background: var(--accent);
     color: white;
@@ -777,7 +779,7 @@
   .testimonial blockquote {
     font-size: 0.92rem;
     line-height: 1.7;
-    color: var(--ink);
+    color: #bdd5e8;
     margin-bottom: 1.5rem;
     font-style: italic;
   }
@@ -988,6 +990,7 @@
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
+    #menuToggle { display: block !important; }
     .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
     .hero-right { display: none; }
     section { padding: 4rem 1.5rem; }
@@ -1018,15 +1021,16 @@
     <li><a href="about.html">About</a></li>
     <li><a href="build.html" class="nav-cta">Build My Site</a></li>
   </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" style="display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#ffffff;margin-left:auto;padding:0.25rem;line-height:1;">☰</button>
 </nav>
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:var(--paper); z-index:200; flex-direction:column; align-items:center; justify-content:center; gap:2rem;">
-  <a href="index.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Home</a>
-  <a href="portfolio.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Portfolio</a>
-  <a href="pricing.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Pricing</a>
-  <a href="maintenance.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Maintenance</a>
-  <a href="about.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">About</a>
+  <a href="index.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:#bdd5e8;">Home</a>
+  <a href="portfolio.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:#bdd5e8;">Portfolio</a>
+  <a href="pricing.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:#bdd5e8;">Pricing</a>
+  <a href="maintenance.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:#bdd5e8;">Maintenance</a>
+  <a href="about.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:#bdd5e8;">About</a>
   <a href="build.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:white; background:var(--accent); padding:0.8rem 2rem; border-radius:100px;">Build My Site</a>
 </div>
 
@@ -1060,7 +1064,7 @@
         <div class="stat-label">Sites Built</div>
       </div>
       <div>
-        <div class="stat-num">48hr</div>
+        <div class="stat-num">1 wk</div>
         <div class="stat-label">Avg Turnaround</div>
       </div>
       <div>
@@ -1228,17 +1232,6 @@
         <span class="work-tag">SEO</span>
       </div>
     </div>
-
-    <div class="work-card fade-up" style="transition-delay:0.2s">
-      <div class="work-type">Real Estate · Personal Brand</div>
-      <h3>Buon Vita Real Estate</h3>
-      <p>Personal brand website for Ocean County NJ real estate agent Teri Bindshedler — mobile-first design, local SEO, and a lead capture form built to convert.</p>
-      <div class="work-tags">
-        <span class="work-tag">Web Design</span>
-        <span class="work-tag">Local SEO</span>
-        <span class="work-tag">Lead Generation</span>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1358,7 +1351,7 @@
   <div class="process-row">
     <div class="process-sticky fade-up">
       <p style="color:var(--muted); line-height:1.7; font-size:0.95rem;">
-        From first message to live website, I keep things clear, fast, and stress-free. Most projects are live in 1–2 weeks. Simpler builds can move faster when content is ready.
+        From first message to live website, I keep things clear, fast, and stress-free. Most projects are live in about 1 week. Simpler builds can move faster when content is ready.
       </p>
       <br>
       <a href="contact.html" class="btn-primary" style="display:inline-flex">Start a Project →</a>
@@ -1591,18 +1584,6 @@
 
     <div class="testimonial fade-up" style="transition-delay:0.1s">
       <div class="stars">★★★★★</div>
-      <blockquote>"Fast, professional, and he actually explains what he's doing and why. My old site was embarrassing. Now I'm proud to hand out my business card. He's the real deal."</blockquote>
-      <div class="testimonial-author">
-        <div class="author-avatar" style="background:#00c9a7">T</div>
-        <div>
-          <div class="author-name">Teri B.</div>
-          <div class="author-biz">Buon Vita Real Estate · NJ</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial fade-up" style="transition-delay:0.2s">
-      <div class="stars">★★★★★</div>
       <blockquote>"I didn't even know my site wasn't showing up on Google until Joseph told me. He fixed the SEO, rewrote the content, and now we're ranking for terms we never thought possible."</blockquote>
       <div class="testimonial-author">
         <div class="author-avatar" style="background:#4caf50">A</div>
@@ -1633,7 +1614,7 @@
         How long does a website take to build?
         <span class="faq-arrow">+</span>
       </div>
-      <div class="faq-a">Typically 1–2 weeks depending on the package. Some simpler builds move faster when you have your content ready upfront.</div>
+      <div class="faq-a">Typically about 1 week depending on the package. Some simpler builds move faster when you have your content ready upfront.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">
@@ -1670,7 +1651,7 @@
 <section id="contact" class="cta-section">
   <h2>Your website should<br>be working right now.</h2>
   <p>Let's talk about what you need. Free consultation. No pressure. I'll tell you exactly what I'd do and what it would cost.</p>
-  <a href="/cdn-cgi/l/email-protection#82e8edf1e7f2eae6acf5e7e0e6e7f1ebe5ecc2e5efe3ebeeace1edef" class="btn-primary" style="font-size:1rem; padding:1rem 2.5rem">
+  <a href="contact.html" class="btn-primary" style="font-size:1rem; padding:1rem 2.5rem">
     Book a Free Call →
   </a>
 </section>
@@ -1689,7 +1670,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
@@ -1731,6 +1712,17 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.12 });
   fadeEls.forEach(el => obs.observe(el));
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNavEl = document.getElementById('mobileNav');
+  if (menuToggle && mobileNavEl) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileNavEl.style.display === 'flex';
+      mobileNavEl.style.display = isOpen ? 'none' : 'flex';
+      menuToggle.textContent = isOpen ? '☰' : '✕';
+    });
+  }
 
   // Pricing toggle
   let isMonthly = false;

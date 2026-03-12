@@ -118,7 +118,7 @@ nav {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #bdd5e8;
+  color: #ffffff;
   margin-left: auto;
   padding: 0.25rem;
   line-height: 1;
@@ -616,10 +616,14 @@ footer {
   border-radius: var(--radius);
   font-family: 'Outfit', sans-serif;
   font-size: 0.95rem;
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--card);
+  color: #bdd5e8;
   transition: border-color 0.2s;
   cursor: none;
+}
+.form-group select option {
+  background: var(--card);
+  color: #bdd5e8;
 }
 .form-group input:focus,
 .form-group select:focus,
