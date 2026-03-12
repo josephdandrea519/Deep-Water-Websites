@@ -3,24 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deep Water Websites — Web Design & SEO | Deltona, FL</title>
-<link rel="canonical" href="https://deepwaterwebsites.com/index.html">
+<title>Joseph D. — Web Designer & SEO Specialist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0b1929;
-    --paper: #0d1e2f;
-    --cream: #122535;
-    --accent: #0096c7;
-    --accent2: #00c9a7;
-    --muted: #7aabca;
-    --card: #152840;
-    --border: rgba(255,255,255,0.09);
-    --green: #00c9a7;
-    --gold: #fbbf24;
-    --radius: 14px;
-    --radius-lg: 24px;
+    --ink: #0a0a0f;
+    --paper: #f5f2ec;
+    --cream: #faf8f3;
+    --accent: #ff4d2e;
+    --accent2: #1a1aff;
+    --muted: #6b6b6b;
+    --card: #ffffff;
+    --border: rgba(10,10,15,0.1);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,39 +25,33 @@
   body {
     font-family: 'Outfit', sans-serif;
     background: var(--paper);
-    color: #bdd5e8;
+    color: var(--ink);
     overflow-x: hidden;
     cursor: none;
   }
 
   /* CUSTOM CURSOR */
   .cursor {
-    width: 10px; height: 10px;
+    width: 12px; height: 12px;
     background: var(--accent);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0;
-    transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), background 0.2s ease, opacity 0.3s ease;
+    transition: transform 0.15s ease;
+    mix-blend-mode: multiply;
   }
   .cursor-ring {
-    width: 48px; height: 48px;
-    background: rgba(0,150,199,0.14);
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--ink);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
-    z-index: 9997;
-    opacity: 0;
-    filter: blur(6px);
-    transition: opacity 0.3s ease, transform 0.25s ease, background 0.2s ease;
+    z-index: 9998;
+    transition: all 0.12s ease;
   }
-  .cursor.visible      { opacity: 1; }
-  .cursor-ring.visible { opacity: 1; }
-  body:has(a:hover) .cursor      { transform: scale(2.2); }
-  body:has(button:hover) .cursor { transform: scale(2.8); background: var(--accent2); }
-  body:has(a:hover) .cursor-ring,
-  body:has(button:hover) .cursor-ring { transform: scale(1.3); background: rgba(0,201,167,0.18); }
+  body:has(a:hover) .cursor { transform: scale(2.5); }
+  body:has(button:hover) .cursor { transform: scale(3); background: var(--accent2); }
 
   /* NAV */
   nav {
@@ -72,7 +61,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem 4rem;
-    background: rgba(13,30,47,0.92);
+    background: rgba(245,242,236,0.85);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
@@ -81,7 +70,7 @@
     font-weight: 800;
     font-size: 1.1rem;
     letter-spacing: -0.03em;
-    color: #bdd5e8;
+    color: var(--ink);
     text-decoration: none;
   }
   .nav-logo span { color: var(--accent); }
@@ -96,13 +85,13 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-decoration: none;
-    color: #bdd5e8;
+    color: var(--ink);
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--accent); }
   .nav-cta {
-    background: var(--accent);
-    color: #fff !important;
+    background: var(--ink);
+    color: var(--paper) !important;
     padding: 0.6rem 1.4rem;
     border-radius: 100px;
     transition: background 0.2s !important;
@@ -113,11 +102,11 @@
   .hero {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: minmax(0, 540px) minmax(0, 520px);
-    justify-content: center;
-    padding: 5rem 4rem 4rem;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 4rem;
+    padding-top: 5rem;
     align-items: center;
-    gap: 5rem;
+    gap: 4rem;
     position: relative;
     overflow: hidden;
   }
@@ -127,7 +116,7 @@
     position: absolute;
     top: -200px; right: -200px;
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(0,150,199,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,77,46,0.12) 0%, transparent 70%);
     animation: pulse 6s ease-in-out infinite;
   }
   .hero::after {
@@ -135,7 +124,7 @@
     position: absolute;
     bottom: -100px; left: 20%;
     width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(0,201,167,0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(26,26,255,0.06) 0%, transparent 70%);
     animation: pulse 8s ease-in-out infinite reverse;
   }
 
@@ -150,8 +139,8 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(255,255,255,0.1);
-    color: #bdd5e8;
+    background: var(--ink);
+    color: var(--paper);
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -163,7 +152,7 @@
   }
   .hero-badge-dot {
     width: 6px; height: 6px;
-    background: #00c9a7;
+    background: #4cff91;
     border-radius: 50%;
     animation: blink 2s ease infinite;
   }
@@ -214,8 +203,8 @@
   }
 
   .btn-primary {
-    background: var(--accent);
-    color: #fff;
+    background: var(--ink);
+    color: var(--paper);
     padding: 0.9rem 2rem;
     border-radius: 100px;
     font-size: 0.9rem;
@@ -228,21 +217,21 @@
     align-items: center;
     gap: 0.5rem;
   }
-  .btn-primary:hover { background: #0082b0; transform: translateY(-2px); }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
 
   .btn-secondary {
     background: transparent;
-    color: #bdd5e8;
+    color: var(--ink);
     padding: 0.9rem 2rem;
     border-radius: 100px;
     font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
-    border: 1.5px solid rgba(255,255,255,0.18);
+    border: 1.5px solid var(--border);
     cursor: pointer;
     transition: all 0.2s ease;
   }
-  .btn-secondary:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .btn-secondary:hover { border-color: var(--ink); transform: translateY(-2px); }
 
   .hero-stats {
     display: flex;
@@ -254,7 +243,7 @@
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
     font-size: 1.8rem;
-    color: #bdd5e8;
+    color: var(--ink);
   }
   .stat-label {
     font-size: 0.78rem;
@@ -275,7 +264,7 @@
     border-radius: 24px;
     padding: 2.5rem;
     border: 1px solid var(--border);
-    box-shadow: 0 40px 80px rgba(11,25,41,0.08);
+    box-shadow: 0 40px 80px rgba(10,10,15,0.08);
     position: relative;
     overflow: hidden;
   }
@@ -360,7 +349,7 @@
     font-size: 0.82rem;
     color: var(--muted);
   }
-  .client-msg strong { color: #bdd5e8; }
+  .client-msg strong { color: var(--ink); }
 
   /* MARQUEE */
   .marquee-section {
@@ -383,7 +372,7 @@
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #bdd5e8;
+    color: var(--paper);
     opacity: 0.7;
     flex-shrink: 0;
   }
@@ -436,7 +425,7 @@
   }
   .service-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 24px 48px rgba(11,25,41,0.1);
+    box-shadow: 0 24px 48px rgba(10,10,15,0.1);
     border-color: var(--accent);
   }
   .service-card::after {
@@ -477,10 +466,10 @@
   }
 
   /* WORK / PORTFOLIO */
-  .work-section { background: var(--ink); color: #fff; }
+  .work-section { background: var(--ink); color: var(--paper); }
   .work-section .section-label { color: #ff7a63; }
   .work-section .section-label::before { background: #ff7a63; }
-  .work-section h2 { color: #fff; }
+  .work-section h2 { color: var(--paper); }
   .work-grid {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
@@ -512,7 +501,7 @@
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
     font-size: 1.3rem;
-    color: #fff;
+    color: var(--paper);
     margin-bottom: 0.5rem;
   }
   .work-card p {
@@ -540,7 +529,7 @@
     font-family: 'Outfit', sans-serif;
     font-size: 1.5rem;
     font-weight: 800;
-    color: #00c9a7;
+    color: #4cff91;
   }
   .work-result span { font-family: 'Outfit', sans-serif; font-weight: 400; font-size: 0.78rem; color: rgba(255,255,255,0.4); display: block; margin-top: 0.2rem; }
 
@@ -589,10 +578,10 @@
     margin: 2rem 0 3rem;
   }
   .toggle-label { font-size: 0.88rem; font-weight: 500; color: var(--muted); }
-  .toggle-label.active { color: #bdd5e8; font-weight: 600; }
+  .toggle-label.active { color: var(--ink); font-weight: 600; }
   .toggle-track {
     width: 52px; height: 28px;
-    background: var(--accent);
+    background: var(--ink);
     border-radius: 100px;
     position: relative;
     cursor: pointer;
@@ -632,13 +621,13 @@
   }
   .price-card.featured {
     background: var(--ink);
-    color: #fff;
+    color: var(--paper);
     border-color: var(--ink);
     transform: scale(1.03);
   }
   .price-card:hover:not(.featured) {
     transform: translateY(-6px);
-    box-shadow: 0 24px 48px rgba(11,25,41,0.1);
+    box-shadow: 0 24px 48px rgba(10,10,15,0.1);
   }
   .price-badge {
     position: absolute;
@@ -711,7 +700,7 @@
   }
   .price-features li::before {
     content: '✓';
-    color: #00c9a7;
+    color: #4cff91;
     font-weight: 700;
     flex-shrink: 0;
     margin-top: 0.05rem;
@@ -733,12 +722,12 @@
     color: var(--ink);
     border: 1.5px solid var(--border);
   }
-  .price-card:not(.featured) .price-cta:hover { background: var(--ink); color: #fff; }
+  .price-card:not(.featured) .price-cta:hover { background: var(--ink); color: var(--paper); }
   .price-card.featured .price-cta {
     background: var(--accent);
     color: white;
   }
-  .price-card.featured .price-cta:hover { background: #0077a8; }
+  .price-card.featured .price-cta:hover { background: #ff3015; }
 
   /* PAYMENT PLAN NOTE */
   .payment-plan-note {
@@ -853,11 +842,11 @@
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(0,150,199,0.15) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(255,77,46,0.15) 0%, transparent 60%);
     animation: pulse 6s ease-in-out infinite;
   }
   .cta-section h2 {
-    color: #fff;
+    color: var(--paper);
     position: relative;
     z-index: 2;
     font-size: clamp(2.5rem, 5vw, 4rem);
@@ -877,7 +866,7 @@
     position: relative;
     z-index: 2;
   }
-  .cta-section .btn-primary:hover { background: #fff; color: var(--ink); }
+  .cta-section .btn-primary:hover { background: var(--paper); color: var(--ink); }
 
   /* FOOTER */
   footer {
@@ -906,85 +895,6 @@
   .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── WHY IT WORKS SECTION ── */
-  .why-section { background: var(--ink); color: #fff; }
-  .why-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  .why-header { margin-bottom: 2.5rem; }
-  .why-header .section-label { color: rgba(0,201,167,0.8); }
-  .why-header h2 { color: #fff; margin-bottom: 0.75rem; }
-  .why-header p { color: rgba(255,255,255,0.55); font-size: 1rem; line-height: 1.7; }
-
-  .stat-stack { display: flex; flex-direction: column; gap: 1rem; }
-  .stat-row {
-    display: flex; align-items: center; gap: 1.25rem;
-    padding: 1.1rem 1.4rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: var(--radius);
-  }
-  .stat-row-num {
-    font-size: 1.6rem; font-weight: 800; color: var(--accent2);
-    letter-spacing: -0.03em; flex-shrink: 0; min-width: 64px;
-  }
-  .stat-row-text { font-size: 0.88rem; line-height: 1.5; color: rgba(255,255,255,0.7); }
-  .stat-row-text strong { color: #fff; font-weight: 600; display: block; margin-bottom: 0.1rem; }
-
-  .timeline-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-  }
-  .timeline-card h3 {
-    font-size: 1rem; font-weight: 700; color: #fff;
-    margin-bottom: 0.4rem;
-  }
-  .timeline-card .tc-sub {
-    font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-bottom: 1.75rem; line-height: 1.5;
-  }
-  .tl-steps { display: flex; flex-direction: column; gap: 0; }
-  .tl-step {
-    display: grid; grid-template-columns: 28px 1fr;
-    gap: 1rem; align-items: stretch;
-  }
-  .tl-line {
-    display: flex; flex-direction: column; align-items: center; gap: 0;
-  }
-  .tl-dot {
-    width: 12px; height: 12px; border-radius: 50%;
-    background: var(--accent); flex-shrink: 0;
-    margin-top: 3px;
-  }
-  .tl-dot.green { background: var(--accent2); }
-  .tl-connector {
-    width: 2px; background: rgba(255,255,255,0.1); flex: 1; min-height: 24px;
-  }
-  .tl-step:last-child .tl-connector { display: none; }
-  .tl-body { padding-bottom: 1.5rem; }
-  .tl-step:last-child .tl-body { padding-bottom: 0; }
-  .tl-period {
-    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--accent2); margin-bottom: 0.2rem;
-  }
-  .tl-title { font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
-  .tl-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.55; }
-
-  .why-callout {
-    margin-top: 1.5rem;
-    padding: 1.1rem 1.4rem;
-    background: rgba(0,201,167,0.1);
-    border: 1px solid rgba(0,201,167,0.25);
-    border-radius: var(--radius);
-    font-size: 0.85rem; line-height: 1.6;
-    color: rgba(255,255,255,0.75);
-  }
-  .why-callout strong { color: var(--accent2); }
-
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -999,7 +909,6 @@
     .price-card.featured { transform: none; }
     .payment-plan-note { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
-    .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   }
 </style>
 </head>
@@ -1010,25 +919,15 @@
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">Deep<span>Water.</span></a>
+  <a href="#" class="nav-logo">Joseph<span>D.</span></a>
   <ul class="nav-links">
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="maintenance.html">Maintenance</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="build.html" class="nav-cta">Build My Site</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
   </ul>
 </nav>
-
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:var(--paper); z-index:200; flex-direction:column; align-items:center; justify-content:center; gap:2rem;">
-  <a href="index.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Home</a>
-  <a href="portfolio.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Portfolio</a>
-  <a href="pricing.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Pricing</a>
-  <a href="maintenance.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">Maintenance</a>
-  <a href="about.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--ink);">About</a>
-  <a href="build.html" style="font-size:1.3rem; font-weight:700; text-decoration:none; color:white; background:var(--accent); padding:0.8rem 2rem; border-radius:100px;">Build My Site</a>
-</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1050,8 +949,8 @@
     </p>
 
     <div class="hero-actions">
-      <a href="build.html" class="btn-primary">Build My Site →</a>
-      <a href="portfolio.html" class="btn-secondary">See My Work</a>
+      <a href="#pricing" class="btn-primary">View Packages →</a>
+      <a href="#work" class="btn-secondary">See My Work</a>
     </div>
 
     <div class="hero-stats">
@@ -1104,7 +1003,7 @@
       </div>
 
       <div class="card-client-row">
-        <div class="client-avatar" style="background:#0096c7">S</div>
+        <div class="client-avatar" style="background:#ff4d2e">S</div>
         <div class="client-msg"><strong>Mike S.</strong> — "Our phone started ringing within 2 weeks of the new site going live."</div>
       </div>
     </div>
@@ -1160,7 +1059,7 @@
       <div class="service-icon" style="background:#fff0ee">🏗️</div>
       <h3>Website Creation</h3>
       <p>Brand-new websites built from the ground up — clean design, fast load times, mobile-ready, and structured to convert visitors into customers.</p>
-      <div class="service-meta">Starting at $900</div>
+      <div class="service-meta">Starting at $499</div>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.1s">
       <div class="service-icon" style="background:#f0f0ff">🔧</div>
@@ -1190,7 +1089,7 @@
       <div class="service-icon" style="background:#f5f0ff">🔄</div>
       <h3>Monthly Maintenance</h3>
       <p>Ongoing updates, content refreshes, SEO monitoring, and priority support — so your site stays sharp while you focus on running your business.</p>
-      <div class="service-meta">From $50/month</div>
+      <div class="service-meta">From $99/month</div>
     </div>
   </div>
 </section>
@@ -1230,123 +1129,15 @@
     </div>
 
     <div class="work-card fade-up" style="transition-delay:0.2s">
-      <div class="work-type">Real Estate · Personal Brand</div>
+      <div class="work-type">Social Media · Content Strategy</div>
       <h3>Buon Vita Real Estate</h3>
-      <p>Personal brand website for Ocean County NJ real estate agent Teri Bindshedler — mobile-first design, local SEO, and a lead capture form built to convert.</p>
+      <p>Content calendar, cold outreach scripts, and Facebook/Instagram ad packages for Ocean County NJ real estate agent Teri Bindshedler.</p>
       <div class="work-tags">
-        <span class="work-tag">Web Design</span>
-        <span class="work-tag">Local SEO</span>
-        <span class="work-tag">Lead Generation</span>
+        <span class="work-tag">Content Strategy</span>
+        <span class="work-tag">Ad Copy</span>
+        <span class="work-tag">Social Media</span>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- WHY IT WORKS -->
-<section id="why-it-works" class="why-section">
-  <div class="why-header fade-up">
-    <span class="section-label">Why It Matters</span>
-    <h2>Your website works 24/7.<br>Make sure it's actually working.</h2>
-    <p>A slow, outdated, or hard-to-find website doesn't just look bad — it's actively losing you business every day. Here's what the data says, and what you can realistically expect when you fix it.</p>
-  </div>
-
-  <div class="why-grid">
-
-    <!-- LEFT: Stats -->
-    <div>
-      <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,201,167,0.7);margin-bottom:1.25rem;">What a modern website actually changes</p>
-      <div class="stat-stack">
-        <div class="stat-row fade-up">
-          <div class="stat-row-num">53%</div>
-          <div class="stat-row-text">
-            <strong>Mobile visitors leave after 3 seconds</strong>
-            A slow site doesn't get a second chance. Every extra second costs you leads.
-          </div>
-        </div>
-        <div class="stat-row fade-up">
-          <div class="stat-row-num">75%</div>
-          <div class="stat-row-text">
-            <strong>People judge your credibility by your design</strong>
-            Visitors decide whether to trust you in under 0.05 seconds. First impressions are your business.
-          </div>
-        </div>
-        <div class="stat-row fade-up">
-          <div class="stat-row-num">68%</div>
-          <div class="stat-row-text">
-            <strong>Of clicks go to the top 3 Google results</strong>
-            If you're not on page one, you're essentially invisible to people actively searching for what you offer.
-          </div>
-        </div>
-        <div class="stat-row fade-up">
-          <div class="stat-row-num">60%+</div>
-          <div class="stat-row-text">
-            <strong>Of all searches happen on mobile</strong>
-            A site that isn't built mobile-first is failing the majority of your potential customers before they even read a word.
-          </div>
-        </div>
-        <div class="stat-row fade-up">
-          <div class="stat-row-num">$0</div>
-          <div class="stat-row-text">
-            <strong>Ad spend needed once you rank organically</strong>
-            Paid ads stop the moment you stop paying. SEO traffic compounds — and it's free once it's working.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT: SEO Timeline -->
-    <div>
-      <div class="timeline-card fade-up">
-        <h3>What to realistically expect from SEO</h3>
-        <p class="tc-sub">SEO isn't instant — but it's the only marketing channel that gets cheaper and more effective over time. Here's an honest timeline.</p>
-        <div class="tl-steps">
-          <div class="tl-step">
-            <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-            <div class="tl-body">
-              <div class="tl-period">Weeks 1–4</div>
-              <div class="tl-title">Foundation & Indexing</div>
-              <div class="tl-desc">Your site gets submitted to Google, sitemap and robots.txt are configured, and Google begins crawling. You show up for your exact business name.</div>
-            </div>
-          </div>
-          <div class="tl-step">
-            <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-            <div class="tl-body">
-              <div class="tl-period">Months 2–3</div>
-              <div class="tl-title">Local Visibility Builds</div>
-              <div class="tl-desc">Your Google Business Profile and local schema start placing you in "near me" searches. You begin appearing in map results for your city.</div>
-            </div>
-          </div>
-          <div class="tl-step">
-            <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-            <div class="tl-body">
-              <div class="tl-period">Months 3–6</div>
-              <div class="tl-title">Keyword Rankings Take Hold</div>
-              <div class="tl-desc">Service-specific pages start ranking for your target keywords. Organic traffic begins — slowly at first, then noticeably. Competitors that outrank you become identifiable.</div>
-            </div>
-          </div>
-          <div class="tl-step">
-            <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-            <div class="tl-body">
-              <div class="tl-period">Months 6–12</div>
-              <div class="tl-title">Traffic Compounds</div>
-              <div class="tl-desc">Rankings solidify, click-through rates improve, and your site earns authority. New leads arrive consistently — without any ad spend. Most clients see 2–4× more inbound inquiries.</div>
-            </div>
-          </div>
-          <div class="tl-step">
-            <div class="tl-line"><div class="tl-dot green"></div><div class="tl-connector"></div></div>
-            <div class="tl-body">
-              <div class="tl-period">Year 1+</div>
-              <div class="tl-title">Established Authority</div>
-              <div class="tl-desc">You dominate your local market for high-intent searches. Competitors are chasing you. Your site is a lead generation asset — not just a business card.</div>
-            </div>
-          </div>
-        </div>
-        <div class="why-callout">
-          <strong>Unlike ads, SEO compounds.</strong> Every month your site is optimized, it gets harder for competitors to displace you — and your cost-per-lead keeps dropping.
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -1358,10 +1149,10 @@
   <div class="process-row">
     <div class="process-sticky fade-up">
       <p style="color:var(--muted); line-height:1.7; font-size:0.95rem;">
-        From first message to live website, I keep things clear, fast, and stress-free. Most projects are live in 1–2 weeks. Simpler builds can move faster when content is ready.
+        From first message to live website, I keep things clear, fast, and stress-free. Most projects go live in 5–10 business days.
       </p>
       <br>
-      <a href="contact.html" class="btn-primary" style="display:inline-flex">Start a Project →</a>
+      <a href="#contact" class="btn-primary" style="display:inline-flex">Start a Project →</a>
     </div>
 
     <div class="process-steps">
@@ -1396,8 +1187,8 @@
       <div class="step fade-up" style="transition-delay:0.4s">
         <div class="step-num">05</div>
         <div>
-          <h4>Ongoing Maintenance (Included)</h4>
-          <p>Every build includes a maintenance plan — hosting, SSL, security, and uptime monitoring from day one. Upgrade anytime for content edits, SEO monitoring, and more.</p>
+          <h4>Ongoing Support (Optional)</h4>
+          <p>Stay on a monthly plan for continuous updates, SEO monitoring, and priority response. Most clients stick around — your site should never stop improving.</p>
         </div>
       </div>
     </div>
@@ -1410,164 +1201,156 @@
   <h2>Transparent pricing.<br>No surprises.</h2>
 
   <div class="pricing-toggle">
-    <span class="toggle-label active" id="oneTimeLabel">Build Packages</span>
+    <span class="toggle-label active" id="oneTimeLabel">One-Time</span>
     <div class="toggle-track" id="toggleTrack" onclick="togglePricing()">
       <div class="toggle-thumb"></div>
     </div>
-    <span class="toggle-label" id="monthlyLabel">Maintenance Plans</span>
-    <span class="toggle-save">Required with every build</span>
+    <span class="toggle-label" id="monthlyLabel">Monthly Plans</span>
+    <span class="toggle-save">Save up to 40%</span>
   </div>
 
   <!-- ONE TIME PRICES -->
   <div class="pricing-grid" id="oneTimePricing">
     <div class="price-card fade-up">
       <div class="price-tier">Starter</div>
-      <div class="price-name">Essential</div>
-      <div class="price-desc">For small businesses and service providers that need a clean, credible online presence.</div>
+      <div class="price-name">Launch Ready</div>
+      <div class="price-desc">Perfect for new businesses that need a professional online presence, fast.</div>
       <div class="price-amount">
         <div class="price-currency">$</div>
-        <div class="price-num">900</div>
-        <div class="price-per">– $1,500</div>
+        <div class="price-num">499</div>
+        <div class="price-per">one-time</div>
       </div>
       <ul class="price-features">
-        <li>Up to 5 pages</li>
+        <li>Up to 4-page website</li>
         <li>Mobile-responsive design</li>
-        <li>Contact form setup</li>
-        <li>Basic on-page SEO</li>
-        <li>Google Business integration</li>
-        <li>Speed optimization</li>
-        <li style="color:var(--accent);font-weight:600;">+ maintenance from $50/mo</li>
+        <li>Basic SEO setup</li>
+        <li>Contact form</li>
+        <li>Google Analytics setup</li>
+        <li>2 rounds of revisions</li>
+        <li>Delivered in 5–7 days</li>
       </ul>
-      <button class="price-cta" onclick="window.location='build.html'">Build My Site</button>
+      <button class="price-cta" onclick="window.location='#contact'">Get Started</button>
     </div>
 
     <div class="price-card featured fade-up" style="transition-delay:0.1s">
       <div class="price-badge">Most Popular</div>
       <div class="price-tier">Professional</div>
-      <div class="price-name">Professional</div>
-      <div class="price-desc">For growing businesses that need a conversion-focused site with analytics to back it up.</div>
+      <div class="price-name">Growth Site</div>
+      <div class="price-desc">The complete package for businesses serious about getting found on Google.</div>
       <div class="price-amount">
         <div class="price-currency">$</div>
-        <div class="price-num">1,800</div>
-        <div class="price-per">– $3,000</div>
+        <div class="price-num">999</div>
+        <div class="price-per">one-time</div>
       </div>
       <ul class="price-features">
-        <li>Up to 10 pages</li>
-        <li>Conversion-focused layout</li>
-        <li>Analytics setup</li>
-        <li>Lead capture forms</li>
-        <li>Advanced SEO structure</li>
-        <li>Everything in Essential</li>
-        <li style="color:var(--accent);font-weight:600;">+ maintenance from $50/mo</li>
+        <li>Up to 8-page website</li>
+        <li>Custom design (no templates)</li>
+        <li>Full on-page SEO</li>
+        <li>Sitemap + robots.txt</li>
+        <li>Google Search Console setup</li>
+        <li>Professional copywriting</li>
+        <li>3 rounds of revisions</li>
+        <li>Delivered in 7–10 days</li>
+        <li>30-day post-launch support</li>
       </ul>
-      <button class="price-cta" onclick="window.location='build.html'">Build My Site</button>
+      <button class="price-cta" onclick="window.location='#contact'">Get Started</button>
     </div>
 
     <div class="price-card fade-up" style="transition-delay:0.2s">
       <div class="price-tier">Premium</div>
-      <div class="price-name">Growth System</div>
-      <div class="price-desc">For businesses ready to dominate their market with a full digital growth system.</div>
+      <div class="price-name">Authority Build</div>
+      <div class="price-desc">For established businesses that want to dominate local search and look elite.</div>
       <div class="price-amount">
         <div class="price-currency">$</div>
-        <div class="price-num">3,500</div>
-        <div class="price-per">– $6,000</div>
+        <div class="price-num">1,799</div>
+        <div class="price-per">one-time</div>
       </div>
       <ul class="price-features">
-        <li>Up to 20 pages + landing pages</li>
-        <li>Technical SEO setup</li>
-        <li>CRM integrations</li>
-        <li>Call tracking</li>
-        <li>Performance optimization</li>
-        <li>Everything in Professional</li>
-        <li style="color:var(--accent);font-weight:600;">+ maintenance from $50/mo</li>
+        <li>Unlimited pages</li>
+        <li>Custom design + branding</li>
+        <li>Advanced SEO strategy</li>
+        <li>Local SEO + schema markup</li>
+        <li>Blog setup (3 posts included)</li>
+        <li>Full copywriting package</li>
+        <li>Unlimited revisions</li>
+        <li>60-day post-launch support</li>
+        <li>Monthly SEO report</li>
       </ul>
-      <button class="price-cta" onclick="window.location='build.html'">Build My Site</button>
+      <button class="price-cta" onclick="window.location='#contact'">Get Started</button>
     </div>
   </div>
 
   <!-- MONTHLY PRICES -->
   <div class="pricing-grid" id="monthlyPricing" style="display:none">
     <div class="price-card fade-up">
-      <div class="price-tier">Plan 01</div>
-      <div class="price-name">Starter</div>
-      <div class="price-desc">Hosting, SSL, and uptime monitoring. Your site stays live on your domain.</div>
+      <div class="price-tier">Starter</div>
+      <div class="price-name">Maintain</div>
+      <div class="price-desc">Keep your existing site up-to-date and performing with monthly care.</div>
       <div class="price-amount">
         <div class="price-currency">$</div>
-        <div class="price-num">50</div>
-        <div class="price-per">/mo</div>
+        <div class="price-num">99</div>
+        <div class="price-per">/month</div>
       </div>
       <ul class="price-features">
-        <li>Managed hosting</li>
-        <li>SSL certificate</li>
-        <li>Uptime monitoring</li>
+        <li>Up to 2 content updates/month</li>
+        <li>SEO health check</li>
+        <li>Performance monitoring</li>
+        <li>Monthly progress report</li>
       </ul>
-      <button class="price-cta" onclick="window.location='maintenance.html'">See Full Plan</button>
-    </div>
-
-    <div class="price-card fade-up" style="transition-delay:0.05s">
-      <div class="price-tier">Plan 02</div>
-      <div class="price-name">Core</div>
-      <div class="price-desc">Full protection — security monitoring and backups added to Starter.</div>
-      <div class="price-amount">
-        <div class="price-currency">$</div>
-        <div class="price-num">79</div>
-        <div class="price-per">/mo</div>
-      </div>
-      <ul class="price-features">
-        <li>Everything in Starter</li>
-        <li>Security monitoring</li>
-        <li>Automated backups</li>
-      </ul>
-      <button class="price-cta" onclick="window.location='maintenance.html'">See Full Plan</button>
+      <button class="price-cta" onclick="window.location='#contact'">Get Started</button>
     </div>
 
     <div class="price-card featured fade-up" style="transition-delay:0.1s">
-      <div class="price-badge">Most Popular</div>
-      <div class="price-tier">Plan 03</div>
-      <div class="price-name">Growth</div>
-      <div class="price-desc">Active management — edits, analytics, and SEO monitoring every month.</div>
+      <div class="price-badge">Best Value</div>
+      <div class="price-tier">Growth</div>
+      <div class="price-name">Grow</div>
+      <div class="price-desc">Active SEO management and ongoing improvements that compound over time.</div>
       <div class="price-amount">
         <div class="price-currency">$</div>
-        <div class="price-num">199</div>
-        <div class="price-per">/mo</div>
+        <div class="price-num">249</div>
+        <div class="price-per">/month</div>
       </div>
       <ul class="price-features">
-        <li>Everything in Core</li>
-        <li>Content edits</li>
-        <li>Performance optimization</li>
-        <li>Monthly analytics report</li>
-        <li>SEO monitoring</li>
+        <li>Up to 6 updates/month</li>
+        <li>Active SEO management</li>
+        <li>1 new page or blog post/month</li>
+        <li>Google Search Console monitoring</li>
+        <li>Priority support</li>
+        <li>Keyword ranking reports</li>
+        <li>Cancel anytime</li>
       </ul>
-      <button class="price-cta" onclick="window.location='maintenance.html'">See Full Plan</button>
+      <button class="price-cta" onclick="window.location='#contact'">Get Started</button>
     </div>
 
-    <div class="price-card fade-up" style="transition-delay:0.15s">
-      <div class="price-tier">Plan 04</div>
-      <div class="price-name">Authority</div>
-      <div class="price-desc">Full-service SEO to move your rankings and dominate local search.</div>
+    <div class="price-card fade-up" style="transition-delay:0.2s">
+      <div class="price-tier">Premium</div>
+      <div class="price-name">Dominate</div>
+      <div class="price-desc">Full-service partnership — design, content, and SEO working together every month.</div>
       <div class="price-amount">
         <div class="price-currency">$</div>
-        <div class="price-num">399</div>
-        <div class="price-per">– $799/mo</div>
+        <div class="price-num">499</div>
+        <div class="price-per">/month</div>
       </div>
       <ul class="price-features">
-        <li>Everything in Growth</li>
-        <li>Keyword strategy</li>
-        <li>Local SEO optimization</li>
-        <li>Google Business management</li>
+        <li>Unlimited updates</li>
+        <li>2 new pages or blog posts/month</li>
+        <li>Full SEO strategy & execution</li>
         <li>Competitor analysis</li>
+        <li>Social media copy (2 posts/week)</li>
+        <li>Same-day priority response</li>
+        <li>Monthly strategy call</li>
       </ul>
-      <button class="price-cta" onclick="window.location='maintenance.html'">See Full Plan</button>
+      <button class="price-cta" onclick="window.location='#contact'">Get Started</button>
     </div>
   </div>
 
   <div class="payment-plan-note fade-up">
     <div class="plan-icon">💳</div>
     <div class="plan-text">
-      <h4>No upfront cost — Website as a Service.</h4>
-      <p>Skip the big upfront fee entirely. We design, build, host, and manage your site for one flat monthly rate. Available on Essential ($199/mo) and Professional ($299/mo) builds. Requires a 12-month commitment — after that, your site is paid off and you continue on a maintenance plan starting at $50/mo.</p>
+      <h4>Pay over time — no interest, no stress.</h4>
+      <p>For one-time builds over $499, I offer split payment plans: 50% upfront, 50% on launch. Or break it into 3 monthly installments. Just ask.</p>
     </div>
-    <a href="build.html" class="btn-secondary" style="white-space:nowrap">Build My Site →</a>
+    <a href="#contact" class="btn-secondary" style="white-space:nowrap">Ask About Plans →</a>
   </div>
 </section>
 
@@ -1581,7 +1364,7 @@
       <div class="stars">★★★★★</div>
       <blockquote>"Joseph built us a site from scratch and it looks incredible. Within two weeks of launching we were getting calls from people who found us on Google. Absolutely worth every dollar."</blockquote>
       <div class="testimonial-author">
-        <div class="author-avatar" style="background:#0096c7">M</div>
+        <div class="author-avatar" style="background:#ff4d2e">M</div>
         <div>
           <div class="author-name">Mike S.</div>
           <div class="author-biz">Sheridan Heating & Cooling · NJ</div>
@@ -1593,7 +1376,7 @@
       <div class="stars">★★★★★</div>
       <blockquote>"Fast, professional, and he actually explains what he's doing and why. My old site was embarrassing. Now I'm proud to hand out my business card. He's the real deal."</blockquote>
       <div class="testimonial-author">
-        <div class="author-avatar" style="background:#00c9a7">T</div>
+        <div class="author-avatar" style="background:#1a1aff">T</div>
         <div>
           <div class="author-name">Teri B.</div>
           <div class="author-biz">Buon Vita Real Estate · NJ</div>
@@ -1633,7 +1416,7 @@
         How long does a website take to build?
         <span class="faq-arrow">+</span>
       </div>
-      <div class="faq-a">Typically 1–2 weeks depending on the package. Some simpler builds move faster when you have your content ready upfront.</div>
+      <div class="faq-a">Most sites are delivered in 5–10 business days depending on the package and how quickly you get me your content. I've turned around sites in 48 hours for clients who needed it fast.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">
@@ -1677,15 +1460,12 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Deep Water <span>Websites</span></div>
+  <div class="footer-logo">Joseph<span>D.</span></div>
   <p>Web Designer & SEO Specialist · Deltona, FL · Available Nationwide</p>
   <div class="footer-links">
     <a href="https://www.upwork.com/freelancers/~015539225e0fe4509e" target="_blank">Upwork</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="maintenance.html">Maintenance</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
   </div>
 </footer>
 
@@ -1693,37 +1473,17 @@
   // Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
-  if (window.matchMedia('(pointer: fine)').matches) {
-    let mx = 0, my = 0, rx = 0, ry = 0, visible = false;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      if (!visible) {
-        rx = mx; ry = my;
-        cursor.classList.add('visible');
-        ring.classList.add('visible');
-        visible = true;
-      }
-    });
-    document.addEventListener('mouseleave', () => {
-      cursor.classList.remove('visible');
-      ring.classList.remove('visible');
-    });
-    document.addEventListener('mouseenter', () => {
-      if (visible) { cursor.classList.add('visible'); ring.classList.add('visible'); }
-    });
-    (function animCursor() {
-      cursor.style.left = mx - 5 + 'px';
-      cursor.style.top  = my - 5 + 'px';
-      rx += (mx - rx) * 0.10;
-      ry += (my - ry) * 0.10;
-      ring.style.left = rx - 24 + 'px';
-      ring.style.top  = ry - 24 + 'px';
-      requestAnimationFrame(animCursor);
-    })();
-  } else {
-    cursor.style.display = 'none';
-    ring.style.display   = 'none';
-  }
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function animCursor() {
+    cursor.style.left = mx - 6 + 'px';
+    cursor.style.top = my - 6 + 'px';
+    rx += (mx - rx) * 0.15;
+    ry += (my - ry) * 0.15;
+    ring.style.left = rx - 18 + 'px';
+    ring.style.top = ry - 18 + 'px';
+    requestAnimationFrame(animCursor);
+  })();
 
   // Scroll fade
   const fadeEls = document.querySelectorAll('.fade-up');
