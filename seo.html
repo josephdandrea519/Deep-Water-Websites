@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is SEO & Why It Matters | Deep Water Websites</title>
+<meta name="description" content="SEO is how customers find you online. Learn what search engine optimization actually does for local businesses — with real data on traffic, leads, and revenue.">
+<link rel="canonical" href="https://deepwaterwebsites.com/seo.html">
+<meta property="og:title" content="What Is SEO & Why It Matters | Deep Water Websites">
+<meta property="og:description" content="Most businesses are invisible online. SEO fixes that. Here's what it is, how it works, and what it can realistically do for your revenue.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+  /* ── STAT CALLOUT ── */
+  .stat-callout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+  @media (max-width: 768px) { .stat-callout { grid-template-columns: 1fr; gap: 1rem; } }
+  .stat-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .stat-box:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,10,15,0.1); }
+  .stat-box .big-num {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .stat-box .big-label {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .stat-box.green .big-num { color: var(--accent2); }
+  .stat-box.gold .big-num { color: var(--gold); }
+
+  /* ── EXPLAINER GRID ── */
+  .explainer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin: 3rem 0;
+  }
+  @media (max-width: 768px) { .explainer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+  .explainer-item {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    padding: 2rem;
+  }
+  .explainer-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .explainer-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .explainer-text { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+  /* ── FUNNEL VISUAL ── */
+  .funnel-section {
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2.5rem;
+    margin: 3rem 0;
+  }
+  .funnel-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 560px;
+    margin: 2rem auto 0;
+  }
+  .funnel-step {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+  .funnel-step:last-child { margin-bottom: 0; }
+  .funnel-step-num {
+    width: 32px; height: 32px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 700;
+    color: #fff; flex-shrink: 0;
+  }
+  .funnel-step-text { font-size: 0.9rem; line-height: 1.5; color: rgba(255,255,255,0.85); }
+  .funnel-step-text strong { color: var(--accent2); }
+
+  /* ── ROI SECTION ── */
+  .roi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  @media (max-width: 640px) { .roi-grid { grid-template-columns: 1fr; } }
+  .roi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+  .roi-card-num { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--accent2); }
+  .roi-card-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; line-height: 1.5; }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+  }
+  .compare-table th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background: var(--ink);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .good { color: var(--accent2); font-weight: 600; }
+  .compare-table .bad { color: rgba(255,100,100,0.8); }
+
+  /* ── CALLOUT BOX ── */
+  .insight-box {
+    background: rgba(0, 150, 199, 0.08);
+    border: 1.5px solid rgba(0, 150, 199, 0.25);
+    border-radius: var(--radius);
+    padding: 1.5rem 2rem;
+    margin: 2.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(189, 213, 232, 0.9);
+  }
+  .insight-box strong { color: #bdd5e8; }
+
+  /* ── SIGNAL LIST ── */
+  .signal-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    list-style: none;
+  }
+  @media (max-width: 640px) { .signal-list { grid-template-columns: 1fr; } }
+  .signal-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .signal-list li::before {
+    content: '✓';
+    color: var(--accent2);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "What Is SEO & Why It Matters",
+  "url": "https://deepwaterwebsites.com/seo.html",
+  "description": "A breakdown of what SEO is, how it works, and the data behind what it can do for local businesses.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Deep Water Websites",
+    "url": "https://deepwaterwebsites.com"
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+    <div class="nav-links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="maintenance.html">Maintenance</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="build.html" class="btn-nav desktop-only">Build My Site</a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="maintenance.html">Maintenance</a>
+    <a href="about.html">About</a>
+    <a href="build.html" class="btn-mobile">Build My Site</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-top">
+  <section class="page-hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="page-hero-inner">
+      <span class="section-label">SEO Explained</span>
+      <h1>Most businesses are<br><em style="font-style:normal;color:var(--accent);">invisible online.</em><br>SEO fixes that.</h1>
+      <p class="lead">Search engine optimization isn't a magic trick or a monthly fee for doing nothing. It's the system that decides whether your business shows up when customers are actively searching for what you offer — or whether your competitor does instead.</p>
+    </div>
+  </section>
+
+  <!-- WHAT IS SEO -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">The Basics</span>
+        <h2>What is SEO, actually?</h2>
+        <p>A plain-english breakdown of how search engines work and why it matters for your business.</p>
+      </div>
+
+      <div class="explainer-grid">
+        <div class="explainer-item fade-up">
+          <span class="explainer-icon">🔍</span>
+          <div class="explainer-title">Search Engines Rank Pages, Not Businesses</div>
+          <p class="explainer-text">Google doesn't rank you because you've been around for 20 years or because you're the best in your area. It ranks individual web pages based on hundreds of signals — how relevant they are to the search, how trustworthy the site appears, and how well the page is built. SEO is the work of making those signals strong.</p>
+        </div>
+        <div class="explainer-item fade-up">
+          <span class="explainer-icon">📍</span>
+          <div class="explainer-title">Local SEO Is a Separate Game</div>
+          <p class="explainer-text">When someone searches "HVAC repair near me" or "insurance agent in Barnegat NJ," Google uses local signals — your Google Business Profile, location mentions on your site, reviews, and citations — to decide who shows up in the map pack and local results. Local SEO targets this specific intent, not just general search rankings.</p>
+        </div>
+        <div class="explainer-item fade-up">
+          <span class="explainer-icon">⚙️</span>
+          <div class="explainer-title">On-Page vs. Off-Page SEO</div>
+          <p class="explainer-text">On-page SEO is what's on your website — the words, structure, headings, page speed, and schema markup. Off-page SEO is what other sites say about you — links, citations, and reviews. Both matter. Most small businesses neglect both, which is exactly the opportunity.</p>
+        </div>
+        <div class="explainer-item fade-up">
+          <span class="explainer-icon">📈</span>
+          <div class="explainer-title">SEO Is a Compounding Investment</div>
+          <p class="explainer-text">Unlike paid ads, which stop the moment you stop paying, SEO builds over time. A well-optimized page can generate leads for years without additional spend. The businesses that invest early consistently outrank competitors who wait until they're desperate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE NUMBERS -->
+  <section class="section dark-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">The Data</span>
+        <h2>Why the numbers matter</h2>
+        <p>These aren't abstract marketing stats — they describe exactly how your potential customers behave online right now.</p>
+      </div>
+
+      <div class="stat-callout">
+        <div class="stat-box fade-up">
+          <span class="big-num">93%</span>
+          <div class="big-label">of all online experiences start with a search engine. If you're not findable, you're not in the conversation.</div>
+        </div>
+        <div class="stat-box green fade-up">
+          <span class="big-num">68%</span>
+          <div class="big-label">of clicks go to the top 3 organic results on Google. The rest of page 1 splits the remaining 32%.</div>
+        </div>
+        <div class="stat-box gold fade-up">
+          <span class="big-num">0.63%</span>
+          <div class="big-label">of Google searchers click to page 2. Being on page 2 is functionally the same as not existing.</div>
+        </div>
+      </div>
+
+      <div class="stat-callout" style="margin-top:1rem;">
+        <div class="stat-box fade-up">
+          <span class="big-num">53%</span>
+          <div class="big-label">of all website traffic comes from organic search — more than any other single channel including social media and paid ads.</div>
+        </div>
+        <div class="stat-box green fade-up">
+          <span class="big-num">28%</span>
+          <div class="big-label">of local searches result in a purchase within 24 hours. High-intent local traffic converts faster than almost any other source.</div>
+        </div>
+        <div class="stat-box gold fade-up">
+          <span class="big-num">97%</span>
+          <div class="big-label">of consumers research local businesses online before visiting in person or calling. Your website is your first impression — every time.</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <strong>What this means for a local service business:</strong> When someone in your area searches for what you do, there are roughly 10 spots on page one of Google. Your competitors are filling those spots. Every month you're not optimized is a month of leads going to them instead of you.
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">How It Works</span>
+        <h2>The path from search to customer</h2>
+        <p>Understanding this sequence is the key to understanding why SEO is worth the investment.</p>
+      </div>
+
+      <div class="funnel-section">
+        <div style="text-align:center;">
+          <span class="section-label" style="color:var(--accent2);">The Customer Journey</span>
+          <h3 style="color:#fff;font-size:1.4rem;margin-top:0.5rem;">Every sale starts with a search</h3>
+        </div>
+        <div class="funnel-steps">
+          <div class="funnel-step">
+            <div class="funnel-step-num">1</div>
+            <div class="funnel-step-text">Customer has a problem: their AC breaks, they need insurance, they want a contractor. <strong>They go to Google.</strong></div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-step-num">2</div>
+            <div class="funnel-step-text">They search "AC repair Ocean County" or "home insurance Barnegat NJ." <strong>Google returns the top results.</strong></div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-step-num">3</div>
+            <div class="funnel-step-text">They click one of the first 3 results — almost always. <strong>The other results are rarely seen.</strong></div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-step-num">4</div>
+            <div class="funnel-step-text">If that site looks trustworthy and answers their question, <strong>they call or fill out the form.</strong></div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-step-num">5</div>
+            <div class="funnel-step-text">The business that's ranked, trusted, and fast-loading <strong>gets the lead. The others don't.</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:0.95rem;color:var(--muted);line-height:1.7;margin-top:2rem;">SEO is the work that puts you in step 3 instead of step 5. It's not about gaming the system — it's about being the most relevant, most trustworthy, and most accessible answer to the question your customer is already asking.</p>
+    </div>
+  </section>
+
+  <!-- ROI & IMPACT -->
+  <section class="section dark-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">Business Impact</span>
+        <h2>What optimized SEO actually does for revenue</h2>
+        <p>Real-world performance data from businesses that invest in SEO versus those that don't.</p>
+      </div>
+
+      <div class="roi-grid">
+        <div class="roi-card fade-up">
+          <div class="roi-card-num">14.6%</div>
+          <div class="roi-card-label">Average close rate for inbound SEO leads — compared to 1.7% for outbound leads like cold calls or direct mail. People who find you are already looking for you.</div>
+        </div>
+        <div class="roi-card fade-up">
+          <div class="roi-card-num">60%</div>
+          <div class="roi-card-label">Lower cost per lead for SEO compared to paid advertising. Once optimized, organic traffic costs nothing per click. Ads stop the moment the budget does.</div>
+        </div>
+        <div class="roi-card fade-up">
+          <div class="roi-card-num">5.7×</div>
+          <div class="roi-card-label">More traffic to first-page results compared to second-page results. The compounding value of ranking on page one is enormous — and it grows over time.</div>
+        </div>
+        <div class="roi-card fade-up">
+          <div class="roi-card-num">50%</div>
+          <div class="roi-card-label">Increase in in-store visits and calls that local businesses with strong local SEO see compared to unoptimized competitors in the same market.</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <strong>The compounding advantage:</strong> A business that ranks #1 for "HVAC repair Ocean County" in January will generate leads that month. And next month. And for the next 3 years — without additional ad spend. SEO is one of the few marketing investments where the return grows over time rather than resetting to zero.
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT GOOGLE ACTUALLY LOOKS AT -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">The Signals</span>
+        <h2>What Google actually uses to rank pages</h2>
+        <p>Google evaluates hundreds of signals. These are the ones that move the needle most for local service businesses.</p>
+      </div>
+
+      <ul class="signal-list fade-up">
+        <li>Page relevance to the search query (keywords in headings, copy, and metadata)</li>
+        <li>Page load speed — especially on mobile devices</li>
+        <li>Mobile usability and responsive design</li>
+        <li>Core Web Vitals (LCP, CLS, INP — Google's user experience metrics)</li>
+        <li>Backlinks from reputable, relevant websites</li>
+        <li>Google Business Profile completeness and activity</li>
+        <li>Customer review quantity, recency, and rating</li>
+        <li>Consistent NAP (name, address, phone) across the web</li>
+        <li>Structured data / schema markup</li>
+        <li>Internal linking structure and site architecture</li>
+        <li>Local citation consistency in directories</li>
+        <li>Content depth and topical authority on your service areas</li>
+        <li>HTTPS / SSL certificate</li>
+        <li>Crawlability — sitemap, robots.txt, clean URL structure</li>
+        <li>Time on page and low bounce rate (user engagement signals)</li>
+        <li>Geographic relevance — service area pages, local keyword targeting</li>
+      </ul>
+
+      <div class="insight-box">
+        <strong>Why most small business websites underperform:</strong> A site that was built by a nephew 5 years ago on a page builder is likely failing on 10 of those 16 signals. Not because anyone meant for it to happen — but because no one is actively managing it. That's the gap that SEO closes.
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO vs ADS -->
+  <section class="section dark-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">SEO vs. Paid Ads</span>
+        <h2>Why organic search beats paid traffic long-term</h2>
+        <p>Both have their place. But understanding the tradeoffs is key to making the right decision for your budget.</p>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Factor</th>
+              <th>Organic SEO</th>
+              <th>Paid Ads (PPC)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cost structure</td>
+              <td class="good">Investment → long-term returns</td>
+              <td class="bad">Pay per click, ongoing forever</td>
+            </tr>
+            <tr>
+              <td>What happens when you stop</td>
+              <td class="good">Rankings hold (with maintenance)</td>
+              <td class="bad">Traffic stops immediately</td>
+            </tr>
+            <tr>
+              <td>Trust signal to users</td>
+              <td class="good">Organic results trusted more</td>
+              <td class="bad">Labeled "Sponsored" — often skipped</td>
+            </tr>
+            <tr>
+              <td>Click-through rate</td>
+              <td class="good">~28% for #1 organic result</td>
+              <td class="bad">~2–3% average for paid ads</td>
+            </tr>
+            <tr>
+              <td>Cost over time</td>
+              <td class="good">Decreases as returns compound</td>
+              <td class="bad">Increases as competition bids up</td>
+            </tr>
+            <tr>
+              <td>Speed to results</td>
+              <td class="bad">3–6 months to build</td>
+              <td class="good">Immediate — same day</td>
+            </tr>
+            <tr>
+              <td>Best for</td>
+              <td class="good">Long-term growth, lead generation</td>
+              <td class="good">New launches, time-sensitive offers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;margin-top:1.5rem;">The most effective strategy is usually both — use ads for immediate visibility while SEO builds. But businesses that rely only on paid ads and never build organic rankings are permanently renting their visibility instead of owning it.</p>
+    </div>
+  </section>
+
+  <!-- LOCAL SEO SPECIFIC -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">For Local Businesses</span>
+        <h2>Local SEO is where small businesses win</h2>
+        <p>You don't need to compete with national brands. You need to dominate your zip code.</p>
+      </div>
+
+      <div class="explainer-grid">
+        <div class="explainer-item fade-up">
+          <span class="explainer-icon">📦</span>
+          <div class="explainer-title">The Map Pack Is Prime Real Estate</div>
+          <p class="explainer-text">The top 3 Google Business listings (the "map pack") appear above ALL organic results for local searches. 44% of local searchers click directly on the map pack. Appearing there requires an optimized Google Business Profile, consistent citations, and review activity — all things most small businesses never set up correctly.</p>
+        </div>
+        <div class="explainer-item fade-up">
+          <span class="explainer-icon">📱</span>
+          <div class="explainer-title">"Near Me" Searches Are Surging</div>
+          <p class="explainer-text">"Near me" search queries have increased 900% over the last decade. People aren't browsing for options — they're ready to buy and looking for the closest, most trustworthy option. Local SEO is specifically designed to intercept this high-intent traffic at the exact moment of decision.</p>
+        </div>
+        <div class="explainer-item fade-up">
+          <span class="explainer-icon">⭐</span>
+          <div class="explainer-title">Reviews Are Both SEO and Conversion</div>
+          <p class="explainer-text">Google factors review quantity, recency, and rating into local rankings. But reviews also convert visitors — 87% of consumers read online reviews before choosing a local business. A strong review profile doesn't just help you rank. It closes the sale once someone finds you.</p>
+        </div>
+        <div class="explainer-item fade-up">
+          <span class="explainer-icon">🗺️</span>
+          <div class="explainer-title">Service Area Pages Drive Hyper-Local Traffic</div>
+          <p class="explainer-text">A dedicated page for each town or service area you serve — with specific local content and keywords — signals to Google that you're relevant to searches in those locations. One HVAC company can rank in 12 towns if the site is built right. Most small business sites have zero of these pages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="section dark-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">How Deep Water Approaches It</span>
+        <h2>SEO built into every site — not bolted on after</h2>
+        <p>Most web designers build a site and then hand it off. We build with search visibility as the foundation, not an afterthought.</p>
+      </div>
+
+      <ul class="signal-list fade-up" style="grid-template-columns:1fr;">
+        <li>Every page built with clean heading hierarchy (H1 → H2 → H3) and keyword-targeted copy</li>
+        <li>Schema markup (JSON-LD) added for business type, services, reviews, and location</li>
+        <li>Sitemap.xml and robots.txt properly configured and submitted to Google Search Console</li>
+        <li>Google Business Profile setup and initial optimization</li>
+        <li>Mobile-first development — no separate mobile version, just one fast responsive site</li>
+        <li>Canonical URLs to prevent duplicate content penalties</li>
+        <li>Alt text, image compression, and lazy loading for performance and accessibility</li>
+        <li>Internal linking structure that distributes page authority throughout the site</li>
+        <li>Service area and location pages for hyper-local search targeting</li>
+        <li>PageSpeed optimization — 90+ score on Google's Core Web Vitals</li>
+      </ul>
+
+      <div style="margin-top:3rem;text-align:center;">
+        <p style="font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:620px;margin:0 auto 2rem;">For businesses that want ongoing SEO — active keyword research, content strategy, GBP management, and monthly optimization — that's what the Authority maintenance plan is built for.</p>
+        <div class="btn-group">
+          <a href="maintenance.html" class="btn-primary">See Maintenance Plans</a>
+          <a href="contact.html" class="btn-outline">Talk to Us First</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <h2>Ready to stop being invisible?</h2>
+    <p>Every day you're not ranking is a day of leads going to your competitors. Let's fix that.</p>
+    <div class="btn-group">
+      <a href="build.html" class="btn-primary">Build My Site</a>
+      <a href="contact.html" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;">Free Consultation</a>
+    </div>
+  </section>
+
+</div><!-- /page-top -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Deep <strong>Water.</strong></a>
+      <p>Web Designer & SEO Specialist<br>Deltona, FL · Available Nationwide</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="seo.html">What Is SEO?</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://www.upwork.com/freelancers/~015539225e0fe4509e" target="_blank" rel="noopener noreferrer">Upwork</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Deep Water Websites. All rights reserved.</p>
+    <p>Web Design & SEO · Deltona, FL</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

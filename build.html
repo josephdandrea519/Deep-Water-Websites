@@ -203,16 +203,15 @@
     align-items: center; justify-content: space-between; gap: 1rem;
   }
   @media (max-width: 960px) {
-    .mob-bar.on { display: flex; }
-    .price-panel { display: none; }
-    .page-top { padding-bottom: 72px; }
+    .mob-bar { display: none !important; }
+    .price-panel { position: static; }
+    .page-top { padding-bottom: 0; }
   }
   .mob-label { font-size: 0.7rem; opacity: 0.45; }
   .mob-val { font-size: 1.05rem; font-weight: 800; color: var(--accent2); }
 
   /* ── MOBILE SUBMIT (inside form, hidden on desktop) ── */
   .mob-submit { display: none; }
-  @media (max-width: 960px) { .mob-submit { display: flex; flex-direction: column; gap: 0.65rem; } }
 
   /* ── FORM ROW ── */
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -233,7 +232,8 @@
       <a href="portfolio.html">Portfolio</a>
       <a href="pricing.html">Pricing</a>
       <a href="maintenance.html">Maintenance</a>
-      <a href="about.html">About</a>
+      <a href="seo.html">What Is SEO?</a>
+        <a href="about.html">About</a>
     </div>
     <a href="build.html" class="btn-nav desktop-only active" style="background:var(--accent);">Build My Site</a>
     <button class="menu-toggle" aria-label="Open menu">☰</button>
@@ -243,7 +243,8 @@
     <a href="portfolio.html">Portfolio</a>
     <a href="pricing.html">Pricing</a>
     <a href="maintenance.html">Maintenance</a>
-    <a href="about.html">About</a>
+    <a href="seo.html">What Is SEO?</a>
+        <a href="about.html">About</a>
     <a href="build.html" class="btn-mobile">Build My Site</a>
   </div>
 </nav>
@@ -477,7 +478,7 @@
               <div class="fs">
                 <div class="fs-head">
                   <div class="fs-num alt">→</div>
-                  <h2 class="fs-title">Ongoing maintenance plan <span style="color:var(--accent);font-size:0.8rem;font-weight:600;">Required</span></h2>
+                  <h2 class="fs-title">Ongoing maintenance plan</h2>
                 </div>
                 <p class="fs-note">Every build includes ongoing maintenance — your site doesn't go live without one. Hosting, SSL, and security are covered from day one. Choose the level of care that fits your needs.</p>
                 <div class="opt-grid c2">
@@ -557,7 +558,7 @@
                 <div class="fs-num">5</div>
                 <h2 class="fs-title">Add-ons &amp; extras</h2>
               </div>
-              <p class="fs-note">All are one-time fees except the Authority SEO Plan, which is a monthly add-on.</p>
+              <p class="fs-note">All add-ons are one-time fees.</p>
               <div class="addon-list">
                 <div class="addon">
                   <input type="checkbox" id="ao_logo" name="addon_logo" value="Logo Design (+$350)">
@@ -597,16 +598,6 @@
                       <span class="addon-sub">Priority delivery — standard turnaround is about 1 week, this moves you to the front of the queue</span>
                     </div>
                     <span class="addon-tag">+ $300</span>
-                  </label>
-                </div>
-                <div class="addon">
-                  <input type="checkbox" id="ao_seo" name="addon_seo" value="Authority SEO Plan (+$399/mo)">
-                  <label for="ao_seo">
-                    <div class="addon-text">
-                      <span class="addon-name">Authority SEO Plan</span>
-                      <span class="addon-sub">Monthly: keyword strategy, local SEO, GBP management, competitor analysis</span>
-                    </div>
-                    <span class="addon-tag">+ $399/mo</span>
                   </label>
                 </div>
               </div>
@@ -722,6 +713,7 @@
         <a href="portfolio.html">Portfolio</a>
         <a href="pricing.html">Pricing</a>
         <a href="maintenance.html">Maintenance</a>
+        <a href="seo.html">What Is SEO?</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>

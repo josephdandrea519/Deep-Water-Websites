@@ -477,10 +477,15 @@
   }
 
   /* WORK / PORTFOLIO */
-  .work-section { background: var(--ink); color: #fff; overflow: hidden; }
+  .work-section { background: var(--ink); color: #fff; overflow-x: clip; }
   .work-section .section-label { color: #ff7a63; }
   .work-section .section-label::before { background: #ff7a63; }
   .work-section h2 { color: #fff; }
+  .work-section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
   .work-grid {
     display: grid;
     grid-template-columns: minmax(0,1fr) minmax(0,1fr);
@@ -543,6 +548,8 @@
     font-size: 1.5rem;
     font-weight: 800;
     color: #00c9a7;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
   .work-result span { font-family: 'Outfit', sans-serif; font-weight: 400; font-size: 0.78rem; color: rgba(255,255,255,0.4); display: block; margin-top: 0.2rem; }
 
@@ -997,6 +1004,8 @@
     .services-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
     .work-grid { grid-template-columns: 1fr; }
     .work-card.featured { grid-row: auto; }
+    .work-card { width: 100%; box-sizing: border-box; }
+    .work-result { font-size: 1.1rem; }
     .process-row { grid-template-columns: 1fr; }
     .process-sticky { position: static; }
     .price-card.featured { transform: none; }
@@ -1064,7 +1073,7 @@
         <div class="stat-label">Sites Built</div>
       </div>
       <div>
-        <div class="stat-num">1 wk</div>
+        <div class="stat-num">1 week</div>
         <div class="stat-label">Avg Turnaround</div>
       </div>
       <div>
@@ -1201,6 +1210,7 @@
 
 <!-- WORK -->
 <section id="work" class="work-section">
+  <div class="work-section-inner">
   <div class="section-label">Portfolio</div>
   <h2>Built for real businesses.<br>Real results.</h2>
 
@@ -1232,6 +1242,7 @@
         <span class="work-tag">SEO</span>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -1665,6 +1676,7 @@
     <a href="portfolio.html">Portfolio</a>
     <a href="pricing.html">Pricing</a>
     <a href="maintenance.html">Maintenance</a>
+    <a href="seo.html">What Is SEO?</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </div>
