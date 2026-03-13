@@ -162,10 +162,18 @@ nav {
   .nav-links { display: none; }
   .btn-nav.desktop-only { display: none; }
   .menu-toggle { display: block; }
+  .logo { width: 150px; height: 100px; }
+  .nav-logo-img { width: 150px; height: 100px; }
+  .page-top { padding-top: 115px; }
+}
+@media (max-width: 480px) {
+  .logo { width: 120px; height: 80px; }
+  .nav-logo-img { width: 120px; height: 80px; }
+  .page-top { padding-top: 95px; }
 }
 
 /* ─── PAGE TOP OFFSET ─── */
-.page-top { padding-top: 80px; }
+.page-top { padding-top: 155px; }
 
 /* ─── HERO ─── */
 .page-hero {
@@ -658,8 +666,9 @@ footer {
 
 /* ── LOGO IMAGE ── */
 .nav-logo-img {
-  width: 100%;
-  height: 100%;
+  width: 210px;
+  height: 140px;
+  max-width: 100%;
   display: block;
   object-fit: contain;
   filter: brightness(1.6) contrast(1.05);
