@@ -80,14 +80,10 @@ nav {
   text-decoration: none;
   letter-spacing: -0.02em;
   flex-shrink: 0;
-  background: var(--ink);
-  border-radius: 10px;
   display: inline-flex;
   align-items: center;
-  isolation: isolate;
-  overflow: hidden;
-  width: 165px;
-  height: 110px;
+  width: 210px;
+  height: 140px;
 }
 .logo strong { color: var(--accent); }
 .nav-links {
@@ -661,20 +657,17 @@ footer {
 
 /* ── LOGO IMAGE ── */
 .nav-logo-img {
-  width: 165px;
-  height: 110px;
+  width: 210px;
+  height: 140px;
   display: block;
   flex-shrink: 0;
   object-fit: contain;
-  transform: scale(1.15);
-  filter: invert(1) hue-rotate(180deg);
-  mix-blend-mode: screen;
+  filter: brightness(1.6) contrast(1.05);
 }
 .footer-logo-img {
   height: 68px;
   width: auto;
   display: block;
   margin-bottom: 0.75rem;
-  filter: invert(1) hue-rotate(180deg);
-  mix-blend-mode: screen;
+  filter: brightness(1.6) contrast(1.05);
 }
