@@ -117,6 +117,20 @@
   }
   .skill-chip:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
+  .military-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(0,201,167,0.08);
+    border: 1.5px solid rgba(0,201,167,0.3);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.5rem;
+    margin: 1.75rem 0 0.5rem;
+  }
+  .military-banner-icon { font-size: 1.75rem; flex-shrink: 0; }
+  .military-banner-title { font-size: 0.95rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.2rem; }
+  .military-banner-sub { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
   .values-grid {
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -210,6 +224,15 @@
           <p>Most business owners don't need a "web presence" — they need a site that actually brings in customers. That's what I focus on. Every project starts with understanding your business, your customers, and what they're searching for. The design comes second.</p>
           <p>I specialize in working with local service businesses — contractors, agencies, professionals — who want to compete with larger companies without a massive marketing budget. Good SEO and a fast, trustworthy site can level the playing field. I've seen it happen with every client I've worked with.</p>
           <p>I keep my process lean and my communication direct. No project managers, no handoffs, no delays. You work with me from first call to launch day.</p>
+          <p>Before this, I served as a Naval Aircrewman in the U.S. Navy aviation community — deployed across the world and trained to perform in high-stakes environments where precision and reliability aren't optional. That same standard is what I bring to every build.</p>
+
+          <div class="military-banner">
+            <div class="military-banner-icon">🎖️</div>
+            <div>
+              <div class="military-banner-title">Military &amp; Veteran Discount</div>
+              <div class="military-banner-sub">Active duty military and veteran discount available — reach out to get started.</div>
+            </div>
+          </div>
 
           <div class="stats-row">
             <div class="stat">
@@ -274,6 +297,11 @@
           <div class="icon">🤝</div>
           <h3>You own your website</h3>
           <p>I don't lock you into proprietary platforms or hold your site hostage. You get clean code, full ownership, and the ability to take it anywhere.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="icon">🎖️</div>
+          <h3>Military &amp; veteran discount</h3>
+          <p>I served as a Naval Aircrewman and have a deep respect for the people who serve. Active duty military and veterans receive a discount — just mention it when you reach out.</p>
         </div>
       </div>
     </div>
