@@ -61,7 +61,7 @@ body:has(button:hover) .cursor-ring { transform: scale(1.3); background: rgba(0,
 nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 1.25rem 2rem;
+  padding: 0.3rem 2rem;
   background: rgba(13,30,47,0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
@@ -80,6 +80,14 @@ nav {
   text-decoration: none;
   letter-spacing: -0.02em;
   flex-shrink: 0;
+  background: var(--ink);
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  isolation: isolate;
+  overflow: hidden;
+  width: 165px;
+  height: 110px;
 }
 .logo strong { color: var(--accent); }
 .nav-links {
@@ -649,4 +657,24 @@ footer {
   color: var(--muted);
   margin-top: 0.4rem;
   line-height: 1.4;
+}
+
+/* ── LOGO IMAGE ── */
+.nav-logo-img {
+  width: 165px;
+  height: 110px;
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+  transform: scale(1.15);
+  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: screen;
+}
+.footer-logo-img {
+  height: 68px;
+  width: auto;
+  display: block;
+  margin-bottom: 0.75rem;
+  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: screen;
 }
