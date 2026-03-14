@@ -960,6 +960,9 @@
     #menuToggle { display: block !important; }
     .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
     .hero-right { display: none; }
+    .hero::before { display: none; }
+    .hero::after  { display: none; }
+    .hero-left { width: 100%; max-width: 100%; }
     section { padding: 4rem 1.5rem; }
     .services-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
     .work-grid { grid-template-columns: 1fr; }
@@ -977,7 +980,11 @@
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; width: 100%; min-height: auto; padding: 2rem 1.25rem; }
     .hero-right { width: 100%; max-width: 100%; }
-    .hero-left { width: 100%; max-width: 100%; }
+    .hero-left { width: 100%; max-width: 100%; padding: 0; }
+    .hero::before { display: none; }
+    .hero::after  { display: none; }
+    .hero-sub { max-width: 100%; }
+    h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
   }
 </style>
 </head>
