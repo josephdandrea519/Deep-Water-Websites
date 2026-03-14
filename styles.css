@@ -163,8 +163,8 @@ nav {
 
 /* ─── PAGE TOP OFFSET ─── */
 .page-top { padding-top: 155px; }
-@media (max-width: 900px) { .page-top { padding-top: 65px; } }
-@media (max-width: 480px) { .page-top { padding-top: 60px; } }
+@media (max-width: 900px) { .page-top { padding-top: 75px; } }
+@media (max-width: 480px) { .page-top { padding-top: 70px; } }
 
 /* ─── HERO ─── */
 .page-hero {
@@ -666,10 +666,7 @@ footer {
   display: block;
   filter: brightness(1.6) contrast(1.05);
 }
-@media (max-width: 900px) {
-  .nav-logo-img { display: none; }
-  .logo::before { content: "Deep Water"; font-size: 1.1rem; font-weight: 700; color: #bdd5e8; letter-spacing: -0.02em; }
-}
+@media (max-width: 900px) { .nav-logo-img { height: 40px; width: auto; } }
 .footer-logo-img {
   height: 68px;
   width: auto;
