@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build My Site � Deep Water Websites | Web Design & SEO</title>
-<meta name="description" content="Answer a few questions about your business and goals. Get a real, transparent price estimate before your first call � no surprises.">
+<title>Build My Site — Deep Water Websites | Web Design & SEO</title>
+<meta name="description" content="Answer a few questions about your business and goals. Get a real, transparent price estimate before your first call — no surprises.">
 <link rel="canonical" href="https://deepwaterwebsites.com/build.html">
-<meta property="og:title" content="Build My Site � Deep Water Websites">
+<meta property="og:title" content="Build My Site — Deep Water Websites">
 <meta property="og:description" content="Customize your website package and see real pricing as you go. No sales call required to know what to expect.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="styles.css">
 <style>
 
-  /* -- LAYOUT -- */
+  /* ── LAYOUT ── */
   .build-layout {
     display: grid;
     grid-template-columns: 1fr 320px;
@@ -23,7 +23,7 @@
   }
   @media (max-width: 960px) { .build-layout { grid-template-columns: 1fr; } }
 
-  /* -- FORM SECTION CARDS -- */
+  /* ── FORM SECTION CARDS ── */
   .fs {
     background: var(--card);
     border: 1px solid var(--border);
@@ -53,7 +53,7 @@
     line-height: 1.55; margin-bottom: 1.25rem;
   }
 
-  /* -- OPTION CARDS (radio / checkbox styled) -- */
+  /* ── OPTION CARDS (radio / checkbox styled) ── */
   .opt-grid { display: grid; gap: 0.65rem; }
   .opt-grid.c2 { grid-template-columns: 1fr 1fr; }
   .opt-grid.c3 { grid-template-columns: repeat(3,1fr); }
@@ -89,7 +89,7 @@
   }
   .opt-badge.green { background: var(--accent2); }
 
-  /* -- ADDON ROWS -- */
+  /* ── ADDON ROWS ── */
   .addon-list { display: flex; flex-direction: column; gap: 0.55rem; }
   .addon { position: relative; cursor: pointer; }
   .addon input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
@@ -111,7 +111,7 @@
   .addon-sub { font-size: 0.76rem; color: var(--muted); display: block; margin-top: 0.1rem; }
   .addon-tag { font-size: 0.85rem; font-weight: 700; color: var(--accent); white-space: nowrap; flex-shrink: 0; }
 
-  /* -- CONDITIONAL SECTIONS -- */
+  /* ── CONDITIONAL SECTIONS ── */
   .cond { display: none; }
   .cond.on { display: block; }
 
@@ -122,7 +122,7 @@
   }
   .waas-note strong { color: #bdd5e8; }
 
-  /* -- PAGE RECOMMENDATION TIP -- */
+  /* ── PAGE RECOMMENDATION TIP ── */
   .page-tip {
     margin-top: 0.6rem;
     font-size: 0.8rem;
@@ -131,7 +131,7 @@
     min-height: 1.2em;
   }
 
-  /* -- PRICE SUMMARY SIDEBAR -- */
+  /* ── PRICE SUMMARY SIDEBAR ── */
   .price-panel {
     position: sticky; top: 100px;
     background: var(--ink); color: #fff;
@@ -193,7 +193,7 @@
   .price-submit .btn-primary { width: 100%; justify-content: center; font-size: 0.88rem; padding: 0.85rem; }
   .price-submit p { font-size: 0.7rem; opacity: 0.35; text-align: center; margin-top: 0.6rem; line-height: 1.4; }
 
-  /* -- MOBILE PRICE BAR -- */
+  /* ── MOBILE PRICE BAR ── */
   .mob-bar {
     display: none;
     position: fixed; bottom: 0; left: 0; right: 0;
@@ -210,10 +210,10 @@
   .mob-label { font-size: 0.7rem; opacity: 0.45; }
   .mob-val { font-size: 1.05rem; font-weight: 800; color: var(--accent2); }
 
-  /* -- MOBILE SUBMIT (inside form, hidden on desktop) -- */
+  /* ── MOBILE SUBMIT (inside form, hidden on desktop) ── */
   .mob-submit { display: none; }
 
-  /* -- FORM ROW -- */
+  /* ── FORM ROW ── */
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
 
@@ -236,7 +236,7 @@
         <a href="about.html">About</a>
     </div>
     <a href="build.html" class="btn-nav desktop-only active" style="background:var(--accent);">Build My Site</a>
-    <button class="menu-toggle" aria-label="Open menu">?</button>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
   </div>
   <div class="mobile-nav">
     <a href="index.html">Home</a>
@@ -257,7 +257,7 @@
     <div class="page-hero-inner">
       <span class="section-label">Transparent Pricing</span>
       <h1>Build your site.</h1>
-      <p class="lead">Answer a few questions about your business and what you need. Watch your estimate build in real time � no sales call required to know what to expect.</p>
+      <p class="lead">Answer a few questions about your business and what you need. Watch your estimate build in real time — no sales call required to know what to expect.</p>
     </div>
   </section>
 
@@ -265,7 +265,7 @@
     <div class="section-inner">
       <div class="build-layout">
 
-        <!-- -- FORM -- -->
+        <!-- ── FORM ── -->
         <div>
           <form
             id="buildForm"
@@ -283,7 +283,7 @@
             <input type="hidden" name="selected-addons" id="hiddenAddons">
             <input type="hidden" name="commitment-term" id="hiddenTerm" value="12">
 
-            <!-- ? ABOUT YOU -->
+            <!-- ① ABOUT YOU -->
             <div class="fs">
               <div class="fs-head">
                 <div class="fs-num">1</div>
@@ -317,7 +317,7 @@
                 <div class="form-group">
                   <label for="industry">Industry</label>
                   <select id="industry" name="industry">
-                    <option value="" disabled selected>Select your industry�</option>
+                    <option value="" disabled selected>Select your industry…</option>
                     <option>Contractor / Trades</option>
                     <option>HVAC / Plumbing / Electrical</option>
                     <option>Real Estate</option>
@@ -334,7 +334,7 @@
               </div>
             </div>
 
-            <!-- ? YOUR SITUATION -->
+            <!-- ② YOUR SITUATION -->
             <div class="fs">
               <div class="fs-head">
                 <div class="fs-num">2</div>
@@ -363,7 +363,7 @@
                 <div class="form-group" style="margin-bottom:1.25rem;">
                   <label for="issue">What's the main problem with your current site?</label>
                   <select id="issue" name="existing_issue">
-                    <option value="" disabled selected>Select the main issue�</option>
+                    <option value="" disabled selected>Select the main issue…</option>
                     <option>Looks outdated or unprofessional</option>
                     <option>Doesn't show up on Google</option>
                     <option>Not converting visitors into leads</option>
@@ -409,7 +409,7 @@
               </div>
             </div>
 
-            <!-- ? PAYMENT MODEL -->
+            <!-- ③ PAYMENT MODEL -->
             <div class="fs">
               <div class="fs-head">
                 <div class="fs-num">3</div>
@@ -420,22 +420,22 @@
                   <input type="radio" name="payment_model" id="pay_onetime" value="One-time build">
                   <label for="pay_onetime">
                     <span class="opt-title">One-time build</span>
-                    <span class="opt-price">$900 � $6,000</span>
-                    <span class="opt-desc">Pay once, own your site outright. You keep the code � take it anywhere, no strings attached.</span>
+                    <span class="opt-price">$900 – $6,000</span>
+                    <span class="opt-desc">Pay once, own your site outright. You keep the code — take it anywhere, no strings attached.</span>
                   </label>
                 </div>
                 <div class="opt">
                   <input type="radio" name="payment_model" id="pay_waas" value="Website as a Service">
                   <label for="pay_waas">
                     <span class="opt-title">Website as a Service</span>
-                    <span class="opt-price">$199 � $299 / mo</span>
+                    <span class="opt-price">$199 – $299 / mo</span>
                     <span class="opt-desc">No upfront cost. We build, host, and manage everything under a 12-month commitment. After that, your site is paid off and you continue on a maintenance plan.</span>
                   </label>
                 </div>
               </div>
             </div>
 
-            <!-- ?a ONE-TIME BUILD SELECTION -->
+            <!-- ④a ONE-TIME BUILD SELECTION -->
             <div id="sec_onetime" class="cond">
 
               <div class="fs">
@@ -446,28 +446,28 @@
                 <p class="fs-note">All packages include mobile-first design, contact form, SSL, and hosting setup. Maintenance plan selected separately below.</p>
                 <div class="opt-grid">
                   <div class="opt">
-                    <input type="radio" name="build_package" id="pkg_ess" value="Essential ($900�$1,500)">
+                    <input type="radio" name="build_package" id="pkg_ess" value="Essential ($900–$1,500)">
                     <label for="pkg_ess">
                       <span class="opt-title">Essential Website</span>
-                      <span class="opt-price">$900 � $1,500</span>
-                      <span class="opt-desc">Up to 5 pages � Mobile-optimized � Contact form � Basic local SEO setup � Best for businesses getting started online.</span>
+                      <span class="opt-price">$900 – $1,500</span>
+                      <span class="opt-desc">Up to 5 pages · Mobile-optimized · Contact form · Basic local SEO setup · Best for businesses getting started online.</span>
                     </label>
                   </div>
                   <div class="opt">
-                    <input type="radio" name="build_package" id="pkg_pro" value="Professional ($1,800�$3,000)">
+                    <input type="radio" name="build_package" id="pkg_pro" value="Professional ($1,800–$3,000)">
                     <label for="pkg_pro">
                       <span class="opt-badge">Most Popular</span>
                       <span class="opt-title">Professional Business Website</span>
-                      <span class="opt-price">$1,800 � $3,000</span>
-                      <span class="opt-desc">Up to 10 pages � Conversion-optimized layout � Full local SEO � Google Analytics � Service area pages � Built to generate consistent leads.</span>
+                      <span class="opt-price">$1,800 – $3,000</span>
+                      <span class="opt-desc">Up to 10 pages · Conversion-optimized layout · Full local SEO · Google Analytics · Service area pages · Built to generate consistent leads.</span>
                     </label>
                   </div>
                   <div class="opt">
-                    <input type="radio" name="build_package" id="pkg_growth" value="Growth System ($3,500�$6,000)">
+                    <input type="radio" name="build_package" id="pkg_growth" value="Growth System ($3,500–$6,000)">
                     <label for="pkg_growth">
                       <span class="opt-title">Growth Website System</span>
-                      <span class="opt-price">$3,500 � $6,000</span>
-                      <span class="opt-desc">10+ pages � Blog/content system � Lead funnels � Advanced SEO architecture � Multiple service &amp; location pages � Built to scale.</span>
+                      <span class="opt-price">$3,500 – $6,000</span>
+                      <span class="opt-desc">10+ pages · Blog/content system · Lead funnels · Advanced SEO architecture · Multiple service &amp; location pages · Built to scale.</span>
                     </label>
                   </div>
                 </div>
@@ -477,10 +477,10 @@
               <!-- MAINTENANCE PLAN (one-time builds) -->
               <div class="fs">
                 <div class="fs-head">
-                  <div class="fs-num alt">?</div>
+                  <div class="fs-num alt">→</div>
                   <h2 class="fs-title">Ongoing maintenance plan</h2>
                 </div>
-                <p class="fs-note">Every build includes ongoing maintenance � your site doesn't go live without one. Hosting, SSL, and security are covered from day one. Choose the level of care that fits your needs.</p>
+                <p class="fs-note">Every build includes ongoing maintenance — your site doesn't go live without one. Hosting, SSL, and security are covered from day one. Choose the level of care that fits your needs.</p>
                 <div class="opt-grid c2">
                   <div class="opt">
                     <input type="radio" name="maintenance" id="maint_starter" value="Starter ($50/mo)" required>
@@ -520,7 +520,7 @@
 
             </div><!-- /sec_onetime -->
 
-            <!-- ?b WAAS SELECTION -->
+            <!-- ④b WAAS SELECTION -->
             <div id="sec_waas" class="cond">
               <div class="fs">
                 <div class="fs-head">
@@ -534,7 +534,7 @@
                     <label for="waas_ess">
                       <span class="opt-title">Essential Build</span>
                       <span class="opt-price">$199 / mo</span>
-                      <span class="opt-desc">Up to 5 pages � Mobile-optimized � Contact form � Basic local SEO � Hosting &amp; maintenance all included.</span>
+                      <span class="opt-desc">Up to 5 pages · Mobile-optimized · Contact form · Basic local SEO · Hosting &amp; maintenance all included.</span>
                     </label>
                   </div>
                   <div class="opt">
@@ -543,7 +543,7 @@
                       <span class="opt-badge">Most Popular</span>
                       <span class="opt-title">Professional Build</span>
                       <span class="opt-price">$299 / mo</span>
-                      <span class="opt-desc">Up to 10 pages � Conversion-optimized � Full local SEO setup � Analytics � Unlimited minor edits � Hosting &amp; maintenance all included.</span>
+                      <span class="opt-desc">Up to 10 pages · Conversion-optimized · Full local SEO setup · Analytics · Unlimited minor edits · Hosting &amp; maintenance all included.</span>
                     </label>
                   </div>
                 </div>
@@ -552,7 +552,7 @@
               </div>
             </div><!-- /sec_waas -->
 
-            <!-- ? ADD-ONS -->
+            <!-- ⑤ ADD-ONS -->
             <div class="fs">
               <div class="fs-head">
                 <div class="fs-num">5</div>
@@ -585,7 +585,7 @@
                   <label for="ao_rush">
                     <div class="addon-text">
                       <span class="addon-name">Rush Delivery</span>
-                      <span class="addon-sub">Priority delivery � standard turnaround is about 1 week, this moves you to the front of the queue</span>
+                      <span class="addon-sub">Priority delivery — standard turnaround is about 1 week, this moves you to the front of the queue</span>
                     </div>
                     <span class="addon-tag">+ $300</span>
                   </label>
@@ -593,7 +593,7 @@
               </div>
             </div>
 
-            <!-- ? YOUR VISION -->
+            <!-- ⑥ YOUR VISION -->
             <div class="fs">
               <div class="fs-head">
                 <div class="fs-num">6</div>
@@ -604,9 +604,9 @@
                   <label for="pages">Expected number of pages</label>
                   <select id="pages" name="pages">
                     <option value="" disabled selected>How many pages?</option>
-                    <option value="1-3">1�3 pages (home, about, contact)</option>
-                    <option value="4-5">4�5 pages</option>
-                    <option value="6-10">6�10 pages</option>
+                    <option value="1-3">1–3 pages (home, about, contact)</option>
+                    <option value="4-5">4–5 pages</option>
+                    <option value="6-10">6–10 pages</option>
                     <option value="10+">10+ pages</option>
                   </select>
                 </div>
@@ -614,10 +614,10 @@
                   <label for="timeline">Desired launch timeline</label>
                   <select id="timeline" name="timeline">
                     <option value="" disabled selected>When do you need it?</option>
-                    <option>ASAP � under 2 weeks</option>
+                    <option>ASAP — under 2 weeks</option>
                     <option>Within 1 month</option>
-                    <option>1�2 months</option>
-                    <option>No rush � quality over speed</option>
+                    <option>1–2 months</option>
+                    <option>No rush — quality over speed</option>
                   </select>
                 </div>
               </div>
@@ -625,31 +625,31 @@
                 <label for="assets">Brand assets &amp; content</label>
                 <select id="assets" name="assets">
                   <option value="" disabled selected>What do you have ready?</option>
-                  <option>Everything � logo, photos, and written content ready to go</option>
-                  <option>Partially � I have some assets but need help with others</option>
-                  <option>Nothing yet � starting from scratch, need help with everything</option>
+                  <option>Everything — logo, photos, and written content ready to go</option>
+                  <option>Partially — I have some assets but need help with others</option>
+                  <option>Nothing yet — starting from scratch, need help with everything</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="competitors">Competitor or inspiration sites</label>
-                <input type="text" id="competitors" name="competitors" placeholder="Optional � paste URLs or describe the style you like">
+                <input type="text" id="competitors" name="competitors" placeholder="Optional — paste URLs or describe the style you like">
               </div>
               <div class="form-group">
                 <label for="message">Anything else I should know?</label>
-                <textarea id="message" name="message" style="min-height:110px;" placeholder="Special requirements, must-haves, things you definitely don't want, questions�"></textarea>
+                <textarea id="message" name="message" style="min-height:110px;" placeholder="Special requirements, must-haves, things you definitely don't want, questions…"></textarea>
               </div>
             </div>
 
             <!-- MOBILE SUBMIT -->
             <div class="mob-submit">
-              <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:1rem;">Send My Project Details ?</button>
-              <p style="text-align:center;font-size:0.78rem;color:var(--muted);">I'll review and respond within 24 hours � personally.</p>
+              <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:1rem;">Send My Project Details →</button>
+              <p style="text-align:center;font-size:0.78rem;color:var(--muted);">I'll review and respond within 24 hours — personally.</p>
             </div>
 
           </form>
         </div><!-- /form col -->
 
-        <!-- -- PRICE SUMMARY PANEL -- -->
+        <!-- ── PRICE SUMMARY PANEL ── -->
         <div>
           <div class="price-panel">
             <div class="price-panel-head">Your Estimate</div>
@@ -662,7 +662,7 @@
               <div class="price-lines" id="priceLines"></div>
               <div class="price-total">
                 <span class="pt-label" id="totalLabel">Estimated Investment</span>
-                <span class="pt-val" id="totalVal">�</span>
+                <span class="pt-val" id="totalVal">—</span>
               </div>
               <div class="price-sub" id="priceSub" style="display:none;"></div>
             </div>
@@ -670,7 +670,7 @@
             <p class="price-disclaimer">Estimates are based on your inputs. Final pricing confirmed after your free discovery call.</p>
 
             <div class="price-submit">
-              <button type="submit" form="buildForm" class="btn-primary">Send My Details ?</button>
+              <button type="submit" form="buildForm" class="btn-primary">Send My Details →</button>
               <p>No commitment. Just a response from me, personally.</p>
             </div>
           </div>
@@ -694,7 +694,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <a href="index.html" class="logo"><img src="logo-transparent.png" alt="Deep Water Websites" class="footer-logo-img"></a>
-      <p>Web Designer & SEO Specialist<br>Deltona, FL � Available Nationwide</p>
+      <p>Web Designer & SEO Specialist<br>Deltona, FL · Available Nationwide</p>
     </div>
     <div class="footer-cols">
       <div class="footer-col">
@@ -714,13 +714,13 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>� 2026 Deep Water Websites. All rights reserved.</p>
-    <p>Web Design & SEO � Deltona, FL</p>
+    <p>© 2026 Deep Water Websites. All rights reserved.</p>
+    <p>Web Design & SEO · Deltona, FL</p>
   </div>
 </footer>
 
 <script>
-// -- PRICING DATA --
+// ── PRICING DATA ──
 const P = {
   builds: {
     pkg_ess:    { label: 'Essential Website',         min: 900,  max: 1500 },
@@ -749,9 +749,9 @@ let model = null;   // 'onetime' | 'waas'
 let term  = 12;
 
 function fmt(n)       { return '$' + n.toLocaleString('en-US'); }
-function range(a, b)  { return fmt(a) + ' � ' + fmt(b); }
+function range(a, b)  { return fmt(a) + ' – ' + fmt(b); }
 
-// -- PAYMENT MODEL SWITCH --
+// ── PAYMENT MODEL SWITCH ──
 document.querySelectorAll('input[name="payment_model"]').forEach(r => {
   r.addEventListener('change', () => {
     model = r.id === 'pay_onetime' ? 'onetime' : 'waas';
@@ -774,7 +774,7 @@ function updateWaasNote() {
   if (!tier) { el.innerHTML = 'Select a tier above to see your 12-month commitment total.'; return; }
   const d = P.waas[tier.id];
   const total = d.monthly * 12;
-  el.innerHTML = `<strong>${d.label} � ${fmt(d.monthly)}/mo � 12 months</strong><br>Minimum commitment: ${fmt(total)} total &nbsp;�&nbsp; After 12 months, your site is paid off and you continue on a maintenance plan starting at $50/mo.`;
+  el.innerHTML = `<strong>${d.label} · ${fmt(d.monthly)}/mo × 12 months</strong><br>Minimum commitment: ${fmt(total)} total &nbsp;·&nbsp; After 12 months, your site is paid off and you continue on a maintenance plan starting at $50/mo.`;
 }
 
 // WaaS tier change
@@ -793,7 +793,7 @@ Object.keys(P.addons).forEach(id => {
   if (el) el.addEventListener('change', refreshPrice);
 });
 
-// -- PRICE REFRESH --
+// ── PRICE REFRESH ──
 function refreshPrice() {
   const empty   = document.getElementById('priceEmpty');
   const content = document.getElementById('priceContent');
@@ -870,10 +870,10 @@ function refreshPrice() {
     totalLbl.textContent = 'Monthly Rate';
     totalVal.textContent  = fmt(monthly) + '/mo';
     priceSub.style.display = 'block';
-    priceSub.innerHTML = `${term}-month commitment &nbsp;�&nbsp; <strong>${fmt(commitTotal)} total</strong>`;
+    priceSub.innerHTML = `${term}-month commitment &nbsp;·&nbsp; <strong>${fmt(commitTotal)} total</strong>`;
     mobVal.textContent = fmt(monthly) + '/mo';
     document.getElementById('hiddenTotal').value =
-      fmt(monthly) + '/mo � ' + term + '-month (' + fmt(commitTotal) + ' total)';
+      fmt(monthly) + '/mo · ' + term + '-month (' + fmt(commitTotal) + ' total)';
   } else {
     const hasRange = onceMax > onceMin;
     const totalStr = hasRange ? range(onceMin, onceMax) : fmt(onceMin);
@@ -905,7 +905,7 @@ function refreshPrice() {
   mobBar.classList.add('on');
 }
 
-// -- EXISTING WEBSITE TOGGLE --
+// ── EXISTING WEBSITE TOGGLE ──
 document.querySelectorAll('input[name="has_website"]').forEach(r => {
   r.addEventListener('change', () => {
     document.getElementById('existingIssue').style.display =
@@ -913,10 +913,10 @@ document.querySelectorAll('input[name="has_website"]').forEach(r => {
   });
 });
 
-// -- RUSH DELIVERY TIP (auto-check if ASAP selected) --
+// ── RUSH DELIVERY TIP (auto-check if ASAP selected) ──
 document.getElementById('timeline').addEventListener('change', function() {
   const rush = document.getElementById('ao_rush');
-  if (this.value === 'ASAP � under 2 weeks' && !rush.checked) {
+  if (this.value === 'ASAP — under 2 weeks' && !rush.checked) {
     rush.checked = true;
     refreshPrice();
   }
