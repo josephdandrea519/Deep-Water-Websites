@@ -1,4 +1,4 @@
-/* =========================================
+﻿/* =========================================
    SHARED STYLES — Deep Water Websites
    ========================================= */
 
@@ -163,8 +163,8 @@ nav {
 
 /* ─── PAGE TOP OFFSET ─── */
 .page-top { padding-top: 155px; }
-@media (max-width: 900px) { .page-top { padding-top: 115px; } }
-@media (max-width: 480px) { .page-top { padding-top: 95px; } }
+@media (max-width: 900px) { .page-top { padding-top: 80px; } }
+@media (max-width: 480px) { .page-top { padding-top: 70px; } }
 
 /* ─── HERO ─── */
 .page-hero {
@@ -666,8 +666,8 @@ footer {
   display: block;
   filter: brightness(1.6) contrast(1.05);
 }
-@media (max-width: 900px) { .nav-logo-img { height: 100px; } }
-@media (max-width: 480px) { .nav-logo-img { height: 80px; } }
+@media (max-width: 900px) { .nav-logo-img { height: 60px; width: auto; max-width: 120px; } }
+@media (max-width: 480px) { .nav-logo-img { height: 50px; width: auto; max-width: 100px; } }
 .footer-logo-img {
   height: 68px;
   width: auto;
