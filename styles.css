@@ -184,6 +184,10 @@ nav {
 }
 .hero-blob-1 { width: 450px; height: 450px; background: var(--accent); top: -120px; right: -120px; }
 .hero-blob-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; left: -80px; animation-delay: -4s; }
+@media (max-width: 768px) {
+  .hero-blob-1 { width: 200px; height: 200px; }
+  .hero-blob-2 { width: 150px; height: 150px; }
+}
 .page-hero-inner {
   max-width: 760px;
   margin: 0 auto;
