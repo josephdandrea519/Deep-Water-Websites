@@ -955,7 +955,9 @@
   .why-callout strong { color: var(--accent2); }
 
   @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
+    nav { padding: 1rem 1.5rem; height: auto; min-height: unset; }
+    .nav-logo-img { display: none !important; }
+    .logo::before { content: "Deep Water"; font-size: 1.1rem; font-weight: 700; color: #bdd5e8; letter-spacing: -0.02em; }
     .nav-links { display: none; }
     #menuToggle { display: block !important; }
     .hero { grid-template-columns: 1fr; width: 100%; padding: 5rem 1.25rem 3rem; gap: 2rem; }
