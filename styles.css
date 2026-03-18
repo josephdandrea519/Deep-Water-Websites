@@ -163,8 +163,8 @@ nav {
 
 /* ─── PAGE TOP OFFSET ─── */
 .page-top { padding-top: 165px; }
-@media (max-width: 900px) { .page-top { padding-top: 90px; } }
-@media (max-width: 480px) { .page-top { padding-top: 90px; } }
+@media (max-width: 900px) { .page-top { padding-top: 170px; } }
+@media (max-width: 480px) { .page-top { padding-top: 170px; } }
 
 /* ─── HERO ─── */
 .page-hero {
@@ -666,7 +666,7 @@ footer {
   display: block;
   filter: brightness(1.6) contrast(1.05);
 }
-@media (max-width: 900px) { .nav-logo-img { height: 80px; width: auto; } }
+@media (max-width: 900px) { .nav-logo-img { height: 120px; width: auto; } }
 .footer-logo-img {
   height: 68px;
   width: auto;
