@@ -161,23 +161,8 @@ nav {
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .btn-nav.desktop-only { display: none; }
-  /* Hide the wordmark text next to the logo */
-  .logo-wordmark,
-  .desktop-only {
-    display: none !important;
-  }
-  /* Ensure hamburger is visible and pushed to the right */
-  .menu-toggle {
-    display: block !important;
-    margin-left: auto;
-  }
-  /* Make nav-inner layout work on mobile */
-  .nav-inner {
-    justify-content: space-between;
-  }
-  .logo { flex-shrink: 1; min-width: 0; max-width: calc(100% - 60px); }
-  .logo-squid-wrap { height: 58px; }
-  .nav-logo-img { height: 150px; width: auto; display: block; margin-top: -8px; }
+  .menu-toggle { display: block !important; }
+  .logo-wordmark { display: none !important; }
 }
 
 /* ─── PAGE TOP OFFSET ─── */
@@ -697,5 +682,7 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .logo-wordmark { display: none; }
+  .logo-squid-wrap { height: 58px; }
+  .nav-logo-img { height: 155px; width: auto; display: block; margin-top: -8px; }
+  .logo-wordmark { display: none !important; }
 }
