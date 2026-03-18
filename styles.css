@@ -167,8 +167,8 @@ nav {
 
 /* ─── PAGE TOP OFFSET ─── */
 .page-top { padding-top: 90px; }
-@media (max-width: 900px) { .page-top { padding-top: calc(64px + env(safe-area-inset-top)); } }
-@media (max-width: 480px) { .page-top { padding-top: calc(64px + env(safe-area-inset-top)); } }
+@media (max-width: 900px) { .page-top { padding-top: calc(70px + env(safe-area-inset-top)); } }
+@media (max-width: 480px) { .page-top { padding-top: calc(70px + env(safe-area-inset-top)); } }
 
 /* ─── HERO ─── */
 .page-hero {
@@ -689,21 +689,23 @@ footer {
     padding-left: 1rem;
   }
   .nav-inner {
-    height: 64px;
+    height: 70px;
     justify-content: space-between;
     align-items: center;
     gap: 0;
   }
   .logo-squid-wrap {
-    height: 54px;
+    width: 140px;
+    height: 66px;
     overflow: hidden;
     flex-shrink: 0;
   }
   .nav-logo-img {
-    height: 140px;
-    width: auto;
-    display: block;
-    margin-top: -6px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    margin-top: 0;
   }
   .logo-wordmark { display: none !important; }
 }
