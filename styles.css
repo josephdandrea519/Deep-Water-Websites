@@ -167,8 +167,8 @@ nav {
 
 /* ─── PAGE TOP OFFSET ─── */
 .page-top { padding-top: 90px; }
-@media (max-width: 900px) { .page-top { padding-top: 95px; } }
-@media (max-width: 480px) { .page-top { padding-top: 95px; } }
+@media (max-width: 900px) { .page-top { padding-top: 130px; } }
+@media (max-width: 480px) { .page-top { padding-top: 130px; } }
 
 /* ─── HERO ─── */
 .page-hero {
