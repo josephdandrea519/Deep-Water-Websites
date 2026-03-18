@@ -157,11 +157,7 @@ nav {
   border-bottom: none;
 }
 .mobile-nav.open { display: flex; }
-@media (max-width: 900px) {
-  .nav-links { display: none; }
-  .btn-nav.desktop-only { display: none; }
-  .menu-toggle { display: block; }
-}
+/* consolidated in logo block below */
 
 /* ─── PAGE TOP OFFSET ─── */
 .page-top { padding-top: 165px; }
@@ -690,12 +686,37 @@ footer {
 }
 .logo-wordmark strong { color: var(--accent); }
 @media (max-width: 900px) {
-  .nav-inner { justify-content: space-between; }
-  .logo { flex-shrink: 1; min-width: 0; }
-  .logo-squid-wrap { height: 44px; width: 44px; overflow: hidden; flex-shrink: 0; }
-  .nav-logo-img { height: 72px; width: auto; }
-  .logo-wordmark { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .menu-toggle { flex-shrink: 0; display: block !important; }
+  .nav-links { display: none; }
+  .btn-nav.desktop-only { display: none; }
+  .nav-inner {
+    justify-content: space-between;
+  }
+  .logo {
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  .logo-squid-wrap {
+    height: 44px;
+    width: 44px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .nav-logo-img {
+    height: 72px;
+    width: auto;
+    display: block;
+  }
+  .logo-wordmark {
+    font-size: 0.95rem;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .menu-toggle {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
 }
 .footer-logo-img {
   height: 68px;
