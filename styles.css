@@ -176,6 +176,8 @@ nav {
     justify-content: space-between;
   }
   .logo { flex-shrink: 1; min-width: 0; max-width: calc(100% - 60px); }
+  .logo-squid-wrap { height: 58px; }
+  .nav-logo-img { height: 150px; width: auto; display: block; margin-top: -8px; }
 }
 
 /* ─── PAGE TOP OFFSET ─── */
@@ -673,10 +675,17 @@ footer {
 }
 
 /* ── LOGO IMAGE ── */
+.logo-squid-wrap {
+  overflow: hidden;
+  height: 72px;        /* crops to squid body only */
+  flex-shrink: 0;
+  display: block;
+}
 .nav-logo-img {
-  height: 52px;
+  height: 190px;       /* larger squid */
   width: auto;
   display: block;
+  margin-top: -10px;   /* shift up slightly to center squid */
   filter: brightness(1.6) contrast(1.05);
 }
 .footer-logo-img {
