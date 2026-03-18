@@ -664,12 +664,13 @@ footer {
 /* ── LOGO IMAGE ── */
 .logo-squid-wrap {
   overflow: hidden;
-  height: 104px;
+  height: 44px;
+  width: 44px;
   flex-shrink: 0;
   display: block;
 }
 .nav-logo-img {
-  height: 169px;
+  height: 72px;
   width: auto;
   display: block;
   filter: brightness(1.6) contrast(1.05);
@@ -694,17 +695,6 @@ footer {
   .logo {
     flex-shrink: 1;
     min-width: 0;
-  }
-  .logo-squid-wrap {
-    height: 44px;
-    width: 44px;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .nav-logo-img {
-    height: 72px;
-    width: auto;
-    display: block;
   }
   .logo-wordmark {
     font-size: 0.95rem;
