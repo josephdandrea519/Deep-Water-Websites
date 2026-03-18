@@ -688,10 +688,11 @@ footer {
 }
 .logo-wordmark strong { color: var(--accent); }
 @media (max-width: 900px) {
-  .logo { flex-shrink: 0; max-width: calc(100% - 70px); }
-  .logo-squid-wrap { height: 61px; max-width: 120px; overflow: hidden; }
-  .nav-logo-img { height: 100px; width: auto; max-width: none; }
-  .logo-wordmark { display: none; }
+  .nav-inner { justify-content: space-between; }
+  .logo { flex-shrink: 1; min-width: 0; }
+  .logo-squid-wrap { height: 44px; width: 44px; overflow: hidden; flex-shrink: 0; }
+  .nav-logo-img { height: 72px; width: auto; }
+  .logo-wordmark { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .menu-toggle { flex-shrink: 0; display: block !important; }
 }
 .footer-logo-img {
