@@ -166,6 +166,10 @@ nav {
 @media (max-width: 900px) { .page-top { padding-top: 170px; } }
 @media (max-width: 480px) { .page-top { padding-top: 170px; } }
 
+/* ─── PAGE HERO MOBILE PADDING OVERRIDE ─── */
+@media (max-width: 900px) { .page-hero { padding-top: 2.5rem; } }
+@media (max-width: 480px) { .page-hero { padding-top: 2rem; } }
+
 /* ─── HERO ─── */
 .page-hero {
   padding: 7rem 2rem 5rem;
