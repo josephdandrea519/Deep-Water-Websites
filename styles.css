@@ -675,5 +675,5 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .logo-wordmark.desktop-only { display: none; }
+  .logo-wordmark { display: none; }
 }
