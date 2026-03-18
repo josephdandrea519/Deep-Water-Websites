@@ -162,9 +162,9 @@ nav {
 }
 
 /* ─── PAGE TOP OFFSET ─── */
-.page-top { padding-top: 155px; }
-@media (max-width: 900px) { .page-top { padding-top: 75px; } }
-@media (max-width: 480px) { .page-top { padding-top: 70px; } }
+.page-top { padding-top: 95px; }
+@media (max-width: 900px) { .page-top { padding-top: 85px; } }
+@media (max-width: 480px) { .page-top { padding-top: 85px; } }
 
 /* ─── HERO ─── */
 .page-hero {
@@ -661,12 +661,12 @@ footer {
 
 /* ── LOGO IMAGE ── */
 .nav-logo-img {
-  height: 150px;
+  height: 90px;
   width: auto;
   display: block;
   filter: brightness(1.6) contrast(1.05);
 }
-@media (max-width: 900px) { .nav-logo-img { height: 65px; width: auto; } }
+@media (max-width: 900px) { .nav-logo-img { height: 80px; width: auto; } }
 .footer-logo-img {
   height: 68px;
   width: auto;
