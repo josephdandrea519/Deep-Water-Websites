@@ -161,8 +161,20 @@ nav {
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .btn-nav.desktop-only { display: none; }
-  .logo-wordmark.desktop-only { display: none; }
-  .menu-toggle { display: block; }
+  /* Hide the wordmark text next to the logo */
+  .logo-wordmark,
+  .desktop-only {
+    display: none;
+  }
+  /* Ensure hamburger is visible and pushed to the right */
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+  /* Make nav-inner layout work on mobile */
+  .nav-inner {
+    justify-content: space-between;
+  }
   .logo { flex-shrink: 1; min-width: 0; max-width: calc(100% - 60px); }
 }
 
