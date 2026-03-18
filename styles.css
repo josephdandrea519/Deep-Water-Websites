@@ -684,15 +684,14 @@ footer {
 @media (max-width: 900px) {
   nav {
     height: auto;
-    padding: env(safe-area-inset-top) 1.5rem 0 1.5rem;
+    padding: 0 1.5rem;
+    padding-top: env(safe-area-inset-top);
+    margin-top: 0;
   }
   .nav-inner {
-    justify-content: flex-start;
-    gap: 1rem;
-    padding-bottom: 0.25rem;
-  }
-  .menu-toggle {
-    margin-left: auto;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0;
   }
   .logo-squid-wrap { height: 58px; }
   .nav-logo-img { height: 155px; width: auto; display: block; margin-top: -8px; }
