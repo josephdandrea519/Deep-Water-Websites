@@ -164,11 +164,11 @@ nav {
   /* Hide the wordmark text next to the logo */
   .logo-wordmark,
   .desktop-only {
-    display: none;
+    display: none !important;
   }
   /* Ensure hamburger is visible and pushed to the right */
   .menu-toggle {
-    display: block;
+    display: block !important;
     margin-left: auto;
   }
   /* Make nav-inner layout work on mobile */
