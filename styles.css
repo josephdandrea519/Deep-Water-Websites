@@ -713,5 +713,11 @@ footer {
     height: 58px;
     width: auto;
   }
-  .logo-wordmark { display: none !important; }
+  .logo-wordmark {
+    display: inline !important;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
 }
