@@ -166,7 +166,7 @@ nav {
 }
 
 /* ─── PAGE TOP OFFSET ─── */
-.page-top { padding-top: 155px; }
+.page-top { padding-top: 90px; }
 @media (max-width: 900px) { .page-top { padding-top: 70px; } }
 @media (max-width: 480px) { .page-top { padding-top: 65px; } }
 
