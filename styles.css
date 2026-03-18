@@ -664,13 +664,34 @@ footer {
 }
 
 /* ── LOGO IMAGE ── */
+.logo-squid-wrap {
+  overflow: hidden;
+  height: 104px;
+  flex-shrink: 0;
+  display: block;
+}
 .nav-logo-img {
-  height: 150px;
+  height: 169px;
   width: auto;
   display: block;
   filter: brightness(1.6) contrast(1.05);
 }
-@media (max-width: 900px) { .nav-logo-img { height: 120px; width: auto; } }
+.logo-wordmark {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #bdd5e8;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-left: -1.5rem;
+  white-space: nowrap;
+  align-self: center;
+}
+.logo-wordmark strong { color: var(--accent); }
+@media (max-width: 900px) {
+  .logo-squid-wrap { height: 84px; }
+  .nav-logo-img { height: 138px; width: auto; }
+  .logo-wordmark { font-size: 0.95rem; }
+}
 .footer-logo-img {
   height: 68px;
   width: auto;
