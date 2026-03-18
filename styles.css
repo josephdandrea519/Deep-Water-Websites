@@ -673,3 +673,7 @@ footer {
   margin-bottom: 0.75rem;
   filter: brightness(1.6) contrast(1.05);
 }
+
+@media (max-width: 900px) {
+  .logo-wordmark.desktop-only { display: none; }
+}
