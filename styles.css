@@ -696,6 +696,7 @@ footer {
   .logo {
     flex-shrink: 1;
     min-width: 0;
+    max-width: calc(100% - 60px);
   }
   .logo-wordmark {
     font-size: 0.95rem;
