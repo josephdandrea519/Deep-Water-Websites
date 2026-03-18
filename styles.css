@@ -167,8 +167,8 @@ nav {
 
 /* ─── PAGE TOP OFFSET ─── */
 .page-top { padding-top: 90px; }
-@media (max-width: 900px) { .page-top { padding-top: 70px; } }
-@media (max-width: 480px) { .page-top { padding-top: 65px; } }
+@media (max-width: 900px) { .page-top { padding-top: 74px; } }
+@media (max-width: 480px) { .page-top { padding-top: 74px; } }
 
 /* ─── HERO ─── */
 .page-hero {
@@ -682,6 +682,7 @@ footer {
 }
 
 @media (max-width: 900px) {
+  nav { height: 74px; }
   .logo-squid-wrap { height: 58px; }
   .nav-logo-img { height: 155px; width: auto; display: block; margin-top: -8px; }
   .logo-wordmark { display: none !important; }
