@@ -688,10 +688,11 @@ footer {
 }
 .logo-wordmark strong { color: var(--accent); }
 @media (max-width: 900px) {
-  .logo { flex-shrink: 0; }
-  .logo-squid-wrap { height: 61px; }
-  .nav-logo-img { height: 100px; width: auto; }
+  .logo { flex-shrink: 0; max-width: calc(100% - 70px); }
+  .logo-squid-wrap { height: 61px; max-width: 120px; overflow: hidden; }
+  .nav-logo-img { height: 100px; width: auto; max-width: none; }
   .logo-wordmark { display: none; }
+  .menu-toggle { flex-shrink: 0; display: block !important; }
 }
 .footer-logo-img {
   height: 68px;
