@@ -162,9 +162,9 @@ nav {
 }
 
 /* ─── PAGE TOP OFFSET ─── */
-.page-top { padding-top: 95px; }
-@media (max-width: 900px) { .page-top { padding-top: 85px; } }
-@media (max-width: 480px) { .page-top { padding-top: 85px; } }
+.page-top { padding-top: 165px; }
+@media (max-width: 900px) { .page-top { padding-top: 90px; } }
+@media (max-width: 480px) { .page-top { padding-top: 90px; } }
 
 /* ─── HERO ─── */
 .page-hero {
@@ -661,7 +661,7 @@ footer {
 
 /* ── LOGO IMAGE ── */
 .nav-logo-img {
-  height: 90px;
+  height: 150px;
   width: auto;
   display: block;
   filter: brightness(1.6) contrast(1.05);
