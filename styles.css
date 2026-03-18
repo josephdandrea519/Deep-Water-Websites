@@ -161,6 +161,7 @@ nav {
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .btn-nav.desktop-only { display: none; }
+  .logo-wordmark.desktop-only { display: none; }
   .menu-toggle { display: block; }
   .logo { flex-shrink: 1; min-width: 0; max-width: calc(100% - 60px); }
 }
