@@ -12,7 +12,7 @@
 <link rel="preload" href="squid-mobile.png" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=18">
+<link rel="stylesheet" href="styles.css?v=19">
 <style>
   /* ── CASE STUDY LAYOUT ── */
   .case-study {
@@ -59,6 +59,13 @@
     letter-spacing: 0.08em;
     color: rgba(255,255,255,0.5);
     white-space: nowrap;
+  }
+  .case-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
   }
   .case-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
   .case-body h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
@@ -181,10 +188,7 @@
   <div class="case-study">
     <div class="case-study-inner">
       <div class="case-mockup fade-up">
-        <div class="mockup-glow" style="background:#ff4d2e;top:-50px;right:-50px;"></div>
-        <div class="mockup-glow" style="background:#1a1aff;bottom:-50px;left:-50px;"></div>
-        <div class="mockup-icon">🔥</div>
-        <span class="mockup-label">sheridanheatingandcooling.com</span>
+        <img src="portfolio-sheridan.png" alt="Sheridan Heating & Cooling website screenshot" class="case-screenshot">
       </div>
       <div class="case-body fade-up">
         <div class="case-tags">
@@ -219,10 +223,7 @@
   <div class="case-study cream-bg">
     <div class="case-study-inner reverse">
       <div class="case-mockup fade-up">
-        <div class="mockup-glow" style="background:#1a1aff;top:-50px;left:-50px;"></div>
-        <div class="mockup-glow" style="background:#4cff91;bottom:-50px;right:-50px;"></div>
-        <div class="mockup-icon">🛡️</div>
-        <span class="mockup-label">Abbey Insurance Agency</span>
+        <img src="portfolio-abbey.png" alt="Abbey Insurance Agency website screenshot" class="case-screenshot">
       </div>
       <div class="case-body fade-up">
         <div class="case-tags">
@@ -246,6 +247,41 @@
           <div class="case-result">
             <div class="num">NJ</div>
             <div class="lbl">Statewide SEO coverage</div>
+          </div>
+        </div>
+        <span class="case-link" style="opacity:0.5;cursor:default;">Live launch coming soon</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CASE STUDY 3: TERI BINDSHEDLER ── -->
+  <div class="case-study">
+    <div class="case-study-inner">
+      <div class="case-mockup fade-up">
+        <img src="portfolio-teri.png" alt="Teri Bindshedler NJ Realtor website screenshot" class="case-screenshot">
+      </div>
+      <div class="case-body fade-up">
+        <div class="case-tags">
+          <span class="tag">Real Estate</span>
+          <span class="tag blue">Local SEO</span>
+          <span class="tag" style="background:rgba(251,191,36,0.12);color:#b45309;">In Progress</span>
+        </div>
+        <h2>Teri Bindshedler — NJ Shore Realtor</h2>
+        <p class="client-detail">📍 Little Egg Harbor, NJ · NJ Shore Real Estate</p>
+        <p>Teri Bindshedler is an experienced NJ Shore REALTOR® serving Ocean County buyers and sellers. She needed a professional site that felt personal — not like a generic real estate template — while showcasing active listings, recent sales, and her deep local market knowledge.</p>
+        <p>The site puts current and pending listings front and center, guides buyers and sellers through a clear service breakdown, and targets hyper-local search terms across Little Egg Harbor and Ocean County to drive organic leads without ad spend.</p>
+        <div class="case-results">
+          <div class="case-result">
+            <div class="num">NJ</div>
+            <div class="lbl">Shore market coverage</div>
+          </div>
+          <div class="case-result">
+            <div class="num">100</div>
+            <div class="lbl">Google PageSpeed score</div>
+          </div>
+          <div class="case-result">
+            <div class="num">$0</div>
+            <div class="lbl">Ad spend required</div>
           </div>
         </div>
         <span class="case-link" style="opacity:0.5;cursor:default;">Live launch coming soon</span>
