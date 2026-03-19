@@ -673,7 +673,11 @@ footer {
   width: auto;
 }
 .logo-wordmark {
-  display: none;
+  display: inline;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 .footer-logo-img {
   height: 68px;
