@@ -12,7 +12,7 @@
 <link rel="preload" href="squid-mobile.png" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=19">
+<link rel="stylesheet" href="styles.css?v=20">
 <style>
   /* ── CASE STUDY LAYOUT ── */
   .case-study {
@@ -26,7 +26,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: start;
   }
   .case-study-inner.reverse { direction: rtl; }
   .case-study-inner.reverse > * { direction: ltr; }
@@ -34,12 +34,9 @@
     border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--ink);
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
     box-shadow: 0 24px 80px rgba(10,10,15,0.15);
+    align-self: start;
   }
   .mockup-glow {
     position: absolute;
@@ -62,9 +59,7 @@
   }
   .case-screenshot {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
+    height: auto;
     display: block;
   }
   .case-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
