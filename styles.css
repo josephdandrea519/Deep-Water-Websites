@@ -661,19 +661,18 @@ footer {
 
 /* ── LOGO IMAGE ── */
 .logo-squid-wrap {
-  overflow: hidden;
-  height: 72px;
+  overflow: visible;
+  height: auto;
   flex-shrink: 0;
-  display: block;
-}
-.nav-logo-img {
-  height: 190px;
-  width: auto;
-  display: block;
-  margin-top: -10px;
-  filter: brightness(1.6) contrast(1.05);
+  display: flex;
+  align-items: center;
 }
 .nav-logo-img-mobile {
+  display: block;
+  height: 52px;
+  width: auto;
+}
+.logo-wordmark {
   display: none;
 }
 .footer-logo-img {
@@ -698,18 +697,10 @@ footer {
     gap: 0;
   }
   .logo-squid-wrap {
-    width: auto;
     height: 70px;
-    overflow: visible;
-    flex-shrink: 0;
-    display: flex;
     align-items: center;
   }
-  .nav-logo-img {
-    display: none;
-  }
   .nav-logo-img-mobile {
-    display: block;
     height: 58px;
     width: auto;
   }
