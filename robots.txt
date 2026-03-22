@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /thank-you.html
 
-Sitemap: YOUR_DOMAIN_PLACEHOLDER/sitemap.xml
+Sitemap: https://deepwaterwebsites.com/sitemap.xml
