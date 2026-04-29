@@ -147,6 +147,157 @@
     .compare-table { font-size: 0.8rem; }
     .compare-table th, .compare-table td { padding: 0.75rem 0.75rem; }
   }
+
+  /* ── ROI CALCULATOR ── */
+  .calc-widget { max-width: 680px; margin: 0 auto; }
+
+  .calc-panel {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem 2.25rem 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .calc-panel-lbl {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.22); margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .calc-panel-lbl::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
+
+  .calc-input-group { margin-bottom: 2rem; }
+  .calc-input-group:last-of-type { margin-bottom: 0; }
+
+  .calc-input-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 1rem; margin-bottom: 0.75rem;
+  }
+  .calc-label {
+    font-size: 0.875rem; font-weight: 600; color: var(--muted);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .calc-live {
+    font-size: 1.4rem; font-weight: 800; letter-spacing: -0.04em;
+    color: var(--accent2); line-height: 1; min-width: 80px; text-align: right;
+  }
+  .calc-slider-row { display: flex; align-items: center; gap: 1rem; }
+
+  input[type="range"].calc-range {
+    -webkit-appearance: none; appearance: none; flex: 1;
+    height: 4px; border-radius: 2px; background: rgba(255,255,255,0.08); outline: none; cursor: none;
+  }
+  input[type="range"].calc-range::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--paper); border: 2.5px solid var(--accent);
+    box-shadow: 0 0 10px rgba(0,150,199,0.4); cursor: none;
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  input[type="range"].calc-range:hover::-webkit-slider-thumb,
+  input[type="range"].calc-range:focus::-webkit-slider-thumb {
+    box-shadow: 0 0 18px rgba(0,150,199,0.55), 0 0 0 6px rgba(0,150,199,0.12);
+    transform: scale(1.15);
+  }
+  input[type="range"].calc-range::-moz-range-thumb {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--paper); border: 2.5px solid var(--accent); cursor: none;
+  }
+
+  input[type="number"].calc-num {
+    -moz-appearance: textfield; appearance: textfield; width: 84px;
+    background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); color: #bdd5e8;
+    font-family: 'Outfit', sans-serif; font-size: 0.875rem; font-weight: 600;
+    padding: 7px 10px; text-align: center; outline: none; cursor: none;
+    transition: border-color 0.2s;
+  }
+  input[type="number"].calc-num:focus { border-color: var(--accent); }
+  input[type="number"].calc-num::-webkit-inner-spin-button { opacity: 0.4; }
+
+  .calc-range-ends {
+    display: flex; justify-content: space-between; margin-top: 5px;
+    font-size: 0.7rem; color: rgba(255,255,255,0.2); padding: 0 2px;
+  }
+
+  .calc-tip { position: relative; display: inline-flex; }
+  .calc-tip-icon {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.3); font-size: 10px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; cursor: none;
+    line-height: 1; transition: border-color 0.2s, color 0.2s;
+  }
+  .calc-tip:hover .calc-tip-icon,
+  .calc-tip:focus-within .calc-tip-icon { border-color: var(--accent); color: var(--accent); }
+  .calc-tip-bubble {
+    position: absolute; left: 50%; bottom: calc(100% + 10px); transform: translateX(-50%);
+    background: var(--card); border: 1px solid rgba(0,150,199,0.3); border-radius: var(--radius);
+    padding: 0.75rem 1rem; font-size: 0.8rem; line-height: 1.6; color: var(--muted);
+    width: 210px; pointer-events: none; opacity: 0; transition: opacity 0.18s;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 20;
+  }
+  .calc-tip-bubble::after {
+    content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    border: 6px solid transparent; border-top-color: rgba(0,150,199,0.3);
+  }
+  .calc-tip:hover .calc-tip-bubble,
+  .calc-tip:focus-within .calc-tip-bubble { opacity: 1; }
+
+  .calc-disclaimer {
+    margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.72rem; color: rgba(255,255,255,0.2); text-align: center; font-style: italic;
+  }
+
+  .calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  @media (max-width: 480px) { .calc-results { grid-template-columns: 1fr; } }
+
+  .calc-result-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius-lg); padding: 1.75rem 1.5rem; text-align: center;
+    position: relative; overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.3s;
+  }
+  .calc-result-card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); border-color: rgba(0,150,199,0.22); }
+  .calc-result-card::before {
+    content: ''; position: absolute; top: 0; left: 20px; right: 20px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .calc-result-card:hover::before { opacity: 0.4; }
+
+  .calc-result-card.gold-card { border-color: rgba(251,191,36,0.14); }
+  .calc-result-card.gold-card:hover { border-color: rgba(251,191,36,0.35); box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 24px rgba(251,191,36,0.06); }
+  .calc-result-card.gold-card::before { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+  .calc-result-icon { font-size: 1.1rem; margin-bottom: 0.5rem; display: block; }
+  .calc-result-lbl {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); margin-bottom: 0.6rem;
+  }
+  .calc-result-num {
+    font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800;
+    letter-spacing: -0.04em; color: var(--accent2); line-height: 1;
+  }
+  .calc-result-card.gold-card .calc-result-num { color: var(--gold); }
+
+  @keyframes calcFlash {
+    0%   { opacity: 0.2; transform: scale(0.97); }
+    100% { opacity: 1;   transform: scale(1); }
+  }
+  .calc-result-num.flash { animation: calcFlash 0.38s ease-out; }
+
+  .calc-cta-box {
+    background: var(--ink); border-radius: var(--radius-lg); padding: 2.5rem 2rem;
+    text-align: center; border: 1px solid rgba(255,255,255,0.06);
+  }
+  .calc-cta-box h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .calc-cta-box p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+
+  @media (max-width: 600px) {
+    .calc-panel { padding: 1.75rem 1.25rem 1.5rem; }
+    .calc-live { font-size: 1.2rem; }
+    .calc-tip-bubble { left: auto; right: 0; transform: none; }
+    .calc-tip-bubble::after { left: auto; right: 10px; transform: none; }
+  }
 </style>
 
 <script type="application/ld+json">
@@ -232,8 +383,8 @@
           <p>more organic traffic generated by SEO-optimized websites vs. unoptimized ones</p>
         </div>
       </div>
-      <p class="text-center mt-md" style="opacity:0.45;font-size:0.875rem;">
-        Example ROI: 5 new customers/month at $400 each = $2,000 in additional monthly revenue
+      <p class="text-center mt-md" style="opacity:0.55;font-size:0.875rem;">
+        <a href="#roi-calculator" style="color:var(--accent2);text-decoration:none;font-weight:600;">Calculate your own ROI with real numbers →</a>
       </p>
     </div>
   </section>
@@ -330,6 +481,115 @@
           <div class="period">– $299 / month</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── ROI CALCULATOR ── -->
+  <section class="section dark-bg" id="roi-calculator">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">Revenue Calculator</span>
+        <h2>See what your investment returns</h2>
+        <p class="muted">Plug in your numbers. See exactly what a better-converting website could mean for your business — in real dollars.</p>
+      </div>
+      <div class="calc-widget">
+
+        <!-- Inputs -->
+        <div class="calc-panel fade-up">
+          <div class="calc-panel-lbl">Your Numbers</div>
+
+          <div class="calc-input-group">
+            <div class="calc-input-row">
+              <label class="calc-label" for="c-visitors">Monthly Website Visitors</label>
+              <span class="calc-live" id="cd-visitors" aria-live="polite">500</span>
+            </div>
+            <div class="calc-slider-row">
+              <input type="range" class="calc-range" id="c-visitors"
+                min="100" max="10000" value="500" step="50"
+                aria-label="Monthly website visitors"
+                aria-valuemin="100" aria-valuemax="10000" aria-valuenow="500">
+              <input type="number" class="calc-num" id="cn-visitors"
+                min="100" max="10000" value="500"
+                aria-label="Enter monthly visitors">
+            </div>
+            <div class="calc-range-ends"><span>100</span><span>10,000</span></div>
+          </div>
+
+          <div class="calc-input-group">
+            <div class="calc-input-row">
+              <label class="calc-label" for="c-conv">
+                Current Conversion Rate
+                <span class="calc-tip">
+                  <span class="calc-tip-icon" tabindex="0" role="img" aria-label="More info">?</span>
+                  <span class="calc-tip-bubble" role="tooltip">Most small business websites convert at 1–2%. A well-optimized site targets 3–5%.</span>
+                </span>
+              </label>
+              <span class="calc-live" id="cd-conv" aria-live="polite">1.0%</span>
+            </div>
+            <div class="calc-slider-row">
+              <input type="range" class="calc-range" id="c-conv"
+                min="0.5" max="10" value="1" step="0.1"
+                aria-label="Current conversion rate"
+                aria-valuemin="0.5" aria-valuemax="10" aria-valuenow="1">
+              <input type="number" class="calc-num" id="cn-conv"
+                min="0.5" max="10" value="1" step="0.1"
+                aria-label="Enter conversion rate percent">
+            </div>
+            <div class="calc-range-ends"><span>0.5%</span><span>10%</span></div>
+          </div>
+
+          <div class="calc-input-group">
+            <div class="calc-input-row">
+              <label class="calc-label" for="c-val">Avg. Value Per New Client</label>
+              <span class="calc-live" id="cd-val" aria-live="polite">$1,500</span>
+            </div>
+            <div class="calc-slider-row">
+              <input type="range" class="calc-range" id="c-val"
+                min="100" max="10000" value="1500" step="100"
+                aria-label="Average value per new client in dollars"
+                aria-valuemin="100" aria-valuemax="10000" aria-valuenow="1500">
+              <input type="number" class="calc-num" id="cn-val"
+                min="100" max="10000" value="1500" step="100"
+                aria-label="Enter average client value">
+            </div>
+            <div class="calc-range-ends"><span>$100</span><span>$10,000</span></div>
+          </div>
+
+          <p class="calc-disclaimer">Based on avg. results across Deep Water client sites. Individual results vary.</p>
+        </div><!-- /calc-panel -->
+
+        <!-- Results -->
+        <div class="calc-results">
+          <div class="calc-result-card fade-up">
+            <span class="calc-result-icon" aria-hidden="true">📈</span>
+            <div class="calc-result-lbl">Additional Monthly Revenue</div>
+            <div class="calc-result-num" id="cr-monthly" aria-live="polite" aria-atomic="true">$0</div>
+          </div>
+          <div class="calc-result-card fade-up">
+            <span class="calc-result-icon" aria-hidden="true">💰</span>
+            <div class="calc-result-lbl">Additional Annual Revenue</div>
+            <div class="calc-result-num" id="cr-annual" aria-live="polite" aria-atomic="true">$0</div>
+          </div>
+          <div class="calc-result-card gold-card fade-up">
+            <span class="calc-result-icon" aria-hidden="true">🚀</span>
+            <div class="calc-result-lbl">Your ROI</div>
+            <div class="calc-result-num" id="cr-roi" aria-live="polite" aria-atomic="true">0%</div>
+          </div>
+          <div class="calc-result-card fade-up">
+            <span class="calc-result-icon" aria-hidden="true">⏱</span>
+            <div class="calc-result-lbl">Break-Even Timeline</div>
+            <div class="calc-result-num" id="cr-be" aria-live="polite" aria-atomic="true">0 wks</div>
+          </div>
+        </div><!-- /calc-results -->
+
+        <!-- CTA -->
+        <div class="calc-cta-box fade-up">
+          <h3>Ready to see these numbers become real?</h3>
+          <p>Most Deep Water clients see results within 30 days of launch.</p>
+          <a href="build.html" class="btn-primary">Get Your Free Site Audit →</a>
+        </div>
+
+      </div><!-- /calc-widget -->
     </div>
   </section>
 
@@ -485,6 +745,102 @@
   </div>
 </footer>
 
+<script>
+/* ─── ROI CALCULATOR ─────────────────────────────────────── */
+(function () {
+  const MONTHLY_COST    = 299;
+  const CONV_MULT       = 2.5;
+  const WEEKS_PER_MONTH = 4.33;
+
+  const S = { visitors: 500, conv: 1.0, val: 1500 };
+
+  const $ = id => document.getElementById(id);
+  const rV = $('c-visitors'),  nV = $('cn-visitors'), dV = $('cd-visitors');
+  const rC = $('c-conv'),      nC = $('cn-conv'),     dC = $('cd-conv');
+  const rW = $('c-val'),       nW = $('cn-val'),      dW = $('cd-val');
+  const elM = $('cr-monthly'), elA = $('cr-annual'), elR = $('cr-roi'), elB = $('cr-be');
+
+  function fillSlider(s) {
+    const pct = ((+s.value - +s.min) / (+s.max - +s.min)) * 100;
+    s.style.background =
+      `linear-gradient(to right,var(--accent) ${pct}%,rgba(255,255,255,0.08) ${pct}%)`;
+  }
+
+  const rafMap = {};
+
+  function countTo(el, target, dur = 520) {
+    const match = target.match(/[\d,]+/);
+    if (!match) { el.textContent = target; return; }
+    const targetNum = parseFloat(match[0].replace(/,/g, ''));
+    const startNum  = parseFloat((el.textContent.match(/[\d,]+/)?.[0] || '0').replace(/,/g, ''));
+    if (rafMap[el.id]) cancelAnimationFrame(rafMap[el.id]);
+    const t0 = performance.now();
+    function tick(now) {
+      const p    = Math.min((now - t0) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      const cur  = startNum + (targetNum - startNum) * ease;
+      el.textContent = target.replace(/[\d,]+/, Math.round(cur).toLocaleString('en-US'));
+      if (p < 1) {
+        rafMap[el.id] = requestAnimationFrame(tick);
+      } else {
+        el.textContent = target;
+        el.classList.remove('flash');
+        void el.offsetWidth;
+        el.classList.add('flash');
+      }
+    }
+    rafMap[el.id] = requestAnimationFrame(tick);
+  }
+
+  function render() {
+    const { visitors, conv, val } = S;
+    const curLeads  = visitors * (conv / 100);
+    const newLeads  = visitors * ((conv * CONV_MULT) / 100);
+    const monthly   = (newLeads - curLeads) * val;
+    const annual    = monthly * 12;
+    const annCost   = MONTHLY_COST * 12;
+    const roi       = ((annual - annCost) / annCost) * 100;
+    const breakEven = monthly > 0 ? (annCost / monthly) * WEEKS_PER_MONTH : Infinity;
+
+    countTo(elM, '$' + Math.round(monthly).toLocaleString('en-US'));
+    countTo(elA, '$' + Math.round(annual).toLocaleString('en-US'));
+    countTo(elR, Math.round(roi).toLocaleString('en-US') + '%');
+    countTo(elB, isFinite(breakEven) ? Math.ceil(breakEven).toLocaleString('en-US') + ' wks' : '∞');
+  }
+
+  function setVisitors(v) {
+    v = Math.max(100, Math.min(10000, parseInt(v) || 100));
+    S.visitors = v; rV.value = v; nV.value = v;
+    dV.textContent = v.toLocaleString('en-US');
+    rV.setAttribute('aria-valuenow', v); fillSlider(rV); render();
+  }
+  function setConv(v) {
+    v = Math.max(0.5, Math.min(10, parseFloat(v) || 0.5));
+    S.conv = v; rC.value = v; nC.value = v.toFixed(1);
+    dC.textContent = v.toFixed(1) + '%';
+    rC.setAttribute('aria-valuenow', v); fillSlider(rC); render();
+  }
+  function setVal(v) {
+    v = Math.max(100, Math.min(10000, parseInt(v) || 100));
+    S.val = v; rW.value = v; nW.value = v;
+    dW.textContent = '$' + v.toLocaleString('en-US');
+    rW.setAttribute('aria-valuenow', v); fillSlider(rW); render();
+  }
+
+  rV.addEventListener('input', e => setVisitors(e.target.value));
+  nV.addEventListener('input', e => setVisitors(e.target.value));
+  nV.addEventListener('blur',  e => setVisitors(e.target.value));
+  rC.addEventListener('input', e => setConv(e.target.value));
+  nC.addEventListener('input', e => setConv(e.target.value));
+  nC.addEventListener('blur',  e => setConv(e.target.value));
+  rW.addEventListener('input', e => setVal(e.target.value));
+  nW.addEventListener('input', e => setVal(e.target.value));
+  nW.addEventListener('blur',  e => setVal(e.target.value));
+
+  [rV, rC, rW].forEach(fillSlider);
+  render();
+}());
+</script>
 <script src="main.js?v=2"></script>
 </body>
 </html>
