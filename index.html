@@ -9,7 +9,7 @@
 <link rel="preload" href="squid-mobile.png" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=22">
+<link rel="stylesheet" href="styles.css?v=23">
 <style>
   :root {
     --ink: #0b1929;
@@ -1568,6 +1568,109 @@
   </div>
 </section>
 
+<!-- ROI CALCULATOR -->
+<section id="roi-calculator" style="background:var(--ink);color:#fff">
+  <div class="section-label">Revenue Calculator</div>
+  <h2 style="color:#fff;margin-bottom:0.75rem">See what your investment returns</h2>
+  <p style="color:rgba(255,255,255,0.5);font-size:1rem;line-height:1.7;max-width:500px;margin-bottom:3rem">Plug in your numbers. See exactly what a better-converting website could mean for your business — in real dollars.</p>
+
+  <div class="calc-widget">
+
+    <div class="calc-panel fade-up">
+      <div class="calc-panel-lbl">Your Numbers</div>
+
+      <div class="calc-input-group">
+        <div class="calc-input-row">
+          <label class="calc-label" for="hc-visitors">Monthly Website Visitors</label>
+          <span class="calc-live" id="hcd-visitors" aria-live="polite">500</span>
+        </div>
+        <div class="calc-slider-row">
+          <input type="range" class="calc-range" id="hc-visitors"
+            min="100" max="10000" value="500" step="50"
+            aria-label="Monthly website visitors"
+            aria-valuemin="100" aria-valuemax="10000" aria-valuenow="500">
+          <input type="number" class="calc-num" id="hcn-visitors"
+            min="100" max="10000" value="500"
+            aria-label="Enter monthly visitors">
+        </div>
+        <div class="calc-range-ends"><span>100</span><span>10,000</span></div>
+      </div>
+
+      <div class="calc-input-group">
+        <div class="calc-input-row">
+          <label class="calc-label" for="hc-conv">
+            Current Conversion Rate
+            <span class="calc-tip">
+              <span class="calc-tip-icon" tabindex="0" role="img" aria-label="More info">?</span>
+              <span class="calc-tip-bubble" role="tooltip">Most small business websites convert at 1–2%. A well-optimized site targets 3–5%.</span>
+            </span>
+          </label>
+          <span class="calc-live" id="hcd-conv" aria-live="polite">1.0%</span>
+        </div>
+        <div class="calc-slider-row">
+          <input type="range" class="calc-range" id="hc-conv"
+            min="0.5" max="10" value="1" step="0.1"
+            aria-label="Current conversion rate"
+            aria-valuemin="0.5" aria-valuemax="10" aria-valuenow="1">
+          <input type="number" class="calc-num" id="hcn-conv"
+            min="0.5" max="10" value="1" step="0.1"
+            aria-label="Enter conversion rate percent">
+        </div>
+        <div class="calc-range-ends"><span>0.5%</span><span>10%</span></div>
+      </div>
+
+      <div class="calc-input-group">
+        <div class="calc-input-row">
+          <label class="calc-label" for="hc-val">Avg. Value Per New Client</label>
+          <span class="calc-live" id="hcd-val" aria-live="polite">$1,500</span>
+        </div>
+        <div class="calc-slider-row">
+          <input type="range" class="calc-range" id="hc-val"
+            min="100" max="10000" value="1500" step="100"
+            aria-label="Average value per new client in dollars"
+            aria-valuemin="100" aria-valuemax="10000" aria-valuenow="1500">
+          <input type="number" class="calc-num" id="hcn-val"
+            min="100" max="10000" value="1500" step="100"
+            aria-label="Enter average client value">
+        </div>
+        <div class="calc-range-ends"><span>$100</span><span>$10,000</span></div>
+      </div>
+
+      <p class="calc-disclaimer">Based on avg. results across Deep Water client sites. Individual results vary.</p>
+    </div>
+
+    <div class="calc-results">
+      <div class="calc-result-card fade-up">
+        <span class="calc-result-icon" aria-hidden="true">📈</span>
+        <div class="calc-result-lbl">Additional Monthly Revenue</div>
+        <div class="calc-result-num" id="hcr-monthly" aria-live="polite" aria-atomic="true">$0</div>
+      </div>
+      <div class="calc-result-card fade-up">
+        <span class="calc-result-icon" aria-hidden="true">💰</span>
+        <div class="calc-result-lbl">Additional Annual Revenue</div>
+        <div class="calc-result-num" id="hcr-annual" aria-live="polite" aria-atomic="true">$0</div>
+      </div>
+      <div class="calc-result-card gold-card fade-up">
+        <span class="calc-result-icon" aria-hidden="true">🚀</span>
+        <div class="calc-result-lbl">Your ROI</div>
+        <div class="calc-result-num" id="hcr-roi" aria-live="polite" aria-atomic="true">0%</div>
+      </div>
+      <div class="calc-result-card fade-up">
+        <span class="calc-result-icon" aria-hidden="true">⏱</span>
+        <div class="calc-result-lbl">Break-Even Timeline</div>
+        <div class="calc-result-num" id="hcr-be" aria-live="polite" aria-atomic="true">0 wks</div>
+      </div>
+    </div>
+
+    <div class="calc-cta-box fade-up">
+      <h3>Ready to see these numbers become real?</h3>
+      <p>Most Deep Water clients see results within 30 days of launch.</p>
+      <a href="build.html" class="btn-primary">Get Your Free Site Audit →</a>
+    </div>
+
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="section-label">Client Love</div>
@@ -1691,6 +1794,56 @@
 </footer>
 
 <script>
+  /* ─── ROI CALCULATOR (home page) ─── */
+  (function () {
+    const MONTHLY_COST = 299, CONV_MULT = 2.5, WEEKS = 4.33;
+    const S = { visitors: 500, conv: 1.0, val: 1500 };
+    const $ = id => document.getElementById(id);
+    const rV=$('hc-visitors'),  nV=$('hcn-visitors'), dV=$('hcd-visitors');
+    const rC=$('hc-conv'),      nC=$('hcn-conv'),     dC=$('hcd-conv');
+    const rW=$('hc-val'),       nW=$('hcn-val'),      dW=$('hcd-val');
+    const elM=$('hcr-monthly'), elA=$('hcr-annual'), elR=$('hcr-roi'), elB=$('hcr-be');
+
+    function fill(s) {
+      const p = ((+s.value - +s.min) / (+s.max - +s.min)) * 100;
+      s.style.background = `linear-gradient(to right,var(--accent) ${p}%,rgba(255,255,255,0.08) ${p}%)`;
+    }
+    const raf = {};
+    function countTo(el, target, dur) {
+      dur = dur || 520;
+      const m = target.match(/[\d,]+/);
+      if (!m) { el.textContent = target; return; }
+      const to = parseFloat(m[0].replace(/,/g,'')),
+            from = parseFloat((el.textContent.match(/[\d,]+/)||['0'])[0].replace(/,/g,''));
+      if (raf[el.id]) cancelAnimationFrame(raf[el.id]);
+      const t0 = performance.now();
+      (function tick(now) {
+        const p = Math.min((now-t0)/dur,1), e = 1-Math.pow(1-p,3);
+        el.textContent = target.replace(/[\d,]+/, Math.round(from+(to-from)*e).toLocaleString('en-US'));
+        if (p < 1) { raf[el.id] = requestAnimationFrame(tick); }
+        else { el.textContent = target; el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
+      })(performance.now());
+    }
+    function render() {
+      const {visitors,conv,val} = S;
+      const monthly = (visitors*(conv*CONV_MULT/100) - visitors*(conv/100)) * val;
+      const annual = monthly * 12, cost = MONTHLY_COST * 12;
+      const roi = ((annual-cost)/cost)*100;
+      const be = monthly > 0 ? (cost/monthly)*WEEKS : Infinity;
+      countTo(elM, '$'+Math.round(monthly).toLocaleString('en-US'));
+      countTo(elA, '$'+Math.round(annual).toLocaleString('en-US'));
+      countTo(elR, Math.round(roi).toLocaleString('en-US')+'%');
+      countTo(elB, isFinite(be) ? Math.ceil(be).toLocaleString('en-US')+' wks' : '∞');
+    }
+    function setV(v) { v=Math.max(100,Math.min(10000,parseInt(v)||100)); S.visitors=v; rV.value=nV.value=v; dV.textContent=v.toLocaleString('en-US'); rV.setAttribute('aria-valuenow',v); fill(rV); render(); }
+    function setC(v) { v=Math.max(0.5,Math.min(10,parseFloat(v)||0.5)); S.conv=v; rC.value=v; nC.value=v.toFixed(1); dC.textContent=v.toFixed(1)+'%'; rC.setAttribute('aria-valuenow',v); fill(rC); render(); }
+    function setW(v) { v=Math.max(100,Math.min(10000,parseInt(v)||100)); S.val=v; rW.value=nW.value=v; dW.textContent='$'+v.toLocaleString('en-US'); rW.setAttribute('aria-valuenow',v); fill(rW); render(); }
+    rV.addEventListener('input',e=>setV(e.target.value)); nV.addEventListener('input',e=>setV(e.target.value)); nV.addEventListener('blur',e=>setV(e.target.value));
+    rC.addEventListener('input',e=>setC(e.target.value)); nC.addEventListener('input',e=>setC(e.target.value)); nC.addEventListener('blur',e=>setC(e.target.value));
+    rW.addEventListener('input',e=>setW(e.target.value)); nW.addEventListener('input',e=>setW(e.target.value)); nW.addEventListener('blur',e=>setW(e.target.value));
+    [rV,rC,rW].forEach(fill); render();
+  }());
+
   // Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
