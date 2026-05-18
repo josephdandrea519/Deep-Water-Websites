@@ -75,35 +75,15 @@
 
   /* HERO */
   .hero {
-    min-height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    justify-content: center;
-    padding: 11rem 4rem 4rem;
-    align-items: center;
-    gap: 5rem;
+    max-width: none;
+    margin: 0;
+    padding: 9rem 5rem 4.5rem;
     position: relative;
     overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(0,150,199,0.12) 0%, transparent 70%);
-    animation: pulse 6s ease-in-out infinite;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -100px; left: 20%;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(0,201,167,0.06) 0%, transparent 70%);
-    animation: pulse 8s ease-in-out infinite reverse;
   }
 
   @keyframes pulse {
@@ -111,36 +91,61 @@
     50% { transform: scale(1.1); opacity: 0.7; }
   }
 
-  .hero-left { position: relative; z-index: 2; }
+  .hero-left { position: relative; z-index: 2; max-width: 680px; }
 
-  .hero-badge {
+  .hero-sonar {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(255,255,255,0.1);
-    color: #bdd5e8;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.45rem 1rem;
-    border-radius: 100px;
-    margin-bottom: 2rem;
+    gap: 0.75rem;
+    margin-bottom: 1.2rem;
     animation: fadeUp 0.8s ease both;
   }
-  .hero-badge-dot {
-    width: 6px; height: 6px;
-    background: #00c9a7;
-    border-radius: 50%;
-    animation: blink 2s ease infinite;
+  .sonar-core {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
   }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+  .sonar-dot {
+    position: absolute;
+    inset: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--accent2);
+    border-radius: 50%;
+  }
+  .sonar-ring {
+    position: absolute;
+    inset: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid var(--accent2);
+    border-radius: 50%;
+    opacity: 0;
+    animation: sonarPing 2.4s ease-out infinite;
+  }
+  .sonar-ring-2 {
+    animation-delay: 1.2s;
+  }
+  @keyframes sonarPing {
+    0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(4.5); opacity: 0; }
+  }
+  .sonar-text {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.92);
+  }
 
   h1 {
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    line-height: 0.95;
+    font-size: clamp(2.4rem, 4vw, 4rem);
+    line-height: 1;
     letter-spacing: -0.04em;
     animation: fadeUp 0.8s 0.1s ease both;
   }
@@ -165,18 +170,23 @@
   @keyframes slideIn { from{transform:scaleX(0)} to{transform:scaleX(1)} }
 
   .hero-sub {
-    margin-top: 1.8rem;
-    font-size: 1.1rem;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 460px;
+    margin-top: 0.9rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.65;
+    max-width: 480px;
     animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-sub-location {
+    display: block;
+    margin-top: 0.4rem;
   }
 
   .hero-actions {
     display: flex;
     gap: 1rem;
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
     animation: fadeUp 0.8s 0.3s ease both;
   }
 
@@ -213,9 +223,11 @@
 
   .hero-stats {
     display: flex;
-    gap: 2.5rem;
-    margin-top: 3rem;
+    gap: 2rem;
+    margin-top: 1.5rem;
     animation: fadeUp 0.8s 0.4s ease both;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
   }
   .stat-num {
     font-family: 'Outfit', sans-serif;
@@ -231,27 +243,24 @@
     margin-top: 0.1rem;
   }
 
-  /* HERO RIGHT - MOCKUP CARD */
-  .hero-right {
-    position: relative;
-    z-index: 2;
-    animation: fadeUp 0.8s 0.2s ease both;
-  }
-  .hero-card {
-    background: var(--card);
-    border-radius: 24px;
-    padding: 2.5rem;
-    border: 1px solid var(--border);
-    box-shadow: 0 40px 80px rgba(11,25,41,0.08);
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-card::before {
-    content: '';
+  /* HERO BACKGROUND VIDEO */
+  .hero-bg-video {
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    transition: opacity 1.4s ease;
+  }
+  .hv-a { z-index: 0; }
+  .hv-b { z-index: 0; opacity: 0; }
+  .hv-a, .hv-b { transition: opacity 3s ease; }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(11,25,41,0.92) 0%, rgba(11,25,41,0.55) 35%, rgba(11,25,41,0.15) 100%);
+    z-index: 1;
   }
   .card-label {
     font-size: 0.72rem;
@@ -953,11 +962,8 @@
     #menuToggle { display: block !important; }
     .menu-toggle { display: block !important; }
     .logo-wordmark { display: inline !important; font-size: 0.9rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
-    .hero { grid-template-columns: 1fr; width: 100%; padding: 11rem 1.25rem 3rem; gap: 2rem; }
-    .hero-right { display: none; }
-    .hero::before { display: none; }
-    .hero::after  { display: none; }
-    .hero-left { width: 100%; max-width: 100%; }
+    .hero { padding: 9rem 1.5rem 4rem; min-height: 100svh; }
+    .hero-left { max-width: 100%; }
     section { padding: 4rem 1.5rem; }
     .services-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
     .work-grid { grid-template-columns: 1fr; }
@@ -972,11 +978,8 @@
   }
 
   @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; width: 100%; min-height: auto; padding: 11rem 1.25rem 2rem; }
-    .hero-right { width: 100%; max-width: 100%; }
-    .hero-left { width: 100%; max-width: 100%; padding: 0; }
-    .hero::before { display: none; }
-    .hero::after  { display: none; }
+    .hero { padding: 9rem 1.25rem 3rem; }
+    .hero-left { max-width: 100%; padding: 0; }
     .hero-sub { max-width: 100%; }
     h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
   }
@@ -1014,10 +1017,17 @@
 
 <!-- HERO -->
 <section class="hero">
+  <video class="hero-bg-video hv-a" src="hero-reel.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
+  <video class="hero-bg-video hv-b" src="hero-reel.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
+  <div class="hero-overlay"></div>
   <div class="hero-left">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      Available for new projects
+    <div class="hero-sonar">
+      <div class="sonar-core">
+        <div class="sonar-ring"></div>
+        <div class="sonar-ring sonar-ring-2"></div>
+        <div class="sonar-dot"></div>
+      </div>
+      <span class="sonar-text">Grow your business now</span>
     </div>
 
     <h1>
@@ -1028,7 +1038,8 @@
     </h1>
 
     <p class="hero-sub">
-      I build clean, fast, SEO-optimized websites for small businesses — from scratch or a complete refresh. Based in Florida. Working everywhere.
+      I build clean, fast, SEO-optimized websites for small businesses — from scratch or a complete refresh.
+      <span class="hero-sub-location">Based in Florida. Working Everywhere.</span>
     </p>
 
     <div class="hero-actions">
@@ -1038,11 +1049,7 @@
 
     <div class="hero-stats">
       <div>
-        <div class="stat-num">10+</div>
-        <div class="stat-label">Sites Built</div>
-      </div>
-      <div>
-        <div class="stat-num">1 week</div>
+        <div class="stat-num">2 weeks</div>
         <div class="stat-label">Avg Turnaround</div>
       </div>
       <div>
@@ -1052,50 +1059,6 @@
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="hero-card">
-      <div class="card-label">Recent Client Results</div>
-
-      <div class="card-site-preview">
-        <div class="card-site-name">Sheridan Heating & Cooling</div>
-        <div class="card-tag">Live ✓</div>
-      </div>
-
-      <div class="card-site-preview">
-        <div class="card-site-name">Abbey Insurance Agency</div>
-        <div class="card-tag">Live ✓</div>
-      </div>
-
-      <div class="card-site-preview">
-        <div class="card-site-name">Teri Bindshedler Homes</div>
-        <div class="card-tag">Live ✓</div>
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric-box">
-          <div class="metric-val">↑ 3×</div>
-          <div class="metric-desc">More organic visibility</div>
-        </div>
-        <div class="metric-box">
-          <div class="metric-val">100</div>
-          <div class="metric-desc">Google PageSpeed score</div>
-        </div>
-        <div class="metric-box">
-          <div class="metric-val">$0</div>
-          <div class="metric-desc">Ad spend required</div>
-        </div>
-        <div class="metric-box">
-          <div class="metric-val">5★</div>
-          <div class="metric-desc">Client rating</div>
-        </div>
-      </div>
-
-      <div class="card-client-row">
-        <div class="client-avatar" style="background:#0096c7">S</div>
-        <div class="client-msg"><strong>Mike S.</strong> — "Our phone started ringing within 2 weeks of the new site going live."</div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- MARQUEE -->
@@ -1900,6 +1863,50 @@
       menuToggle.textContent = mobileNav.classList.contains('open') ? '✕' : '☰';
     });
   }
+
+  // Seamless video crossfade loop
+  (function () {
+    const vA = document.querySelector('.hv-a');
+    const vB = document.querySelector('.hv-b');
+    if (!vA || !vB) return;
+    const FADE     = 3.0;  // crossfade duration in seconds
+    const START    = 1.0;  // skip first second (avoids jarring intro frame)
+    const TRIM_END = 3.0;  // treat video as ending this many seconds early
+    let current = vA, standby = vB, switching = false;
+
+    function prepareStandby() {
+      standby.currentTime = START;
+    }
+
+    function swap() {
+      if (switching) return;
+      switching = true;
+      standby.play().catch(() => {});
+      standby.style.opacity = '1';
+      current.style.opacity = '0';
+      setTimeout(() => {
+        current.pause();
+        [current, standby] = [standby, current];
+        prepareStandby();
+        switching = false;
+      }, FADE * 1000);
+    }
+
+    function watch(vid) {
+      vid.addEventListener('timeupdate', () => {
+        if (!switching && vid === current && vid.duration) {
+          const virtualEnd = vid.duration - TRIM_END;
+          if (vid.currentTime >= virtualEnd - FADE - 0.3) swap();
+        }
+      });
+    }
+
+    watch(vA);
+    watch(vB);
+    vA.currentTime = START;
+    vA.play().catch(() => {});
+    vA.addEventListener('canplay', prepareStandby, { once: true });
+  }());
 
   // Pricing toggle
   let isMonthly = false;
