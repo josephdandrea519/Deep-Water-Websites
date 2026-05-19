@@ -981,8 +981,9 @@
     .hero-sub { max-width: 100%; }
     h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
 
-    /* Video: show full frame on mobile — no cover-zoom by letting it be natural height */
+    /* Video: show full frame on mobile — offset below fixed nav so nothing is clipped */
     .hero-bg-video {
+      top: 70px;
       bottom: auto;
       height: auto;
       object-fit: fill;
