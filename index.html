@@ -13,7 +13,8 @@
 <meta property="og:image" content="https://deepwaterwebsites.com/logo.png">
 <link rel="preload" href="squid-mobile.png" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=23">
 <style>
   :root {
@@ -81,7 +82,7 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 9rem 5rem 4.5rem;
+    padding: 6rem 5rem 4.5rem;
     position: relative;
     overflow: hidden;
   }
@@ -93,53 +94,33 @@
 
   .hero-left { position: relative; z-index: 2; max-width: 680px; }
 
-  .hero-sonar {
+  .hero-left .hero-sub,
+  .hero-left .stat-num,
+  .hero-left .stat-label {
+    background: rgba(11,25,41,0.28);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding: 0.05em 0.18em;
+    border-radius: 4px;
+  }
+
+  .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
     margin-bottom: 1.2rem;
     animation: fadeUp 0.8s ease both;
   }
-  .sonar-core {
-    position: relative;
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-  }
-  .sonar-dot {
-    position: absolute;
-    inset: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    background: var(--accent2);
-    border-radius: 50%;
-  }
-  .sonar-ring {
-    position: absolute;
-    inset: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    width: 8px;
-    height: 8px;
-    border: 1.5px solid var(--accent2);
-    border-radius: 50%;
-    opacity: 0;
-    animation: sonarPing 2.4s ease-out infinite;
-  }
-  .sonar-ring-2 {
-    animation-delay: 1.2s;
-  }
-  @keyframes sonarPing {
-    0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-    100% { transform: translate(-50%, -50%) scale(4.5); opacity: 0; }
-  }
-  .sonar-text {
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.92);
-  }
+  .hero-badge-flag { font-size: 1rem; line-height: 1; }
 
   h1 {
     font-family: 'Outfit', sans-serif;
@@ -220,6 +201,15 @@
     transition: all 0.2s ease;
   }
   .btn-secondary:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .hero-actions .btn-secondary {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.5);
+    color: #fff;
+    font-weight: 600;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .hero-actions .btn-secondary:hover { background: rgba(255,255,255,0.2); border-color: #fff; }
 
   .hero-stats {
     display: flex;
@@ -253,9 +243,16 @@
     pointer-events: none;
     transition: opacity 1.4s ease;
   }
-  .hv-a { z-index: 0; }
-  .hv-b { z-index: 0; opacity: 0; }
-  .hv-a, .hv-b { transition: opacity 3s ease; }
+  .hero-bg-video { z-index: 0; }
+  .hero-fade-cover {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
   .hero-overlay {
     position: absolute;
     inset: 0;
@@ -430,13 +427,14 @@
     border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
     font-size: 1.4rem;
-    margin-bottom: 1.2rem;
+    margin: 0 auto 1.2rem;
   }
   .service-card h3 {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
     font-size: 1.1rem;
     margin-bottom: 0.7rem;
+    text-align: center;
   }
   .service-card p {
     font-size: 0.88rem;
@@ -993,7 +991,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="logo"><div class="logo-squid-wrap"><img src="squid-mobile.png" alt="Deep Water Websites squid" class="nav-logo-img-mobile"></div><span class="logo-wordmark desktop-only">Deep Water <strong>Websites</strong></span></a>
+    <a href="index.html" class="logo"><div class="logo-squid-wrap"><img src="squid-mobile.png" alt="Deep Water Websites squid" class="nav-logo-img-mobile" decoding="async"></div><span class="logo-wordmark desktop-only">Deep Water <strong>Websites</strong></span></a>
     <div class="nav-links">
       <a href="portfolio.html">Portfolio</a>
       <a href="pricing.html">Pricing</a>
@@ -1017,18 +1015,10 @@
 
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-bg-video hv-a" src="hero-reel.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
-  <video class="hero-bg-video hv-b" src="hero-reel.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
+  <video class="hero-bg-video" src="hero-reel.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <div class="hero-fade-cover" aria-hidden="true"></div>
   <div class="hero-overlay"></div>
   <div class="hero-left">
-    <div class="hero-sonar">
-      <div class="sonar-core">
-        <div class="sonar-ring"></div>
-        <div class="sonar-ring sonar-ring-2"></div>
-        <div class="sonar-dot"></div>
-      </div>
-      <span class="sonar-text">Grow your business now</span>
-    </div>
 
     <h1>
       Websites<br>
@@ -1055,6 +1045,10 @@
       <div>
         <div class="stat-num">100%</div>
         <div class="stat-label">Client Satisfaction</div>
+      </div>
+      <div>
+        <div class="stat-num">Unlimited</div>
+        <div class="stat-label">Possibilities</div>
       </div>
     </div>
   </div>
@@ -1199,6 +1193,23 @@
       <div class="work-result">
         teribindshedlerhomes.com
         <span>Live site · Ocean County, NJ</span>
+      </div>
+    </div>
+
+    <div class="work-card fade-up" style="transition-delay:0.3s">
+      <div class="work-type">Delivery Service · Website Build</div>
+      <h3>302 Smoke Delivery</h3>
+      <p>Full website build for a Delaware-based on-demand vape & tobacco delivery service. Built with Next.js 16 and Tailwind CSS — includes a 21+ age gate, interactive shopping cart, DOB-verified order form, 8 product categories, and animated smoke particle effects.</p>
+      <div class="work-tags">
+        <span class="work-tag">Next.js</span>
+        <span class="work-tag">Tailwind CSS</span>
+        <span class="work-tag">Age Verification</span>
+        <span class="work-tag">Shopping Cart</span>
+        <span class="work-tag">Order Form</span>
+      </div>
+      <div class="work-result">
+        302 Smoke Delivery
+        <span>Live site · Delaware</span>
       </div>
     </div>
   </div>
@@ -1735,7 +1746,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="index.html" class="logo"><img src="logo-transparent.png" alt="Deep Water Websites" class="footer-logo-img"></a>
+      <a href="index.html" class="logo"><img src="logo-transparent.png" alt="Deep Water Websites" class="footer-logo-img" loading="lazy" decoding="async"></a>
       <p>Web Designer & SEO Specialist<br>Orlando, FL · Available Nationwide</p>
     </div>
     <div class="footer-cols">
@@ -1864,48 +1875,24 @@
     });
   }
 
-  // Seamless video crossfade loop
+
+  // Hero video loop fade
   (function () {
-    const vA = document.querySelector('.hv-a');
-    const vB = document.querySelector('.hv-b');
-    if (!vA || !vB) return;
-    const FADE     = 3.0;  // crossfade duration in seconds
-    const START    = 1.0;  // skip first second (avoids jarring intro frame)
-    const TRIM_END = 3.0;  // treat video as ending this many seconds early
-    let current = vA, standby = vB, switching = false;
-
-    function prepareStandby() {
-      standby.currentTime = START;
-    }
-
-    function swap() {
-      if (switching) return;
-      switching = true;
-      standby.play().catch(() => {});
-      standby.style.opacity = '1';
-      current.style.opacity = '0';
-      setTimeout(() => {
-        current.pause();
-        [current, standby] = [standby, current];
-        prepareStandby();
-        switching = false;
-      }, FADE * 1000);
-    }
-
-    function watch(vid) {
-      vid.addEventListener('timeupdate', () => {
-        if (!switching && vid === current && vid.duration) {
-          const virtualEnd = vid.duration - TRIM_END;
-          if (vid.currentTime >= virtualEnd - FADE - 0.3) swap();
-        }
-      });
-    }
-
-    watch(vA);
-    watch(vB);
-    vA.currentTime = START;
-    vA.play().catch(() => {});
-    vA.addEventListener('canplay', prepareStandby, { once: true });
+    const video = document.querySelector('.hero-bg-video');
+    const cover = document.querySelector('.hero-fade-cover');
+    if (!video || !cover) return;
+    const FADE = 2.0;
+    video.addEventListener('timeupdate', () => {
+      if (!video.duration) return;
+      const timeLeft = video.duration - video.currentTime;
+      if (timeLeft < FADE) {
+        cover.style.opacity = (1 - timeLeft / FADE) * 0.45;
+      } else if (video.currentTime < FADE) {
+        cover.style.opacity = (1 - video.currentTime / FADE) * 0.45;
+      } else {
+        cover.style.opacity = 0;
+      }
+    });
   }());
 
   // Pricing toggle
