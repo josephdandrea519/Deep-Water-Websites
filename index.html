@@ -981,8 +981,12 @@
     .hero-sub { max-width: 100%; }
     h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
 
-    /* Video: shift anchor to top so landscape frame isn't over-cropped on portrait */
-    .hero-bg-video { object-position: top center; }
+    /* Video: show full frame on mobile — no cover-zoom by letting it be natural height */
+    .hero-bg-video {
+      bottom: auto;
+      height: auto;
+      object-fit: fill;
+    }
 
     /* Stats: switch to equal 3-col grid so nothing overflows or wraps */
     .hero-stats {
@@ -1402,8 +1406,8 @@
   </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing" class="pricing-section">
+<!-- PRICING SECTION REMOVED - see pricing.html -->
+<!--
   <div class="section-label">Pricing</div>
   <h2>Transparent pricing.<br>No surprises.</h2>
 
@@ -1570,6 +1574,7 @@
     <a href="build.html" class="btn-secondary" style="white-space:nowrap">Build My Site →</a>
   </div>
 </section>
+-->
 
 <!-- ROI CALCULATOR -->
 <section id="roi-calculator" style="background:var(--ink);color:#fff">
