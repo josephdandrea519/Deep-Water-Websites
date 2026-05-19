@@ -980,6 +980,30 @@
     .hero-left { max-width: 100%; padding: 0; }
     .hero-sub { max-width: 100%; }
     h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
+
+    /* Video: shift anchor to top so landscape frame isn't over-cropped on portrait */
+    .hero-bg-video { object-position: top center; }
+
+    /* Stats: switch to equal 3-col grid so nothing overflows or wraps */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      padding-top: 1rem;
+    }
+    .hero-stats > div { min-width: 0; }
+    .stat-num {
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .stat-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+      white-space: normal;
+    }
   }
 </style>
 </head>
