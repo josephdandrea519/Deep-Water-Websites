@@ -166,7 +166,7 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 6rem 5rem 4.5rem;
+    padding: 12rem 5rem 4.5rem;
     position: relative;
     overflow: hidden;
   }
@@ -1075,7 +1075,7 @@
     }
 
     /* Push hero text below the video (70px nav + ~295px video) */
-    .hero { padding: 368px 1.25rem 2rem; min-height: auto; }
+    .hero { padding: 390px 1.25rem 2rem; min-height: auto; }
     .hero-badge { display: none; }
 
     /* Centered stacked layout */
@@ -1878,8 +1878,22 @@
     const video = document.querySelector('.hero-bg-video');
     const cover = document.querySelector('.hero-fade-cover');
     if (!video || !cover) return;
-    // Autoplay fallback — force play in case browser didn't honour the attribute
-    video.play().catch(() => {});
+    // Safari requires muted to be set via JS, not just the HTML attribute
+    video.muted = true;
+    video.setAttribute('playsinline', '');
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay blocked (Safari strict mode) — retry on first interaction
+        const tryPlay = () => {
+          video.play().catch(() => {});
+          document.removeEventListener('touchstart', tryPlay);
+          document.removeEventListener('click', tryPlay);
+        };
+        document.addEventListener('touchstart', tryPlay, { once: true });
+        document.addEventListener('click', tryPlay, { once: true });
+      });
+    }
     const FADE = 2.0;
     video.addEventListener('timeupdate', () => {
       if (!video.duration) return;
