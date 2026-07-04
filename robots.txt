@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 
 Disallow: /thank-you.html
+Disallow: /free-website-review-thank-you.html
 
 Sitemap: https://deepwaterwebsites.com/sitemap.xml

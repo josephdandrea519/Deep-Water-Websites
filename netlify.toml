@@ -61,3 +61,13 @@
   from = "/maintenance"
   to = "/maintenance.html"
   status = 200
+
+[[redirects]]
+  from = "/free-website-review"
+  to = "/free-website-review.html"
+  status = 200
+
+[[redirects]]
+  from = "/review-thank-you"
+  to = "/free-website-review-thank-you.html"
+  status = 200

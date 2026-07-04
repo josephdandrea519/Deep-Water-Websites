@@ -1036,6 +1036,53 @@
   }
   .why-callout strong { color: var(--accent2); }
 
+  /* ── SCORE CTA (Free Website Review) ── */
+  .score-cta-card {
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .score-cta-card::before {
+    content: '';
+    position: absolute;
+    width: 280px; height: 280px;
+    background: var(--accent2);
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.14;
+    right: -60px; top: -60px;
+    pointer-events: none;
+  }
+  .score-cta-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .score-cta-grid h2 { color: #fff; font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: 0.75rem; }
+  .score-cta-grid p { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.7; max-width: 480px; margin-bottom: 1.75rem; }
+  .score-dial-wrap { justify-self: center; }
+  .score-dial {
+    width: 150px; height: 150px; border-radius: 50%;
+    background: conic-gradient(var(--accent2) 0% 78%, rgba(255,255,255,0.08) 78% 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .score-dial-inner {
+    width: 118px; height: 118px; border-radius: 50%; background: var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .score-dial-num { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; line-height: 1; }
+  .score-dial-lbl { font-size: 0.65rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+  @media (max-width: 700px) {
+    .score-cta-card { padding: 2.25rem 1.5rem; }
+    .score-cta-grid { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+    .score-cta-grid p { max-width: 100%; margin-left: auto; margin-right: auto; }
+  }
+
   @media (max-width: 900px) {
     nav { padding-top: env(safe-area-inset-top); padding-right: 1rem; padding-bottom: 0; padding-left: 1rem; height: auto; min-height: unset; }
     .nav-inner { height: 70px; justify-content: space-between; align-items: center; gap: 0; }
@@ -1743,6 +1790,30 @@
   <a href="contact.html" class="btn-primary" style="font-size:1rem; padding:1rem 2.5rem">
     Book a Free Call →
   </a>
+</section>
+
+<!-- ── FREE WEBSITE REVIEW CTA ── -->
+<section class="cream-bg" style="padding:5rem 2rem;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="score-cta-card fade-up">
+      <div class="score-cta-grid">
+        <div>
+          <span class="section-label" style="color:var(--accent2);">Free Tool</span>
+          <h2>Not sure if your website is helping or hurting?</h2>
+          <p>Get a free, honest online presence score in about a minute. Plain English, real measurements, zero pressure.</p>
+          <a href="free-website-review.html" class="btn-primary">Check My Score →</a>
+        </div>
+        <div class="score-dial-wrap">
+          <div class="score-dial">
+            <div class="score-dial-inner">
+              <span class="score-dial-num">78</span>
+              <span class="score-dial-lbl">Sample Score</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
