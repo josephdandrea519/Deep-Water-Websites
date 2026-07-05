@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Lead Admin — Deep Water Websites</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=23">
+<style>
+  body { cursor: auto; }
+  .admin-shell { max-width: 1200px; margin: 0 auto; padding: 6rem 1.5rem 4rem; }
+
+  .demo-banner {
+    background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.35);
+    color: var(--gold); border-radius: var(--radius); padding: 0.9rem 1.2rem;
+    font-size: 0.85rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.6rem;
+  }
+
+  /* LOGIN */
+  .login-card {
+    max-width: 380px; margin: 8rem auto 0;
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 2.5rem;
+  }
+  .login-card h1 { font-size: 1.4rem; font-weight: 800; margin-bottom: 1.5rem; }
+  .login-fallback {
+    margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+    font-size: 0.82rem; color: var(--muted); text-align: center;
+  }
+  .login-error { color: var(--fail-red, #ff5c5c); font-size: 0.82rem; margin-top: 0.75rem; display: none; }
+
+  /* DASHBOARD */
+  .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+  .admin-header h1 { font-size: 1.6rem; font-weight: 800; }
+  .admin-filters { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .admin-filters select, .admin-filters input {
+    padding: 0.6rem 0.9rem; border-radius: var(--radius); border: 1px solid var(--border);
+    background: var(--card); color: #bdd5e8; font-family: inherit; font-size: 0.85rem;
+  }
+
+  .lead-table-wrap { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; overflow-x: auto; }
+  table.lead-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .lead-table th { text-align: left; padding: 0.9rem 1rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); border-bottom: 1px solid var(--border); white-space: nowrap; }
+  .lead-table td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  .lead-table tbody tr { cursor: pointer; transition: background 0.15s; }
+  .lead-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+  .lead-table tbody tr:last-child td { border-bottom: none; }
+
+  .temp-badge { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 100px; }
+  .temp-badge.hot { background: rgba(255,92,92,0.15); color: #ff5c5c; }
+  .temp-badge.warm { background: rgba(251,191,36,0.15); color: var(--gold); }
+  .temp-badge.cool { background: rgba(122,171,202,0.15); color: var(--muted); }
+  .temp-badge.cold { background: rgba(122,171,202,0.08); color: var(--muted); opacity: 0.7; }
+
+  .stage-badge { font-size: 0.75rem; color: var(--muted); }
+  .empty-note { padding: 2rem; text-align: center; color: var(--muted); font-size: 0.88rem; }
+
+  /* DETAIL PANEL */
+  .detail-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; display: none;
+  }
+  .detail-overlay.open { display: block; }
+  .detail-panel {
+    position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 92vw);
+    background: var(--paper); border-left: 1px solid var(--border);
+    padding: 2rem; overflow-y: auto; z-index: 201;
+    transform: translateX(100%); transition: transform 0.25s ease;
+  }
+  .detail-overlay.open .detail-panel { transform: translateX(0); }
+  .detail-panel h2 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+  .detail-panel .detail-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.5rem; }
+  .detail-field { margin-bottom: 1.25rem; }
+  .detail-field label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.4rem; }
+  .detail-field textarea, .detail-field input, .detail-field select {
+    width: 100%; padding: 0.7rem 0.9rem; border-radius: var(--radius); border: 1px solid var(--border);
+    background: var(--card); color: #bdd5e8; font-family: inherit; font-size: 0.88rem;
+  }
+  .detail-field textarea { min-height: 100px; resize: vertical; }
+  .detail-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: var(--muted); font-size: 1.3rem; cursor: pointer; }
+  .save-error { color: var(--fail-red, #ff5c5c); font-size: 0.82rem; margin-top: 0.75rem; display: none; }
+  .save-toast {
+    position: fixed; bottom: 2rem; right: 2rem; background: var(--green); color: #06281f;
+    padding: 0.8rem 1.3rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 300; opacity: 0; pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .save-toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="admin-shell">
+
+  <!-- LOGIN STATE -->
+  <div id="admin-login">
+    <div class="login-card">
+      <h1>Lead Admin</h1>
+      <div class="form-group">
+        <label for="admin-key">Admin Key</label>
+        <input type="password" id="admin-key" autocomplete="current-password" style="text-transform:none;">
+      </div>
+      <button class="btn-primary" id="login-btn" style="width:100%;justify-content:center;">Sign In</button>
+      <p class="login-error" id="login-error"></p>
+      <div class="login-fallback">
+        Backend isn't wired up yet?
+        <br><a href="#" id="demo-link" style="color:var(--accent);font-weight:600;">View demo data instead →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD STATE -->
+  <div id="admin-dashboard" style="display:none;">
+    <div class="demo-banner" id="demo-banner" style="display:none;"></div>
+
+    <div class="admin-header">
+      <h1>Free Website Review — Leads</h1>
+      <span class="muted" id="lead-count"></span>
+    </div>
+
+    <div class="admin-filters">
+      <select id="filter-status">
+        <option value="">All audit statuses</option>
+        <option value="queued">Queued</option>
+        <option value="running">Running</option>
+        <option value="completed">Completed</option>
+        <option value="emailed">Emailed</option>
+        <option value="failed">Failed</option>
+      </select>
+      <select id="filter-temp">
+        <option value="">All temperatures</option>
+        <option value="hot">Hot</option>
+        <option value="warm">Warm</option>
+        <option value="cool">Cool</option>
+        <option value="cold">Cold</option>
+      </select>
+      <select id="filter-stage">
+        <option value="">All stages</option>
+        <option value="new">New</option>
+        <option value="notified">Notified</option>
+        <option value="contacted">Contacted</option>
+        <option value="consult">Consult</option>
+        <option value="proposal">Proposal</option>
+        <option value="won">Won</option>
+        <option value="lost">Lost</option>
+        <option value="nurture">Nurture</option>
+      </select>
+      <select id="sort-by">
+        <option value="date-desc">Newest first</option>
+        <option value="date-asc">Oldest first</option>
+        <option value="score-desc">Highest lead score</option>
+        <option value="score-asc">Lowest lead score</option>
+      </select>
+    </div>
+
+    <div class="lead-table-wrap">
+      <table class="lead-table">
+        <thead>
+          <tr>
+            <th>Business</th>
+            <th>City</th>
+            <th>Score</th>
+            <th>Temp</th>
+            <th>Stage</th>
+            <th>Audit Status</th>
+            <th>Submitted</th>
+          </tr>
+        </thead>
+        <tbody id="lead-table-body"></tbody>
+      </table>
+      <p class="empty-note" id="empty-note" style="display:none;">No leads match these filters.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- DETAIL PANEL -->
+<div class="detail-overlay" id="detail-overlay">
+  <div class="detail-panel">
+    <button class="detail-close" id="detail-close" aria-label="Close">✕</button>
+    <h2 id="detail-business"></h2>
+    <p class="detail-sub" id="detail-meta"></p>
+
+    <div class="detail-field">
+      <label>Temperature</label>
+      <select id="detail-temperature">
+        <option value="hot">Hot</option>
+        <option value="warm">Warm</option>
+        <option value="cool">Cool</option>
+        <option value="cold">Cold</option>
+      </select>
+    </div>
+    <div class="detail-field">
+      <label>Stage</label>
+      <select id="detail-stage">
+        <option value="new">New</option>
+        <option value="notified">Notified</option>
+        <option value="contacted">Contacted</option>
+        <option value="consult">Consult</option>
+        <option value="proposal">Proposal</option>
+        <option value="won">Won</option>
+        <option value="lost">Lost</option>
+        <option value="nurture">Nurture</option>
+      </select>
+    </div>
+    <div class="detail-field">
+      <label>Owner Notes</label>
+      <textarea id="detail-notes"></textarea>
+    </div>
+    <div class="detail-field">
+      <label>Next Action</label>
+      <input type="text" id="detail-next-action" placeholder="e.g. Call about consult">
+    </div>
+    <div class="detail-field">
+      <label>Next Action Due</label>
+      <input type="datetime-local" id="detail-next-action-at">
+    </div>
+
+    <button class="btn-primary" id="detail-save" style="width:100%;justify-content:center;">Save</button>
+    <p class="save-error" id="save-error"></p>
+  </div>
+</div>
+<div class="save-toast" id="save-toast">Saved</div>
+
+<script>
+(function () {
+  const ADMIN_LOGIN_ENDPOINT = "/api/admin-login";
+  const ADMIN_LEADS_ENDPOINT = "/api/admin-leads";
+
+  const MOCK_LEADS = [
+    { auditRequestId: "1", businessId: "b1", business: "Harbor Dental", city: "Orlando, FL", auditStatus: "completed", overallScore: 78, temperature: "hot", leadStatus: "notified", submittedAt: "2026-07-03T14:00:00Z", ownerNotes: "", nextAction: "", nextActionAt: null },
+    { auditRequestId: "2", businessId: "b2", business: "Coastal Plumbing Co.", city: "Kissimmee, FL", auditStatus: "emailed", overallScore: 62, temperature: "warm", leadStatus: "contacted", submittedAt: "2026-07-02T09:30:00Z", ownerNotes: "Left voicemail 7/3, following up Friday.", nextAction: "Follow-up call", nextActionAt: "2026-07-07T15:00:00Z" },
+    { auditRequestId: "3", businessId: "b3", business: "Sunshine Roofing", city: "Winter Park, FL", auditStatus: "queued", overallScore: null, temperature: "cool", leadStatus: "new", submittedAt: "2026-07-05T11:00:00Z", ownerNotes: "", nextAction: "", nextActionAt: null },
+    { auditRequestId: "4", businessId: "b4", business: "Bright Smile Orthodontics", city: "Orlando, FL", auditStatus: "completed", overallScore: 85, temperature: "hot", leadStatus: "consult", submittedAt: "2026-06-30T16:45:00Z", ownerNotes: "Booked 20-min consult for 7/8.", nextAction: "Prep consult notes", nextActionAt: "2026-07-08T13:00:00Z" },
+    { auditRequestId: "5", businessId: "b5", business: "Green Lawn Care", city: "Sanford, FL", auditStatus: "failed", overallScore: null, temperature: "cold", leadStatus: "new", submittedAt: "2026-06-29T08:15:00Z", ownerNotes: "Site blocked automated checks — needs manual review.", nextAction: "Manual audit", nextActionAt: null },
+  ];
+
+  let isDemoMode = false;
+  let adminKey = "";
+  let leads = [];
+
+  function escapeHtml(value) {
+    const div = document.createElement("div");
+    div.textContent = value == null ? "" : String(value);
+    return div.innerHTML;
+  }
+
+  async function attemptLogin(key) {
+    try {
+      const res = await fetch(ADMIN_LOGIN_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Admin-Key": key },
+        body: JSON.stringify({ ping: true }),
+      });
+      if (res.ok) return { ok: true };
+      return { ok: false, status: res.status };
+    } catch (err) {
+      return { ok: false, status: null };
+    }
+  }
+
+  document.getElementById("login-btn").addEventListener("click", async () => {
+    const key = document.getElementById("admin-key").value;
+    const errorEl = document.getElementById("login-error");
+    errorEl.style.display = "none";
+    const result = await attemptLogin(key);
+    if (result.ok) {
+      adminKey = key;
+      enterDashboard(false);
+    } else if (result.status === null || result.status === 404 || result.status === 500) {
+      errorEl.style.display = "block";
+      errorEl.textContent = "Admin backend isn't deployed/configured yet. Use \"View demo data instead\" below.";
+    } else {
+      errorEl.style.display = "block";
+      errorEl.textContent = `Failed (${result.status}): wrong admin key.`;
+    }
+  });
+
+  document.getElementById("demo-link").addEventListener("click", (e) => {
+    e.preventDefault();
+    enterDashboard(true);
+  });
+
+  async function enterDashboard(demoMode) {
+    isDemoMode = demoMode;
+    document.getElementById("admin-login").style.display = "none";
+    document.getElementById("admin-dashboard").style.display = "block";
+    const banner = document.getElementById("demo-banner");
+
+    if (demoMode) {
+      leads = JSON.parse(JSON.stringify(MOCK_LEADS));
+      banner.style.display = "flex";
+      banner.textContent = "⚠ Demo mode — showing mock data, not connected to Supabase. Changes here don't persist.";
+      renderTable();
+      return;
+    }
+
+    try {
+      const res = await fetch(ADMIN_LEADS_ENDPOINT, { headers: { "X-Admin-Key": adminKey } });
+      if (!res.ok) throw new Error(`Status ${res.status}`);
+      const data = await res.json();
+      leads = data.leads || [];
+      banner.style.display = "none";
+    } catch (err) {
+      leads = JSON.parse(JSON.stringify(MOCK_LEADS));
+      banner.style.display = "flex";
+      banner.textContent = "⚠ Logged in, but couldn't load real leads (backend/Supabase not fully configured yet) — showing demo data instead.";
+    }
+    renderTable();
+  }
+
+  function applyFiltersAndSort(list) {
+    const status = document.getElementById("filter-status").value;
+    const temp = document.getElementById("filter-temp").value;
+    const stage = document.getElementById("filter-stage").value;
+    const sortBy = document.getElementById("sort-by").value;
+
+    let filtered = list.filter((lead) =>
+      (!status || lead.auditStatus === status) &&
+      (!temp || lead.temperature === temp) &&
+      (!stage || lead.leadStatus === stage)
+    );
+
+    filtered.sort((a, b) => {
+      if (sortBy === "date-desc") return (b.submittedAt || "").localeCompare(a.submittedAt || "");
+      if (sortBy === "date-asc") return (a.submittedAt || "").localeCompare(b.submittedAt || "");
+      if (sortBy === "score-desc") return (b.overallScore ?? -1) - (a.overallScore ?? -1);
+      if (sortBy === "score-asc") return (a.overallScore ?? 999) - (b.overallScore ?? 999);
+      return 0;
+    });
+
+    return filtered;
+  }
+
+  function formatDate(iso) {
+    if (!iso) return "—";
+    const d = new Date(iso);
+    return isNaN(d) ? "—" : d.toLocaleDateString();
+  }
+
+  function renderTable() {
+    const tbody = document.getElementById("lead-table-body");
+    const emptyNote = document.getElementById("empty-note");
+    const rows = applyFiltersAndSort(leads);
+    document.getElementById("lead-count").textContent = `${rows.length} lead${rows.length === 1 ? "" : "s"}`;
+    tbody.innerHTML = "";
+    emptyNote.style.display = rows.length === 0 ? "block" : "none";
+    rows.forEach((lead) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${escapeHtml(lead.business)}</td>
+        <td>${escapeHtml(lead.city)}</td>
+        <td>${lead.overallScore ?? "—"}</td>
+        <td><span class="temp-badge ${escapeHtml(lead.temperature)}">${escapeHtml(lead.temperature)}</span></td>
+        <td><span class="stage-badge">${escapeHtml(lead.leadStatus)}</span></td>
+        <td>${escapeHtml(lead.auditStatus)}</td>
+        <td>${formatDate(lead.submittedAt)}</td>
+      `;
+      tr.addEventListener("click", () => openDetail(lead.auditRequestId));
+      tbody.appendChild(tr);
+    });
+  }
+
+  ["filter-status", "filter-temp", "filter-stage", "sort-by"].forEach((id) => {
+    document.getElementById(id).addEventListener("change", renderTable);
+  });
+
+  let activeLeadId = null;
+
+  function toDatetimeLocalValue(iso) {
+    if (!iso) return "";
+    const d = new Date(iso);
+    if (isNaN(d)) return "";
+    const pad = (n) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  }
+
+  function openDetail(id) {
+    const lead = leads.find((l) => l.auditRequestId === id);
+    if (!lead) return;
+    activeLeadId = id;
+    document.getElementById("detail-business").textContent = lead.business;
+    document.getElementById("detail-meta").textContent = `${lead.city} · Submitted ${formatDate(lead.submittedAt)} · Score ${lead.overallScore ?? "n/a"}`;
+    document.getElementById("detail-temperature").value = lead.temperature || "cool";
+    document.getElementById("detail-stage").value = lead.leadStatus || "new";
+    document.getElementById("detail-notes").value = lead.ownerNotes || "";
+    document.getElementById("detail-next-action").value = lead.nextAction || "";
+    document.getElementById("detail-next-action-at").value = toDatetimeLocalValue(lead.nextActionAt);
+    document.getElementById("save-error").style.display = "none";
+    document.getElementById("detail-overlay").classList.add("open");
+  }
+
+  function closeDetail() {
+    document.getElementById("detail-overlay").classList.remove("open");
+    activeLeadId = null;
+  }
+
+  document.getElementById("detail-close").addEventListener("click", closeDetail);
+  document.getElementById("detail-overlay").addEventListener("click", (e) => {
+    if (e.target.id === "detail-overlay") closeDetail();
+  });
+
+  document.getElementById("detail-save").addEventListener("click", async () => {
+    const lead = leads.find((l) => l.auditRequestId === activeLeadId);
+    if (!lead) return;
+
+    const temperature = document.getElementById("detail-temperature").value;
+    const leadStatus = document.getElementById("detail-stage").value;
+    const ownerNotes = document.getElementById("detail-notes").value;
+    const nextAction = document.getElementById("detail-next-action").value;
+    const nextActionAtLocal = document.getElementById("detail-next-action-at").value;
+    const nextActionAt = nextActionAtLocal ? new Date(nextActionAtLocal).toISOString() : null;
+
+    if (isDemoMode) {
+      lead.temperature = temperature;
+      lead.leadStatus = leadStatus;
+      lead.ownerNotes = ownerNotes;
+      lead.nextAction = nextAction;
+      lead.nextActionAt = nextActionAt;
+      renderTable();
+      closeDetail();
+      showToast("Saved (demo mode — not persisted)");
+      return;
+    }
+
+    const errorEl = document.getElementById("save-error");
+    errorEl.style.display = "none";
+    try {
+      const res = await fetch(ADMIN_LEADS_ENDPOINT, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", "X-Admin-Key": adminKey },
+        body: JSON.stringify({
+          businessId: lead.businessId,
+          latestAuditRequestId: lead.auditRequestId,
+          temperature, status: leadStatus, ownerNotes, nextAction, nextActionAt,
+        }),
+      });
+      if (!res.ok) throw new Error(`Status ${res.status}`);
+      lead.temperature = temperature;
+      lead.leadStatus = leadStatus;
+      lead.ownerNotes = ownerNotes;
+      lead.nextAction = nextAction;
+      lead.nextActionAt = nextActionAt;
+      renderTable();
+      closeDetail();
+      showToast("Saved");
+    } catch (err) {
+      errorEl.style.display = "block";
+      errorEl.textContent = "Couldn't save — the backend may not be fully configured yet.";
+    }
+  });
+
+  function showToast(message) {
+    const toast = document.getElementById("save-toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 2500);
+  }
+})();
+</script>
+</body>
+</html>

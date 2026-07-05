@@ -1,0 +1,9 @@
+{
+  "name": "deep-water-websites",
+  "private": true,
+  "type": "module",
+  "description": "Netlify Functions for deepwaterwebsites.com (admin lead view). The site itself remains plain static HTML/CSS/JS with no build step.",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4"
+  }
+}
