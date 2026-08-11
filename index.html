@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="google-site-verification" content="hJRE2CDhh_yA6UDOKeKTkNnIolEK71bCFUrG1potCTQ" />
 <title>Deep Water Websites — Web Design & SEO | Orlando, FL</title>
-<link rel="canonical" href="https://deepwaterwebsites.com/index.html">
+<meta name="description" content="Custom, conversion-focused websites and SEO for local businesses. Fast builds, transparent flat-fee pricing, and Google-ready from day one. Based in Orlando, FL — serving NJ, DE, and businesses nationwide.">
+<link rel="canonical" href="https://deepwaterwebsites.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://deepwaterwebsites.com/">
 <meta property="og:title" content="Deep Water Websites — Web Design & SEO | Orlando, FL">
@@ -14,17 +15,18 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <link rel="preload" href="squid-mobile.webp" as="image" type="image/webp">
+<link rel="preload" href="poster.webp" as="image" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=23">
+<link rel="stylesheet" href="styles.css?v=27">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Deep Water Websites",
   "url": "https://deepwaterwebsites.com",
-  "description": "Web design and SEO studio building fast, custom websites for local businesses. Based in Orlando, FL. Serving NJ, DE, FL, and beyond.",
+  "description": "Web design and SEO studio building fast, custom websites for local businesses. Based in Orlando, FL. Serving NJ, DE, and businesses nationwide.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Orlando",
@@ -37,8 +39,10 @@
     { "@type": "State", "name": "Delaware" }
   ],
   "priceRange": "$$",
-  "email": "josephdandrea519@gmail.com",
-  "sameAs": [],
+  "email": "info@deepwaterwebsites.com",
+  "logo": "https://deepwaterwebsites.com/logo.png",
+  "image": "https://deepwaterwebsites.com/logo.png",
+  "sameAs": ["https://www.facebook.com/people/Deep-Water-Websites/61567588946690/"],
   "serviceType": ["Web Design", "SEO Optimization", "Website Maintenance"]
 }
 </script>
@@ -60,7 +64,7 @@
       "name": "How long does a website take to build?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Typically about 1 week depending on the package. Some simpler builds move faster when you have your content ready upfront."
+        "text": "Typically about 2 weeks depending on the package. Some simpler builds move faster when you have your content ready upfront."
       }
     },
     {
@@ -68,7 +72,7 @@
       "name": "Do you offer payment plans?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. For any project over $499, you can split 50/50 (half now, half at launch) or into 3 monthly payments. Just mention it when you reach out and we'll figure out what works."
+        "text": "Yes. For one-time builds I typically structure a 50% deposit upfront and 50% on delivery. If you would rather avoid a large upfront cost, the Website as a Service plan covers everything for one flat monthly rate. Just mention it when you reach out and we will figure out what works."
       }
     },
     {
@@ -76,7 +80,7 @@
       "name": "Will my site show up on Google?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Every site I build includes sitemap.xml, robots.txt, and Google Search Console setup — so Google can find and index your site the moment it goes live. Growth and Premium packages also include active keyword optimization."
+        "text": "Yes. Every site I build is registered with Google and set up so it can be found and listed the moment it goes live — that's included, never an add-on. Growth and Premium packages also include ongoing work on the specific searches you want to win."
       }
     },
     {
@@ -176,14 +180,26 @@
 
   .hero-left { position: relative; z-index: 2; max-width: 680px; }
 
+  /* Legibility over the hero video without a visible container. Previously a
+     solid box was painted behind each line, which read as hard-edged
+     rectangles. A soft dark halo hugging the glyphs does the same job with no
+     boundary — .hero-overlay already supplies most of the contrast underneath. */
   .hero-left .hero-sub,
   .hero-left .stat-num,
   .hero-left .stat-label {
-    background: rgba(11,25,41,0.28);
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    padding: 0.05em 0.18em;
-    border-radius: 4px;
+    text-shadow:
+      0 1px 2px rgba(4,12,20,0.75),
+      0 2px 10px rgba(4,12,20,0.60),
+      0 6px 30px rgba(4,12,20,0.45);
+  }
+  /* The sub is the smallest type sitting over the busiest part of the video,
+     so it carries a heavier halo than the stats do. */
+  .hero-left .hero-sub {
+    text-shadow:
+      0 1px 2px rgba(4,12,20,0.9),
+      0 2px 8px rgba(4,12,20,0.8),
+      0 4px 18px rgba(4,12,20,0.65),
+      0 8px 40px rgba(4,12,20,0.5);
   }
 
   .hero-badge {
@@ -234,16 +250,22 @@
 
   .hero-sub {
     margin-top: 0.9rem;
-    font-size: 1rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.9);
-    line-height: 1.65;
+    font-size: 1.06rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.6;
     max-width: 480px;
     animation: fadeUp 0.8s 0.2s ease both;
   }
+  /* Supporting detail, not a second headline — it must sit BELOW the main line
+     in the hierarchy, otherwise the whole hero reads as one bold slab. */
   .hero-sub-location {
     display: block;
-    margin-top: 0.4rem;
+    margin-top: 0.55rem;
+    font-weight: 400;
+    font-size: 0.86rem;
+    letter-spacing: 0.01em;
+    color: rgba(255,255,255,0.7);
   }
 
   .hero-actions {
@@ -299,7 +321,15 @@
     margin-top: 1.5rem;
     animation: fadeUp 0.8s 0.4s ease both;
     padding-top: 1.2rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+  }
+  /* Fading rule instead of a hard 1px border, so the row isn't boxed in. */
+  .hero-stats::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(to right,
+      rgba(255,255,255,0.14), rgba(255,255,255,0.05) 45%, transparent 85%);
   }
   .stat-num {
     font-family: 'Outfit', sans-serif;
@@ -582,6 +612,26 @@
     font-size: 0.85rem;
     color: rgba(255,255,255,0.5);
     line-height: 1.6;
+  }
+  /* Problem / outcome pairs — the label carries the scan, the copy explains. */
+  .work-card p + p { margin-top: 0.7rem; }
+  .work-card p strong {
+    display: block;
+    color: rgba(255,255,255,0.82);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+  /* Sits between the h2 and .work-grid, which already carries margin-top:3rem —
+     so this only needs to clear the heading above it. */
+  .work-intro {
+    max-width: 54ch;
+    margin: 1.35rem 0 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.62);
   }
   .work-tags {
     display: flex;
@@ -955,7 +1005,6 @@
   .fade-up.visible { opacity: 1; transform: translateY(0); }
 
   /* States strip — mobile only */
-  .hero-sub-states { display: none; }
 
   /* ── WHY IT WORKS SECTION ── */
   .why-section { background: var(--ink); color: #fff; }
@@ -1119,8 +1168,15 @@
       object-fit: unset;
     }
 
-    /* Push hero text below the video (70px nav + ~295px video) */
-    .hero { padding: 390px 1.25rem 2rem; min-height: auto; }
+    /* Push hero text below the video. This has to track the video's real
+       height, not a fixed guess: the video is 140vw wide at a 1280:714 ratio,
+       so it is 140 × (714/1280) = 78vw tall, starting 70px under the nav.
+       The old flat 390px only matched one screen width — it left ~70px of dead
+       space at 320px and let the headline overlap the video at 430px. */
+    .hero {
+      padding: calc(70px + 78vw + 1.25rem) 1.25rem 2rem;
+      min-height: auto;
+    }
     .hero-badge { display: none; }
 
     /* Centered stacked layout */
@@ -1146,32 +1202,33 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-      gap: 1.75rem;
+      /* Three stats across at 320px is tight, and the labels ("Client
+         Satisfaction") drive the column widths — 1rem is what fits. */
+      gap: 1rem;
       margin-top: 1rem;
       padding-top: 0.85rem;
-      border-top: 1px solid rgba(255,255,255,0.15);
+      border-top: none;
       width: 100%;
     }
+    /* Centred layout here, so fade out toward both edges. */
+    .hero-stats::before {
+      background: linear-gradient(to right,
+        transparent, rgba(255,255,255,0.16) 50%, transparent);
+    }
     .hero-stats > div { min-width: 0; text-align: center; }
-    .stat-num { font-size: 1.2rem; white-space: nowrap; overflow: visible; text-overflow: unset; }
+    /* .hero-stats > div carries min-width:0, so a flex column can shrink below
+       its own content. With nowrap on the number that means clipping, not
+       wrapping — so the type has to be small enough for three across at 320px. */
+    .stat-num { font-size: 1.05rem; white-space: nowrap; overflow: visible; text-overflow: unset; }
     .stat-label { font-size: 0.58rem; letter-spacing: 0.04em; white-space: normal; line-height: 1.3; }
     .hero-sub {
       order: 3;
       max-width: 100%;
-      font-weight: 400;
-      font-size: 0.88rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
       margin-top: 0.75rem;
       text-align: center;
-    }
-    .hero-sub-states {
-      display: flex !important;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 0.5rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--accent2);
-      letter-spacing: 0.04em;
     }
     .hero-actions {
       order: 4;
@@ -1186,9 +1243,158 @@
     }
 
   }
+
+  /* ─────────────────────────────────────────────────────────────
+     DEPTH SYSTEM — descent gauge, creatures, progressive darkening
+     Scroll maps to 0–4,000 m (surface → bathypelagic floor).
+     Creature ranges below are real published depth ranges.
+     ───────────────────────────────────────────────────────────── */
+
+  /* Silhouettes ride ABOVE the opaque section backgrounds (which would
+     otherwise hide them), at low opacity so body copy stays legible. */
+  .depth-life {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .creature {
+    position: absolute;
+    opacity: 0;
+    color: #7fd4ef;
+    will-change: transform, opacity;
+    transition: opacity 0.7s linear;
+  }
+  .creature svg { display: block; width: 100%; height: auto; }
+  .creature.biolum { color: #86f7de; }
+  .creature .glow {
+    fill: #b8ffe9;
+    animation: lure-pulse 3.4s ease-in-out infinite;
+  }
+  @keyframes lure-pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+  @keyframes drift-y {
+    from { transform: translate3d(0, 14vh, 0); }
+    to   { transform: translate3d(0, -14vh, 0); }
+  }
+
+  /* Depth gauge — fixed rail, right edge */
+  /* The gauge is fixed, so it sits over whatever scrolls beneath it. The work
+     grid is 1200px wide and reaches the gauge on any viewport under ~1536px —
+     i.e. most laptops — so bare text collided with the page copy. A backdrop
+     makes it read as a deliberate floating readout instead of a collision. */
+  .depth-gauge {
+    position: fixed;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 6;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    font-variant-numeric: tabular-nums;
+    padding: 0.7rem 0.7rem;
+    border-radius: 100px;
+    background: rgba(4, 12, 20, 0.66);
+    border: 1px solid rgba(127, 212, 239, 0.14);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .depth-gauge.visible { opacity: 1; }
+  .depth-readout { text-align: right; line-height: 1.15; max-width: 42vw; }
+  .depth-value { font-size: 1.25rem; font-weight: 800; color: #eaf6fd; letter-spacing: -0.03em; }
+  .depth-unit { font-size: 0.72rem; font-weight: 700; opacity: 0.6; margin-left: 2px; }
+  .depth-zone {
+    font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent2);
+    margin-top: 0.3rem; white-space: nowrap;
+  }
+  /* One line per note — the 15ch cap used to wrap "The deep ocean trenches". */
+  .depth-note {
+    font-size: 0.6rem; line-height: 1.35; color: #9dc4dc;
+    margin-top: 0.22rem; white-space: nowrap;
+    display: none;                 /* widest line in the chip — opt in below */
+  }
+  @media (min-width: 1500px) {     /* only where the chip clears the 1200px grid */
+    .depth-note { display: block; }
+  }
+  .depth-rail {
+    position: relative; width: 2px; height: 24vh; min-height: 110px;
+    background: linear-gradient(to bottom, rgba(127,212,239,0.45), rgba(127,212,239,0.06));
+    border-radius: 2px; flex-shrink: 0;
+  }
+  .depth-tick { position: absolute; right: 0; width: 7px; height: 1px; background: rgba(207,233,247,0.28); }
+  .depth-tick.major { width: 12px; background: rgba(207,233,247,0.5); }
+  .depth-marker {
+    position: absolute; right: -3px; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent2); box-shadow: 0 0 9px var(--accent2);
+    transform: translateY(-50%); will-change: top;
+  }
+
+  @media (max-width: 900px) {
+    .depth-gauge { right: 10px; gap: 0.45rem; }
+    .depth-rail { height: 26vh; min-height: 110px; }
+    .depth-value { font-size: 1.15rem; }
+    .depth-zone { font-size: 0.55rem; }
+    .depth-note { display: none; }
+  }
+  /* Narrow screens: split the gauge. The rail stays on the right edge, but the
+     readout moves to a bottom-anchored pill. Beside the rail it was 32% of the
+     screen and printed straight over body copy — along the bottom it sits clear
+     of the text column at every scroll position. */
+  @media (max-width: 700px) {
+    /* The gauge itself becomes the chip. Anchoring a fixed child to the
+       viewport is not possible here — .depth-gauge is transformed, and a
+       transformed ancestor becomes the containing block for fixed descendants,
+       so the child anchors to the gauge instead of the screen. */
+    .depth-gauge {
+      left: 50%;
+      right: auto;
+      top: auto;
+      bottom: calc(10px + env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      flex-direction: row;
+      align-items: baseline;
+      padding: 0.42rem 0.95rem;
+    }
+    .depth-rail { display: none; }
+    .depth-readout {
+      display: flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .depth-value { font-size: 0.95rem; }
+    .depth-zone { margin-top: 0; font-size: 0.55rem; }
+  }
+
+  /* Motion-sensitive users: no drifting creatures, no pulsing lure.
+     Gauge and darkening still work — neither is motion. */
+  @media (prefers-reduced-motion: reduce) {
+    .depth-life { display: none; }
+    .creature .glow { animation: none; }
+  }
 </style>
 </head>
 <body>
+
+<!-- ── DEPTH SYSTEM (homepage) ── -->
+<div class="depth-life" id="depthLife" aria-hidden="true"></div>
+
+<div class="depth-gauge" id="depthGauge" aria-hidden="true">
+  <div class="depth-readout">
+    <div><span class="depth-value" id="depthValue">0</span><span class="depth-unit">ft</span></div>
+    <div class="depth-zone" id="depthZone">Sunlight Zone</div>
+    <div class="depth-note" id="depthNote">Enough light for plants to grow</div>
+  </div>
+  <div class="depth-rail" id="depthRail">
+    <div class="depth-marker" id="depthMarker" style="top:0%"></div>
+  </div>
+</div>
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -1196,36 +1402,39 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="logo"><div class="logo-squid-wrap"><picture>
+    <a href="/" class="logo"><div class="logo-squid-wrap"><picture>
           <source srcset="squid-mobile.webp" type="image/webp">
           <img src="squid-mobile.png" alt="Deep Water Websites squid" class="nav-logo-img-mobile" decoding="async">
         </picture></div><span class="logo-wordmark desktop-only">Deep Water <strong>Websites</strong></span></a>
     <div class="nav-links">
-      <a href="portfolio.html">Portfolio</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="maintenance.html">Maintenance</a>
-      <a href="seo.html">What Is SEO?</a>
-      <a href="about.html">About</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/maintenance">Maintenance</a>
+      <a href="/seo">What Is SEO?</a>
+      <a href="/about">About</a>
     </div>
-    <a href="contact.html" class="btn-nav desktop-only" style="background:transparent;border:1.5px solid rgba(255,255,255,0.25);margin-right:0.5rem;">Contact</a>
-    <a href="build.html" class="btn-nav desktop-only">Build My Site</a>
+    <a href="/contact" class="btn-nav ghost desktop-only">Contact</a>
+    <a href="/build" class="btn-nav desktop-only">Build My Site</a>
     <button class="menu-toggle" aria-label="Open menu">☰</button>
   </div>
   <div class="mobile-nav">
-    <a href="index.html">Home</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="maintenance.html">Maintenance</a>
-    <a href="seo.html">What Is SEO?</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="build.html" class="btn-mobile">Build My Site</a>
+    <a href="/">Home</a>
+    <a href="/portfolio">Portfolio</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/maintenance">Maintenance</a>
+    <a href="/seo">What Is SEO?</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/build" class="btn-mobile">Build My Site</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-bg-video" src="hero-reel.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata"
+         poster="poster.webp" width="1280" height="714" aria-hidden="true">
+    <source src="hero-720.mp4" type="video/mp4">
+  </video>
   <div class="hero-fade-cover" aria-hidden="true"></div>
   <div class="hero-overlay"></div>
   <div class="hero-left">
@@ -1237,16 +1446,13 @@
     </h1>
 
     <p class="hero-sub">
-      Custom websites built around your business — fast, professional, and structured to help you show up on Google and Bing.
-      <span class="hero-sub-location">Based in Florida.<br>Serving businesses everywhere.</span>
-      <span class="hero-sub-states">
-        <span>✓ NJ</span><span>✓ DE</span><span>✓ FL</span>
-      </span>
+      Custom websites that get local businesses found on Google and turn those visitors into customers.
+      <span class="hero-sub-location">Orlando, FL · Serving NJ, DE & nationwide</span>
     </p>
 
     <div class="hero-actions">
-      <a href="build.html" class="btn-primary">Build My Site →</a>
-      <a href="contact.html" class="btn-secondary">Contact Me</a>
+      <a href="/build" class="btn-primary">Build My Site →</a>
+      <a href="/contact" class="btn-secondary">Contact Me</a>
     </div>
 
     <div class="hero-stats">
@@ -1259,8 +1465,8 @@
         <div class="stat-label">Client Satisfaction</div>
       </div>
       <div>
-        <div class="stat-num">Unlimited</div>
-        <div class="stat-label">Possibilities</div>
+        <div class="stat-num">Custom</div>
+        <div class="stat-label">Every Build</div>
       </div>
     </div>
   </div>
@@ -1325,7 +1531,7 @@
     <div class="service-card fade-up" style="transition-delay:0.2s">
       <div class="service-icon" style="background:#f0fff5">🔍</div>
       <h3>SEO Optimization</h3>
-      <p>On-page SEO, sitemap setup, Google Search Console submission, keyword-aligned content, and meta optimization so Google actually finds you.</p>
+      <p>I write your pages around the words your customers actually type into Google, then register the site with Google so it knows you exist. The point is simple: show up when someone searches for what you do.</p>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.1s">
       <div class="service-icon" style="background:#fffbf0">✍️</div>
@@ -1335,7 +1541,7 @@
     <div class="service-card fade-up" style="transition-delay:0.2s">
       <div class="service-icon" style="background:#fff0f5">📍</div>
       <h3>Local SEO Setup</h3>
-      <p>Google Business Profile optimization, local schema markup, NAP consistency, and geo-targeted content to dominate your local search results.</p>
+      <p>Your Google listing set up properly, your name, address and phone matching everywhere online so Google trusts you're a real business, and pages built around the towns you actually serve.</p>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.3s">
       <div class="service-icon" style="background:#f5f0ff">🔄</div>
@@ -1350,18 +1556,19 @@
   <div class="work-section-inner">
   <div class="section-label">Portfolio</div>
   <h2>Built for real businesses.<br>Real results.</h2>
+  <p class="work-intro">Different trades, different problems — same goal every time: a site that brings in work.</p>
 
   <div class="work-grid">
     <div class="work-card featured fade-up">
-      <div class="work-type">HVAC · Website Build + SEO</div>
-      <h3>Sheridan Heating & Cooling</h3>
-      <p>Full website build for a 30-year Ocean County HVAC company. Designed from scratch, SEO-optimized, deployed on Netlify with proper sitemap, robots.txt, and Google Search Console integration.</p>
+      <div class="work-type">Heating &amp; Cooling</div>
+      <h3>Sheridan Heating &amp; Cooling</h3>
+      <p><strong>The problem:</strong> A trusted 30-year family HVAC company that almost nobody could find online.</p>
+      <p><strong>What they got:</strong> A brand-new site built to show up when someone nearby searches for heating or AC repair — and to make calling easy the second they land on it.</p>
       <div class="work-tags">
-        <span class="work-tag">HTML/CSS</span>
-        <span class="work-tag">Netlify</span>
-        <span class="work-tag">On-Page SEO</span>
-        <span class="work-tag">Local SEO</span>
-        <span class="work-tag">Schema Markup</span>
+        <span class="work-tag">Built from scratch</span>
+        <span class="work-tag">Show up on Google</span>
+        <span class="work-tag">Easy to call</span>
+        <span class="work-tag">Works on phones</span>
       </div>
       <div class="work-result">
         sheridanheatingandcooling.com
@@ -1370,15 +1577,15 @@
     </div>
 
     <div class="work-card fade-up" style="transition-delay:0.1s">
-      <div class="work-type">Insurance · Website Revamp</div>
+      <div class="work-type">Insurance Agency</div>
       <h3>Abbey Insurance Agency</h3>
-      <p>Complete website overhaul for a 25-year-old NJ insurance agency — 8 dedicated coverage pages, custom quote form, embedded Neptune Flood widget, statewide SEO, structured data, and full 301 redirect handling for hundreds of legacy indexed URLs.</p>
+      <p><strong>The problem:</strong> A 25-year-old agency with a dated site that was painful to use on a phone — and years of Google ranking they couldn't afford to lose.</p>
+      <p><strong>What they got:</strong> A full rebuild with a page for every type of coverage, a quote request form, and instant flood quotes customers can run themselves. Their existing search rankings carried over intact.</p>
       <div class="work-tags">
-        <span class="work-tag">Site Revamp</span>
-        <span class="work-tag">Copywriting</span>
-        <span class="work-tag">SEO</span>
-        <span class="work-tag">Quote Form</span>
-        <span class="work-tag">Third-Party Widget</span>
+        <span class="work-tag">Full redesign</span>
+        <span class="work-tag">Quote form</span>
+        <span class="work-tag">Kept their rankings</span>
+        <span class="work-tag">A page per service</span>
       </div>
       <div class="work-result">
         abbeyinsnj.com
@@ -1387,14 +1594,15 @@
     </div>
 
     <div class="work-card fade-up" style="transition-delay:0.2s">
-      <div class="work-type">Real Estate · Website Build + SEO</div>
+      <div class="work-type">Real Estate</div>
       <h3>Teri Bindshedler Homes</h3>
-      <p>Custom site for an NJ Shore REALTOR® serving Ocean County buyers and sellers. Personal, conversion-focused design with active listing support and hyper-local SEO targeting Little Egg Harbor and surrounding towns.</p>
+      <p><strong>The problem:</strong> A Shore REALTOR® competing against big brokerage sites for local buyers and sellers.</p>
+      <p><strong>What they got:</strong> A personal site that puts her face and reputation first, built to get found by people searching in her specific towns rather than the whole state.</p>
       <div class="work-tags">
-        <span class="work-tag">HTML/CSS</span>
-        <span class="work-tag">Netlify</span>
-        <span class="work-tag">Local SEO</span>
-        <span class="work-tag">Schema Markup</span>
+        <span class="work-tag">Personal branding</span>
+        <span class="work-tag">Found locally</span>
+        <span class="work-tag">Listing support</span>
+        <span class="work-tag">Direct contact</span>
       </div>
       <div class="work-result">
         teribindshedlerhomes.com
@@ -1403,19 +1611,36 @@
     </div>
 
     <div class="work-card fade-up" style="transition-delay:0.3s">
-      <div class="work-type">Delivery Service · Website Build</div>
+      <div class="work-type">Delivery Service</div>
       <h3>302 Smoke Delivery</h3>
-      <p>Full website build for a Delaware-based on-demand vape & tobacco delivery service. Built with Next.js 16 and Tailwind CSS — includes a 21+ age gate, interactive shopping cart, DOB-verified order form, 8 product categories, and animated smoke particle effects.</p>
+      <p><strong>The problem:</strong> An on-demand delivery service taking every order by phone and text.</p>
+      <p><strong>What they got:</strong> A storefront customers order from directly — browse products, add to a cart, check out — with age verification built in so every order stays compliant.</p>
       <div class="work-tags">
-        <span class="work-tag">Next.js</span>
-        <span class="work-tag">Tailwind CSS</span>
-        <span class="work-tag">Age Verification</span>
-        <span class="work-tag">Shopping Cart</span>
-        <span class="work-tag">Order Form</span>
+        <span class="work-tag">Order online</span>
+        <span class="work-tag">Shopping cart</span>
+        <span class="work-tag">Age verification</span>
+        <span class="work-tag">Built for mobile</span>
       </div>
       <div class="work-result">
         302smokedelivery.com
         <span>Live site · Delaware</span>
+      </div>
+    </div>
+
+    <div class="work-card fade-up" style="transition-delay:0.4s">
+      <div class="work-type">Clean Water &amp; Infrastructure</div>
+      <h3>Captiva Verde</h3>
+      <p><strong>The problem:</strong> A publicly traded company that deploys machines pulling drinking water out of thin air — built by their manufacturing partner, not by them. Explaining who does what, to investors and to towns, in the same few seconds.</p>
+      <p><strong>What they got:</strong> Nine pages that explain the technology plainly and make clear where their own work begins — getting these systems sited, deployed, and into the hands of the communities using them. Plus a calculator that shows what a unit would produce at your site.</p>
+      <div class="work-tags">
+        <span class="work-tag">Investor-ready</span>
+        <span class="work-tag">Explains the tech simply</span>
+        <span class="work-tag">Quote requests</span>
+        <span class="work-tag">Nine pages</span>
+      </div>
+      <div class="work-result">
+        captivaverde.com
+        <span>Live site · Florida</span>
       </div>
     </div>
   </div>
@@ -1484,8 +1709,8 @@
             <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
             <div class="tl-body">
               <div class="tl-period">Weeks 1–4</div>
-              <div class="tl-title">Foundation & Indexing</div>
-              <div class="tl-desc">Your site gets submitted to Google, sitemap and robots.txt are configured, and Google begins crawling. You show up for your exact business name.</div>
+              <div class="tl-title">Getting Listed</div>
+              <div class="tl-desc">Your site is submitted to Google and set up so its crawler can read every page. Google starts checking you out, and you show up when someone searches your exact business name.</div>
             </div>
           </div>
           <div class="tl-step">
@@ -1493,7 +1718,7 @@
             <div class="tl-body">
               <div class="tl-period">Months 2–3</div>
               <div class="tl-title">Local Visibility Builds</div>
-              <div class="tl-desc">Your Google Business Profile and local schema start placing you in "near me" searches. You begin appearing in map results for your city.</div>
+              <div class="tl-desc">Your Google listing and the code that tells Google where you are based start putting you in "near me" searches. You begin appearing on the map for your city.</div>
             </div>
           </div>
           <div class="tl-step">
@@ -1501,7 +1726,7 @@
             <div class="tl-body">
               <div class="tl-period">Months 3–6</div>
               <div class="tl-title">Keyword Rankings Take Hold</div>
-              <div class="tl-desc">Service-specific pages start ranking for your target keywords. Organic traffic begins — slowly at first, then noticeably. Competitors that outrank you become identifiable.</div>
+              <div class="tl-desc">Your individual service pages start ranking for the searches you care about. Visitors start arriving from Google — slowly at first, then noticeably. It also becomes clear which competitors are still ahead of you, and why.</div>
             </div>
           </div>
           <div class="tl-step">
@@ -1509,7 +1734,7 @@
             <div class="tl-body">
               <div class="tl-period">Months 6–12</div>
               <div class="tl-title">Traffic Compounds</div>
-              <div class="tl-desc">Rankings solidify, click-through rates improve, and your site earns authority. New leads arrive consistently — without any ad spend. Most clients see 2–4× more inbound inquiries.</div>
+              <div class="tl-desc">Your rankings settle in, more people click through when they see you, and Google starts treating your site as a trusted source. New leads arrive consistently without any ad spend. Most clients see 2–4× more inbound inquiries.</div>
             </div>
           </div>
           <div class="tl-step">
@@ -1517,7 +1742,7 @@
             <div class="tl-body">
               <div class="tl-period">Year 1+</div>
               <div class="tl-title">Established Authority</div>
-              <div class="tl-desc">You dominate your local market for high-intent searches. Competitors are chasing you. Your site is a lead generation asset — not just a business card.</div>
+              <div class="tl-desc">You own your local market for the searches that bring ready-to-buy customers. Competitors are chasing you. Your site brings in work instead of just sitting there.</div>
             </div>
           </div>
         </div>
@@ -1538,10 +1763,10 @@
   <div class="process-row">
     <div class="process-sticky fade-up">
       <p style="color:var(--muted); line-height:1.7; font-size:0.95rem;">
-        From first message to live website, I keep things clear, fast, and stress-free. Most projects are live in about 1 week. Simpler builds can move faster when content is ready.
+        From first message to live website, I keep things clear, fast, and stress-free. Most projects are live in about 2 weeks. Simpler builds can move faster when content is ready.
       </p>
       <br>
-      <a href="contact.html" class="btn-primary" style="display:inline-flex">Start a Project →</a>
+      <a href="/contact" class="btn-primary" style="display:inline-flex">Start a Project →</a>
     </div>
 
     <div class="process-steps">
@@ -1570,14 +1795,14 @@
         <div class="step-num">04</div>
         <div>
           <h4>Launch & SEO Setup</h4>
-          <p>We go live. I handle the sitemap, robots.txt, Google Search Console submission, and make sure Google starts indexing you immediately.</p>
+          <p>We go live. I handle the behind-the-scenes setup that tells Google your site exists and how to read it, so you start showing up in search right away instead of waiting to be found.</p>
         </div>
       </div>
       <div class="step fade-up" style="transition-delay:0.4s">
         <div class="step-num">05</div>
         <div>
           <h4>Ongoing Maintenance (Included)</h4>
-          <p>Every build includes a maintenance plan — hosting, SSL, security, and uptime monitoring from day one. Upgrade anytime for content edits, SEO monitoring, and more.</p>
+          <p>Every build includes a maintenance plan from day one — hosting, the security certificate that puts the padlock in the browser bar, and monitoring that tells me if your site ever goes down. Upgrade anytime for content edits and ongoing SEO work.</p>
         </div>
       </div>
     </div>
@@ -1682,7 +1907,7 @@
     <div class="calc-cta-box fade-up">
       <h3>Ready to see these numbers become real?</h3>
       <p>Most Deep Water clients see results within 30 days of launch.</p>
-      <a href="build.html" class="btn-primary">Get Your Free Site Audit →</a>
+      <a href="/build" class="btn-primary">Get Your Free Site Audit →</a>
     </div>
 
   </div>
@@ -1701,7 +1926,7 @@
         <div class="author-avatar" style="background:#0096c7">R</div>
         <div>
           <div class="author-name">Ryan Fothergill</div>
-          <div class="author-biz">Facebook Review · ★ Recommends Deep Water Websites</div>
+          <div class="author-biz"><a href="https://www.facebook.com/people/Deep-Water-Websites/61567588946690/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(255,255,255,0.3);">Facebook Review</a> · ★ Recommends Deep Water Websites</div>
         </div>
       </div>
     </div>
@@ -1713,7 +1938,7 @@
         <div class="author-avatar" style="background:#e65c00">S</div>
         <div>
           <div class="author-name">Sheridan Heating & Cooling LLC</div>
-          <div class="author-biz">Facebook Review · ★ Recommends Deep Water Websites</div>
+          <div class="author-biz"><a href="https://www.facebook.com/people/Deep-Water-Websites/61567588946690/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(255,255,255,0.3);">Facebook Review</a> · ★ Recommends Deep Water Websites</div>
         </div>
       </div>
     </div>
@@ -1725,7 +1950,7 @@
         <div class="author-avatar" style="background:#4caf50">T</div>
         <div>
           <div class="author-name">Teri Bindshedler</div>
-          <div class="author-biz">Facebook Review · ★ Recommends Deep Water Websites</div>
+          <div class="author-biz"><a href="https://www.facebook.com/people/Deep-Water-Websites/61567588946690/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(255,255,255,0.3);">Facebook Review</a> · ★ Recommends Deep Water Websites</div>
         </div>
       </div>
     </div>
@@ -1750,21 +1975,21 @@
         How long does a website take to build?
         <span class="faq-arrow">+</span>
       </div>
-      <div class="faq-a">Typically about 1 week depending on the package. Some simpler builds move faster when you have your content ready upfront.</div>
+      <div class="faq-a">Typically about 2 weeks depending on the package. Some simpler builds move faster when you have your content ready upfront.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">
         Do you offer payment plans?
         <span class="faq-arrow">+</span>
       </div>
-      <div class="faq-a">Yes. For any project over $499, you can split 50/50 (half now, half at launch) or into 3 monthly payments. Just mention it when you reach out and we'll figure out what works.</div>
+      <div class="faq-a">Yes. For one-time builds I typically structure a 50% deposit upfront and 50% on delivery. If you would rather avoid a large upfront cost, the Website as a Service plan covers everything for one flat monthly rate. Just mention it when you reach out and we will figure out what works.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">
         Will my site show up on Google?
         <span class="faq-arrow">+</span>
       </div>
-      <div class="faq-a">Every site I build includes sitemap.xml, robots.txt, and Google Search Console setup — so Google can find and index your site the moment it goes live. Growth and Premium packages also include active keyword optimization.</div>
+      <div class="faq-a">Yes. Every site I build is registered with Google and set up so it can be found and listed the moment it goes live — that's included, never an add-on. Growth and Premium packages also include ongoing work on the specific searches you want to win.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">
@@ -1787,7 +2012,7 @@
 <section id="contact" class="cta-section">
   <h2>Your website should<br>be working right now.</h2>
   <p>Let's talk about what you need. Free consultation. No pressure. I'll tell you exactly what I'd do and what it would cost.</p>
-  <a href="contact.html" class="btn-primary" style="font-size:1rem; padding:1rem 2.5rem">
+  <a href="/contact" class="btn-primary" style="font-size:1rem; padding:1rem 2.5rem">
     Book a Free Call →
   </a>
 </section>
@@ -1800,8 +2025,8 @@
         <div>
           <span class="section-label" style="color:var(--accent2);">Free Tool</span>
           <h2>Not sure if your website is helping or hurting?</h2>
-          <p>Get a free, honest online presence score in about a minute. Plain English, real measurements, zero pressure.</p>
-          <a href="free-website-review.html" class="btn-primary">Check My Score →</a>
+          <p>Find out in 60 seconds — that's all it takes to fill out the form. From there I review your site myself and email you a short, plain-English report, usually within a day.</p>
+          <a href="/free-website-review" class="btn-primary">Check My Score →</a>
         </div>
         <div class="score-dial-wrap">
           <div class="score-dial">
@@ -1820,19 +2045,20 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="index.html" class="logo"><img src="logo-transparent.png" alt="Deep Water Websites" class="footer-logo-img" loading="lazy" decoding="async"></a>
-      <p>Web Designer & SEO Specialist<br>Orlando, FL · Available Nationwide</p>
+      <a href="/" class="logo"><img src="logo-transparent.png" alt="Deep Water Websites" class="footer-logo-img" loading="lazy" decoding="async"></a>
+      <p>Web Designer & SEO Specialist<br>Orlando, FL · Serving NJ, DE & nationwide</p>
+      <p class="footer-contact"><a href="mailto:info@deepwaterwebsites.com">info@deepwaterwebsites.com</a></p>
     </div>
     <div class="footer-cols">
       <div class="footer-col">
         <h4>Navigate</h4>
-        <a href="index.html">Home</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="maintenance.html">Maintenance</a>
-        <a href="seo.html">What Is SEO?</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="/">Home</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/maintenance">Maintenance</a>
+        <a href="/seo">What Is SEO?</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
       </div>
     </div>
   </div>
@@ -1951,6 +2177,12 @@
     const video = document.querySelector('.hero-bg-video');
     const cover = document.querySelector('.hero-fade-cover');
     if (!video || !cover) return;
+    // Reduced motion: hold on the poster frame, never autoplay, skip the loop fade.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      video.removeAttribute('autoplay');
+      video.pause();
+      return;
+    }
     // Safari requires muted to be set via JS, not just the HTML attribute
     video.muted = true;
     video.setAttribute('playsinline', '');
@@ -1986,6 +2218,452 @@
     const item = el.parentElement;
     item.classList.toggle('open');
   }
+
+  /* ─── DEPTH SYSTEM ───────────────────────────────────────────────
+     Scroll position maps to an ocean depth of 0–4,000 m. Three things
+     track it: the page palette darkens, a gauge reports depth + zone,
+     and creatures fade in only within their real depth ranges.
+     ──────────────────────────────────────────────────────────────── */
+  (function () {
+    const PEAK_OPACITY = 0.18; // silhouettes must never fight the copy
+
+    // Four vertical lanes that never horizontally overlap. Each creature is
+    // pinned to one, and only the strongest creature in a lane is ever shown —
+    // so two silhouettes can never sit on top of each other, whatever depth
+    // you're at. This also caps the water at four creatures by construction.
+    const LANE_W = 21;                        // vw — max creature width
+    const LANE_X = [1, 26.5, 52, 77.5];       // vw — left edge of each lane
+    const MAX_ON_SCREEN = LANE_X.length;
+
+    const life    = document.getElementById('depthLife');
+    const gauge   = document.getElementById('depthGauge');
+    const rail    = document.getElementById('depthRail');
+    const marker  = document.getElementById('depthMarker');
+    const valueEl = document.getElementById('depthValue');
+    const zoneEl  = document.getElementById('depthZone');
+    const noteEl  = document.getElementById('depthNote');
+    if (!life || !gauge) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // The five real pelagic zones, in feet, each with a plain-English line.
+    // `span` is the share of total scroll that zone occupies. Mapping is
+    // piecewise rather than linear: the sunlight zone is only 660 of 36,000 ft,
+    // so a straight linear scale would blow past it in the first 2% of the page.
+    const ZONES = [
+      { max: 660,   name: 'Sunlight Zone', note: 'Enough light for plants to grow', span: 0.20 },
+      { max: 3300,  name: 'Twilight Zone', note: 'Dim blue light, no plants',       span: 0.22 },
+      { max: 13100, name: 'Midnight Zone', note: 'No sunlight at all',              span: 0.24 },
+      { max: 19700, name: 'Abyssal Zone',  note: 'Near freezing, total darkness',   span: 0.20 },
+      { max: 36000, name: 'Hadal Zone',    note: 'The deep ocean trenches',         span: 0.14 }
+    ];
+    const MAX_DEPTH = ZONES[ZONES.length - 1].max; // ~Challenger Deep
+
+    // Scroll progress → true depth, walking the zones so each gets fair travel.
+    function depthForProgress(p) {
+      let acc = 0, floor = 0;
+      for (let i = 0; i < ZONES.length; i++) {
+        const z = ZONES[i];
+        const last = i === ZONES.length - 1;
+        if (p <= acc + z.span || last) {
+          const local = z.span > 0 ? clamp01((p - acc) / z.span) : 1;
+          return floor + (z.max - floor) * local;
+        }
+        acc += z.span;
+        floor = z.max;
+      }
+      return MAX_DEPTH;
+    }
+
+    // Published depth ranges, in FEET. Common names only — this is for
+    // visitors, not marine biologists.
+    // x/y = viewport %, size = width in vw, dur = drift seconds.
+    const CREATURES = [
+      { key:'turtle',   label:'Green Sea Turtle',   min:0,    max:200,   y:20, size:8,  dur:54, biolum:false },
+      { key:'jelly',    label:'Moon Jellyfish',     min:0,    max:660,   y:16, size:7,  dur:60, biolum:false },
+      { key:'manta',    label:'Giant Manta Ray',    min:0,    max:1000,  y:60, size:14, dur:64, biolum:false },
+      { key:'blueshark',label:'Blue Shark',         min:0,    max:1150,  y:64, size:15, dur:50, biolum:false },
+      { key:'nautilus', label:'Chambered Nautilus', min:300,  max:2000,  y:44, size:6,  dur:56, biolum:false },
+      { key:'frilled',  label:'Frilled Shark',      min:400,  max:4200,  y:36, size:16, dur:52, biolum:false },
+      { key:'humboldt', label:'Humboldt Squid',     min:660,  max:2300,  y:12, size:7,  dur:46, biolum:false },
+      { key:'hatchet',  label:'Hatchetfish',        min:650,  max:4900,  y:26, size:5,  dur:40, biolum:true  },
+      { key:'lantern',  label:'Lanternfish',        min:1000, max:3300,  y:70, size:5,  dur:38, biolum:true  },
+      { key:'giantsquid',label:'Giant Squid',       min:1000, max:3300,  y:8,  size:12, dur:62, biolum:false },
+      { key:'sperm',    label:'Sperm Whale',        min:1000, max:7400,  y:52, size:22, dur:70, biolum:false },
+      { key:'viper',    label:'Viperfish',          min:1600, max:5000,  y:74, size:9,  dur:44, biolum:true  },
+      { key:'barreleye',label:'Barreleye',          min:2000, max:2600,  y:32, size:7,  dur:42, biolum:true  },
+      { key:'vampire',  label:'Vampire Squid',      min:2000, max:3900,  y:44, size:7,  dur:48, biolum:true  },
+      { key:'isopod',   label:'Giant Isopod',       min:1000, max:7000,  y:78, size:7,  dur:54, biolum:false },
+      { key:'gulper',   label:'Pelican Eel',        min:3000, max:9800,  y:22, size:13, dur:46, biolum:true  },
+      { key:'rattail',  label:'Rattail',            min:3000, max:13000, y:34, size:12, dur:56, biolum:false },
+      { key:'angler',   label:'Anglerfish',         min:3300, max:8200,  y:30, size:9,  dur:50, biolum:true  },
+      { key:'seapig',   label:'Sea Pig',            min:4000, max:19700, y:82, size:7,  dur:60, biolum:false },
+      { key:'tripod',   label:'Tripod Fish',        min:8000, max:15700, y:52, size:8,  dur:58, biolum:false },
+      { key:'dumbo',    label:'Dumbo Octopus',      min:9800, max:22800, y:58, size:8,  dur:52, biolum:false },
+      { key:'snailfish',label:'Hadal Snailfish',    min:20000,max:27000, y:38, size:9,  dur:50, biolum:false },
+      { key:'amphipod', label:'Deep-sea Amphipod',  min:20000,max:36000, y:66, size:6,  dur:44, biolum:false }
+    ];
+
+    // Silhouettes drawn from each animal's actual diagnostic anatomy — the
+    // features you'd use to identify it. currentColor lets .biolum retint.
+    const SVG = {
+      // Broad carapace, small head, two long front flippers, short rear pair.
+      turtle: `<svg viewBox="0 0 140 120">
+        <ellipse cx="70" cy="62" rx="30" ry="38" fill="currentColor" fill-opacity=".3"/>
+        <ellipse cx="70" cy="17" rx="9" ry="11" fill="currentColor" fill-opacity=".3"/>
+        <path d="M44 44C28 30 10 28 4 36c-6 8 8 22 34 30" fill="currentColor" fill-opacity=".24"/>
+        <path d="M96 44c16-14 34-16 40-8 6 8-8 22-34 30" fill="currentColor" fill-opacity=".24"/>
+        <path d="M56 96c-8 12-8 20-2 22 6 2 12-8 14-18" fill="currentColor" fill-opacity=".24"/>
+        <path d="M84 96c8 12 8 20 2 22-6 2-12-8-14-18" fill="currentColor" fill-opacity=".24"/>
+        <g stroke="currentColor" stroke-width="2" fill="none" opacity=".45"><path d="M70 26v72M48 48h44M50 74h40"/></g>
+      </svg>`,
+      // Shallow saucer bell, four horseshoe gonads, fine marginal tentacles.
+      jelly: `<svg viewBox="0 0 120 112">
+        <path d="M6 46a54 30 0 0 1 108 0c0 10-24 16-54 16S6 56 6 46Z" fill="currentColor" fill-opacity=".26"/>
+        <g fill="none" stroke="currentColor" stroke-width="3" opacity=".7">
+          <path d="M34 38a10 10 0 0 1 20 0"/><path d="M66 38a10 10 0 0 1 20 0"/><path d="M50 52a10 10 0 0 1 20 0"/>
+        </g>
+        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <path d="M48 60c-2 16 2 26-4 38M58 62c-1 18 1 28-2 40M64 62c1 18-1 28 2 40M74 60c2 16-2 26 4 38"/>
+        </g>
+        <g stroke="currentColor" stroke-width="1.4" opacity=".5">
+          <path d="M12 50v10M22 56v11M34 60v11M48 62v10M60 63v11M72 62v10M86 60v11M98 56v11M108 50v10"/>
+        </g>
+      </svg>`,
+      // Triangular wings, paired cephalic horns, whip tail, gill slits.
+      manta: `<svg viewBox="0 0 160 122">
+        <path d="M80 28c14 0 26 6 44 20 16 12 32 22 34 30-14 4-34-2-48-8-10-4-20-6-30-6s-20 2-30 6c-14 6-34 12-48 8 2-8 18-18 34-30 18-14 30-20 44-20Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M68 30c-4-10-8-16-12-16s-2 10 2 18M92 30c4-10 8-16 12-16s2 10-2 18" fill="currentColor" fill-opacity=".24"/>
+        <path d="M80 70c0 20-1 36-2 48" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <g stroke="currentColor" stroke-width="1.6" opacity=".45"><path d="M66 46v8M72 48v8M88 48v8M94 46v8"/></g>
+      </svg>`,
+      // Slim body, long conical snout, long scythe pectorals, lunate tail.
+      blueshark: `<svg viewBox="0 0 190 84">
+        <path d="M4 42c14-11 34-17 60-17 22 0 41 4 56 11l26-7-7 13 9 13-28-5c-15 8-34 12-56 12-26 0-46-9-60-20Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M76 25c4-15 10-21 15-20 2 8 0 17-5 23" fill="currentColor" fill-opacity=".26"/>
+        <path d="M66 48c-7 17-5 26 2 28 6-2 15-15 19-25" fill="currentColor" fill-opacity=".24"/>
+        <path d="M96 54c4 9 4 14 1 17-4-2-8-9-10-15" fill="currentColor" fill-opacity=".2"/>
+        <circle cx="27" cy="37" r="2.6" fill="currentColor"/>
+        <g stroke="currentColor" stroke-width="1.5" opacity=".45"><path d="M41 33v13M47 32v14M53 32v14M59 33v13"/></g>
+      </svg>`,
+      // Coiled chambered shell with septa, hood and tentacle cluster.
+      nautilus: `<svg viewBox="0 0 122 112">
+        <path d="M62 8C32 8 10 30 10 58s20 44 44 44c10 0 18-3 24-8-16-2-30-14-30-34 0-22 16-36 36-36 14 0 24 6 30 14C108 22 88 8 62 8Z" fill="currentColor" fill-opacity=".28"/>
+        <g stroke="currentColor" stroke-width="2" opacity=".4" fill="none">
+          <path d="M62 8v16M26 24l12 12M10 58h16M22 86l14-10M54 102l4-16M84 24 74 36"/>
+        </g>
+        <path d="M92 74c10 4 18 8 22 14M92 81c8 6 14 12 16 20M87 86c6 8 8 15 8 22M96 68c10 2 18 4 23 9" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      </svg>`,
+      // Eel-like body, six frilly gill slits, dorsal set far back.
+      frilled: `<svg viewBox="0 0 200 72">
+        <path d="M8 34c10-8 24-12 42-12 34 0 76 6 116 14-40 8-82 14-116 14-18 0-32-6-42-16Z" fill="currentColor" fill-opacity=".3"/>
+        <g stroke="currentColor" stroke-width="2" opacity=".55" fill="none">
+          <path d="M28 26c-4 6-4 12 0 18M35 25c-4 7-4 13 0 20M42 25c-4 7-4 13 0 20M49 25c-4 7-4 13 0 20M56 26c-4 6-4 12 0 18"/>
+        </g>
+        <path d="M140 26c4-8 8-11 12-10-1 4-1 7 0 10" fill="currentColor" fill-opacity=".24"/>
+        <path d="M166 34c12-2 22-6 30-4-6 6-8 14-4 20-10 0-18-8-26-12Z" fill="currentColor" fill-opacity=".26"/>
+        <circle cx="18" cy="33" r="2.4" fill="currentColor"/>
+      </svg>`,
+      // Torpedo mantle, triangular terminal fins, 8 arms + 2 clubbed tentacles.
+      humboldt: `<svg viewBox="0 0 92 164">
+        <path d="M46 6c12 0 20 22 20 46 0 16-4 28-8 34H34c-4-6-8-18-8-34C26 28 34 6 46 6Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M46 8c10-4 23 6 23 16 0 6-8 6-15 2M46 8c-10-4-23 6-23 16 0 6 8 6 15 2" fill="currentColor" fill-opacity=".22"/>
+        <circle cx="36" cy="80" r="4" fill="currentColor" fill-opacity=".6"/><circle cx="56" cy="80" r="4" fill="currentColor" fill-opacity=".6"/>
+        <g stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round">
+          <path d="M37 92c-6 18-10 30-8 44M43 94c-3 20-5 34-4 48M49 94c3 20 5 34 4 48M55 92c6 18 10 30 8 44"/>
+          <path d="M33 92c-10 16-18 26-20 40" stroke-width="2.4"/><path d="M59 92c10 16 18 26 20 40" stroke-width="2.4"/>
+        </g>
+        <path d="M41 94c-4 26-6 44-2 60M51 94c4 26 6 44 2 60" stroke="currentColor" stroke-width="1.8" fill="none"/>
+        <ellipse cx="39" cy="157" rx="3.4" ry="6.5" fill="currentColor" fill-opacity=".45"/>
+        <ellipse cx="53" cy="157" rx="3.4" ry="6.5" fill="currentColor" fill-opacity=".45"/>
+      </svg>`,
+      // Deep hatchet-blade body, thin tail stalk, upward tube eye, belly lights.
+      hatchet: `<svg viewBox="0 0 112 102">
+        <path d="M30 12c14-6 30-4 40 6 10 10 12 26 6 38-6 12-20 18-34 16-12-2-22-10-26-22-4-14 0-32 14-38Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M76 56c10 2 18 4 24 2-2 8-2 16 0 22-8 0-16-6-22-12" fill="currentColor" fill-opacity=".26"/>
+        <path d="M44 12c2-7 6-10 10-9-1 4-2 7-1 10" fill="currentColor" fill-opacity=".2"/>
+        <circle cx="40" cy="30" r="8" fill="currentColor" fill-opacity=".45"/>
+        <circle cx="40" cy="28" r="3.5" fill="currentColor"/>
+        <g class="glow"><circle cx="33" cy="68" r="2.6"/><circle cx="43" cy="72" r="2.6"/><circle cx="53" cy="73" r="2.6"/><circle cx="63" cy="70" r="2.6"/></g>
+      </svg>`,
+      // Small, big-eyed, forked tail, photophore rows along the flank.
+      lantern: `<svg viewBox="0 0 132 62">
+        <path d="M10 30c10-12 28-18 48-18 18 0 34 6 46 16-12 10-28 16-46 16-20 0-38-4-48-14Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M104 28c8-6 15-10 21-10-3 6-3 14 0 20-6 0-13-4-21-10Z" fill="currentColor" fill-opacity=".28"/>
+        <path d="M58 12c2-6 6-9 10-9-1 4-1 7 0 9M56 46c2 6 6 8 10 8-1-4-1-6 0-8" fill="currentColor" fill-opacity=".2"/>
+        <circle cx="24" cy="28" r="5" fill="currentColor" fill-opacity=".45"/><circle cx="24" cy="28" r="2.4" fill="currentColor"/>
+        <g class="glow"><circle cx="34" cy="42" r="2.2"/><circle cx="46" cy="45" r="2.2"/><circle cx="58" cy="46" r="2.2"/><circle cx="70" cy="45" r="2.2"/><circle cx="82" cy="42" r="2.2"/></g>
+      </svg>`,
+      // Long mantle, terminal fins, 8 arms plus 2 much longer clubbed tentacles.
+      giantsquid: `<svg viewBox="0 0 100 204">
+        <path d="M50 4c10 0 16 20 16 44 0 18-3 30-6 36H40c-3-6-6-18-6-36C34 24 40 4 50 4Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M50 6c9-3 20 5 20 14 0 5-7 6-13 2M50 6c-9-3-20 5-20 14 0 5 7 6 13 2" fill="currentColor" fill-opacity=".22"/>
+        <circle cx="38" cy="86" r="6.5" fill="currentColor" fill-opacity=".6"/>
+        <circle cx="62" cy="86" r="6.5" fill="currentColor" fill-opacity=".6"/>
+        <g stroke="currentColor" stroke-width="2.8" fill="none" stroke-linecap="round">
+          <path d="M40 98c-8 20-14 34-14 50M46 100c-4 22-7 38-6 54M54 100c4 22 7 38 6 54M60 98c8 20 14 34 14 50"/>
+          <path d="M34 98c-12 18-20 30-22 46" stroke-width="2.2"/><path d="M66 98c12 18 20 30 22 46" stroke-width="2.2"/>
+        </g>
+        <path d="M44 100c-6 40-8 68-2 90M56 100c6 40 8 68 2 90" stroke="currentColor" stroke-width="1.8" fill="none"/>
+        <ellipse cx="41" cy="193" rx="4" ry="8.5" fill="currentColor" fill-opacity=".42"/>
+        <ellipse cx="59" cy="193" rx="4" ry="8.5" fill="currentColor" fill-opacity=".42"/>
+      </svg>`,
+      // Squared blunt head (a third of the body), underslung jaw, dorsal knuckles.
+      sperm: `<svg viewBox="0 0 224 96">
+        <path d="M12 30c0-13 14-22 42-22 30 0 62 6 94 16 22 7 40 12 52 10-6 8-6 18 0 26-12 2-30-3-52-10-32-10-64-16-94-16-28 0-42-2-42-4Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M12 28c0-13 12-21 34-21 15 0 25 4 31 10l-4 26c-8 6-20 9-33 9-19 0-28-9-28-24Z" fill="currentColor" fill-opacity=".32"/>
+        <path d="M17 48c9 4 23 6 37 6l24 2" stroke="currentColor" stroke-width="2" fill="none" opacity=".55"/>
+        <path d="M80 52c-4 15 0 23 8 23 4-4 8-14 10-21" fill="currentColor" fill-opacity=".24"/>
+        <path d="M142 27c4-8 10-12 14-10-1 4-2 8-1 12M160 31c3-5 7-7 10-6M174 35c3-4 6-5 8-4" fill="none" stroke="currentColor" stroke-width="2.4" opacity=".6"/>
+        <circle cx="31" cy="31" r="2.4" fill="currentColor"/>
+      </svg>`,
+      // Needle fangs outside the mouth, long dorsal ray tipped with a lure.
+      viper: `<svg viewBox="0 0 184 84">
+        <path d="M20 42c8-10 22-16 40-16 26 0 52 6 74 14-22 8-48 14-74 14-18 0-32-4-40-12Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M20 42c-6-6-11-13-11-19 8 2 17 7 23 13M20 42c-6 6-11 13-11 19 8-2 17-7 23-13" fill="currentColor" fill-opacity=".24"/>
+        <g stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none">
+          <path d="M15 31l4 12M23 29l2 14M31 29v14M13 53l6-10M21 55l4-12M29 56v-13"/>
+        </g>
+        <path d="M54 26C50 8 60 2 74 3" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <circle class="glow" cx="76" cy="3" r="4.5"/>
+        <path d="M134 40c14-4 26-8 34-6-4 6-4 14 0 20-8 2-20-2-34-8Z" fill="currentColor" fill-opacity=".26"/>
+        <g class="glow"><circle cx="62" cy="53" r="2"/><circle cx="82" cy="55" r="2"/><circle cx="102" cy="55" r="2"/><circle cx="120" cy="52" r="2"/></g>
+      </svg>`,
+      // Transparent dome skull with two upward tubular eyes inside it.
+      barreleye: `<svg viewBox="0 0 132 84">
+        <path d="M18 42c0-19 16-31 34-31s33 12 33 29c0 6-2 11-4 15H22c-2-4-4-8-4-13Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="2"/>
+        <g class="glow"><rect x="35" y="24" width="11" height="21" rx="5.5"/><rect x="56" y="24" width="11" height="21" rx="5.5"/></g>
+        <path d="M22 55c14 8 40 10 62 4 12-4 22-8 30-6-6 6-8 14-6 20-10 2-18-2-28-4-20-4-46-4-58-14Z" fill="currentColor" fill-opacity=".3"/>
+        <circle cx="33" cy="50" r="2" fill="currentColor"/><circle cx="47" cy="51" r="2" fill="currentColor"/>
+        <path d="M60 60c2 8 2 13 0 16-3-3-5-9-5-14" fill="currentColor" fill-opacity=".18"/>
+      </svg>`,
+      // Ear-like fins on the mantle, arms joined by a full web (the "cloak").
+      vampire: `<svg viewBox="0 0 112 134">
+        <path d="M33 27c-12-10-25-10-29-2-4 8 6 16 21 20M79 27c12-10 25-10 29-2 4 8-6 16-21 20" fill="currentColor" fill-opacity=".22"/>
+        <path d="M56 10c16 0 26 16 26 34 0 10-3 18-7 24H37c-4-6-7-14-7-24 0-18 10-34 26-34Z" fill="currentColor" fill-opacity=".32"/>
+        <circle cx="43" cy="53" r="6" fill="currentColor" fill-opacity=".6"/><circle cx="69" cy="53" r="6" fill="currentColor" fill-opacity=".6"/>
+        <path d="M35 69c-6 22-8 38-2 53 8-10 16-15 23-15s15 5 23 15c6-15 4-31-2-53Z" fill="currentColor" fill-opacity=".2" stroke="currentColor" stroke-width="2"/>
+        <g stroke="currentColor" stroke-width="2" opacity=".5"><path d="M43 71v43M53 71v47M63 71v47M73 71v43"/></g>
+        <g class="glow"><circle cx="35" cy="120" r="2.4"/><circle cx="79" cy="120" r="2.4"/></g>
+      </svg>`,
+      // Pouch jaw far larger than the body, whip tail with a glowing tip.
+      gulper: `<svg viewBox="0 0 204 94">
+        <path d="M8 24c22-6 45 0 59 14 8 8 12 18 12 27-16-2-34-7-46-15C18 42 10 34 8 24Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M8 24c-2 12 2 25 12 33 10 8 27 14 45 18-4-10-8-18-14-24C36 39 22 28 8 24Z" fill="currentColor" fill-opacity=".18"/>
+        <path d="M8 24C30 18 53 24 67 38" stroke="currentColor" stroke-width="2.4" fill="none"/>
+        <circle cx="15" cy="26" r="2.6" fill="currentColor"/>
+        <path d="M79 65c26 6 55 4 83-4 16-4 29-8 35-14" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round" opacity=".5"/>
+        <path d="M174 47c10-2 19-4 25-8" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+        <circle class="glow" cx="200" cy="37" r="4.5"/>
+      </svg>`,
+      // Globular body, huge upturned fanged jaw, illicium with glowing esca.
+      angler: `<svg viewBox="0 0 152 124">
+        <path d="M30 64c0-23 20-39 45-39 22 0 40 12 46 32 4 14 0 27-8 35-12-8-28-12-45-12s-30 4-38 10c-4-8-6-16 0-26Z" fill="currentColor" fill-opacity=".32"/>
+        <path d="M28 76c10 10 29 16 49 16s34-4 44-10c-8 14-26 24-46 24S34 94 28 76Z" fill="currentColor" fill-opacity=".24"/>
+        <g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none">
+          <path d="M40 78l4 12M52 84l2 13M64 87v13M76 87l-1 13M88 85l-3 12M100 80l-5 11"/>
+          <path d="M43 98l2-10M57 102l1-10M71 103v-10M85 102l-1-10M97 98l-2-10"/>
+        </g>
+        <path d="M62 28C58 9 71 3 89 5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle class="glow" cx="91" cy="5" r="6"/>
+        <circle cx="52" cy="54" r="3.4" fill="currentColor"/>
+        <path d="M121 64c10-2 17 0 21 6-6 4-13 6-21 4M97 103c4 8 4 14 0 18-4-4-8-10-8-16" fill="currentColor" fill-opacity=".22"/>
+      </svg>`,
+      // Slender body propped on three enormously elongated fin rays.
+      tripod: `<svg viewBox="0 0 142 142">
+        <path d="M22 34c12-8 30-12 50-12 18 0 34 4 46 12-12 8-28 12-46 12-20 0-38-4-50-12Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M114 28c8-4 15-6 21-6-3 6-3 14 0 20-6 0-13-4-21-8Z" fill="currentColor" fill-opacity=".26"/>
+        <path d="M66 22c2-7 6-10 10-9-1 4-2 7-1 9" fill="currentColor" fill-opacity=".2"/>
+        <circle cx="34" cy="32" r="2.6" fill="currentColor"/>
+        <g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none">
+          <path d="M46 44c-8 32-14 60-16 94M74 46c0 34 0 64 2 92M104 42c8 32 16 60 22 90"/>
+        </g>
+        <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".55">
+          <path d="M50 30c-10-12-20-18-31-20M50 30c-8-14-13-22-13-30"/>
+        </g>
+      </svg>`,
+      // Armoured segmented plates like a giant pill bug, many legs, antennae.
+      isopod: `<svg viewBox="0 0 120 150">
+        <path d="M60 10c15 0 25 9 27 22H33c2-13 12-22 27-22Z" fill="currentColor" fill-opacity=".32"/>
+        <g fill="currentColor" fill-opacity=".28">
+          <rect x="30" y="35" width="60" height="13" rx="5"/><rect x="29" y="50" width="62" height="13" rx="5"/>
+          <rect x="29" y="65" width="62" height="13" rx="5"/><rect x="30" y="80" width="60" height="13" rx="5"/>
+          <rect x="32" y="95" width="56" height="12" rx="5"/><rect x="35" y="109" width="50" height="11" rx="5"/>
+        </g>
+        <path d="M60 122c14 0 24 8 26 20H34c2-12 12-20 26-20Z" fill="currentColor" fill-opacity=".3"/>
+        <circle cx="47" cy="20" r="4" fill="currentColor" fill-opacity=".65"/>
+        <circle cx="73" cy="20" r="4" fill="currentColor" fill-opacity=".65"/>
+        <g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none">
+          <path d="M50 12c-6-8-12-11-18-10M70 12c6-8 12-11 18-10"/>
+          <path d="M30 40c-9 3-15 7-19 13M29 56c-10 2-16 6-20 12M29 71c-10 2-16 6-20 12M31 86c-9 3-15 7-18 13
+                   M90 40c9 3 15 7 19 13M91 56c10 2 16 6 20 12M91 71c10 2 16 6 20 12M89 86c9 3 15 7 18 13"/>
+        </g>
+      </svg>`,
+      // Bulbous head and big eye tapering into a long whip-thin "rat" tail.
+      rattail: `<svg viewBox="0 0 200 80">
+        <path d="M10 40c8-16 24-24 44-24 18 0 32 8 40 20 10 14 30 22 56 26-26 6-46 12-58 22-8 8-22 12-38 12-20 0-36-10-44-26Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M150 62c16 4 32 6 44 4-14 4-28 8-40 14" fill="currentColor" fill-opacity=".2"/>
+        <path d="M94 36c14-10 30-14 44-12-14 6-26 12-36 20" fill="currentColor" fill-opacity=".22"/>
+        <circle cx="34" cy="34" r="6.5" fill="currentColor" fill-opacity=".55"/>
+        <circle cx="34" cy="34" r="3" fill="currentColor"/>
+        <path d="M12 48c6 4 14 6 22 6" stroke="currentColor" stroke-width="2" fill="none" opacity=".55"/>
+      </svg>`,
+      // Plump sea-cucumber body walking on stilt-like tube feet, papillae on top.
+      seapig: `<svg viewBox="0 0 130 110">
+        <path d="M28 44c0-16 16-26 37-26s37 10 37 26c0 14-14 24-37 24S28 58 28 44Z" fill="currentColor" fill-opacity=".3"/>
+        <g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none">
+          <path d="M42 22c-3-11-2-17 2-19M56 17c-2-11 0-16 4-17M74 17c2-11 0-16-4-17M88 22c3-11 2-17-2-19"/>
+        </g>
+        <g stroke="currentColor" stroke-width="3.4" stroke-linecap="round" fill="none">
+          <path d="M38 64c-5 16-7 27-6 38M52 68c-3 17-4 28-3 38M78 68c3 17 4 28 3 38M92 64c5 16 7 27 6 38"/>
+        </g>
+        <circle cx="30" cy="40" r="2.6" fill="currentColor" fill-opacity=".6"/>
+        <path d="M26 40c-6-2-10-5-12-9" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      </svg>`,
+      // Tadpole-shaped, big loose head, translucent body tapering to a finned tail.
+      snailfish: `<svg viewBox="0 0 170 80">
+        <path d="M12 40c0-16 16-28 38-28 20 0 36 8 48 20 16 16 40 26 62 30-22 6-44 12-60 20-12 6-28 10-46 10-24 0-42-14-42-32Z" fill="currentColor" fill-opacity=".2"/>
+        <path d="M98 32c18 6 36 12 52 18-16 8-34 14-52 20" fill="currentColor" fill-opacity=".14"/>
+        <path d="M12 40c0-16 16-28 38-28 12 0 22 3 31 9-10 6-18 15-22 25-6 14-4 26 2 36-8-2-16-6-22-12-17-8-27-19-27-30Z" fill="currentColor" fill-opacity=".12"/>
+        <circle cx="30" cy="34" r="3.4" fill="currentColor" fill-opacity=".7"/>
+        <path d="M18 48c8 5 18 7 28 7" stroke="currentColor" stroke-width="2" fill="none" opacity=".5"/>
+      </svg>`,
+      // Shrimp-like: arched segmented body, many legs, long trailing antennae.
+      amphipod: `<svg viewBox="0 0 140 110">
+        <path d="M22 62c0-26 20-46 48-46 22 0 38 12 44 30 4 12 2 22-4 30-8-10-20-16-34-16-20 0-36 10-42 26-8-6-12-14-12-24Z" fill="currentColor" fill-opacity=".3"/>
+        <g stroke="currentColor" stroke-width="2" opacity=".55" fill="none">
+          <path d="M40 26c-4 8-6 16-6 24M52 20c-4 9-6 18-6 27M66 18c-3 9-5 18-5 28M80 20c-2 9-3 18-2 27M92 26c0 9 1 17 3 24"/>
+        </g>
+        <circle cx="34" cy="46" r="4" fill="currentColor" fill-opacity=".65"/>
+        <g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none">
+          <path d="M30 34c-8-8-16-12-24-12M32 28c-6-10-10-18-10-26"/>
+          <path d="M38 76c-6 12-10 20-10 30M50 80c-4 12-6 21-6 28M62 82c-2 12-3 20-2 28M74 80c2 12 4 20 5 28M86 74c5 11 9 19 11 27"/>
+        </g>
+        <path d="M104 68c12 6 20 12 26 20-10 2-20 0-28-4" fill="currentColor" fill-opacity=".24"/>
+      </svg>`,
+      // Bell mantle with two large ear-like fins, short fully-webbed arms.
+      dumbo: `<svg viewBox="0 0 132 122">
+        <path d="M37 31C23 17 9 17 5 27c-4 10 8 20 27 24M95 31c14-14 28-14 32-4 4 10-8 20-27 24" fill="currentColor" fill-opacity=".24"/>
+        <path d="M66 12c20 0 32 18 32 39 0 12-4 20-9 26H43c-5-6-9-14-9-26 0-21 12-39 32-39Z" fill="currentColor" fill-opacity=".32"/>
+        <circle cx="53" cy="53" r="4.5" fill="currentColor" fill-opacity=".6"/>
+        <circle cx="79" cy="53" r="4.5" fill="currentColor" fill-opacity=".6"/>
+        <path d="M41 77c-8 18-10 31-4 41 8-10 18-15 29-15s21 5 29 15c6-10 4-23-4-41Z" fill="currentColor" fill-opacity=".2" stroke="currentColor" stroke-width="2"/>
+        <g stroke="currentColor" stroke-width="2" opacity=".45"><path d="M51 79v33M61 79v37M71 79v37M81 79v33"/></g>
+      </svg>`
+    };
+
+    // Build creature nodes once. CREATURES is ordered by depth, so assigning
+    // lanes round-robin puts creatures that share a depth range in different
+    // lanes — which keeps the water evenly spread rather than clumped.
+    const nodes = CREATURES.map((c, i) => {
+      c.lane = i % LANE_X.length;
+      const w = Math.min(c.size, LANE_W);
+      const el = document.createElement('div');
+      el.className = 'creature' + (c.biolum ? ' biolum' : '');
+      el.style.left = (LANE_X[c.lane] + (LANE_W - w) / 2) + 'vw'; // centred in its lane
+      el.style.top = c.y + '%';
+      el.style.width = w + 'vw';
+      if (!reduced) {
+        el.style.animation = `drift-y ${c.dur}s ease-in-out ${-(i * 5)}s infinite alternate`;
+      }
+      el.innerHTML = SVG[c.key];
+      life.appendChild(el);
+      return el;
+    });
+
+    // Rail ticks sit in scroll-progress space, so they line up with the marker.
+    // Major tick per zone boundary, one minor tick at each zone's midpoint.
+    let acc = 0;
+    ZONES.forEach(z => {
+      const mid = document.createElement('div');
+      mid.className = 'depth-tick';
+      mid.style.top = ((acc + z.span / 2) * 100) + '%';
+      rail.appendChild(mid);
+
+      acc += z.span;
+      const major = document.createElement('div');
+      major.className = 'depth-tick major';
+      major.style.top = (acc * 100) + '%';
+      rail.appendChild(major);
+    });
+
+    // Palette endpoints: current surface colours → near-black at the floor.
+    // Only background-role variables move, so light text gains contrast.
+    const PALETTE = [
+      { name: '--ink',   from: [11, 25, 41], to: [1,  6,  11] },
+      { name: '--paper', from: [13, 30, 47], to: [2,  8,  16] },
+      { name: '--cream', from: [18, 37, 53], to: [3,  10, 20] },
+      { name: '--card',  from: [21, 40, 64], to: [4,  16, 28] }
+    ];
+
+    const root = document.documentElement;
+    const clamp01 = v => v < 0 ? 0 : v > 1 ? 1 : v;
+    let lastDepth = -1;
+    let ticking = false;
+
+    function zoneFor(depth) {
+      return ZONES.find(z => depth <= z.max) || ZONES[ZONES.length - 1];
+    }
+
+    // Smooth bell across the creature's range: invisible at both edges,
+    // strongest at the middle of the depths it actually lives at.
+    function creatureOpacity(c, depth) {
+      if (depth <= c.min || depth >= c.max) return 0;
+      const t = (depth - c.min) / (c.max - c.min);
+      return Math.sin(Math.PI * t) * PEAK_OPACITY;
+    }
+
+    function render() {
+      ticking = false;
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? clamp01(window.scrollY / scrollable) : 0;
+      const depth = Math.round(depthForProgress(progress) / 10) * 10; // nearest 10 ft
+
+      if (depth === lastDepth) return;
+      lastDepth = depth;
+
+      // 1. Darken the palette.
+      PALETTE.forEach(p => {
+        const c = p.from.map((v, i) => Math.round(v + (p.to[i] - v) * progress));
+        root.style.setProperty(p.name, `rgb(${c[0]},${c[1]},${c[2]})`);
+      });
+
+      // 2. Gauge.
+      const zone = zoneFor(depth);
+      valueEl.textContent = depth.toLocaleString();
+      zoneEl.textContent = zone.name;
+      noteEl.textContent = zone.note;
+      marker.style.top = (progress * 100) + '%';
+      gauge.classList.toggle('visible', progress > 0.02);
+
+      // 3. Creatures. Per lane, show only the single strongest candidate —
+      //    the one nearest the middle of its own depth range. One creature per
+      //    non-overlapping lane means nothing can ever sit on top of anything
+      //    else, at any scroll position.
+      const leader = new Array(LANE_X.length).fill(-1);
+      const leaderO = new Array(LANE_X.length).fill(0);
+      const opacity = new Array(CREATURES.length);
+
+      for (let i = 0; i < CREATURES.length; i++) {
+        const c = CREATURES[i];
+        const o = creatureOpacity(c, depth);
+        opacity[i] = o;
+        if (o > leaderO[c.lane]) { leaderO[c.lane] = o; leader[c.lane] = i; }
+      }
+      for (let i = 0; i < CREATURES.length; i++) {
+        nodes[i].style.opacity = (leader[CREATURES[i].lane] === i) ? opacity[i] : 0;
+      }
+    }
+
+    function onScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(render); }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    render();
+  }());
 </script>
 </body>
 </html>

@@ -21,12 +21,96 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 
+# Hero + case-study videos: immutable long-cache so repeat visits cost no
+# bandwidth. Only versioned/new filenames are listed — 302-smoke-demo.mp4 is
+# deliberately excluded because it was replaced in place, and an immutable
+# year-long cache would pin viewers to the old file.
+[[headers]]
+  for = "/hero-720.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/captiva-demo.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # www → apex canonical redirect
 [[redirects]]
   from = "https://www.deepwaterwebsites.com/*"
   to = "https://deepwaterwebsites.com/:splat"
   status = 301
   force = true
+
+# ---------------------------------------------------------------------------
+# .html → clean URL (301). One canonical path per resource.
+# force = true is REQUIRED: the .html files physically exist in the publish
+# directory, and Netlify serves matching static files before applying a
+# non-forced redirect. Without force, these rules are silently ignored.
+# The 200 rewrites further down resolve clean → .html internally and do not
+# re-enter the redirect engine, so there is no loop.
+# ---------------------------------------------------------------------------
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/build.html"
+  to = "/build"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/maintenance.html"
+  to = "/maintenance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/portfolio.html"
+  to = "/portfolio"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pricing.html"
+  to = "/pricing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/seo.html"
+  to = "/seo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/free-website-review.html"
+  to = "/free-website-review"
+  status = 301
+  force = true
+
+# NOTE: thank-you.html and free-website-review-thank-you.html are deliberately
+# NOT redirected — they are form POST targets and a 301 would disrupt delivery.
 
 [[redirects]]
   from = "/thank-you"
