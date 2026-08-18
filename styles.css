@@ -88,12 +88,13 @@ nav {
 .logo strong { color: var(--accent); }
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.35rem;
   margin-left: auto;
 }
 .nav-links a {
   font-size: 0.9rem;
   font-weight: 500;
+  white-space: nowrap;   /* a nav link must never wrap mid-item */
   color: #bdd5e8;
   text-decoration: none;
   opacity: 0.65;
@@ -170,7 +171,10 @@ nav {
   border-bottom: none;
 }
 .mobile-nav.open { display: flex; }
-@media (max-width: 900px) {
+/* Raised from 900px: six nav links including "Free Website Review" no longer
+   fit alongside the logo and both buttons — the row overflowed by 30px at
+   905px. The hamburger now takes over before that happens. */
+@media (max-width: 960px) {
   .nav-links { display: none; }
   .btn-nav.desktop-only { display: none; }
   .menu-toggle { display: block !important; }
@@ -179,7 +183,9 @@ nav {
 
 /* ─── PAGE TOP OFFSET ─── */
 .page-top { padding-top: 90px; }
-@media (max-width: 900px) { .page-top { padding-top: calc(70px + env(safe-area-inset-top)); } }
+/* Must match the nav breakpoint above — nav height changes there, and this is
+   the clearance that keeps inner-page content from sliding under it. */
+@media (max-width: 960px) { .page-top { padding-top: calc(70px + env(safe-area-inset-top)); } }
 @media (max-width: 480px) { .page-top { padding-top: calc(70px + env(safe-area-inset-top)); } }
 
 /* ─── HERO ─── */
@@ -727,7 +733,7 @@ footer {
   .footer-logo-img { height: auto; width: 100%; max-width: 240px; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   nav {
     padding-top: env(safe-area-inset-top);
     padding-right: 1rem;

@@ -13,7 +13,7 @@
 <link rel="preload" href="squid-mobile.png" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=29">
+<link rel="stylesheet" href="styles.css?v=31">
 <style>
   /* ── PAGE-SPECIFIC: FREE WEBSITE REVIEW ── */
   .trust-row {
@@ -156,6 +156,7 @@
       <a href="/maintenance">Maintenance</a>
       <a href="/seo">What Is SEO?</a>
       <a href="/about">About</a>
+      <a href="/free-website-review" class="active">Free Website Review</a>
     </div>
     <a href="/contact" class="btn-nav ghost desktop-only">Contact</a>
     <a href="/build" class="btn-nav desktop-only">Build My Site</a>
@@ -168,6 +169,7 @@
     <a href="/maintenance">Maintenance</a>
     <a href="/seo">What Is SEO?</a>
     <a href="/about">About</a>
+    <a href="/free-website-review">Free Website Review</a>
     <a href="/contact">Contact</a>
     <a href="/build" class="btn-mobile">Build My Site</a>
   </div>
@@ -339,8 +341,10 @@
           <div class="form-row">
             <div class="form-group">
               <label for="website_url">Website URL</label>
-              <input type="url" id="website_url" name="website_url" placeholder="https://yourbusiness.com">
-              <p class="field-hint">Don't have one? Leave it blank.</p>
+              <input type="text" id="website_url" name="website_url" inputmode="url"
+                     autocapitalize="none" autocorrect="off" spellcheck="false"
+                     placeholder="yourbusiness.com">
+              <p class="field-hint">No need for https:// &mdash; and if you don't have a site yet, leave it blank.</p>
             </div>
             <div class="form-group">
               <label for="industry">Industry</label>
@@ -457,6 +461,25 @@
     <p>Web Design & SEO · Orlando, FL</p>
   </div>
 </footer>
+
+<script>
+  /* Website URL field accepts a bare domain. type="url" rejected
+     "yourbusiness.com" outright, which is exactly what most people type —
+     a hard stop on the page paid traffic lands on. Normalize instead of
+     rejecting: add https:// on the way out so the stored value is still valid. */
+  (function () {
+    const field = document.getElementById('website_url');
+    if (!field) return;
+    const normalize = () => {
+      const v = field.value.trim();
+      if (!v) return;
+      if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(v)) field.value = 'https://' + v.replace(/^\/+/, '');
+    };
+    field.addEventListener('blur', normalize);
+    const form = field.closest('form');
+    if (form) form.addEventListener('submit', normalize);
+  }());
+</script>
 
 <script src="main.js?v=2"></script>
 </body>
