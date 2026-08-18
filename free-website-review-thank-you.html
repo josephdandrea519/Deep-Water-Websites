@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Request Received — Deep Water Websites | Web Design & SEO</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preload" href="squid-mobile.png" as="image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=27">
+<style>
+  .thankyou-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .thankyou-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+    pointer-events: none;
+  }
+  .check-circle {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(76,255,145,0.12);
+    border: 2px solid var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 2rem;
+    animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+  .thankyou-page h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .thankyou-page p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.65;
+  }
+  .next-box {
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    max-width: 540px;
+    margin: 0 auto 3rem;
+    text-align: left;
+  }
+  .next-box h3 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+  .next-box ol {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .next-box li {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #bdd5e8;
+  }
+  .next-box li strong { font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- Minimal nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><div class="logo-squid-wrap"><img src="squid-mobile.png" alt="Deep Water Websites squid" class="nav-logo-img-mobile"></div><span class="logo-wordmark">Deep Water <strong>Websites</strong></span></a>
+    <div class="nav-links">
+      <a href="/portfolio">Portfolio</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/maintenance">Maintenance</a>
+      <a href="/seo">What Is SEO?</a>
+        <a href="/about">About</a>
+    </div>
+    <a href="/contact" class="btn-nav ghost desktop-only">Contact</a>
+    <a href="/build" class="btn-nav desktop-only">Build My Site</a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="/">Home</a>
+    <a href="/portfolio">Portfolio</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/maintenance">Maintenance</a>
+    <a href="/seo">What Is SEO?</a>
+        <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/build" class="btn-mobile">Build My Site</a>
+  </div>
+</nav>
+
+<div class="page-top">
+  <div class="thankyou-page">
+    <div class="thankyou-blob" style="background:var(--accent);width:400px;height:400px;top:-150px;right:-150px;"></div>
+    <div class="thankyou-blob" style="background:var(--accent2);width:350px;height:350px;bottom:-100px;left:-100px;"></div>
+
+    <div class="check-circle">✓</div>
+    <span class="section-label">Request received</span>
+    <h1>Your review is on the way.</h1>
+    <p>Thanks for reaching out! I'm personally reviewing your website and online presence — you'll get your free score and key findings by email, usually within one business day.</p>
+
+    <div class="next-box">
+      <h3>What happens next</h3>
+      <ol>
+        <li><strong>I review what your customers see</strong> — your website, your Google listing, and everything in between.</li>
+        <li><strong>You'll hear from me directly</strong> — no assistant, no automated report generator.</li>
+        <li><strong>You get a plain-English score</strong> and the 3–5 things most likely to be costing you leads.</li>
+        <li><strong>No pressure either way</strong> — if you'd like to talk it through, I'm happy to; if not, the review is yours to keep.</li>
+      </ol>
+    </div>
+
+    <div class="btn-group">
+      <a href="/contact" class="btn-primary">Book a Free 15-Minute Call</a>
+      <a href="/" class="btn-outline">Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo"><img src="logo-transparent.png" alt="Deep Water Websites" class="footer-logo-img"></a>
+      <p>Web Designer & SEO Specialist<br>Orlando, FL · Serving NJ, DE & nationwide</p>
+      <p class="footer-contact"><a href="mailto:info@deepwaterwebsites.com">info@deepwaterwebsites.com</a></p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="/">Home</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/maintenance">Maintenance</a>
+        <a href="/seo">What Is SEO?</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Deep Water Websites. All rights reserved.</p>
+    <p>Web Design & SEO · Orlando, FL</p>
+  </div>
+</footer>
+
+<script src="main.js?v=2"></script>
+</body>
+</html>

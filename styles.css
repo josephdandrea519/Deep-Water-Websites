@@ -116,6 +116,18 @@ nav {
   opacity: 1 !important;
 }
 .btn-nav:hover { background: var(--accent) !important; transform: translateY(-1px); color: #fff !important; }
+/* Secondary nav CTA (Contact) — outlined so it never competes with Build My
+   Site. !important is needed to beat the .btn-nav / .btn-nav:hover fills above. */
+.btn-nav.ghost {
+  background: transparent !important;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  margin-right: 0.5rem;
+}
+.btn-nav.ghost:hover {
+  background: rgba(255,255,255,0.08) !important;
+  border-color: rgba(255,255,255,0.45);
+}
+.btn-nav.ghost.active { border-color: var(--accent); }
 .menu-toggle {
   display: none;
   background: none;
@@ -351,6 +363,18 @@ footer {
 }
 .footer-brand .logo { color: #fff; display: block; margin-bottom: 0.75rem; }
 .footer-brand p { font-size: 0.875rem; opacity: 0.55; line-height: 1.75; }
+.footer-contact { margin-top: 0.6rem; }
+.footer-contact a {
+  font-size: 0.875rem;
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding-bottom: 1px;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+.footer-contact a:hover,
+.footer-contact a:focus-visible { opacity: 1; border-bottom-color: currentColor; }
 .footer-cols { display: flex; gap: 3rem; }
 .footer-col { display: flex; flex-direction: column; gap: 0.7rem; }
 .footer-col h4 {
@@ -643,6 +667,15 @@ footer {
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
 
+/* iOS Safari auto-zooms the whole page when a focused field is under 16px.
+   0.95rem = 15.2px, which triggered it on every form on the site. Bump to a
+   true 16px on touch-sized viewports — desktop keeps the smaller size. */
+@media (max-width: 900px) {
+  .form-group input,
+  .form-group select,
+  .form-group textarea { font-size: 16px; }
+}
+
 /* ─── STAT BLOCK ─── */
 .stat-block { text-align: center; }
 .stat-block .num {
@@ -682,9 +715,16 @@ footer {
 .footer-logo-img {
   height: 210px;
   width: auto;
+  max-width: 100%;
   display: block;
   margin-bottom: 0.75rem;
   filter: brightness(1.6) contrast(1.05);
+}
+/* At 210px tall the logo renders ~315px wide, which exceeds the content area
+   on small phones and gets clipped by body{overflow-x:hidden}. Scale by width
+   instead so it stays proportional and fully visible. */
+@media (max-width: 480px) {
+  .footer-logo-img { height: auto; width: 100%; max-width: 240px; }
 }
 
 @media (max-width: 900px) {

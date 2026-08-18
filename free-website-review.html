@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Free Website Review — Get Your Online Presence Score | Deep Water Websites</title>
+<meta name="description" content="Get a free, honest, plain-English review of your website and online presence in about a minute. No jargon, no spam — built by a local Florida web design studio.">
+<link rel="canonical" href="https://deepwaterwebsites.com/free-website-review">
+<meta property="og:title" content="Free Website Review — Deep Water Websites">
+<meta property="og:description" content="See how your website and online presence look to the customers deciding whether to call you. Free, honest, plain-English — no jargon, no spam.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://deepwaterwebsites.com/logo.png">
+<link rel="preload" href="squid-mobile.png" as="image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=27">
+<style>
+  /* ── PAGE-SPECIFIC: FREE WEBSITE REVIEW ── */
+  .trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-top: 1.5rem;
+  }
+  .cta-microcopy {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 1rem;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 760px) { .steps-grid { grid-template-columns: 1fr; } }
+  .step-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+  .step-card .step-n {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    line-height: 1;
+  }
+  .step-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .step-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  @media (max-width: 900px) { .check-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .check-grid { grid-template-columns: 1fr; } }
+  .check-card {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.4rem;
+  }
+  .check-icon { font-size: 1.3rem; line-height: 1; flex-shrink: 0; margin-top: 0.1rem; }
+  .check-card h3 { font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+  .check-card p { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+  .why-free-box {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+  }
+  .why-free-box p { font-size: 1rem; color: var(--muted); line-height: 1.75; }
+
+  .review-form-card {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    padding: 2.75rem;
+    box-shadow: 0 8px 40px rgba(10,10,15,0.06);
+  }
+  .review-form-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .review-form-card .form-subhead { font-size: 0.875rem; color: var(--muted); margin-bottom: 2rem; }
+  .field-hint { font-size: 0.78rem; color: var(--muted); margin-top: 0.35rem; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — completely. There's no credit card and no obligation. You'll get your plain-English score and key findings by email. If you'd ever like the deeper full report or a free consultation, those are optional next steps, never required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I don't have a website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can still get a review. I'll look at how your business shows up online right now — your Google Business Profile, what appears when someone searches your name, your reviews, and what nearby competitors are doing — and email you the same plain-English report. If you already know you need a site, the Build My Site page gives you a real estimate in a few minutes, or you can email me directly at info@deepwaterwebsites.com and we'll work out where to start."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will you call me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only if you ask us to."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every finding comes from real measurements — we show our evidence."
+      }
+    }
+  ]
+}
+</script>
+<!-- Turnstile loader disabled along with the widget below — re-enable both together.
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+-->
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><div class="logo-squid-wrap"><img src="squid-mobile.png" alt="Deep Water Websites squid" class="nav-logo-img-mobile"></div><span class="logo-wordmark desktop-only">Deep Water <strong>Websites</strong></span></a>
+    <div class="nav-links">
+      <a href="/portfolio">Portfolio</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/maintenance">Maintenance</a>
+      <a href="/seo">What Is SEO?</a>
+      <a href="/about">About</a>
+    </div>
+    <a href="/contact" class="btn-nav ghost desktop-only">Contact</a>
+    <a href="/build" class="btn-nav desktop-only">Build My Site</a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="/">Home</a>
+    <a href="/portfolio">Portfolio</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/maintenance">Maintenance</a>
+    <a href="/seo">What Is SEO?</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/build" class="btn-mobile">Build My Site</a>
+  </div>
+</nav>
+
+<div class="page-top">
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="page-hero-inner">
+      <span class="section-label">Free Website Review</span>
+      <h1>How strong is your business online?<br>Find out in 60 seconds — free.</h1>
+      <p class="lead">Enter your business below and get an honest, plain-English review of your website and online presence — the same things your customers see when they're deciding whether to call you.</p>
+      <div class="btn-group">
+        <a href="#get-score" class="btn-primary">Get My Free Score</a>
+      </div>
+      <p class="cta-microcopy">The 60 seconds is just the form — that's all you have to do. I review every site by hand and email you a brief report.<span style="display:block;">Typically within a day.</span></p>
+      <div class="trust-row">
+        <span>No jargon</span><span>·</span><span>No spam</span><span>·</span><span>Built by a local Florida web design studio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">How It Works</span>
+        <h2>Three steps. No guesswork.</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card fade-up">
+          <div class="step-n">01</div>
+          <h3>Tell us who you are</h3>
+          <p>Your business name, city, and website (if you have one) — that's all we need to get started.</p>
+        </div>
+        <div class="step-card fade-up" style="transition-delay:0.1s">
+          <div class="step-n">02</div>
+          <h3>We review what your customers see</h3>
+          <p>Your website, your Google listing, and everything in between — checked the same way a real customer would experience it.</p>
+        </div>
+        <div class="step-card fade-up" style="transition-delay:0.2s">
+          <div class="step-n">03</div>
+          <h3>You get a clear score and what to do about it</h3>
+          <p>A plain-English breakdown of what's working, what's costing you leads, and what to fix first — sent straight to your inbox.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT WE CHECK ── -->
+  <section class="section dark-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">What We Check</span>
+        <h2>Everything your customers judge you on.</h2>
+        <p class="muted">Fifteen categories, all measured — not guessed.</p>
+      </div>
+      <div class="check-grid">
+        <div class="check-card fade-up">
+          <span class="check-icon">⚡</span>
+          <div><h3>Website Speed</h3><p>How fast your pages load — especially on a phone.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">📱</span>
+          <div><h3>Mobile Friendliness</h3><p>Whether your site actually works well on the device most customers use.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">🔍</span>
+          <div><h3>SEO</h3><p>Whether Google understands what you do and where you do it.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">⚙️</span>
+          <div><h3>Technical SEO</h3><p>The behind-the-scenes plumbing Google relies on to trust your site.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">📍</span>
+          <div><h3>Google Business Profile</h3><p>Your second homepage — often seen before your real one.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">👉</span>
+          <div><h3>Calls to Action</h3><p>Whether every page tells visitors what to do next.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">📝</span>
+          <div><h3>Contact Forms</h3><p>Whether the moment a visitor becomes a lead actually works.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">🤝</span>
+          <div><h3>Trust Signals</h3><p>Why a stranger should believe you're the right call.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">🎨</span>
+          <div><h3>Branding</h3><p>Whether you look like the professional you actually are.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">♿</span>
+          <div><h3>Accessibility</h3><p>Whether everyone — including assistive-tech users — can use your site.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">🔗</span>
+          <div><h3>Broken Links</h3><p>Dead ends that frustrate visitors and hurt your Google ranking.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">📣</span>
+          <div><h3>Social Media Integration</h3><p>Whether your profiles and website reinforce each other.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">🎯</span>
+          <div><h3>Conversion Opportunities</h3><p>Easy wins that turn visitors into calls.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">📊</span>
+          <div><h3>Competitor Comparison</h3><p>How you stack up against similar businesses nearby.</p></div>
+        </div>
+        <div class="check-card fade-up">
+          <span class="check-icon">🌐</span>
+          <div><h3>Overall Online Presence</h3><p>The full picture — everything above, combined into one score.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY FREE ── -->
+  <section class="section cream-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">Why Free?</span>
+        <h2>No catch. Just a starting point.</h2>
+      </div>
+      <div class="why-free-box fade-up">
+        <p>Because it's the same first step we take with every client. If your site is in great shape, we'll tell you that too — and you'll know exactly where you stand. If there's room to improve, you'll know what matters most. No pressure either way.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FORM ── -->
+  <section class="section" id="get-score">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">Get Started</span>
+        <h2>Get My Free Score</h2>
+        <p>Takes about 60 seconds to fill out. I'll review your site by hand and email your score and a brief report, usually within a day.</p>
+      </div>
+
+      <div class="review-form-card fade-up">
+        <h3>Tell me about your business</h3>
+        <p class="form-subhead">No spam, ever — just your honest review.</p>
+
+        <form name="free-website-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="free-website-review-thank-you.html">
+          <!-- Netlify honeypot -->
+          <input type="hidden" name="form-name" value="free-website-review">
+          <div style="display:none;"><input name="bot-field"></div>
+
+          <!-- Cloudflare Turnstile — HIDDEN until it actually works. With a placeholder
+               sitekey the widget renders as broken overlapping link text on the live form.
+               To re-enable: replace TURNSTILE_SITE_KEY_PLACEHOLDER with a real site key,
+               switch this form's action from Netlify Forms to /api/review-submit (which
+               verifies the token server-side), and uncomment the loader script in <head>.
+          <div class="cf-turnstile" data-sitekey="TURNSTILE_SITE_KEY_PLACEHOLDER"></div>
+          -->
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="business_name">Business Name *</label>
+              <input type="text" id="business_name" name="business_name" placeholder="Smith Plumbing LLC" required>
+            </div>
+            <div class="form-group">
+              <label for="city">City / Town *</label>
+              <input type="text" id="city" name="city" placeholder="Orlando, FL" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="website_url">Website URL</label>
+              <input type="url" id="website_url" name="website_url" placeholder="https://yourbusiness.com">
+              <p class="field-hint">Don't have one? Leave it blank.</p>
+            </div>
+            <div class="form-group">
+              <label for="industry">Industry</label>
+              <select id="industry" name="industry">
+                <option value="" selected>Select your industry…</option>
+                <option value="HVAC">HVAC</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Roofing">Roofing</option>
+                <option value="Lawn Care / Landscaping">Lawn Care / Landscaping</option>
+                <option value="Power Washing">Power Washing</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Restaurant / Food Service">Restaurant / Food Service</option>
+                <option value="Medical / Dental">Medical / Dental</option>
+                <option value="Legal">Legal</option>
+                <option value="Retail / E-commerce">Retail / E-commerce</option>
+                <option value="Home Services (Other)">Home Services (Other)</option>
+                <option value="Professional Services">Professional Services</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+              <p class="field-hint">Only if you'd like us to walk you through it.</p>
+            </div>
+          </div>
+
+          <div class="form-group" style="flex-direction:row;align-items:flex-start;gap:0.6rem;">
+            <input type="checkbox" id="nurture_consent" name="nurture_consent" value="yes" style="width:auto;margin-top:0.25rem;">
+            <label for="nurture_consent" style="font-size:0.82rem;font-weight:400;color:var(--muted);">Email me my report and occasional practical tips (unsubscribe anytime).</label>
+          </div>
+
+          <button type="submit" class="btn-primary submit-btn">Get My Free Score</button>
+          <p class="form-disclaimer">No spam. No sales pitches. Just an honest review from me, personally.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="section cream-bg">
+    <div class="section-inner" style="max-width:760px;">
+      <div class="section-header">
+        <span class="section-label">Common Questions</span>
+        <h2>Questions? Answered.</h2>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is this really free? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Yes — completely. There's no credit card and no obligation. You'll get your plain-English score and key findings by email. If you'd ever like the deeper full report or a free consultation, those are optional next steps, never required.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I don't have a website? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">You can still get a review. Not having a website doesn't mean you have no online presence — I'll look at how your business shows up right now: your Google Business Profile, what appears when someone searches your name, your reviews, and what nearby competitors are doing. You'll get the same plain-English report by email.<br><br>If you already know you need a site, the <a href="/build" style="color:var(--accent);">Build My Site</a> page gives you a real estimate in a few minutes — or just email me at <a href="mailto:info@deepwaterwebsites.com" style="color:var(--accent);">info@deepwaterwebsites.com</a> and we'll work out where to start.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Will you call me? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Only if you ask us to.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How accurate is it? <span class="faq-arrow">+</span></div>
+        <div class="faq-a">Every finding comes from real measurements — we show our evidence.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FINAL CTA ── -->
+  <section class="cta-band">
+    <h2>Find out where you really stand.</h2>
+    <p>Free, honest, and pressure-free. It takes about a minute.</p>
+    <div class="btn-group">
+      <a href="#get-score" class="btn-primary">Get My Free Score</a>
+      <a href="/contact" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;">Prefer to Talk It Through?</a>
+    </div>
+  </section>
+
+</div><!-- /page-top -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo"><img src="logo-transparent.png" alt="Deep Water Websites" class="footer-logo-img"></a>
+      <p>Web Designer & SEO Specialist<br>Orlando, FL · Serving NJ, DE & nationwide</p>
+      <p class="footer-contact"><a href="mailto:info@deepwaterwebsites.com">info@deepwaterwebsites.com</a></p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="/">Home</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/maintenance">Maintenance</a>
+        <a href="/seo">What Is SEO?</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Deep Water Websites. All rights reserved.</p>
+    <p>Web Design & SEO · Orlando, FL</p>
+  </div>
+</footer>
+
+<script src="main.js?v=2"></script>
+</body>
+</html>

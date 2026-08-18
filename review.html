@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Your Free Website Review — Deep Water Websites</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preload" href="squid-mobile.png" as="image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=27">
+<style>
+  /* ── PAGE-SPECIFIC: REVIEW RESULTS ── */
+  :root { --fail-red: #ff5c5c; }
+
+  .review-state { display: none; }
+  .review-state.active { display: block; }
+
+  .loading-card {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2.5rem;
+  }
+  .loading-spinner {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.1);
+    border-top-color: var(--accent);
+    margin: 0 auto 1.5rem;
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+  .loading-slow-note {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .error-card {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2.5rem;
+  }
+
+  .score-hero { text-align: center; margin-bottom: 3rem; }
+  .score-dial {
+    width: 180px; height: 180px; margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .score-dial-inner {
+    width: 142px; height: 142px; border-radius: 50%; background: var(--paper);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .score-dial-num { font-size: 2.75rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+  .score-dial-lbl { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.3rem; }
+  .score-range-label {
+    display: inline-block;
+    font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em;
+    padding: 0.4rem 1rem; border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+  .score-verdict { max-width: 620px; margin: 0 auto; font-size: 1.1rem; line-height: 1.65; color: var(--muted); }
+
+  .category-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  @media (max-width: 760px) { .category-strip { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .category-strip { grid-template-columns: 1fr; } }
+  .category-chip {
+    display: flex; align-items: center; gap: 0.75rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 0.9rem 1.1rem;
+    font-size: 0.85rem; font-weight: 600;
+  }
+  .category-chip .grade-icon {
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 800; flex-shrink: 0;
+  }
+  .grade-icon.pass { background: rgba(0,201,167,0.15); color: var(--green); }
+  .grade-icon.warning { background: rgba(251,191,36,0.15); color: var(--gold); }
+  .grade-icon.fail { background: rgba(255,92,92,0.15); color: var(--fail-red); }
+
+  .findings-list { display: flex; flex-direction: column; gap: 1rem; max-width: 720px; margin: 0 auto; }
+  .finding-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+  }
+  .finding-sev {
+    display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 0.2rem 0.6rem; border-radius: 100px; margin-bottom: 0.6rem;
+  }
+  .finding-sev.critical, .finding-sev.high { background: rgba(255,92,92,0.15); color: var(--fail-red); }
+  .finding-sev.medium { background: rgba(251,191,36,0.15); color: var(--gold); }
+  .finding-sev.low, .finding-sev.info { background: rgba(122,171,202,0.15); color: var(--muted); }
+  .finding-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .finding-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+  .business-meaning-box {
+    max-width: 700px; margin: 2.5rem auto 0;
+    background: var(--cream); border-radius: var(--radius-lg);
+    padding: 2rem 2.25rem; text-align: center;
+  }
+  .business-meaning-box p { font-size: 1rem; line-height: 1.7; }
+
+  .finding-card.locked {
+    opacity: 0.55;
+    position: relative;
+    filter: grayscale(0.4);
+  }
+  .finding-card.locked h3 {
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .finding-card.locked .lock-icon {
+    font-size: 0.85rem; opacity: 0.8;
+  }
+  .finding-card.locked p { font-style: italic; }
+
+  .unlock-section { max-width: 900px; margin: 3rem auto 0; }
+  .unlock-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 2.5rem;
+  }
+  .unlock-card > .section-label { display: block; text-align: center; }
+  .unlock-card > h2 { text-align: center; margin-bottom: 0.5rem; }
+  .unlock-card > p.unlock-intro { text-align: center; color: var(--muted); max-width: 560px; margin: 0 auto 2rem; }
+
+  .unlock-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 700px) { .unlock-options { grid-template-columns: 1fr; } }
+  .unlock-option {
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.8rem; display: flex; flex-direction: column;
+  }
+  .unlock-option h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.6rem; }
+  .unlock-option p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; flex-grow: 1; margin-bottom: 1.3rem; }
+  .unlock-option .btn-primary, .unlock-option .btn-outline { width: 100%; justify-content: center; }
+  .unlock-error {
+    color: var(--fail-red); font-size: 0.82rem; margin-top: 0.75rem; display: none; text-align: center;
+  }
+
+  .consult-form { max-width: 480px; margin: 2rem auto 0; display: none; }
+  .consult-form .form-group { margin-bottom: 1rem; }
+  .consult-form label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--muted); }
+  .consult-form input, .consult-form textarea {
+    width: 100%; padding: 0.7rem 0.9rem; border-radius: var(--radius); border: 1px solid var(--border);
+    background: var(--paper); color: #bdd5e8; font-family: inherit; font-size: 0.9rem;
+  }
+  .consult-form textarea { min-height: 80px; resize: vertical; }
+  .consult-success {
+    display: none; max-width: 480px; margin: 2rem auto 0; text-align: center;
+    background: rgba(0,201,167,0.1); border: 1px solid rgba(0,201,167,0.3); border-radius: var(--radius);
+    padding: 1.3rem 1.6rem; color: var(--green); font-size: 0.92rem; line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><div class="logo-squid-wrap"><img src="squid-mobile.png" alt="Deep Water Websites squid" class="nav-logo-img-mobile"></div><span class="logo-wordmark desktop-only">Deep Water <strong>Websites</strong></span></a>
+    <div class="nav-links">
+      <a href="/portfolio">Portfolio</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/maintenance">Maintenance</a>
+      <a href="/seo">What Is SEO?</a>
+      <a href="/about">About</a>
+    </div>
+    <a href="/contact" class="btn-nav ghost desktop-only">Contact</a>
+    <a href="/build" class="btn-nav desktop-only">Build My Site</a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="/">Home</a>
+    <a href="/portfolio">Portfolio</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/maintenance">Maintenance</a>
+    <a href="/seo">What Is SEO?</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/build" class="btn-mobile">Build My Site</a>
+  </div>
+</nav>
+
+<div class="page-top">
+
+  <!-- HERO -->
+  <section class="page-hero" style="padding-bottom:3rem;">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="page-hero-inner">
+      <span class="section-label">Your Free Website Review</span>
+      <h1>Here's where you stand online.</h1>
+      <p class="lead">A plain-English look at your website and online presence — the same things your customers see when they're deciding whether to call you.</p>
+    </div>
+  </section>
+
+  <!-- LOADING STATE -->
+  <section class="section review-state active" id="state-loading">
+    <div class="section-inner">
+      <div class="loading-card">
+        <div class="loading-spinner" aria-hidden="true"></div>
+        <p><strong id="loading-message">We're reviewing your website and online presence now — this usually takes under 90 seconds.</strong></p>
+        <div class="loading-slow-note" id="loading-slow-note" style="display:none;">
+          This one's taking a closer look than usual. That's fine — your full report will be emailed to you within the hour. You can leave this page open or close it; we'll email you either way.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ERROR STATE -->
+  <section class="section review-state" id="state-error">
+    <div class="section-inner">
+      <div class="error-card">
+        <span class="section-label">Something's Not Right</span>
+        <h2 style="margin-bottom:1rem;">We couldn't load this review.</h2>
+        <p style="color:var(--muted);margin-bottom:1.5rem;" id="error-message">This link may have expired, or the review may still be getting started. If you just submitted your business, wait a moment and refresh — otherwise, reach out and we'll sort it out personally.</p>
+        <div class="btn-group">
+          <a href="/free-website-review" class="btn-primary">Get a New Free Score</a>
+          <a href="/contact" class="btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- READY STATE -->
+  <section class="section review-state" id="state-ready">
+    <div class="section-inner">
+
+      <div class="score-hero fade-up">
+        <div class="score-dial" id="score-dial">
+          <div class="score-dial-inner">
+            <span class="score-dial-num" id="score-num">--</span>
+            <span class="score-dial-lbl">Out of 100</span>
+          </div>
+        </div>
+        <span class="score-range-label" id="score-range-label"></span>
+        <p class="score-verdict" id="score-verdict"></p>
+      </div>
+
+      <div class="section-header">
+        <span class="section-label">What We Checked</span>
+        <h2>Fifteen categories, all measured.</h2>
+      </div>
+      <div class="category-strip" id="category-strip"></div>
+
+      <div class="section-header" style="margin-top:4rem;">
+        <span class="section-label">What's Likely Costing You Leads</span>
+        <h2>The findings that matter most.</h2>
+      </div>
+      <div class="findings-list" id="findings-list"></div>
+
+      <div class="business-meaning-box fade-up" id="business-meaning-box" style="display:none;">
+        <p id="business-meaning-text"></p>
+      </div>
+
+      <div class="unlock-section" id="unlock-section">
+        <div class="unlock-card">
+          <span class="section-label">Unlock the Rest</span>
+          <h2>Choose how you'd like to see the rest.</h2>
+          <p class="unlock-intro">The score and categories above are real, but they're only half the picture. Here's how to see the rest, in plain English.</p>
+
+          <div class="unlock-options">
+            <div class="unlock-option">
+              <h3>$97 — Full Report</h3>
+              <p>Every category explained in plain English, evidence for every finding, a prioritized action plan, and how you compare to nearby competitors — all delivered as a PDF straight to your inbox. Add a call with me to walk through it together, at no extra charge.</p>
+              <button class="btn-primary" id="checkout-btn">Get My Full Report — $97</button>
+              <p class="unlock-error" id="checkout-error"></p>
+            </div>
+            <div class="unlock-option">
+              <h3>Free 20-Minute Consultation</h3>
+              <p>Prefer to just talk it through? I'll walk you through your results personally — what's working, what's not, and what I'd fix first. No charge, no obligation.</p>
+              <button class="btn-outline" id="show-consult-form-btn">Request a Free Consultation</button>
+            </div>
+          </div>
+
+          <form class="consult-form" id="consult-form">
+            <div class="form-group">
+              <label for="consult-name">Your name</label>
+              <input type="text" id="consult-name" required>
+            </div>
+            <div class="form-group">
+              <label for="consult-email">Email</label>
+              <input type="email" id="consult-email" required>
+            </div>
+            <div class="form-group">
+              <label for="consult-phone">Phone</label>
+              <input type="tel" id="consult-phone">
+            </div>
+            <div class="form-group">
+              <label for="consult-times">Best times to reach you</label>
+              <input type="text" id="consult-times" placeholder="e.g. weekday afternoons">
+            </div>
+            <div class="form-group">
+              <label for="consult-notes">Anything specific you'd like to cover? (optional)</label>
+              <textarea id="consult-notes"></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Send Request</button>
+            <p class="unlock-error" id="consult-error"></p>
+          </form>
+          <div class="consult-success" id="consult-success">
+            Thanks — I'll reach out shortly to find a time that works. I'll have your full results ready to go through together.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAILED STATE -->
+  <section class="section review-state" id="state-failed">
+    <div class="section-inner">
+      <div class="error-card">
+        <span class="section-label">We Hit a Snag</span>
+        <h2 style="margin-bottom:1rem;">Your review didn't complete.</h2>
+        <p style="color:var(--muted);margin-bottom:1.5rem;">This happens occasionally with sites that block automated checks. Reach out and I'll review it personally — no charge, no extra step for you.</p>
+        <div class="btn-group">
+          <a href="/contact" class="btn-primary">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-top -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo"><img src="logo-transparent.png" alt="Deep Water Websites" class="footer-logo-img"></a>
+      <p>Web Designer & SEO Specialist<br>Orlando, FL · Serving NJ, DE & nationwide</p>
+      <p class="footer-contact"><a href="mailto:info@deepwaterwebsites.com">info@deepwaterwebsites.com</a></p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="/">Home</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/maintenance">Maintenance</a>
+        <a href="/seo">What Is SEO?</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Deep Water Websites. All rights reserved.</p>
+    <p>Web Design & SEO · Orlando, FL</p>
+  </div>
+</footer>
+
+<script src="main.js?v=2"></script>
+<script>
+(function () {
+  // TODO(REVIEW_API_BASE_URL_PLACEHOLDER): set this to the deployed origin of the
+  // deep-water-growth "apps/sales-pages" Netlify site once known (e.g.
+  // "https://dw-growth-sales.netlify.app"), and confirm that site's Netlify Functions
+  // allow deepwaterwebsites.com as a CORS origin. Leaving this blank/wrong means every
+  // poll request below will fail — that's expected until the real origin is wired in.
+  const REVIEW_API_BASE = "REVIEW_API_BASE_URL_PLACEHOLDER";
+
+  const CATEGORY_LABELS = {
+    website_presence: "Website presence",
+    performance: "Performance",
+    mobile_experience: "Mobile experience",
+    seo_basics: "SEO basics",
+    accessibility: "Accessibility",
+    security: "Security",
+    local_presence: "Local presence",
+    trust_signals: "Trust signals",
+    conversion_path: "Conversion path",
+    content_quality: "Content quality",
+    technical_health: "Technical health",
+    analytics: "Analytics",
+    schema_markup: "Schema markup",
+    contactability: "Contactability",
+    competitive_position: "Competitive position",
+  };
+
+  const SCORE_RANGES = [
+    { min: 90, label: "Strong online presence", color: "var(--green)", fallbackVerdict: "Your online presence is in great shape — here's the full picture." },
+    { min: 75, label: "Good foundation, room to improve", color: "var(--green)", fallbackVerdict: "You've got a solid foundation, with a few clear opportunities to strengthen it." },
+    { min: 60, label: "Several missed opportunities", color: "var(--gold)", fallbackVerdict: "There are a few missed opportunities here that are likely costing you calls." },
+    { min: 40, label: "Likely costing you leads", color: "var(--gold)", fallbackVerdict: "Your website and online presence may be costing you leads right now." },
+    { min: 0, label: "Major visibility and trust issues", color: "var(--fail-red)", fallbackVerdict: "There's real room to improve how customers find and trust you online — and it's fixable." },
+  ];
+
+  // TODO(DEE-33): endpoint name for creating a Stripe Checkout session — not built
+  // yet. Building against this contract now so the button works the moment it ships;
+  // confirm with Codex if the real path/response shape differs.
+  const CHECKOUT_ENDPOINT_PATH = "/api/review-checkout";
+  // TODO(DEE-45): matches the request-consult contract proposed on that issue.
+  const CONSULT_ENDPOINT_PATH = "/api/review-request-consult";
+
+  const POLL_INTERVAL_MS = 3000;
+  const SLOW_PATH_MS = 90000;
+  const NETWORK_ERROR_TIMEOUT_MS = 120000;
+  const MAX_POLL_DURATION_MS = 15 * 60 * 1000; // give up polling a hung job after 15 min
+  const UNLOCK_WAIT_TIMEOUT_MS = 120000; // how long to watch for a report after a consult request
+
+  let pollTimer = null;
+  let startedAt = Date.now();
+
+  function showState(id) {
+    document.querySelectorAll(".review-state").forEach((el) => el.classList.remove("active"));
+    const target = document.getElementById(id);
+    if (target) target.classList.add("active");
+  }
+
+  function getToken() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("token")) return params.get("token");
+    const segments = window.location.pathname.split("/").filter(Boolean);
+    const last = segments[segments.length - 1] || "";
+    const isBareReviewPath = last.toLowerCase() === "review.html" || last.toLowerCase() === "review";
+    return isBareReviewPath || last === "" ? "" : last;
+  }
+
+  function scoreRangeFor(score) {
+    return SCORE_RANGES.find((range) => score >= range.min) || SCORE_RANGES[SCORE_RANGES.length - 1];
+  }
+
+  function renderScore(score) {
+    const range = scoreRangeFor(score.overall_score);
+    const pct = Math.max(0, Math.min(100, score.overall_score));
+    const dial = document.getElementById("score-dial");
+    dial.style.background = `conic-gradient(${range.color} ${pct}%, rgba(255,255,255,0.08) ${pct}%)`;
+    document.getElementById("score-num").textContent = score.overall_score;
+    document.getElementById("score-num").style.color = range.color;
+    const label = document.getElementById("score-range-label");
+    label.textContent = range.label;
+    label.style.background = range.color.startsWith("var") ? `rgba(0,0,0,0.15)` : range.color;
+    label.style.color = range.color;
+  }
+
+  function renderVerdict(range, report) {
+    document.getElementById("score-verdict").textContent =
+      (report && report.verdict) || range.fallbackVerdict;
+  }
+
+  function renderCategories(categoryScores) {
+    const strip = document.getElementById("category-strip");
+    strip.innerHTML = "";
+    (categoryScores || []).forEach((cat) => {
+      const chip = document.createElement("div");
+      chip.className = "category-chip";
+      const icon = cat.grade === "pass" ? "✓" : cat.grade === "warning" ? "⚠" : "✕";
+      chip.innerHTML = `<span class="grade-icon ${cat.grade}">${icon}</span><span>${escapeHtml(CATEGORY_LABELS[cat.id] || cat.label || cat.id)}</span>`;
+      strip.appendChild(chip);
+    });
+  }
+
+  function renderFindings(findings) {
+    const list = document.getElementById("findings-list");
+    list.innerHTML = "";
+    const unlocked = (findings || []).filter((f) => !f.is_locked);
+    const locked = (findings || []).filter((f) => f.is_locked);
+
+    unlocked.forEach((finding) => {
+      const card = document.createElement("div");
+      card.className = "finding-card";
+      card.innerHTML = `
+        <span class="finding-sev ${finding.severity}">${finding.severity}</span>
+        <h3>${escapeHtml(finding.title)}</h3>
+        <p>${escapeHtml(CATEGORY_LABELS[finding.category] || finding.category)}</p>
+      `;
+      list.appendChild(card);
+    });
+
+    locked.forEach((finding) => {
+      const card = document.createElement("div");
+      card.className = "finding-card locked";
+      card.innerHTML = `
+        <span class="finding-sev ${finding.severity}">${finding.severity}</span>
+        <h3><span class="lock-icon">🔒</span> ${escapeHtml(CATEGORY_LABELS[finding.category] || finding.category)}</h3>
+        <p>Unlock the full report to see this finding and how to fix it.</p>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  function renderFullReport(report) {
+    document.getElementById("unlock-section").style.display = "none";
+
+    const list = document.getElementById("findings-list");
+    list.innerHTML = "";
+    (report.positives || []).forEach((positive) => {
+      const card = document.createElement("div");
+      card.className = "finding-card";
+      card.style.borderColor = "rgba(0,201,167,0.25)";
+      card.innerHTML = `
+        <span class="finding-sev" style="background:rgba(0,201,167,0.15);color:var(--green);">Working Well</span>
+        <h3>${escapeHtml(positive.title)}</h3>
+        <p>${escapeHtml(positive.detail)}</p>
+      `;
+      list.appendChild(card);
+    });
+    (report.major_findings || []).forEach((finding) => {
+      const card = document.createElement("div");
+      card.className = "finding-card";
+      card.innerHTML = `
+        <span class="finding-sev ${finding.severity}">${finding.severity}</span>
+        <h3>${escapeHtml(finding.title)}</h3>
+        <p>${escapeHtml(finding.plain_english)} ${escapeHtml(finding.why_it_matters)}</p>
+      `;
+      list.appendChild(card);
+    });
+
+    if (report.business_meaning) {
+      document.getElementById("business-meaning-text").textContent = report.business_meaning;
+      document.getElementById("business-meaning-box").style.display = "block";
+    }
+  }
+
+  function escapeHtml(value) {
+    const div = document.createElement("div");
+    div.textContent = value == null ? "" : String(value);
+    return div.innerHTML;
+  }
+
+  let lastStatus = "queued";
+
+  async function poll() {
+    const token = getToken();
+    if (!token) {
+      showState("state-error");
+      document.getElementById("error-message").textContent =
+        "We couldn't find a review token in this link. Double-check the link, or request a new free score.";
+      return;
+    }
+
+    try {
+      const response = await fetch(`${REVIEW_API_BASE}/api/review-status/${encodeURIComponent(token)}`);
+      if (response.status === 404) {
+        showState("state-error");
+        return;
+      }
+      if (!response.ok) throw new Error(`Status ${response.status}`);
+      const data = await response.json();
+      handleStatus(data);
+    } catch (err) {
+      // Network/API errors during polling: stay on the loading state and retry.
+      // Only surface an error page if we've been failing for a long time.
+      if (Date.now() - startedAt > NETWORK_ERROR_TIMEOUT_MS) {
+        showState("state-error");
+        document.getElementById("error-message").textContent =
+          "We're having trouble reaching your review right now. Refresh this page in a minute, or contact us and we'll check on it.";
+        return;
+      }
+    }
+
+    const elapsed = Date.now() - startedAt;
+    if (elapsed > MAX_POLL_DURATION_MS) {
+      document.getElementById("loading-message").textContent =
+        "This is taking longer than usual. Refresh this page in a bit, or contact us and we'll check on it.";
+      document.getElementById("loading-slow-note").style.display = "none";
+      return; // stop polling; a hung job shouldn't keep the tab making requests indefinitely
+    }
+
+    // Once the free score finishes (completed/emailed) or fails, this loop stops on
+    // its own below — there's nothing left to auto-generate. The narrative report only
+    // starts generating after a payment or consult request, which kicks off pollForUnlock()
+    // separately.
+    if (lastStatus === "queued" || lastStatus === "running") {
+      pollTimer = setTimeout(poll, POLL_INTERVAL_MS);
+    }
+  }
+
+  function handleStatus(data) {
+    lastStatus = data.status;
+    const elapsed = Date.now() - startedAt;
+
+    if (data.status === "failed") {
+      showState("state-failed");
+      return;
+    }
+
+    if (data.status === "queued" || data.status === "running") {
+      showState("state-loading");
+      document.getElementById("loading-slow-note").style.display = elapsed > SLOW_PATH_MS ? "block" : "none";
+      return;
+    }
+
+    if (data.status === "completed" || data.status === "emailed") {
+      showState("state-ready");
+      if (data.score) {
+        renderScore(data.score);
+        renderVerdict(scoreRangeFor(data.score.overall_score), data.report);
+        renderCategories(data.score.category_scores);
+      }
+      if (data.report) {
+        renderFullReport(data.report);
+      } else {
+        renderFindings(data.findings);
+        document.getElementById("unlock-section").style.display = "block";
+      }
+    }
+  }
+
+  // Watches for the narrative report to appear after a consult request has been sent
+  // (or, in the future, after returning from a successful Stripe payment). Separate
+  // from the main poll() loop above, which only ever waits for the free score.
+  function pollForUnlock() {
+    const unlockStartedAt = Date.now();
+    async function tick() {
+      try {
+        const response = await fetch(`${REVIEW_API_BASE}/api/review-status/${encodeURIComponent(getToken())}`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.report) {
+            renderFullReport(data.report);
+            return;
+          }
+        }
+      } catch (err) {
+        // keep trying until the timeout below
+      }
+      if (Date.now() - unlockStartedAt < UNLOCK_WAIT_TIMEOUT_MS) {
+        setTimeout(tick, POLL_INTERVAL_MS);
+      }
+    }
+    tick();
+  }
+
+  async function handleCheckoutClick() {
+    const btn = document.getElementById("checkout-btn");
+    const errorEl = document.getElementById("checkout-error");
+    errorEl.style.display = "none";
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Redirecting…";
+    try {
+      const response = await fetch(`${REVIEW_API_BASE}${CHECKOUT_ENDPOINT_PATH}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ requestToken: getToken() }),
+      });
+      if (!response.ok) throw new Error(`Status ${response.status}`);
+      const data = await response.json();
+      if (!data.checkoutUrl) throw new Error("No checkout URL returned");
+      window.location.href = data.checkoutUrl;
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      errorEl.style.display = "block";
+      errorEl.textContent = "Online payment isn't available yet — email or call me directly and we'll sort it out.";
+    }
+  }
+
+  async function handleConsultSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const errorEl = document.getElementById("consult-error");
+    errorEl.style.display = "none";
+    const submitBtn = form.querySelector("button[type=submit]");
+    submitBtn.disabled = true;
+
+    const payload = {
+      requestToken: getToken(),
+      name: document.getElementById("consult-name").value.trim(),
+      email: document.getElementById("consult-email").value.trim(),
+      phone: document.getElementById("consult-phone").value.trim(),
+      preferredTimes: document.getElementById("consult-times").value.trim(),
+      notes: document.getElementById("consult-notes").value.trim(),
+    };
+
+    try {
+      const response = await fetch(`${REVIEW_API_BASE}${CONSULT_ENDPOINT_PATH}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error(`Status ${response.status}`);
+      form.style.display = "none";
+      document.querySelector(".unlock-options").style.display = "none";
+      document.getElementById("consult-success").style.display = "block";
+      pollForUnlock();
+    } catch (err) {
+      submitBtn.disabled = false;
+      errorEl.style.display = "block";
+      errorEl.textContent = "Something went wrong sending that — please email me directly, or try again.";
+    }
+  }
+
+  function setupUnlockActions() {
+    document.getElementById("checkout-btn").addEventListener("click", handleCheckoutClick);
+    document.getElementById("show-consult-form-btn").addEventListener("click", () => {
+      const form = document.getElementById("consult-form");
+      form.style.display = form.style.display === "block" ? "none" : "block";
+    });
+    document.getElementById("consult-form").addEventListener("submit", handleConsultSubmit);
+  }
+
+  setupUnlockActions();
+  poll();
+})();
+</script>
+</body>
+</html>
