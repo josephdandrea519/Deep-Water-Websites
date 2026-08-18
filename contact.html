@@ -13,7 +13,7 @@
 <link rel="preload" href="squid-mobile.png" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=28">
+<link rel="stylesheet" href="styles.css?v=29">
 <style>
   .contact-layout {
     display: grid;
@@ -234,7 +234,7 @@
           <h3>Tell me about your project</h3>
           <p class="form-subhead">I'll respond within 24 hours — usually faster.</p>
 
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="thank-you.html">
+          <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" action="thank-you.html">
             <!-- Netlify honeypot -->
             <input type="hidden" name="form-name" value="contact">
             <div style="display:none;"><input name="bot-field"></div>
@@ -277,6 +277,8 @@
               <label for="message">Tell me about your business *</label>
               <textarea id="message" name="message" placeholder="What do you do, who are your customers, what's not working about your current online presence?" required></textarea>
             </div>
+
+            <div class="captcha-wrap" data-netlify-recaptcha="true"></div>
 
             <button type="submit" class="btn-primary submit-btn">Send My Project Details →</button>
             <p class="form-disclaimer">No spam. No sales pitches. Just a response from me, personally.</p>

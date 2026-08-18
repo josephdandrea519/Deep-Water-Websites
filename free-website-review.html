@@ -13,7 +13,7 @@
 <link rel="preload" href="squid-mobile.png" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=28">
+<link rel="stylesheet" href="styles.css?v=29">
 <style>
   /* ── PAGE-SPECIFIC: FREE WEBSITE REVIEW ── */
   .trust-row {
@@ -140,9 +140,6 @@
   ]
 }
 </script>
-<!-- Turnstile loader disabled along with the widget below — re-enable both together.
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
--->
 </head>
 <body>
 
@@ -322,18 +319,11 @@
         <h3>Tell me about your business</h3>
         <p class="form-subhead">No spam, ever — just your honest review.</p>
 
-        <form name="free-website-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="free-website-review-thank-you.html">
+        <form name="free-website-review" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" action="free-website-review-thank-you.html">
           <!-- Netlify honeypot -->
           <input type="hidden" name="form-name" value="free-website-review">
           <div style="display:none;"><input name="bot-field"></div>
 
-          <!-- Cloudflare Turnstile — HIDDEN until it actually works. With a placeholder
-               sitekey the widget renders as broken overlapping link text on the live form.
-               To re-enable: replace TURNSTILE_SITE_KEY_PLACEHOLDER with a real site key,
-               switch this form's action from Netlify Forms to /api/review-submit (which
-               verifies the token server-side), and uncomment the loader script in <head>.
-          <div class="cf-turnstile" data-sitekey="TURNSTILE_SITE_KEY_PLACEHOLDER"></div>
-          -->
 
           <div class="form-row">
             <div class="form-group">
@@ -390,6 +380,11 @@
             <input type="checkbox" id="nurture_consent" name="nurture_consent" value="yes" style="width:auto;margin-top:0.25rem;">
             <label for="nurture_consent" style="font-size:0.82rem;font-weight:400;color:var(--muted);">Email me my report</label>
           </div>
+
+          <!-- Netlify provisions and verifies these reCAPTCHA keys itself; no
+               site key or third-party account required. Renders on the deployed
+               site only, not on a local static server. -->
+          <div class="captcha-wrap" data-netlify-recaptcha="true"></div>
 
           <button type="submit" class="btn-primary submit-btn">Get My Free Score</button>
         </form>
