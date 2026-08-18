@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=27">
+<link rel="stylesheet" href="styles.css?v=29">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -223,10 +223,19 @@
   h1 {
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
-    font-size: clamp(2.4rem, 4vw, 4rem);
+    font-size: clamp(2.55rem, 4.3vw, 4.25rem);
     line-height: 1;
     letter-spacing: -0.04em;
     animation: fadeUp 0.8s 0.1s ease both;
+  }
+  /* 800 is the heaviest weight loaded for both faces, so extra presence has to
+     come from colour and a halo rather than font-weight. */
+  .hero-left h1 {
+    color: #fff;
+    text-shadow:
+      0 2px 4px rgba(4,12,20,0.85),
+      0 4px 18px rgba(4,12,20,0.65),
+      0 8px 44px rgba(4,12,20,0.5);
   }
   h1 em {
     font-style: normal;
@@ -1202,9 +1211,10 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-      /* Three stats across at 320px is tight, and the labels ("Client
-         Satisfaction") drive the column widths — 1rem is what fits. */
-      gap: 1rem;
+      /* Three stats across at 320px is tight, and the labels drive the column
+         widths — "Opportunities" is one unbreakable 76px word, so the gap has
+         to give. 0.6rem leaves headroom at the narrowest supported width. */
+      gap: 0.6rem;
       margin-top: 1rem;
       padding-top: 0.85rem;
       border-top: none;
@@ -1220,7 +1230,7 @@
        its own content. With nowrap on the number that means clipping, not
        wrapping — so the type has to be small enough for three across at 320px. */
     .stat-num { font-size: 1.05rem; white-space: nowrap; overflow: visible; text-overflow: unset; }
-    .stat-label { font-size: 0.58rem; letter-spacing: 0.04em; white-space: normal; line-height: 1.3; }
+    .stat-label { font-size: 0.55rem; letter-spacing: 0.02em; white-space: normal; line-height: 1.3; }
     .hero-sub {
       order: 3;
       max-width: 100%;
@@ -1447,7 +1457,7 @@
 
     <p class="hero-sub">
       Custom websites that get local businesses found on Google and turn those visitors into customers.
-      <span class="hero-sub-location">Orlando, FL · Serving NJ, DE & nationwide</span>
+      <span class="hero-sub-location">Orlando, FL · Serving businesses nationwide</span>
     </p>
 
     <div class="hero-actions">
@@ -1465,8 +1475,8 @@
         <div class="stat-label">Client Satisfaction</div>
       </div>
       <div>
-        <div class="stat-num">Custom</div>
-        <div class="stat-label">Every Build</div>
+        <div class="stat-num">Endless</div>
+        <div class="stat-label">Opportunities</div>
       </div>
     </div>
   </div>
@@ -1630,8 +1640,8 @@
     <div class="work-card fade-up" style="transition-delay:0.4s">
       <div class="work-type">Clean Water &amp; Infrastructure</div>
       <h3>Captiva Verde</h3>
-      <p><strong>The problem:</strong> A publicly traded company that deploys machines pulling drinking water out of thin air — built by their manufacturing partner, not by them. Explaining who does what, to investors and to towns, in the same few seconds.</p>
-      <p><strong>What they got:</strong> Nine pages that explain the technology plainly and make clear where their own work begins — getting these systems sited, deployed, and into the hands of the communities using them. Plus a calculator that shows what a unit would produce at your site.</p>
+      <p><strong>The problem:</strong> A publicly traded clean-water company with technology most people had never heard of, and two very different audiences to convince.</p>
+      <p><strong>What they got:</strong> A nine-page site that explains what they do in plain language, plus a calculator showing what their systems would produce at your own site.</p>
       <div class="work-tags">
         <span class="work-tag">Investor-ready</span>
         <span class="work-tag">Explains the tech simply</span>
@@ -1907,7 +1917,7 @@
     <div class="calc-cta-box fade-up">
       <h3>Ready to see these numbers become real?</h3>
       <p>Most Deep Water clients see results within 30 days of launch.</p>
-      <a href="/build" class="btn-primary">Get Your Free Site Audit →</a>
+      <a href="/build" class="btn-primary">Build Your Site →</a>
     </div>
 
   </div>
@@ -2023,7 +2033,7 @@
     <div class="score-cta-card fade-up">
       <div class="score-cta-grid">
         <div>
-          <span class="section-label" style="color:var(--accent2);">Free Tool</span>
+          <span class="section-label" style="color:var(--accent2);">Free Website Review</span>
           <h2>Not sure if your website is helping or hurting?</h2>
           <p>Find out in 60 seconds — that's all it takes to fill out the form. From there I review your site myself and email you a short, plain-English report, usually within a day.</p>
           <a href="/free-website-review" class="btn-primary">Check My Score →</a>
@@ -2032,7 +2042,7 @@
           <div class="score-dial">
             <div class="score-dial-inner">
               <span class="score-dial-num">78</span>
-              <span class="score-dial-lbl">Sample Score</span>
+              <span class="score-dial-lbl">Website Score</span>
             </div>
           </div>
         </div>
@@ -2046,7 +2056,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <a href="/" class="logo"><img src="logo-transparent.png" alt="Deep Water Websites" class="footer-logo-img" loading="lazy" decoding="async"></a>
-      <p>Web Designer & SEO Specialist<br>Orlando, FL · Serving NJ, DE & nationwide</p>
+      <p>Web Designer & SEO Specialist<br>Orlando, FL · Serving businesses nationwide</p>
       <p class="footer-contact"><a href="mailto:info@deepwaterwebsites.com">info@deepwaterwebsites.com</a></p>
     </div>
     <div class="footer-cols">

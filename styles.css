@@ -909,3 +909,12 @@ input[type="number"].calc-num::-webkit-inner-spin-button { opacity: 0.4; }
   .calc-tip-bubble { left: auto; right: 0; transform: none; }
   .calc-tip-bubble::after { left: auto; right: 10px; transform: none; }
 }
+
+/* ─── FORM CAPTCHA (Netlify reCAPTCHA 2) ─── */
+/* Netlify injects a light-themed widget; give it room and let it scale down on
+   narrow screens so it never overflows the form card. */
+.captcha-wrap { margin: 0.25rem 0 1.25rem; min-height: 78px; }
+.captcha-wrap > div { max-width: 100%; }
+@media (max-width: 400px) {
+  .captcha-wrap { transform: scale(0.86); transform-origin: left top; min-height: 68px; }
+}
