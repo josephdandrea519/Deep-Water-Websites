@@ -924,3 +924,15 @@ input[type="number"].calc-num::-webkit-inner-spin-button { opacity: 0.4; }
 @media (max-width: 400px) {
   .captcha-wrap { transform: scale(0.86); transform-origin: left top; min-height: 68px; }
 }
+
+/* Footer legal link — the row sits at 0.38 opacity, so the link needs to
+   lift out of it without shouting. */
+.footer-bottom a { color: inherit; text-decoration: underline;
+  text-underline-offset: 2px; opacity: 0.85; }
+.footer-bottom a:hover { opacity: 1; color: var(--accent); }
+
+/* Google's reCAPTCHA terms require this notice wherever the widget runs. */
+.captcha-notice { font-size: 0.72rem; line-height: 1.55; color: var(--muted);
+  opacity: 0.8; text-align: center; margin-top: 0.9rem; }
+.captcha-notice a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.captcha-notice a:hover { color: var(--accent); }
