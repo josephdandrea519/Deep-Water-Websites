@@ -109,6 +109,12 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
+  force = true
+
 # NOTE: thank-you.html and free-website-review-thank-you.html are deliberately
 # NOT redirected — they are form POST targets and a 301 would disrupt delivery.
 
@@ -150,6 +156,11 @@
 [[redirects]]
   from = "/free-website-review"
   to = "/free-website-review.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
   status = 200
 
 [[redirects]]
